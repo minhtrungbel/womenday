@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - Women Day</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('source') }}">Source</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('link') }}">Link</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="introduction text-center">Tụi mình có chuẩn bị một bất ngờ nhỏ cho bạn nè</h2>
+
+        <!-- WRAPPER GIỮ NGUYÊN MARGIN/PADDING/TOP -->
+        <div class="inner-wrapper">
+            <div class="khung1">
+                <div class="card">
+                    <!-- ĐÃ SỬA: method="POST" + action="{{ url_for('profile') }}" -->
+                    <form action="{{ url_for('profile') }}" method="POST">
+                        <label for="name" class="name-label">Hãy điền tên của bạn vào đây nhé</label>
+                        <div class="position-relative d-inline-block mx-auto">
+                            <!-- ĐÃ SỬA: autocomplete="off" → giữ nguyên, thêm required nếu cần -->
+                            <input type="text" id="name" name="name" placeholder="Nhập tên của bạn vào"
+                                   class="form-control name-input text-overflow-ellipsis" autocomplete="off" required>
+                        </div>
+                        <!-- ĐÃ SỬA: class="btn btn-primary mt-3" → giữ nguyên -->
+                        <button type="submit" class="btn btn-primary mt-3">Gửi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUTOCOMPLETE RA NGOÀI – CĂN GIỮA HOÀN HẢO -->
+    <div id="autocomplete-suggestions" class="autocomplete-suggestions" style="display: none;"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let names = [];
+        fetch('/api/names')
+            .then(r => r.json())
+            .then(d => { names = d.names; })
+            .catch(console.error);
+
+        const input = document.getElementById('name');
+        const suggestionsDiv = document.getElementById('autocomplete-suggestions');
+
+        // CẬP NHẬT VỊ TRÍ + ĐỘ RỘNG – CĂN GIỮA 100%
+        function updateSuggestionsPosition() {
+            const rect = input.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const top = rect.bottom + scrollTop + 8;
+            const inputWidth = rect.width;
+            const maxWidth = window.innerWidth * 0.85;
+
+            suggestionsDiv.style.top = `${top}px`;
+            suggestionsDiv.style.width = `${Math.min(inputWidth, maxWidth)}px`;
+            // left + transform do CSS xử lý → luôn căn giữa
+        }
+
+        input.addEventListener('input', function () {
+            const query = this.value.toLowerCase().trim();
+            suggestionsDiv.innerHTML = '';
+            suggestionsDiv.style.display = 'none';
+
+            if (!query) return;
+
+            const matches = names.filter(n => n.toLowerCase().includes(query));
+            if (matches.length === 0) return;
+
+            matches.forEach(match => {
+                const div = document.createElement('div');
+                div.className = 'autocomplete-suggestion';
+                div.textContent = match;
+                div.addEventListener('click', () => {
+                    input.value = match;
+                    suggestionsDiv.innerHTML = '';
+                    suggestionsDiv.style.display = 'none';
+                });
+                suggestionsDiv.appendChild(div);
+            });
+
+            updateSuggestionsPosition();
+            suggestionsDiv.style.display = 'block';
+        });
+
+        // Cập nhật khi scroll/resize
+        ['scroll', 'resize'].forEach(ev => {
+            window.addEventListener(ev, () => {
+                if (suggestionsDiv.style.display === 'block') {
+                    updateSuggestionsPosition();
+                }
+            });
+        });
+
+        // Đóng khi click ngoài
+        document.addEventListener('click', e => {
+            if (!input.contains(e.target) && !suggestionsDiv.contains(e.target)) {
+                suggestionsDiv.style.display = 'none';
+            }
+        });
+
+        // ÂM THANH – GIỮ NGUYÊN NHƯ CŨ
+        document.querySelector('form').addEventListener('submit', () => {
+            sessionStorage.setItem('audio_allowed', 'true');
+        });
+
+        // Touch feedback
+        document.querySelector('.btn-primary').addEventListener('touchstart', function () {
+            this.classList.add('tapped');
+        });
+        document.querySelector('.btn-primary').addEventListener('touchend', function () {
+            setTimeout(() => this.classList.remove('tapped'), 100);
+        });
+
+        suggestionsDiv.addEventListener('touchstart', e => {
+            if (e.target.classList.contains('autocomplete-suggestion')) {
+                e.target.classList.add('tapped');
+            }
+        }, true);
+        suggestionsDiv.addEventListener('touchend', e => {
+            if (e.target.classList.contains('autocomplete-suggestion')) {
+                setTimeout(() => e.target.classList.remove('tapped'), 1000);
+            }
+        }, true);
+    </script>
+</body>
+</html>

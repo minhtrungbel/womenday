@@ -1,0 +1,38 @@
+<!-- templates/source.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Đảm bảo responsive trên mobile -->
+    <title>Source - Women Day</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='source.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="{{ url_for('source') }}">Source</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('link') }}">Link</a></li> <!-- Thêm mục Link -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container text-center mt-4">
+        <h1>Source Page</h1>
+        <div class="card-body">
+            <p class="fact">Đây là trang Source. Bạn có thể thêm các nguồn thông tin, tài liệu, hoặc liên kết liên quan tại đây.</p>
+            <ul class="list-unstyled">
+                <li><a href="#" class="text-decoration-none">Nguồn 1: Ví dụ tài liệu</a></li>
+                <li><a href="#" class="text-decoration-none">Nguồn 2: Liên kết tham khảo</a></li>
+            </ul>
+        </div>
+    </div>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
