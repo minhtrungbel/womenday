@@ -72,7 +72,7 @@ def init_db():
          "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/2_music.mp3"),
         ("buikieuanh", "Bùi Kiều Anh", "Bùi Kiều Anh là một cá nhân năng động, luôn truyền cảm hứng cho mọi người xung quanh.", 
          "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/bui_kieu_anh.jpg",
-         "https://res.cloudinary.com/dogyjotxv/video/upload/v1762265090/1_tyjgif.mp4"),
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v1762270650/1_zuziql.mp3"),
         ("trinhngocgialinh", "Trịnh Ngọc Gia Linh", "Trịnh Ngọc Gia Linh đam mê công nghệ và có khả năng lãnh đạo tuyệt vời.", 
          "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/trinh_ngoc_gia_linh.jpg",
          "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/4_music.mp3"),
@@ -178,3 +178,4 @@ def get_names():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
