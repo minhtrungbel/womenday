@@ -12,4 +12,5 @@ services:
       CLOUDINARY_API_KEY:
         fromSecret: CLOUDINARY_API_KEY
       CLOUDINARY_API_SECRET:
+
         fromSecret: CLOUDINARY_API_SECRET
