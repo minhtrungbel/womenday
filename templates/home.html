@@ -108,12 +108,25 @@
             });
         });
 
-        // Đóng khi click ngoài
-        document.addEventListener('click', e => {
-            if (!input.contains(e.target) && !suggestionsDiv.contains(e.target)) {
-                suggestionsDiv.style.display = 'none';
-            }
-        });
+       // ẨN KHI NGƯỜI DÙNG CHỌN GỢI Ý
+function hideSuggestions() {
+    suggestionsDiv.innerHTML = '';
+    suggestionsDiv.style.display = 'none';
+}
+
+// Khi chọn 1 gợi ý
+suggestionsDiv.addEventListener('click', e => {
+    if (e.target.classList.contains('autocomplete-suggestion')) {
+        input.value = e.target.textContent;
+        hideSuggestions();
+    }
+});
+
+// Khi bấm nút Gửi
+document.querySelector('form').addEventListener('submit', () => {
+    hideSuggestions();
+    sessionStorage.setItem('audio_allowed', 'true');
+});
 
         // ÂM THANH – GIỮ NGUYÊN NHƯ CŨ
         document.querySelector('form').addEventListener('submit', () => {
