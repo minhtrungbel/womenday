@@ -5,7 +5,7 @@ services:
     region: oregon
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn appwomenday:app
+    startCommand: gunicorn appwomenday:app #fixed
     envVars:
       CLOUDINARY_CLOUD_NAME:
         fromSecret: CLOUDINARY_CLOUD_NAME
@@ -14,3 +14,4 @@ services:
       CLOUDINARY_API_SECRET:
 
         fromSecret: CLOUDINARY_API_SECRET
+
