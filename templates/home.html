@@ -106,12 +106,16 @@
             suggestionsDiv.style.display = 'none';
         }
 
-        // ĐÁNH DẤU NGƯỜI DÙNG ĐÃ TƯƠNG TÁC THẬT (cho phép phát nhạc)
+        // ĐÁNH DẤU GESTURE THẬT (cho phép phát nhạc ở profile)
         function markAudioAllowed() {
-            sessionStorage.setItem('audio_allowed', 'true');
+            try {
+                sessionStorage.setItem('audio_allowed', 'true');
+            } catch (e) {
+                console.warn('Không thể lưu trạng thái âm thanh:', e);
+            }
         }
 
-        // 🔸 ẨN GỢI Ý CHỈ KHI CLICK/TRẠM VÀO CHÍNH AUTOCOMPLETE
+        // 🔸 ẨN GỢI Ý KHI CLICK/TRẠM VÀO CHÍNH AUTOCOMPLETE
         suggestionsDiv.addEventListener('click', function (e) {
             markAudioAllowed(); // mọi lần chạm đều tính là tương tác
             if (e.target.classList.contains('autocomplete-suggestion')) {
@@ -146,16 +150,22 @@
             markAudioAllowed();
         });
 
-        // 🔸 MỌI LẦN CLICK / TOUCH ĐỀU ĐƯỢC TÍNH LÀ TƯƠNG TÁC THẬT
-        document.addEventListener('click', markAudioAllowed, true);
-        document.addEventListener('touchstart', markAudioAllowed, true);
+        // 🔸 GHI NHẬN MỌI TAP/CLICK LÀ GESTURE THẬT
+        function registerGesture() {
+            markAudioAllowed();
+            console.log('🎵 Gesture hợp lệ đã được ghi nhận!');
+        }
 
-        // Touch feedback
-        document.querySelector('.btn-primary').addEventListener('touchstart', function () {
+        document.addEventListener('click', registerGesture, { passive: true });
+        document.addEventListener('touchstart', registerGesture, { passive: true });
+
+        // Hiệu ứng chạm nút gửi
+        const btn = document.querySelector('.btn-primary');
+        btn.addEventListener('touchstart', function () {
             this.classList.add('tapped');
             markAudioAllowed();
         });
-        document.querySelector('.btn-primary').addEventListener('touchend', function () {
+        btn.addEventListener('touchend', function () {
             setTimeout(() => this.classList.remove('tapped'), 100);
             markAudioAllowed();
         });
