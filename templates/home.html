@@ -26,15 +26,19 @@
     <div class="container">
         <h2 class="introduction text-center">Tụi mình có chuẩn bị một bất ngờ nhỏ cho bạn nè🎁</h2>
 
+        <!-- WRAPPER GIỮ NGUYÊN MARGIN/PADDING/TOP -->
         <div class="inner-wrapper">
             <div class="khung1">
                 <div class="card">
+                    <!-- ĐÃ SỬA: method="POST" + action="{{ url_for('profile') }}" -->
                     <form action="{{ url_for('profile') }}" method="POST">
                         <label for="name" class="name-label">Hãy điền tên của bạn vào đây nhé</label>
                         <div class="position-relative d-inline-block mx-auto">
+                            <!-- ĐÃ SỬA: autocomplete="off" → giữ nguyên, thêm required nếu cần -->
                             <input type="text" id="name" name="name" placeholder="Nhập tên của bạn vào"
                                    class="form-control name-input text-overflow-ellipsis" autocomplete="off" required>
                         </div>
+                        <!-- ĐÃ SỬA: class="btn btn-primary mt-3" → giữ nguyên -->
                         <button type="submit" class="btn btn-primary mt-3">Gửi</button>
                     </form>
                 </div>
@@ -42,6 +46,7 @@
         </div>
     </div>
 
+    <!-- AUTOCOMPLETE RA NGOÀI – CĂN GIỮA HOÀN HẢO -->
     <div id="autocomplete-suggestions" class="autocomplete-suggestions" style="display: none;"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -55,6 +60,7 @@
         const input = document.getElementById('name');
         const suggestionsDiv = document.getElementById('autocomplete-suggestions');
 
+        // CẬP NHẬT VỊ TRÍ + ĐỘ RỘNG – CĂN GIỮA 100%
         function updateSuggestionsPosition() {
             const rect = input.getBoundingClientRect();
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -64,6 +70,7 @@
 
             suggestionsDiv.style.top = `${top}px`;
             suggestionsDiv.style.width = `${Math.min(inputWidth, maxWidth)}px`;
+            // left + transform do CSS xử lý → luôn căn giữa
         }
 
         input.addEventListener('input', function () {
@@ -82,8 +89,8 @@
                 div.textContent = match;
                 div.addEventListener('click', () => {
                     input.value = match;
-                    hideSuggestions();
-                    markAudioAllowed(); // ghi nhận tương tác thật
+                    suggestionsDiv.innerHTML = '';
+                    suggestionsDiv.style.display = 'none';
                 });
                 suggestionsDiv.appendChild(div);
             });
@@ -92,6 +99,7 @@
             suggestionsDiv.style.display = 'block';
         });
 
+        // Cập nhật khi scroll/resize
         ['scroll', 'resize'].forEach(ev => {
             window.addEventListener(ev, () => {
                 if (suggestionsDiv.style.display === 'block') {
@@ -100,30 +108,29 @@
             });
         });
 
-        // ẨN GỢI Ý
-        function hideSuggestions() {
-            suggestionsDiv.innerHTML = '';
-            suggestionsDiv.style.display = 'none';
-        }
+       // ẨN KHI NGƯỜI DÙNG CHỌN GỢI Ý
+function hideSuggestions() {
+    suggestionsDiv.innerHTML = '';
+    suggestionsDiv.style.display = 'none';
+}
 
-        // ĐÁNH DẤU NGƯỜI DÙNG ĐÃ TƯƠNG TÁC THẬT (cho phép phát nhạc)
-        function markAudioAllowed() {
-            sessionStorage.setItem('audio_allowed', 'true');
-        }
+// Khi chọn 1 gợi ý
+suggestionsDiv.addEventListener('click', e => {
+    if (e.target.classList.contains('autocomplete-suggestion')) {
+        input.value = e.target.textContent;
+        hideSuggestions();
+    }
+});
 
-        // Khi chọn 1 gợi ý
-        suggestionsDiv.addEventListener('click', e => {
-            if (e.target.classList.contains('autocomplete-suggestion')) {
-                input.value = e.target.textContent;
-                hideSuggestions();
-                markAudioAllowed();
-            }
-        });
+// Khi bấm nút Gửi
+document.querySelector('form').addEventListener('submit', () => {
+    hideSuggestions();
+    sessionStorage.setItem('audio_allowed', 'true');
+});
 
-        // Khi bấm nút Gửi
+        // ÂM THANH – GIỮ NGUYÊN NHƯ CŨ
         document.querySelector('form').addEventListener('submit', () => {
-            hideSuggestions();
-            markAudioAllowed();
+            sessionStorage.setItem('audio_allowed', 'true');
         });
 
         // Touch feedback
@@ -139,27 +146,12 @@
                 e.target.classList.add('tapped');
             }
         }, true);
-
         suggestionsDiv.addEventListener('touchend', e => {
             if (e.target.classList.contains('autocomplete-suggestion')) {
                 setTimeout(() => e.target.classList.remove('tapped'), 1000);
             }
         }, true);
-
-        // ẨN GỢI Ý KHI CHẠM RA NGOÀI VÀ COI NHƯ LÀ MỘT TƯƠNG TÁC THẬT
-        document.addEventListener('touchstart', function (e) {
-            if (!input.contains(e.target) && !suggestionsDiv.contains(e.target)) {
-                hideSuggestions();
-                markAudioAllowed(); // <== đây là điểm mấu chốt giúp âm thanh auto phát
-            }
-        });
-
-        document.addEventListener('click', function (e) {
-            if (!input.contains(e.target) && !suggestionsDiv.contains(e.target)) {
-                hideSuggestions();
-                markAudioAllowed();
-            }
-        });
     </script>
 </body>
+
 </html>
