@@ -1,4 +1,4 @@
-rom flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify
 import os
 import sqlite3
 import unicodedata
@@ -161,3 +161,4 @@ def get_names():
     return jsonify({'names': names})
 if **name** == '**main**':
     app.run(debug=True)
+
