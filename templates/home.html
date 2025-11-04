@@ -83,7 +83,7 @@
                 div.addEventListener('click', () => {
                     input.value = match;
                     hideSuggestions();
-                    markAudioAllowed(); // ghi nhận tương tác thật
+                    markAudioAllowed();
                 });
                 suggestionsDiv.appendChild(div);
             });
@@ -111,53 +111,53 @@
             sessionStorage.setItem('audio_allowed', 'true');
         }
 
-        // Khi chọn 1 gợi ý
-        suggestionsDiv.addEventListener('click', e => {
+        // 🔸 ẨN GỢI Ý CHỈ KHI CLICK/TRẠM VÀO CHÍNH AUTOCOMPLETE
+        suggestionsDiv.addEventListener('click', function (e) {
+            markAudioAllowed(); // mọi lần chạm đều tính là tương tác
             if (e.target.classList.contains('autocomplete-suggestion')) {
                 input.value = e.target.textContent;
                 hideSuggestions();
-                markAudioAllowed();
+            } else {
+                hideSuggestions();
             }
         });
 
-        // Khi bấm nút Gửi
+        suggestionsDiv.addEventListener('touchstart', function (e) {
+            markAudioAllowed();
+            if (e.target.classList.contains('autocomplete-suggestion')) {
+                e.target.classList.add('tapped');
+            }
+        }, true);
+
+        suggestionsDiv.addEventListener('touchend', function (e) {
+            markAudioAllowed();
+            if (e.target.classList.contains('autocomplete-suggestion')) {
+                setTimeout(() => e.target.classList.remove('tapped'), 1000);
+                input.value = e.target.textContent;
+                hideSuggestions();
+            } else {
+                hideSuggestions();
+            }
+        }, true);
+
+        // 🔸 ẨN GỢI Ý KHI BẤM NÚT GỬI
         document.querySelector('form').addEventListener('submit', () => {
             hideSuggestions();
             markAudioAllowed();
         });
 
+        // 🔸 MỌI LẦN CLICK / TOUCH ĐỀU ĐƯỢC TÍNH LÀ TƯƠNG TÁC THẬT
+        document.addEventListener('click', markAudioAllowed, true);
+        document.addEventListener('touchstart', markAudioAllowed, true);
+
         // Touch feedback
         document.querySelector('.btn-primary').addEventListener('touchstart', function () {
             this.classList.add('tapped');
+            markAudioAllowed();
         });
         document.querySelector('.btn-primary').addEventListener('touchend', function () {
             setTimeout(() => this.classList.remove('tapped'), 100);
-        });
-
-        suggestionsDiv.addEventListener('touchstart', e => {
-            if (e.target.classList.contains('autocomplete-suggestion')) {
-                e.target.classList.add('tapped');
-            }
-        }, true);
-        suggestionsDiv.addEventListener('touchend', e => {
-            if (e.target.classList.contains('autocomplete-suggestion')) {
-                setTimeout(() => e.target.classList.remove('tapped'), 1000);
-            }
-        }, true);
-
-        // ẨN GỢI Ý KHI CHẠM RA NGOÀI VÀ COI NHƯ LÀ MỘT TƯƠNG TÁC THẬT
-        document.addEventListener('touchstart', function (e) {
-            if (!input.contains(e.target) && !suggestionsDiv.contains(e.target)) {
-                hideSuggestions();
-                markAudioAllowed(); // <== đây là điểm mấu chốt giúp âm thanh auto phát
-            }
-        });
-
-        document.addEventListener('click', function (e) {
-            if (!input.contains(e.target) && !suggestionsDiv.contains(e.target)) {
-                hideSuggestions();
-                markAudioAllowed();
-            }
+            markAudioAllowed();
         });
     </script>
 </body>
