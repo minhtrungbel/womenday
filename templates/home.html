@@ -27,7 +27,7 @@
         <div class="inner-wrapper">
             <div class="khung1">
                 <div class="card">
-                    <form action="{{ url_for('profile') }}" method="POST" id="name-form">
+                    <form id="name-form" action="{{ url_for('profile') }}" method="POST">
                         <label for="name" class="name-label">Hãy điền tên của bạn vào đây nhé</label>
                         <div class="position-relative d-inline-block mx-auto">
                             <input type="text" id="name" name="name" placeholder="Nhập tên của bạn vào"
@@ -92,7 +92,6 @@
             suggestionsDiv.style.display = 'block';
         });
 
-        // ẨN KHI CHỌN GỢI Ý
         suggestionsDiv.addEventListener('click', e => {
             if (e.target.classList.contains('autocomplete-suggestion')) {
                 input.value = e.target.textContent;
@@ -100,29 +99,27 @@
             }
         });
 
-        // === SỬA CHÍNH: DÙNG fetch + window.location ĐỂ GIỮ GESTURE ===
+        // === SỬA CHÍNH: fetch + render HTML trong cùng trang ===
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Ngăn submit mặc định
-
+            e.preventDefault();
             const name = input.value.trim();
             if (!name) return;
 
             hideSuggestions();
-            localStorage.setItem('audio_allowed', 'true'); // Dùng localStorage
+            localStorage.setItem('audio_allowed', 'true');
 
             const formData = new FormData(this);
             fetch(this.action, {
                 method: 'POST',
                 body: formData
             })
-            .then(response => {
-                if (response.redirected) {
-                    window.location = response.url; // Giữ gesture + redirect
-                } else {
-                    response.text().then(html => document.body.innerHTML = html);
-                }
+            .then(response => response.text())
+            .then(html => {
+                document.open();
+                document.write(html);
+                document.close();
             })
-            .catch(err => console.error('Lỗi submit:', err));
+            .catch(err => console.error('Lỗi:', err));
         });
 
         ['scroll', 'resize'].forEach(ev => {
