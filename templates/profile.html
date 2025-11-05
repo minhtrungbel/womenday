@@ -30,7 +30,6 @@
                 <img src="{{ profile.image }}" alt="{{ profile.name }}" class="img-fluid" style="max-width: 300px; border-radius: 20px;">
             {% endif %}
 
-            <!-- Nút phát – ẨN MẶC ĐỊNH, CHỈ HIỆN NẾU LỖI -->
             <div id="audio-prompt" style="display: none;" class="mt-3">
                 <p class="text-info">Nhấn để nghe nhạc!</p>
                 <button id="play-audio" class="btn btn-primary">Phát</button>
@@ -117,14 +116,12 @@
                 isPlaying = false;
             }
 
-            // === CHỈNH SỬA CHÍNH: TỰ ĐỘNG PHÁT KHI CÓ GESTURE + AUDIO SẴN SÀNG ===
+            // === SỬA CHÍNH: DÙNG localStorage + CHỜ AUDIO SẴN SÀNG ===
             const tryPlay = () => {
-                if (sessionStorage.getItem('audio_allowed') === 'true') {
-                    // Nếu audio đã load đủ → phát ngay
-                    if (audio.readyState >= 2) { // HAVE_CURRENT_DATA
+                if (localStorage.getItem('audio_allowed') === 'true') {
+                    if (audio.readyState >= 2) {
                         playAudio();
                     } else {
-                        // Chờ audio load xong rồi phát
                         audio.addEventListener('canplay', playAudio, { once: true });
                     }
                 } else {
@@ -132,28 +129,25 @@
                 }
             };
 
-            // DÙNG setTimeout ĐỂ GIỮ GESTURE TỪ TRANG TRƯỚC
-            setTimeout(tryPlay, 150);
+            setTimeout(tryPlay, 100);
 
-            // === Fallback: chạm lần đầu trên trang ===
+            // Fallback: chạm lần đầu
             const enableAudio = () => {
                 playAudio();
-                sessionStorage.setItem('audio_allowed', 'true');
+                localStorage.setItem('audio_allowed', 'true');
                 document.body.removeEventListener('touchstart', enableAudio);
                 document.body.removeEventListener('click', enableAudio);
             };
             document.body.addEventListener('touchstart', enableAudio, { once: true });
             document.body.addEventListener('click', enableAudio, { once: true });
 
-            // Nút "Phát"
             if (playButton) {
                 playButton.addEventListener('click', () => {
                     playAudio();
-                    sessionStorage.setItem('audio_allowed', 'true');
+                    localStorage.setItem('audio_allowed', 'true');
                 });
             }
 
-            // Nút "Quay lại"
             if (backButton) {
                 backButton.addEventListener('click', function (e) {
                     e.preventDefault();
