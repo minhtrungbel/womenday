@@ -68,7 +68,7 @@
             let isPlaying = false;
             let fadeInInterval = null;
 
-            // Cài đặt fade-in: 0 → 100% trong 1 giây (1000ms)
+            // Cài đặt fade-in: 0 → 100% trong 1 giây
             function startFadeIn() {
                 audio.volume = 0;
                 let vol = 0;
@@ -95,7 +95,6 @@
                     fadeInInterval = null;
                 }
                 let vol = audio.volume;
-                const interval = 100;
                 const fadeOutInterval = setInterval(() => {
                     vol = Math.max(vol - 0.1, 0);
                     audio.volume = vol;
@@ -103,7 +102,7 @@
                         audio.pause();
                         clearInterval(fadeOutInterval);
                     }
-                }, interval);
+                }, 100);
             }
 
             // Hàm phát nhạc
@@ -115,7 +114,7 @@
                     startFadeIn();
                     if (audioPrompt) audioPrompt.style.display = 'none';
                 }).catch(err => {
-                    console.error('Lỗi phát:', err);
+                    console.error('Lỗi phát nhạc:', err);
                     if (audioPrompt) audioPrompt.style.display = 'block';
                 });
             }
@@ -127,18 +126,18 @@
                 isPlaying = false;
             }
 
-            // === SỬA CHÍNH: TỰ ĐỘNG PHÁT SAU KHI NGƯỜI DÙNG ĐÃ TƯƠNG TÁC TRÊN HOME ===
-            // (sessionStorage được set ở home.html khi nhấn "Gửi")
+            // === CHÍNH SỬA: TỰ ĐỘNG PHÁT SAU KHI NGƯỜI DÙNG ĐÃ TƯƠNG TÁC TRÊN HOME ===
             if (sessionStorage.getItem('audio_allowed') === 'true') {
-                // Đảm bảo play() chỉ gọi sau khi có user gesture → an toàn
-                // Dùng setTimeout 0 để đưa vào hàng đợi microtask, tránh lỗi
-                setTimeout(playAudio, 0);
+                // Đảm bảo gọi sau khi DOM hoàn tất + user gesture đã được ghi nhận
+                setTimeout(() => {
+                    playAudio();
+                }, 100); // Tăng delay nhẹ để đảm bảo audio element sẵn sàng
             } else {
                 // Nếu chưa có tương tác → hiện nút "Phát"
                 if (audioPrompt) audioPrompt.style.display = 'block';
             }
 
-            // === BẮT TƯƠNG TÁC ĐẦU TIÊN TRÊN TRANG PROFILE (nếu chưa có từ home) ===
+            // === BẮT TƯƠNG TÁC ĐẦU TIÊN TRÊN TRANG PROFILE (nếu chưa có) ===
             const enableAudioOnFirstInteraction = () => {
                 playAudio();
                 sessionStorage.setItem('audio_allowed', 'true');
@@ -162,7 +161,9 @@
                 backButton.addEventListener('click', function (e) {
                     e.preventDefault();
                     this.classList.add('tapped');
-                    setTimeout(() => location.href = this.href, 100);
+                    setTimeout(() => {
+                        location.href = this.href;
+                    }, 100);
                 });
             }
 
