@@ -116,19 +116,32 @@
                 isPlaying = false;
             }
 
-            // === SỬA CHÍNH: DÙNG localStorage + CHỜ AUDIO SẴN SÀNG ===
+            // === SỬA CHÍNH: CHỜ AUDIO SẴN SÀNG + GIỮ GESTURE ===
             const tryPlay = () => {
                 if (localStorage.getItem('audio_allowed') === 'true') {
+                    // ĐÃ CÓ GESTURE → CHỜ AUDIO SẴN SÀNG
                     if (audio.readyState >= 2) {
                         playAudio();
                     } else {
-                        audio.addEventListener('canplay', playAudio, { once: true });
+                        // Chờ audio load xong
+                        const playOnCanPlay = () => {
+                            playAudio();
+                            audio.removeEventListener('canplay', playOnCanPlay);
+                        };
+                        audio.addEventListener('canplay', playOnCanPlay);
+                        // Nếu quá lâu (5s), hiện nút
+                        setTimeout(() => {
+                            if (!isPlaying && audioPrompt) {
+                                audioPrompt.style.display = 'block';
+                            }
+                        }, 5000);
                     }
                 } else {
                     if (audioPrompt) audioPrompt.style.display = 'block';
                 }
             };
 
+            // GỌI SAU KHI DOM + GESTURE CÒN HIỆU LỰC
             setTimeout(tryPlay, 100);
 
             // Fallback: chạm lần đầu
