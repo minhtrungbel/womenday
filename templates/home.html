@@ -14,7 +14,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="#navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('source') }}">Source</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('link') }}">Link</a></li>
@@ -27,7 +27,7 @@
         <div class="inner-wrapper">
             <div class="khung1">
                 <div class="card">
-                    <form action="{{ url_for('profile') }}" method="POST">
+                    <form action="{{ url_for('profile') }}" method="POST" id="name-form">
                         <label for="name" class="name-label">Hãy điền tên của bạn vào đây nhé</label>
                         <div class="position-relative d-inline-block mx-auto">
                             <input type="text" id="name" name="name" placeholder="Nhập tên của bạn vào"
@@ -51,6 +51,7 @@
 
         const input = document.getElementById('name');
         const suggestionsDiv = document.getElementById('autocomplete-suggestions');
+        const form = document.getElementById('name-form');
 
         function updateSuggestionsPosition() {
             const rect = input.getBoundingClientRect();
@@ -99,12 +100,29 @@
             }
         });
 
-        // CHỈ 1 SUBMIT LISTENER – KHÔNG CHẶN FORM
-        document.querySelector('form').addEventListener('submit', function(e) {
+        // === SỬA CHÍNH: DÙNG fetch + window.location ĐỂ GIỮ GESTURE ===
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Ngăn submit mặc định
+
+            const name = input.value.trim();
+            if (!name) return;
+
             hideSuggestions();
-            sessionStorage.setItem('audio_allowed', 'true');
-            // KHÔNG preventDefault → form submit bình thường
-            // Gesture từ nút "Gửi" sẽ được giữ lại → audio tự phát ở profile
+            localStorage.setItem('audio_allowed', 'true'); // Dùng localStorage
+
+            const formData = new FormData(this);
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.redirected) {
+                    window.location = response.url; // Giữ gesture + redirect
+                } else {
+                    response.text().then(html => document.body.innerHTML = html);
+                }
+            })
+            .catch(err => console.error('Lỗi submit:', err));
         });
 
         ['scroll', 'resize'].forEach(ev => {
