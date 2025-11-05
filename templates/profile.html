@@ -22,26 +22,32 @@
             </div>
         </div>
     </nav>
+
     <div class="container text-center mt-4">
         {% if profile %}
             <h1>{{ profile.name }}</h1>
             <p>{{ profile.bio }}</p>
             {% if profile.image %}
-                <img src="{{ profile.image }}" alt="{{ profile.name }}" class="img-fluid" style="max-width: 300px; border-radius: 20px;">
+                <!-- ĐÃ SỬA: DÙNG URL TRỰC TIẾP -->
+                <img src="{{ profile.image }}" alt="{{ profile.name }}" class="img-fluid" style="max-width: 300px;">
             {% endif %}
 
+            <!-- Thông báo dự phòng nếu âm thanh bị chặn -->
             <div id="audio-prompt" style="display: none;" class="mt-3">
                 <p class="text-info">Nhấn để nghe nhạc!</p>
                 <button id="play-audio" class="btn btn-primary">Phát</button>
             </div>
 
+            <!-- Âm thanh 30s (không autoplay để tránh bị chặn) -->
             {% if profile.audio %}
-                <audio id="profile-audio"
-                       src="{{ profile.audio }}"
-                       preload="auto"
+                <!-- ĐÃ SỬA: DÙNG URL TRỰC TIẾP -->
+                <audio id="profile-audio" 
+                       src="{{ profile.audio }}" 
+                       preload="auto" 
                        loop>
                 </audio>
             {% endif %}
+
         {% else %}
             <h1>Profile không tồn tại</h1>
             {% if error %}
@@ -64,6 +70,7 @@
             let isPlaying = false;
             let fadeInInterval = null;
 
+            // Cài đặt fade-in: 0 → 100% trong 1 giây (1000ms)
             function startFadeIn() {
                 audio.volume = 0;
                 let vol = 0;
@@ -72,16 +79,25 @@
                 const interval = 150;
                 const steps = duration / interval;
                 const stepValue = target / steps;
+
                 fadeInInterval = setInterval(() => {
                     vol = Math.min(vol + stepValue, target);
                     audio.volume = vol;
-                    if (vol >= target) clearInterval(fadeInInterval);
+                    if (vol >= target) {
+                        clearInterval(fadeInInterval);
+                        fadeInInterval = null;
+                    }
                 }, interval);
             }
 
+            // Fade-out khi rời trang
             function fadeOut() {
-                if (fadeInInterval) clearInterval(fadeInInterval);
+                if (fadeInInterval) {
+                    clearInterval(fadeInInterval);
+                    fadeInInterval = null;
+                }
                 let vol = audio.volume;
+                const interval = 100;
                 const fadeOutInterval = setInterval(() => {
                     vol = Math.max(vol - 0.1, 0);
                     audio.volume = vol;
@@ -89,78 +105,56 @@
                         audio.pause();
                         clearInterval(fadeOutInterval);
                     }
-                }, 100);
+                }, interval);
             }
 
+            // Hàm phát nhạc
             function playAudio() {
                 if (isPlaying) return;
                 audio.currentTime = 0;
-                const playPromise = audio.play();
-                if (playPromise !== undefined) {
-                    playPromise
-                        .then(() => {
-                            isPlaying = true;
-                            startFadeIn();
-                            if (audioPrompt) audioPrompt.style.display = 'none';
-                        })
-                        .catch(err => {
-                            console.error('Lỗi phát:', err);
-                            if (audioPrompt) audioPrompt.style.display = 'block';
-                        });
-                }
+                audio.play().then(() => {
+                    isPlaying = true;
+                    startFadeIn();
+                    if (audioPrompt) audioPrompt.style.display = 'none';
+                }).catch(err => {
+                    console.error('Lỗi phát:', err);
+                    if (audioPrompt) audioPrompt.style.display = 'block';
+                });
             }
 
+            // Dừng nhạc khi rời trang
             function stopAudio() {
                 if (!isPlaying) return;
                 fadeOut();
                 isPlaying = false;
             }
 
-            // === SỬA CHÍNH: CHỜ AUDIO SẴN SÀNG + GIỮ GESTURE ===
-            const tryPlay = () => {
-                if (localStorage.getItem('audio_allowed') === 'true') {
-                    // ĐÃ CÓ GESTURE → CHỜ AUDIO SẴN SÀNG
-                    if (audio.readyState >= 2) {
-                        playAudio();
-                    } else {
-                        // Chờ audio load xong
-                        const playOnCanPlay = () => {
-                            playAudio();
-                            audio.removeEventListener('canplay', playOnCanPlay);
-                        };
-                        audio.addEventListener('canplay', playOnCanPlay);
-                        // Nếu quá lâu (5s), hiện nút
-                        setTimeout(() => {
-                            if (!isPlaying && audioPrompt) {
-                                audioPrompt.style.display = 'block';
-                            }
-                        }, 5000);
-                    }
-                } else {
-                    if (audioPrompt) audioPrompt.style.display = 'block';
-                }
-            };
+            // 1. Đã cho phép trước → tự động phát
+            if (sessionStorage.getItem('audio_allowed') === 'true') {
+                playAudio();
+            } else {
+                if (audioPrompt) audioPrompt.style.display = 'block';
+            }
 
-            // GỌI SAU KHI DOM + GESTURE CÒN HIỆU LỰC
-            setTimeout(tryPlay, 100);
-
-            // Fallback: chạm lần đầu
+            // 2. Tương tác đầu tiên → bật nhạc
             const enableAudio = () => {
                 playAudio();
-                localStorage.setItem('audio_allowed', 'true');
+                sessionStorage.setItem('audio_allowed', 'true');
                 document.body.removeEventListener('touchstart', enableAudio);
                 document.body.removeEventListener('click', enableAudio);
             };
             document.body.addEventListener('touchstart', enableAudio, { once: true });
             document.body.addEventListener('click', enableAudio, { once: true });
 
+            // 3. Nút "Phát"
             if (playButton) {
                 playButton.addEventListener('click', () => {
                     playAudio();
-                    localStorage.setItem('audio_allowed', 'true');
+                    sessionStorage.setItem('audio_allowed', 'true');
                 });
             }
 
+            // 4. Nút "Quay lại" với hiệu ứng nhấn
             if (backButton) {
                 backButton.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -169,10 +163,15 @@
                 });
             }
 
+            // 5. Dừng + fade-out khi rời trang
             window.addEventListener('pagehide', stopAudio);
             window.addEventListener('beforeunload', stopAudio);
+
+            // 6. Nếu không lặp → fade-out khi kết thúc
             audio.addEventListener('ended', () => {
-                if (!audio.loop) stopAudio();
+                if (!audio.loop) {
+                    stopAudio();
+                }
             });
         });
     </script>
