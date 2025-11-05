@@ -37,7 +37,7 @@
                 <button id="play-audio" class="btn btn-primary">Phát</button>
             </div>
 
-            <!-- Âm thanh 30s (không autoplay để tránh bị chặn) -->
+            <!-- Âm thanh (không autoplay) -->
             {% if profile.audio %}
                 <audio id="profile-audio" 
                        src="{{ profile.audio }}" 
@@ -68,7 +68,7 @@
             let isPlaying = false;
             let fadeInInterval = null;
 
-            // Cài đặt fade-in: 0 → 100% trong 1 giây
+            // Fade-in: 0 → 100% trong 1 giây
             function startFadeIn() {
                 audio.volume = 0;
                 let vol = 0;
@@ -119,63 +119,54 @@
                 });
             }
 
-            // Dừng nhạc khi rời trang
+            // Dừng nhạc
             function stopAudio() {
                 if (!isPlaying) return;
                 fadeOut();
                 isPlaying = false;
             }
 
-            // === CHÍNH SỬA: TỰ ĐỘNG PHÁT SAU KHI NGƯỜI DÙNG ĐÃ TƯƠNG TÁC TRÊN HOME ===
-            if (sessionStorage.getItem('audio_allowed') === 'true') {
-                // Đảm bảo gọi sau khi DOM hoàn tất + user gesture đã được ghi nhận
-                setTimeout(() => {
-                    playAudio();
-                }, 100); // Tăng delay nhẹ để đảm bảo audio element sẵn sàng
+            // === DÙNG localStorage ĐỂ GIỮ TRẠNG THÁI ÂM THANH ===
+            if (localStorage.getItem('audio_allowed') === 'true') {
+                setTimeout(playAudio, 150); // Đảm bảo DOM ready
             } else {
-                // Nếu chưa có tương tác → hiện nút "Phát"
                 if (audioPrompt) audioPrompt.style.display = 'block';
             }
 
-            // === BẮT TƯƠNG TÁC ĐẦU TIÊN TRÊN TRANG PROFILE (nếu chưa có) ===
-            const enableAudioOnFirstInteraction = () => {
+            // Bắt tương tác đầu tiên (nếu chưa có)
+            const enableAudio = () => {
                 playAudio();
-                sessionStorage.setItem('audio_allowed', 'true');
-                document.body.removeEventListener('touchstart', enableAudioOnFirstInteraction);
-                document.body.removeEventListener('click', enableAudioOnFirstInteraction);
+                localStorage.setItem('audio_allowed', 'true');
+                document.body.removeEventListener('click', enableAudio);
+                document.body.removeEventListener('touchstart', enableAudio);
             };
+            document.body.addEventListener('click', enableAudio, { once: true });
+            document.body.addEventListener('touchstart', enableAudio, { once: true });
 
-            document.body.addEventListener('touchstart', enableAudioOnFirstInteraction, { once: true });
-            document.body.addEventListener('click', enableAudioOnFirstInteraction, { once: true });
-
-            // === NÚT "PHÁT" DỰ PHÒNG ===
+            // Nút "Phát"
             if (playButton) {
                 playButton.addEventListener('click', () => {
                     playAudio();
-                    sessionStorage.setItem('audio_allowed', 'true');
+                    localStorage.setItem('audio_allowed', 'true');
                 });
             }
 
-            // === NÚT "QUAY LẠI" VỚI HIỆU ỨNG NHẤN ===
+            // Nút "Quay lại"
             if (backButton) {
                 backButton.addEventListener('click', function (e) {
                     e.preventDefault();
                     this.classList.add('tapped');
-                    setTimeout(() => {
-                        location.href = this.href;
-                    }, 100);
+                    setTimeout(() => location.href = this.href, 100);
                 });
             }
 
-            // === DỪNG + FADE-OUT KHI RỜI TRANG ===
+            // Dừng khi rời trang
             window.addEventListener('pagehide', stopAudio);
             window.addEventListener('beforeunload', stopAudio);
 
-            // === DỪNG KHI HẾT NHẠC (nếu không loop) ===
+            // Dừng khi hết nhạc (nếu không loop)
             audio.addEventListener('ended', () => {
-                if (!audio.loop) {
-                    stopAudio();
-                }
+                if (!audio.loop) stopAudio();
             });
         });
     </script>
