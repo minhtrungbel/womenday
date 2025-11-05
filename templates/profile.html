@@ -28,8 +28,7 @@
             <h1>{{ profile.name }}</h1>
             <p>{{ profile.bio }}</p>
             {% if profile.image %}
-                <!-- ĐÃ SỬA: DÙNG URL TRỰC TIẾP -->
-                <img src="{{ profile.image }}" alt="{{ profile.name }}" class="img-fluid" style="max-width: 300px;">
+                <img src="{{ url_for('static', filename=profile.image) }}" alt="{{ profile.name }}" class="img-fluid" style="max-width: 300px;">
             {% endif %}
 
             <!-- Thông báo dự phòng nếu âm thanh bị chặn -->
@@ -40,9 +39,8 @@
 
             <!-- Âm thanh 30s (không autoplay để tránh bị chặn) -->
             {% if profile.audio %}
-                <!-- ĐÃ SỬA: DÙNG URL TRỰC TIẾP -->
                 <audio id="profile-audio" 
-                       src="{{ profile.audio }}" 
+                       src="{{ url_for('static', filename=profile.audio) }}" 
                        preload="auto" 
                        loop>
                 </audio>
@@ -74,9 +72,9 @@
             function startFadeIn() {
                 audio.volume = 0;
                 let vol = 0;
-                const target = 1.0;
-                const duration = 1000;
-                const interval = 150;
+                const target = 1.0;        // 100% âm lượng
+                const duration = 1000;     // 1 giây
+                const interval = 150;      // Cập nhật mỗi 150ms
                 const steps = duration / interval;
                 const stepValue = target / steps;
 
@@ -176,4 +174,4 @@
         });
     </script>
 </body>
-</html>
+</html> 
