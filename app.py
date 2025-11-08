@@ -109,7 +109,6 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Khởi tạo DB khi chạy lần đầu
 init_db()
 
 # Trang chủ
@@ -141,13 +140,13 @@ def home():
     conn.close()
     return render_template('home.html', updates=updates)
 
-# === PROFILE: HỖ TRỢ CẢ GET (từ home) VÀ POST ===
+# Profile - ĐÃ SỬA: Hỗ trợ cả GET (từ home.html) và POST
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     name = ''
     if request.method == 'POST':
         name = request.form.get('name', '').strip()
-    elif request.method == 'GET':
+    else:  # GET từ home.html (chuyển hướng bằng URL)
         name = request.args.get('name', '').strip()
 
     if not name:
@@ -161,15 +160,10 @@ def profile():
     conn.close()
 
     if row:
-        profile_data = {
-            'name': row[0],
-            'bio': row[1],
-            'image': row[2],
-            'audio': row[3]
-        }
-        return render_template('profile.html', profile=profile_data)
+        return render_template('profile.html',
+                               profile={'name': row[0], 'bio': row[1], 'image': row[2], 'audio': row[3]})
     else:
-        return render_template('profile.html', profile=None, error="Không tìm thấy profile")
+        return render_template('profile.html', profile=None, error="Không tìm thấy")
 
 @app.route('/source')
 def source():
@@ -190,5 +184,3 @@ def get_names():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
