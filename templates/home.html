@@ -27,7 +27,7 @@
         <div class="inner-wrapper">
             <div class="khung1">
                 <div class="card">
-                    <form id="name-form" action="{{ url_for('profile') }}" method="POST">
+                    <form id="name-form" action="{{ url_for('profile') }}" method="GET">
                         <label for="name" class="name-label">Hãy điền tên của bạn vào đây nhé</label>
                         <div class="position-relative d-inline-block mx-auto">
                             <input type="text" id="name" name="name" placeholder="Nhập tên của bạn vào"
@@ -47,9 +47,11 @@
             .then(r => r.json())
             .then(d => { names = d.names; })
             .catch(console.error);
+
         const input = document.getElementById('name');
         const suggestionsDiv = document.getElementById('autocomplete-suggestions');
         const form = document.getElementById('name-form');
+
         function updateSuggestionsPosition() {
             const rect = input.getBoundingClientRect();
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -59,10 +61,12 @@
             suggestionsDiv.style.top = `${top}px`;
             suggestionsDiv.style.width = `${Math.min(inputWidth, maxWidth)}px`;
         }
+
         function hideSuggestions() {
             suggestionsDiv.innerHTML = '';
             suggestionsDiv.style.display = 'none';
         }
+
         input.addEventListener('input', function () {
             const query = this.value.toLowerCase().trim();
             suggestionsDiv.innerHTML = '';
@@ -83,32 +87,30 @@
             updateSuggestionsPosition();
             suggestionsDiv.style.display = 'block';
         });
+
         suggestionsDiv.addEventListener('click', e => {
             if (e.target.classList.contains('autocomplete-suggestion')) {
                 input.value = e.target.textContent;
                 hideSuggestions();
             }
         });
-        // === SỬA CHÍNH: fetch + render HTML trong cùng trang ===
-        form.addEventListener('submit', function(e) {
+
+        // === CHUYỂN HƯỚNG BÌNH THƯỜNG + LƯU AUDIO ALLOWED ===
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
             const name = input.value.trim();
             if (!name) return;
             hideSuggestions();
+
+            // Đánh dấu đã có tương tác
             localStorage.setItem('audio_allowed', 'true');
-            const formData = new FormData(this);
-            fetch(this.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(html => {
-                document.open();
-                document.write(html);
-                document.close();
-            })
-            .catch(err => console.error('Lỗi:', err));
+
+            // Chuyển hướng với tên trong query string
+            const url = new URL(this.action, window.location.origin);
+            url.searchParams.set('name', name);
+            location.href = url.toString();
         });
+
         ['scroll', 'resize'].forEach(ev => {
             window.addEventListener(ev, () => {
                 if (suggestionsDiv.style.display === 'block') {
@@ -116,6 +118,7 @@
                 }
             });
         });
+
         // Touch feedback
         document.querySelector('.btn-primary').addEventListener('touchstart', function () {
             this.classList.add('tapped');
@@ -123,6 +126,7 @@
         document.querySelector('.btn-primary').addEventListener('touchend', function () {
             setTimeout(() => this.classList.remove('tapped'), 100);
         });
+
         suggestionsDiv.addEventListener('touchstart', e => {
             if (e.target.classList.contains('autocomplete-suggestion')) {
                 e.target.classList.add('tapped');
