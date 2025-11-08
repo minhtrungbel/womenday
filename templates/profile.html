@@ -62,40 +62,35 @@
         let isPlaying = false;
         let fadeInInterval = null;
 
+        // === LƯU PROFILE ĐỂ PHÁT LẠI KHI VÀO TAB ===
+        const sessionKey = 'current_profile_audio';
+        sessionStorage.setItem(sessionKey, JSON.stringify({ src: audio.src }));
+
+        // === HÀM PHÁT / DỪNG ===
         function startFadeIn() {
             audio.volume = 0;
             let vol = 0;
             const target = 1.0;
-            const duration = 1000;
-            const interval = 150;
-            const steps = duration / interval;
+            const steps = 1000 / 150;
             const stepValue = target / steps;
             fadeInInterval = setInterval(() => {
                 vol = Math.min(vol + stepValue, target);
                 audio.volume = vol;
-                if (vol >= target) {
-                    clearInterval(fadeInInterval);
-                    fadeInInterval = null;
-                }
-            }, interval);
+                if (vol >= target) clearInterval(fadeInInterval);
+            }, 150);
         }
 
         function fadeOutAndStop() {
-            if (fadeInInterval) {
-                clearInterval(fadeInInterval);
-                fadeInInterval = null;
-            }
+            clearInterval(fadeInInterval);
             let vol = audio.volume;
-            const interval = 50;
-            const fadeOutInterval = setInterval(() => {
+            const fadeOut = setInterval(() => {
                 vol = Math.max(vol - 0.1, 0);
                 audio.volume = vol;
                 if (vol <= 0) {
                     audio.pause();
-                    audio.currentTime = 0;
-                    clearInterval(fadeOutInterval);
+                    clearInterval(fadeOut);
                 }
-            }, interval);
+            }, 50);
         }
 
         function playAudio() {
@@ -105,77 +100,77 @@
                 isPlaying = true;
                 startFadeIn();
                 if (audioPrompt) audioPrompt.style.display = 'none';
-            }).catch(err => {
-                console.error('Lỗi phát:', err);
+            }).catch(() => {
                 if (audioPrompt) audioPrompt.style.display = 'block';
             });
         }
 
-        // === TỰ ĐỘNG PHÁT ===
+        function stopAudio() {
+            if (!isPlaying) return;
+            fadeOutAndStop();
+            isPlaying = false;
+        }
+
+        // === TỰ ĐỘNG PHÁT NGAY (vì đã tương tác ở Home) ===
         if (localStorage.getItem('audio_allowed') === 'true') {
-            setTimeout(playAudio, 0);
+            setTimeout(playAudio, 100); // Đảm bảo DOM sẵn sàng
         } else if (audioPrompt) {
             audioPrompt.style.display = 'block';
         }
 
-        // === BẮT TƯƠNG TÁC ĐẦU TIÊN ===
-        const enableAudio = () => {
+        // === DỰ PHÒNG: CHẠM TRÊN PROFILE (nếu chưa tương tác) ===
+        const enableOnTouch = () => {
             playAudio();
             localStorage.setItem('audio_allowed', 'true');
-            document.body.removeEventListener('click', enableAudio);
-            document.body.removeEventListener('touchstart', enableAudio);
+            document.body.removeEventListener('click', enableOnTouch);
+            document.body.removeEventListener('touchstart', enableOnTouch);
         };
-        document.body.addEventListener('click', enableAudio, { once: true });
-        document.body.addEventListener('touchstart', enableAudio, { once: true });
+        document.body.addEventListener('click', enableOnTouch, { once: true });
+        document.body.addEventListener('touchstart', enableOnTouch, { once: true });
 
         if (playButton) {
-            playButton.addEventListener('click', () => {
+            playButton.onclick = () => {
                 playAudio();
                 localStorage.setItem('audio_allowed', 'true');
-            });
+            };
         }
 
         if (backButton) {
             backButton.addEventListener('click', function (e) {
                 e.preventDefault();
                 this.classList.add('tapped');
-                fadeOutAndStop();
+                sessionStorage.removeItem(sessionKey);
+                stopAudio();
                 setTimeout(() => location.href = this.href, 300);
             });
         }
 
-        // === DỪNG NHẠC KHI RA KHỎI TRANG / ỨNG DỤNG ===
-        const stopOnExit = () => {
-            if (isPlaying) {
-                fadeOutAndStop();
-                isPlaying = false;
-            }
-        };
-
-        // 1. Khi tab bị ẩn (chuyển app, lock màn hình)
+        // === XỬ LÝ RA / VÀO TAB ===
+        let wasHidden = false;
         document.addEventListener('visibilitychange', () => {
             if (document.visibilityState === 'hidden') {
-                stopOnExit();
+                wasHidden = true;
+                stopAudio();
+            } else if (wasHidden && localStorage.getItem('audio_allowed') === 'true') {
+                const saved = sessionStorage.getItem(sessionKey);
+                if (saved && JSON.parse(saved).src === audio.src) {
+                    playAudio();
+                }
+                wasHidden = false;
             }
         });
 
-        // 2. Khi rời trang (back, forward)
-        window.addEventListener('pagehide', stopOnExit);
-
-        // 3. Khi đóng tab / thoát trình duyệt
-        window.addEventListener('beforeunload', stopOnExit);
-
-        // 4. Dự phòng: unload (mobile Chrome)
+        // === DỌN DẸP KHI RỜI TRANG ===
+        const cleanup = () => {
+            stopAudio();
+            sessionStorage.removeItem(sessionKey);
+        };
+        window.addEventListener('pagehide', cleanup);
+        window.addEventListener('beforeunload', cleanup);
         window.addEventListener('unload', () => {
             audio.pause();
             audio.src = '';
-        });
-
-        // 5. Khi hết nhạc (nếu không loop)
-        audio.addEventListener('ended', () => {
-            if (!audio.loop) {
-                isPlaying = false;
-            }
+            sessionStorage.removeItem(sessionKey);
         });
     });
 </script>
