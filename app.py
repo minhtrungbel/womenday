@@ -19,6 +19,11 @@ cloudinary.config(
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
+# === ĐẢM BẢO DB LUÔN ĐƯỢC TẠO KHI APP KHỞI ĐỘNG ===
+# (Cả local và Render đều chạy dòng này)
+init_db()  # <--- QUAN TRỌNG: Đặt ở đây để chạy 1 lần khi deploy
+
+
 # Chuẩn hóa tên
 def normalize_name(name):
     name = name.strip().lower()
@@ -33,10 +38,14 @@ def normalize_name(name):
         "dtta": "dothithanhan", "tth": "tranthihanh", "dka": "dokhanhan",
         "lnh": "lieunhuhien", "nttv": "nguyenthithuyvan"
     }
-    return mapping.get(name, name)
+    result = mapping.get(name, name)
+    print(f"[DEBUG] normalize_name('{name}') -> '{result}'")  # Debug log
+    return result
+
 
 # Khởi tạo DB + thêm dữ liệu
 def init_db():
+    print("[INFO] Khởi tạo database...")
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute('''
@@ -58,58 +67,59 @@ def init_db():
             audio_url TEXT
         )
     ''')
-    cursor.execute('DELETE FROM profiles')
+    cursor.execute('DELETE FROM profiles')  # Xóa cũ, thêm mới
 
+    # === SỬA URL: dogyjotxv thay vì dxxx ===
     profiles = [
         ("vobaotran", "Võ Bảo Trân", "Võ Bảo Trân là một nhà thiết kế xuất sắc, đam mê nghệ thuật và màu sắc.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/vo_bao_tran.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/1_music.mp3"),
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/vo_bao_tran.jpg",
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v123/womenday/audio/1_music.mp3"),
         ("lenguyenbaotran", "Lê Nguyễn Bảo Trân", "Lê Nguyễn Bảo Trân là một người sáng tạo, yêu thích khám phá những điều mới mẻ.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/le_nguyen_bao_tran.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/2_music.mp3"),
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/le_nguyen_bao_tran.jpg",
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v123/womenday/audio/2_music.mp3"),
         ("buikieuanh", "Bùi Kiều Anh", "Bùi Kiều Anh là một cá nhân năng động, luôn truyền cảm hứng cho mọi người xung quanh.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/bui_kieu_anh.jpg",
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/bui_kieu_anh.jpg",
          "https://res.cloudinary.com/dogyjotxv/video/upload/v1762270650/1_zuziql.mp3"),
         ("trinhngocgialinh", "Trịnh Ngọc Gia Linh", "Trịnh Ngọc Gia Linh đam mê công nghệ và có khả năng lãnh đạo tuyệt vời.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/trinh_ngoc_gia_linh.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/4_music.mp3"),
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/trinh_ngoc_gia_linh.jpg",
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v123/womenday/audio/4_music.mp3"),
         ("huynhnguyenkimngan", "Huỳnh Nguyễn Kim Ngân", "Huỳnh Nguyễn Kim Ngân là một người yêu thích văn hóa và nghệ thuật truyền thống.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/huynh_nguyen_kim_ngan.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/5_music.mp3"),
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/huynh_nguyen_kim_ngan.jpg",
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v123/womenday/audio/5_music.mp3"),
         ("lengocnhaky", "Lê Ngọc Nhã Kỳ", "Lê Ngọc Nhã Kỳ có niềm đam mê với âm nhạc và sáng tác.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/le_ngoc_nha_ky.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/6_music.mp3"),
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/le_ngoc_nha_ky.jpg",
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v123/womenday/audio/6_music.mp3"),
         ("trannguyenngocthienthanh", "Trần Nguyễn Ngọc Thiên Thanh", "Trần Nguyễn Ngọc Thiên Thanh là một người yêu thiên nhiên và môi trường.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/tran_nguyen_ngoc_thien_thanh.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/7_music.mp3"),
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/tran_nguyen_ngoc_thien_thanh.jpg",
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v123/womenday/audio/7_music.mp3"),
         ("lungocbich", "Lữ Ngọc Bích", "Lữ Ngọc Bích là một người có tâm hồn nghệ sĩ, yêu thích hội họa.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/lu_ngoc_bich.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/8_music.mp3"),
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/lu_ngoc_bich.jpg",
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v123/womenday/audio/8_music.mp3"),
         ("tranhatuyetnhu", "Trần Hà Tuyết Như", "Trần Hà Tuyết Như luôn tìm tòi và sáng tạo trong lĩnh vực thời trang.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/tran_ha_tuyet_nhu.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/9_music.mp3"),
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/tran_ha_tuyet_nhu.jpg",
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v123/womenday/audio/9_music.mp3"),
         ("dothithanhan", "Đỗ Thị Thanh An", "Đỗ Thị Thanh An là một cá nhân nhiệt huyết, yêu thích các hoạt động cộng đồng.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/do_thi_thanh_an.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/10_music.mp3"),
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/do_thi_thanh_an.jpg",
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v123/womenday/audio/10_music.mp3"),
         ("tranthihanh", "Trần Thị Hạnh", "Trần Thị Hạnh có niềm đam mê với giáo dục và chia sẻ tri thức.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/tran_thi_hanh.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/11_music.mp3"),
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/tran_thi_hanh.jpg",
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v123/womenday/audio/11_music.mp3"),
         ("dokhanhan", "Đỗ Khánh An", "Đỗ Khánh An là một người yêu sách và có sở thích viết lách.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/do_khanh_an.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/12_music.mp3"),
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/do_khanh_an.jpg",
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v123/womenday/audio/12_music.mp3"),
         ("lieunhuhien", "Liêu Như Hiền", "Liêu Như Hiền là một cá nhân đầy năng lượng, đam mê sáng tạo nội dung số.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/lieu_nhu_hien.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/13_music.mp3"),
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/lieu_nhu_hien.jpg",
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v123/womenday/audio/13_music.mp3"),
         ("nguyenthithuyvan", "Nguyễn Thị Thúy Vân", "Nguyễn Thị Thúy Vân yêu thích viết lách và chia sẻ câu chuyện truyền cảm hứng.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/nguyen_thi_thuy_van.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/14_music.mp3")
+         "https://res.cloudinary.com/dogyjotxv/image/upload/v123/womenday/uploads/nguyen_thi_thuy_van.jpg",
+         "https://res.cloudinary.com/dogyjotxv/video/upload/v123/womenday/audio/14_music.mp3")
     ]
 
     cursor.executemany("INSERT OR IGNORE INTO profiles VALUES (NULL, ?, ?, ?, ?, ?)", profiles)
     conn.commit()
     conn.close()
+    print(f"[INFO] Đã thêm {len(profiles)} profile vào database.")
 
-init_db()
 
 # Trang chủ
 @app.route('/', methods=['GET', 'POST'])
@@ -140,30 +150,46 @@ def home():
     conn.close()
     return render_template('home.html', updates=updates)
 
-# Profile
+
+# Profile - Hỗ trợ cả GET và POST
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
+    name = ''
     if request.method == 'POST':
         name = request.form.get('name', '').strip()
-        norm = normalize_name(name)
-        conn = sqlite3.connect('database.db')
-        cursor = conn.cursor()
-        cursor.execute("SELECT full_name, bio, image_url, audio_url FROM profiles WHERE short_name = ?", (norm,))
-        row = cursor.fetchone()
-        conn.close()
-        if row:
-            return render_template('profile.html', profile={'name': row[0], 'bio': row[1], 'image': row[2], 'audio': row[3]})
-        else:
-            return render_template('profile.html', profile=None, error="Không tìm thấy")
-    return render_template('profile.html', profile=None)
+    else:  # GET từ home.html
+        name = request.args.get('name', '').strip()
+
+    if not name:
+        return render_template('profile.html', profile=None, error="Vui lòng nhập tên")
+
+    norm = normalize_name(name)
+    print(f"[DEBUG] Tìm kiếm profile: '{name}' -> short_name = '{norm}'")
+
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT full_name, bio, image_url, audio_url FROM profiles WHERE short_name = ?", (norm,))
+    row = cursor.fetchone()
+    conn.close()
+
+    if row:
+        print(f"[INFO] Tìm thấy: {row[0]}")
+        return render_template('profile.html',
+                               profile={'name': row[0], 'bio': row[1], 'image': row[2], 'audio': row[3]})
+    else:
+        print(f"[ERROR] Không tìm thấy profile cho: {norm}")
+        return render_template('profile.html', profile=None, error="Không tìm thấy")
+
 
 @app.route('/source')
 def source():
     return render_template('source.html')
 
+
 @app.route('/link')
 def link():
     return render_template('link.html')
+
 
 @app.route('/api/names')
 def get_names():
@@ -173,6 +199,7 @@ def get_names():
     names = [row[0] for row in cursor.fetchall()]
     conn.close()
     return jsonify({'names': names})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
