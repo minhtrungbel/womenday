@@ -1,236 +1,206 @@
-/* ========================================
-   MÀU NỀN CHÍNH: #FABBCB (Pantone hồng phấn)
-   RGB: 250, 187, 203
-   CMYK: 0%, 25%, 19%, 2%
-   ======================================== */
+    /* ========================================
+    MÀU NỀN CHÍNH: #FABBCB (Pantone hồng phấn)
+    RGB: 250, 187, 203
+    CMYK: 0%, 25%, 19%, 2%
+    ======================================== */
 
-/* NỀN CHÍNH: Toàn trang */
-body {
-  font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #fabbcb 0%, #f8a7bf 100%);
-  color: #333;
-  min-height: 100vh;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #FABBCB 0%, #F8A7BF 100%);
+        color: #333;
+        min-height: 100vh;
+        margin: 0;
+    }
 
-/* NỀN PHỤ: Form (trắng trong suốt nhẹ) */
-.container {
-  background-color: rgba(255, 255, 255, 0.92);
-  border-radius: 16px;
-  padding: 5rem;
-  margin: 2rem auto;
-  max-width: 500px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(250, 187, 203, 0.3);
-  width: 100%; /* Đảm bảo container chiếm đầy chiều rộng trên mobile */
-}
+    .container {
+        background-color: #FFE4E1;
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 3rem auto;
+        max-width: 500px;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(250, 187, 203, 0.3);
+    }
 
-/* Tiêu đề: dùng màu #FABBCB */
-h1 {
-  color: #d6406e;
-  font-weight: 700;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  font-size: 2.5rem; /* Sử dụng rem để linh hoạt */
-}
+    h1 {
+        color: #D6406E;
+        font-weight: 700;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
 
-/* Button: màu hồng đậm */
-.btn-primary {
-  background-color: #fabbcb;
-  border: none;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  color: white;
-}
-.btn-primary:hover {
-  background-color: #c2185b;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
-}
-.btn-primary.tapped {
-  background-color: #c2185b;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
-}
+    .btn-primary {
+        background-color: #FABBCB;
+        border: none;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        color: white;
+        touch-action: manipulation;
+    }
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary:focus {
+        background-color: #C2185B;
 
-/* Input: nền trắng, viền nhẹ */
-.form-control,
-.form-label {
-  background-color: white;
-  color: #333;
-  border: 1px solid #fabbcb;
-  border-radius: 8px;
-}
-.form-control:focus {
-  border-color: #e91e63;
-  box-shadow: 0 0 0 3px rgba(250, 187, 203, 0.3);
-}
+        transform: translateY(-2px);
+        box-shadow: 4px 4px 10px -2px rgba(233, 30, 99, 0.4),
+                    -4px -4px -4px -2px lightpink;
+        outline: none;
+    }
 
-/* Navbar: nền trắng + chữ hồng */
-.navbar {
-  background-color: #ffffff !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Navbar chiếm đầy chiều rộng */
-}
-.navbar-brand,
-.nav-link {
-  color: #fabbcb !important;
-  font-weight: 600;
-}
-.navbar-brand:hover,
-.nav-link:hover {
-  color: #c2185b !important;
-}
+    .form-control, .form-label {
+        background-color: white;
+        color: #333;
+        border: 1px solid #FABBCB;
+        border-radius: 8px;
+    }
+    .form-control:focus {
+        border-color: #E91E63;
+        box-shadow: 0 0 0 3px rgba(250, 187, 203, 0.3);
+    }
 
-/* Hình ảnh responsive */
-img.img-fluid {
-  max-width: 100%;
-  height: auto;
-}
+    .navbar {
+        background-color: #ffffff !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .navbar-brand, .nav-link {
+        color: #FABBCB !important;
+        font-weight: 600;
+    }
+    .navbar-brand:hover, .nav-link:hover {
+        color: #C2185B !important;
+    }
 
-/* Style cho thông báo âm thanh */
-#audio-prompt {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-#audio-prompt p {
-  margin: 0;
-  font-size: 1rem;
-  color: #d6406e;
-}
-#play-audio {
-  margin-top: 0.5rem;
-}
+    /* GIỮ NGUYÊN MARGIN, PADDING, TOP, POSITION */
+    @media (max-width: 576px) {
+        .container {
+            position: absolute;
+            margin: 1.5rem 1.25rem;
+            padding: 1.5rem;
+            max-width: none;
+            width: auto;
+            border-radius: 18px;
+            top: 16%;
+            box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
+                        inset 0px 2px 1px rgba(106, 168, 245, 0.5);
+        }
+        .name-label {
+            font-size: 1.25rem;
+            line-height: 1.4;
+        }
+        .name-input {
+            box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
+                        inset 0px 2px 1px rgba(96, 165, 250, 0.5);
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 420px !important;
+        }
+        .btn-primary {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+        }
+    }
 
-/* Responsive breakpoints */
-@media (max-width: 992px) {
-  /* Large devices (laptops/desktops, 992px and down) */
-  .container {
-    padding: 3rem;
-    max-width: 700px;
-  }
-  h1 {
-    font-size: 2rem;
-  }
-  .btn-primary {
-    padding: 0.6rem 1.2rem;
-    font-size: 1rem;
-  }
-  #audio-prompt {
-    padding: 0.8rem;
-  }
-  #audio-prompt p {
-    font-size: 0.9rem;
-  }
-  #play-audio {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
-  .mt-4 {
-    position: absolute;
-    top: 30%;
-    width: 90%;
-    height: 250px;
-  }
-}
+    /* CÁC STYLE CŨ */
+    .information { color: rgb(114, 209, 238); }
+    .card {
+        border-radius: 15px;
+        box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
+                    inset 0px 2px 1px rgba(96, 165, 250, 0.5);
+        padding: 40px 60px;
+        background-color: #F5F5F5;
+    }
+    .card h2 {
+        color: #e0447b;
+        background: #ffacea;
+        padding: 10px 20px;
+        border-radius: 25px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        font-weight: 600;
+    }
+    form { margin-top: 25px; display: flex; flex-direction: column; align-items: center; }
+    .name-label {
+        font-size: 20px;
+        font-weight: 500;
+        color: #d6336c;
+        margin-bottom: 8px;
+        word-wrap: break-word;
+    }
+    .name-input {
+        padding: 0.5rem 2.75em;
+        width: 100%;
+        max-width: 420px;
+        border-radius: 25px;
+        border: 1px solid lightblue;
+        outline: none;
+        font-size: 1rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        background-color: white;
+    }
+    .name-input.form-control { border-color: lightblue; }
+    .name-input:focus {
+        border-color: #d6336c;
+        box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
+    }
+    .introduction { color: rgb(116, 199, 255); }
+    .button-submit { margin-top: 20px; }
+    .btn-primary.tapped {
+        background-color: #C2185B;
+        transform: translateY(-2px);
+    }
 
-@media (max-width: 768px) {
-  /* Medium devices (tablets, 768px and down) */
-  .container {
-    margin: 1rem auto;
-    padding: 1.5rem;
-    max-width: 90%;
-    border-radius: 12px;
-  }
-  h1 {
-    font-size: 1.5rem;
-  }
-  .btn-primary {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
-  img.img-fluid {
-    max-width: 200px;
-  }
-  #audio-prompt {
-    padding: 0.7rem;
-  }
-  #audio-prompt p {
-    font-size: 0.85rem;
-  }
-  #play-audio {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
-  }
-  .mt-4 {
-    position: absolute;
-    top: 30%;
-    width: 90%;
-    height: 250px;
-  }
-}
+    /* FIX TRÀN + AUTOCOMPLETE KHÔNG BỊ CHE */
+    .inner-wrapper {
+        max-width: 100%;
+        overflow: hidden;
+        padding: 0 0.5rem;
+        box-sizing: border-box;
+    }
+    @media (max-width: 576px) {
+        .inner-wrapper { padding: 0 0.25rem; }
+        .name-input { max-width: 100% !important; }
+        .card { padding: 20px 15px !important; }
+        .name-label { font-size: 1.25rem !important; }
+    }
 
-@media (max-width: 576px) {
-  /* Small devices (phones, 576px and down) */
-  .container {
-    padding: 1rem;
-    max-width: 100%;
-  }
-  h1 {
-    font-size: 1.2rem;
-  }
-  p {
-    font-size: 0.9rem;
-  }
-  .btn-primary {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-  }
-  img.img-fluid {
-    max-width: 150px;
-  }
-  #audio-prompt {
-    padding: 0.6rem;
-  }
-  #audio-prompt p {
-    font-size: 0.8rem;
-  }
-  #play-audio {
-    padding: 0.3rem 0.7rem;
-    font-size: 0.8rem;
-  }
-  .mt-4 {
-    position: absolute;
-    top: 20%;
-    width: 90%;
-    height: 255px;
-  }
-}
+    /* AUTOCOMPLETE CĂN GIỮA HOÀN HẢO – KHÔNG LỆCH TRÁI */
+    #autocomplete-suggestions {
+        position: fixed !important;
+        background-color: white;
+        border: 1px solid #FABBCB;
+        border-radius: 12px;
+        max-height: 220px;
+        overflow-y: auto;
+        z-index: 9999 !important;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        display: none;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: auto !important;
+        max-width: 90% !important;
+        min-width: 200px;
+        padding: 8px 0;
+        font-size: 1rem;
+        text-align: center;
+    }
 
-@media (max-width: 400px) {
-  /* Extra small devices */
-  h1 {
-    font-size: 1rem;
-  }
-  .btn-primary {
-    width: 100%; /* Button chiếm đầy chiều rộng trên màn hình rất nhỏ */
-  }
-  #audio-prompt {
-    padding: 0.5rem;
-  }
-  #audio-prompt p {
-    font-size: 0.75rem;
-  }
-  #play-audio {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.75rem;
-    width: 100%;
-  }
-}
+    .autocomplete-suggestion {
+        padding: 12px 16px;
+        cursor: pointer;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .autocomplete-suggestion:hover,
+    .autocomplete-suggestion.tapped {
+        background-color: #FABBCB;
+        color: white;
+        border-radius: 8px;
+        margin: 0 8px;
+    }
