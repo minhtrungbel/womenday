@@ -158,6 +158,12 @@ img.img-fluid {
         padding: 0.4rem 0.8rem;
         font-size: 0.85rem;
     }
+    .mt-4{
+        height: 255px;
+        width: 90%;
+        position: absolute;
+        top: 40%;
+    }
 }
 
 @media (max-width: 576px) { /* Small devices (phones, 576px and down) */
@@ -188,6 +194,12 @@ img.img-fluid {
         padding: 0.3rem 0.7rem;
         font-size: 0.8rem;
     }
+    .mt-4{
+        height: 255px;
+        width: 90%;
+        position: absolute;
+        top: 24%;
+    }
 }
 
 @media (max-width: 400px) { /* Extra small devices */
@@ -208,4 +220,10 @@ img.img-fluid {
         font-size: 0.75rem;
         width: 100%;
     }
+    .mt-4{
+        height: 250px;
+        width: 90%;
+        position: absolute;
+        top: 20%;
+    }   
 }
