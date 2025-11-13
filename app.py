@@ -63,7 +63,7 @@ def init_db():
     profiles = [
         ("vobaotran", "Võ Bảo Trân", "Võ Bảo Trân là một nhà thiết kế xuất sắc, đam mê nghệ thuật và màu sắc.",
          "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/vo_bao_tran.jpg",
-         "https://res.cloudinary.com/dogyjotxv/video/upload/v1762702163/2_m7pjvm.mp3"),
+         "hhttps://res.cloudinary.com/dogyjotxv/video/upload/v1762702163/2_m7pjvm.mp3"),
         ("lenguyenbaotran", "Lê Nguyễn Bảo Trân", "Lê Nguyễn Bảo Trân là một người sáng tạo, yêu thích khám phá những điều mới mẻ.",
          "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/le_nguyen_bao_tran.jpg",
          "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/2_music.mp3"),
@@ -100,9 +100,6 @@ def init_db():
         ("lieunhuhien", "Liêu Như Hiền", "Liêu Như Hiền là một cá nhân đầy năng lượng, đam mê sáng tạo nội dung số.",
          "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/lieu_nhu_hien.jpg",
          "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/13_music.mp3"),
-        ("nguyenthithuyvan", "Nguyễn Thị Thúy Vân", "Nguyễn Thị Thúy Vân yêu thích viết lách và chia sẻ câu chuyện truyền cảm hứng.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/nguyen_thi_thuy_van.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/14_music.mp3")
     ]
 
     cursor.executemany("INSERT OR IGNORE INTO profiles VALUES (NULL, ?, ?, ?, ?, ?)", profiles)
@@ -190,4 +187,3 @@ def get_names():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
