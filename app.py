@@ -188,6 +188,12 @@ def get_names():
     conn.close()
     return jsonify({'names': names})
 
+# Thay toàn bộ đoạn if __name__ == '__main__': hiện tại bằng đoạn này
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.getenv("PORT", 5000)))
+    app.run(
+        host='0.0.0.0',
+        port=int(os.getenv("PORT", 5000)),
+        debug=(os.getenv("PORT") is None),   # local → debug=True, Render → debug=False
+        use_reloader=(os.getenv("PORT") is None)  # chỉ reload khi đang code local
+    )
 
