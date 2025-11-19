@@ -1,95 +1,102 @@
-    /* ========================================
+/* ========================================
     MÀU NỀN CHÍNH: #FABBCB (Pantone hồng phấn)
     RGB: 250, 187, 203
     CMYK: 0%, 25%, 19%, 2%
     ======================================== */
 
-    /* NỀN CHÍNH: Toàn trang */
-    body {
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(135deg, #FABBCB 0%, #F8A7BF 100%);  /* #FABBCB + tối hơn 1 chút */
-        color: #333;  /* Chữ đen để dễ đọc trên nền sáng */
-        min-height: 100vh;
-        margin: 0;
-    }
+/* NỀN CHÍNH: Toàn trang */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(
+    135deg,
+    #fabbcb 0%,
+    #f8a7bf 100%
+  ); /* #FABBCB + tối hơn 1 chút */
+  color: #333; /* Chữ đen để dễ đọc trên nền sáng */
+  min-height: 100vh;
+  margin: 0;
+}
 
-    /* NỀN PHỤ: Form (trắng trong suốt nhẹ) */
-    .container {
-        background-color: rgba(255, 255, 255, 0.92);  /* Trắng trong suốt */
-        border-radius: 16px;
-        padding: 2rem;
-        margin: 3rem auto;
-        max-width: 500px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(250, 187, 203, 0.3);  /* Viền nhạt #FABBCB */
-    }
+/* NỀN PHỤ: Form (trắng trong suốt nhẹ) */
+.container {
+  background-color: rgba(255, 255, 255, 0.92); /* Trắng trong suốt */
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 3rem auto;
+  max-width: 500px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(250, 187, 203, 0.3); /* Viền nhạt #FABBCB */
+}
 
-    /* Tiêu đề: dùng màu #FABBCB */
-    h1 {
-        color: #D6406E;  /* Hồng đậm hơn để nổi bật */
-        font-weight: 700;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
+/* Tiêu đề: dùng màu #FABBCB */
+h1 {
+  color: #d6406e; /* Hồng đậm hơn để nổi bật */
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
 
-    /* Button: màu hồng đậm */
-    .btn-primary {
-        background-color: #FABBCB;   /* Hồng đậm (gần #FABBCB) */
-        border: none;
-        font-weight: 600;
-        padding: 0.75rem 1.5rem;
-        border-radius: 50px;
-        transition: all 0.3s ease;
-        color: white;
-    }
-    .btn-primary:hover {
-        background-color: #C2185B;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
-    }
+/* Button: màu hồng đậm */
+.btn-primary {
+  background-color: #fabbcb; /* Hồng đậm (gần #FABBCB) */
+  border: none;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #c2185b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
+}
 
-    /* Input: nền trắng, viền nhẹ */
-    .form-control, .form-label {
-        background-color: white;
-        color: #333;
-        border: 1px solid #FABBCB;  /* Viền màu #FABBCB */
-        border-radius: 8px;
-    }
-    .form-control:focus {
-        border-color: #E91E63;
-        box-shadow: 0 0 0 3px rgba(250, 187, 203, 0.3);
-    }
+/* Input: nền trắng, viền nhẹ */
+.form-control,
+.form-label {
+  background-color: white;
+  color: #333;
+  border: 1px solid #fabbcb; /* Viền màu #FABBCB */
+  border-radius: 8px;
+}
+.form-control:focus {
+  border-color: #e91e63;
+  box-shadow: 0 0 0 3px rgba(250, 187, 203, 0.3);
+}
 
-    /* Navbar: nền trắng + chữ hồng */
-    .navbar {
-        background-color: #ffffff  !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .navbar-brand, .nav-link {
-        color: #FABBCB !important;
-        font-weight: 600;
-    }
-    .navbar-brand:hover, .nav-link:hover {
-        color: #C2185B !important;
-    }
+/* Navbar: nền trắng + chữ hồng */
+.navbar {
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.navbar-brand,
+.nav-link {
+  color: #fabbcb !important;
+  font-weight: 600;
+}
+.navbar-brand:hover,
+.nav-link:hover {
+  color: #c2185b !important;
+}
 
-    /* Responsive */
-    @media (max-width: 768px) {
-        .container {
-            position: absolute;
-            top: 30%;
-            margin: 1.5rem auto;
-            padding: 1.5rem;
-            border-radius: 12px;
-            height: 400px
-            
-        }
-        .card-body{
-            position: relative;
-            top: 80px;
-
-        }
-        h1 {
-            font-size: 1.8rem;
-        }
-    }
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    position: absolute;
+    top: 26%;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    border-radius: 12px;
+    height: 350px;
+    width: 90%;
+    left: 5%;
+  }
+  .card-body {
+    position: relative;
+    top: 80px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+}
