@@ -327,12 +327,12 @@ radial-gradient(at 93% 91%, hsla(352,76%,50%,1) 0px, transparent 50%)!important;
 
   /* Autocomplete theo đúng vị trí input (không căn giữa màn hình nữa) */
   #autocomplete-suggestions {
-    left: 15% !important;            /* cùng khoảng cách lệch trái với container */
+    left: 16% !important;            /* cùng khoảng cách lệch trái với container */
     right: auto !important;
     transform: translateX(0) !important;  /* bỏ căn giữa */
     width: auto !important;
-    max-width: calc(500px - 4rem) !important;  /* vừa khít với input trong container */
-    min-width: 280px;
+    max-width: calc(500px - 4.5rem) !important;  /* vừa khít với input trong container */
+    min-width: 250px;
   }
 }
 
