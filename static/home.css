@@ -222,8 +222,6 @@ form {
   z-index: 9999 !important;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   display: none;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
   width: auto !important;
   max-width: 90% !important;
   min-width: 200px;
@@ -326,14 +324,23 @@ radial-gradient(at 93% 91%, hsla(352,76%,50%,1) 0px, transparent 50%)!important;
   }
 
   /* Autocomplete theo đúng vị trí input (không căn giữa màn hình nữa) */
-  #autocomplete-suggestions {
-    left: 16% !important;            /* cùng khoảng cách lệch trái với container */
-    right: auto !important;
-    transform: translateX(0) !important;  /* bỏ căn giữa */
-    width: auto !important;
-    max-width: calc(500px - 4.5rem) !important;  /* vừa khít với input trong container */
-    min-width: 250px;
-  }
+#autocomplete-suggestions {
+  position: fixed !important;
+  background-color: white;
+  border: 1px solid #fabbcb;
+  border-radius: 12px;
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 9999 !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  padding: 8px 0;
+  font-size: 1rem;
+  text-align: center;
+  max-width: 90vw;
+  min-width: 260px;
+  width: auto !important;
+  visibility: hidden;
+}
 }
 
 /* Nếu màn hình lớn hơn nữa (≥1200px) thì có thể nới rộng autocomplete một chút cho đẹp */
@@ -374,7 +381,7 @@ radial-gradient(at 93% 91%, hsla(352,76%,50%,1) 0px, transparent 50%)!important;
   .logo-svg {
     height: 88px;
     width: auto;
-    top: -16px;
+    top: -14px;
     left:-5px;
   }
 }
@@ -382,7 +389,7 @@ radial-gradient(at 93% 91%, hsla(352,76%,50%,1) 0px, transparent 50%)!important;
 @media (max-width: 400px) {
   .logo-svg {
     height: 82px;
-    top: -14px;
+    top: -12px;
     width: auto;
   }
 }
