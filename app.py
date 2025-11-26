@@ -31,7 +31,7 @@ def normalize_name(name):
         "tngl": "trinhngocgialinh", "hnkn": "huynhnguyenkimngan", "lnk": "lengocnhaky",
         "tnntt": "trannguyenngocthienthanh", "nnb": "nguyenngocbich", "thtn": "tranhatuyetnhu",
         "dtta": "dothithanhan", "tth": "tranthihanh", "dka": "dokhanhan",
-        "lnh": "lieunhuhien", "nttv": "nguyenthithuyvan"
+        "lnh": "lieunhuhien",
     }
     return mapping.get(name, name)
 
@@ -100,9 +100,6 @@ def init_db():
         ("lieunhuhien", "Liêu Như Hiền", "Liêu Như Hiền là một cá nhân đầy năng lượng, đam mê sáng tạo nội dung số.",
          "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/lieu_nhu_hien.jpg",
          "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/13_music.mp3"),
-        ("nguyenthithuyvan", "Nguyễn Thị Thúy Vân", "Nguyễn Thị Thúy Vân yêu thích viết lách và chia sẻ câu chuyện truyền cảm hứng.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/nguyen_thi_thuy_van.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/14_music.mp3")
     ]
 
     cursor.executemany("INSERT OR IGNORE INTO profiles VALUES (NULL, ?, ?, ?, ?, ?)", profiles)
@@ -196,4 +193,5 @@ if __name__ == '__main__':
         debug=(os.getenv("PORT") is None),   # local → debug=True, Render → debug=False
         use_reloader=(os.getenv("PORT") is None)  # chỉ reload khi đang code local
     )
+
 
