@@ -381,7 +381,7 @@ radial-gradient(at 93% 91%, hsla(352,76%,50%,1) 0px, transparent 50%)!important;
   .logo-svg {
     height: 88px;
     width: auto;
-    top: -14px;
+    top: calc(-18px - env(safe-area-inset-top, 0px)) !important;
     left:-5px;
   }
 }
@@ -391,6 +391,15 @@ radial-gradient(at 93% 91%, hsla(352,76%,50%,1) 0px, transparent 50%)!important;
     height: 82px;
     top: -12px;
     width: auto;
+    top: calc(-18px - env(safe-area-inset-top, 0px)) !important;
+  }
+}
+/* Riêng cho mấy máy Android cũ cực kỳ "cứng đầu" (OPPO A83, Vivo Y71, v.v.) */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 576px) {
+    .logo-svg {
+      top: -22px !important;    /* ép chết luôn, dính sát mép trên */
+    }
   }
 }
 /* ====================== CHỮ A13 & TRƯỜNG - BÊN TRÁI LOGO ====================== */
@@ -425,8 +434,8 @@ radial-gradient(at 93% 91%, hsla(352,76%,50%,1) 0px, transparent 50%)!important;
 /* ====================== RESPONSIVE – VẪN DÍNH TRÁI LOGO TRÊN MỌI MÀN HÌNH ====================== */
 @media (max-width: 576px) {
   .navbar-text-custom {
-    left: 105px !important;     /* Đẩy sát logo hơn một chút trên mobile */
-    font-size: 1.38rem;
+    left: 103px !important;     /* Đẩy sát logo hơn một chút trên mobile */
+    font-size: 1.36rem;
     top: 47%;
   }
   .navbar-text-custom span {
