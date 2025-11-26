@@ -95,16 +95,34 @@
       );
       const form = document.getElementById("name-form");
 
-      function updateSuggestionsPosition() {
-        const rect = input.getBoundingClientRect();
-        const scrollTop =
-          window.pageYOffset || document.documentElement.scrollTop;
-        const top = rect.bottom + scrollTop + 8;
-        const inputWidth = rect.width;
-        const maxWidth = window.innerWidth * 0.85;
-        suggestionsDiv.style.top = `${top}px`;
-        suggestionsDiv.style.width = `${Math.min(inputWidth, maxWidth)}px`;
-      }
+function updateSuggestionsPosition() {
+  if (suggestionsDiv.children.length === 0) {
+    suggestionsDiv.style.display = "none";
+    return;
+  }
+
+  // Bật lên để đo
+  suggestionsDiv.style.display = "block";
+  suggestionsDiv.style.visibility = "hidden";
+
+  // Ép reflow + đo đúng width
+  void suggestionsDiv.offsetHeight;
+  const boxWidth = suggestionsDiv.offsetWidth;
+
+  const rect = input.getBoundingClientRect();
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+  const scrollTop  = window.pageYOffset || document.documentElement.scrollTop;
+
+  const top  = rect.bottom + scrollTop + 8;
+  let   left = rect.left + scrollLeft + rect.width / 2 - boxWidth / 2;
+
+  // Không tràn màn hình
+  left = Math.max(16, Math.min(left, window.innerWidth - boxWidth - 16));
+
+  suggestionsDiv.style.top  = `${top}px`;
+  suggestionsDiv.style.left = `${left}px`;
+  suggestionsDiv.style.visibility = "visible";
+}
 
       function hideSuggestions() {
         suggestionsDiv.innerHTML = "";
