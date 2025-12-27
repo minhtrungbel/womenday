@@ -5,7 +5,7 @@ import unicodedata
 import cloudinary
 import cloudinary.uploader
 from dotenv import load_dotenv
-
+import socket
 # Load .env
 load_dotenv()
 
@@ -27,11 +27,19 @@ def normalize_name(name):
     name = ''.join(replacements.get(c, c) for c in name)
     name = name.replace(" ", "")
     mapping = {
-        "vbt": "vobaotran", "lnbt": "lenguyenbaotran", "bka": "buikieuanh",
-        "tngl": "trinhngocgialinh", "hnkn": "huynhnguyenkimngan", "lnk": "lengocnhaky",
-        "tnntt": "trannguyenngocthienthanh", "nnb": "nguyenngocbich", "thtn": "tranhatuyetnhu",
-        "dtta": "dothithanhan", "tth": "tranthihanh", "dka": "dokhanhan",
-        "lnh": "lieunhuhien",
+        "vbt": "vobaotran", 
+        "lnbt": "lenguyenbaotran", 
+        "bka": "buikieuanh",
+        "tngl": "trinhngocgialinh", 
+        "hnkn": "huynhnguyenkimngan", 
+        "lnk": "lengocnhaky",
+        "tnntt": "trannguyenngocthienthanh", 
+        "nnb": "nguyenngocbich", 
+        "thtn": "tranhatuyetnhu",
+        "dtta": "dothithanhan", 
+        "tth": "tranthihanh", 
+        "dka": "dokhanhan",
+        "lnh": "lieunhuhien", 
     }
     return mapping.get(name, name)
 
@@ -187,11 +195,26 @@ def get_names():
 
 # Thay toàn bộ đoạn if __name__ == '__main__': hiện tại bằng đoạn này
 if __name__ == '__main__':
+    # LẤY IP MÁY TÍNH TRONG MẠNG WIFI (192.168.x.x)
+    try:
+        # Cách lấy IP nội bộ chính xác nhất 99.9% trường hợp
+        local_ip = socket.gethostbyname(socket.gethostname())
+    except:
+        local_ip = "127.0.0.1"
+    # Chỉ in ra khi đang chạy local (không có biến PORT → tức là đang code ở nhà)
+    if os.getenv("PORT") is None:
+        print("=" * 60)
+        print("       TRANG A13 ĐÃ CHẠY THÀNH CÔNG!")
+        print("=" * 60)
+        print(f"   Local (trên máy bạn):     http://127.0.0.1:5000")
+        print(f"   Từ điện thoại/máy khác:   http://{local_ip}:5000")
+        print("=" * 60)
+        print("   Nhớ cùng kết nối một Wi-Fi nhé ")
+        print("   Tắt server: Ctrl + C")
+        print("=" * 60)
     app.run(
         host='0.0.0.0',
         port=int(os.getenv("PORT", 5000)),
         debug=(os.getenv("PORT") is None),   # local → debug=True, Render → debug=False
         use_reloader=(os.getenv("PORT") is None)  # chỉ reload khi đang code local
     )
-
-
