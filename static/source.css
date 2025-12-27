@@ -1,0 +1,44 @@
+/* ========================================
+    MÀU NỀN CHÍNH: #FABBCB (Pantone hồng phấn)
+    RGB: 250, 187, 203
+    CMYK: 0%, 25%, 19%, 2%
+    ======================================== */
+/* NỀN PHỤ: Form (trắng trong suốt nhẹ) */
+.container {
+  background-color: rgba(255, 255, 255, 0.92); /* Trắng trong suốt */
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 3rem auto;
+  max-width: 500px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(250, 187, 203, 0.3); /* Viền nhạt #FABBCB */
+}
+
+/* Tiêu đề: dùng màu #FABBCB */
+h1 {
+  color: #d6406e; /* Hồng đậm hơn để nổi bật */
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    position: absolute;
+    top: 26%;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    border-radius: 12px;
+    height: 350px;
+    width: 90%;
+    left: 5%;
+  }
+  .card-body {
+    position: relative;
+    top: 80px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+}

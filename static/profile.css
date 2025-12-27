@@ -1,0 +1,167 @@
+/* ========================================
+   MÀU NỀN CHÍNH: #FABBCB (Pantone hồng phấn)
+   RGB: 250, 187, 203
+   CMYK: 0%, 25%, 19%, 2%
+   ======================================== */
+
+
+/* NỀN PHỤ: Form (trắng trong suốt nhẹ) */
+.container {
+  background-color: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  padding: 5rem;
+  margin: 2rem auto;
+  max-width: 500px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(250, 187, 203, 0.3);
+  width: 100%; /* Đảm bảo container chiếm đầy chiều rộng trên mobile */
+}
+
+/* Hình ảnh responsive */
+img.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Style cho thông báo âm thanh */
+#audio-prompt {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#audio-prompt p {
+  margin: 0;
+  font-size: 1rem;
+  color: #d6406e;
+}
+#play-audio {
+  margin-top: 0.5rem;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 992px) {
+  /* Large devices (laptops/desktops, 992px and down) */
+  .container {
+    padding: 3rem;
+    max-width: 700px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .btn-primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+  }
+  #audio-prompt {
+    padding: 0.8rem;
+  }
+  #audio-prompt p {
+    font-size: 0.9rem;
+  }
+  #play-audio {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  .mt-4 {
+    position: absolute;
+    top: 30%;
+    width: 90%;
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Medium devices (tablets, 768px and down) */
+  .container {
+    margin: 1rem auto;
+    padding: 1.5rem;
+    max-width: 90%;
+    border-radius: 12px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  .btn-primary {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  img.img-fluid {
+    max-width: 200px;
+  }
+  #audio-prompt {
+    padding: 0.7rem;
+  }
+  #audio-prompt p {
+    font-size: 0.85rem;
+  }
+  #play-audio {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  .mt-4 {
+    position: absolute;
+    top: 30%;
+    width: 90%;
+    height: 250px;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Small devices (phones, 576px and down) */
+  .container {
+    padding: 1rem;
+    max-width: 100%;
+  }
+  h1 {
+    font-size: 1.2rem;
+  }
+  p {
+    font-size: 0.9rem;
+  }
+  .btn-primary {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  img.img-fluid {
+    max-width: 150px;
+  }
+  #audio-prompt {
+    padding: 0.6rem;
+  }
+  #audio-prompt p {
+    font-size: 0.8rem;
+  }
+  #play-audio {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+  }
+  .mt-4 {
+    position: absolute;
+    top: 20%;
+    width: 90%;
+    height: 255px;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Extra small devices */
+  h1 {
+    font-size: 1rem;
+  }
+  .btn-primary {
+    width: 100%; /* Button chiếm đầy chiều rộng trên màn hình rất nhỏ */
+  }
+  #audio-prompt {
+    padding: 0.5rem;
+  }
+  #audio-prompt p {
+    font-size: 0.75rem;
+  }
+  #play-audio {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    width: 100%;
+  }
+}
