@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A13 • Women Day 2025</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts.css') }}">
+  <link rel="preload" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1763570718/home_logo_nt0lkn.svg"
+    as="image">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+  <link rel="preload" as="image"
+    href="https://res.cloudinary.com/dogyjotxv/image/upload/f_auto,q_auto/v1764342305/575723388_855420560320786_2043952751979308807_n_d8tyx8.jpg">
+  <script defer src="{{ url_for('static', filename='src/home.js') }}"></script>
+  <!-- FAVICON & APPLE TOUCH ICON - TỐI ƯU ĐA THIẾT BỊ -->
+  <link rel="icon"
+    href="https://res.cloudinary.com/dogyjotxv/image/upload/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg"
+    type="image/png">
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="https://res.cloudinary.com/dogyjotxv/image/upload/w_32,h_32,c_fill/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="https://res.cloudinary.com/dogyjotxv/image/upload/w_16,h_16,c_fill/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg">
+  <link rel="apple-touch-icon" sizes="180x180"
+    href="https://res.cloudinary.com/dogyjotxv/image/upload/w_180,h_180,c_fill,r_max/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg">
+  <link rel="apple-touch-icon" sizes="192x192"
+    href="https://res.cloudinary.com/dogyjotxv/image/upload/w_192,h_192,c_fill,r_max/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg">
+  <link rel="apple-touch-icon" sizes="512x512"
+    href="https://res.cloudinary.com/dogyjotxv/image/upload/w_512,h_512,c_fill,r_max/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg">
+  <!-- Tối ưu iOS: Cho phép mở như app -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-0">
+
+      <!-- LOGO LÒI ĐUÔI -->
+      <a class="navbar-brand logo-outer" href="{{ url_for('home') }}">
+        <img src="https://res.cloudinary.com/dogyjotxv/image/upload/v1763570718/home_logo_nt0lkn.svg" alt="Home"
+          class="logo-svg">
+      </a>
+      <div class="navbar-text-custom">A13․2024-2027<br>
+        <span>THPT TRẦN KHAI NGUYÊN</span>
+      </div>
+
+      <!-- BỎ HOÀN TOÀN NÚT TOGGLER + HIỆN LUÔN MENU TRÊN MOBILE -->
+      <div class="navbar-collapse collapse show" id="navbarNav">
+        <ul class="navbar-nav ms-auto"> <!-- ms-auto = đẩy sang phải -->
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ url_for('source') }}">SOURCE</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('link') }}">LINK</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+  <!-- LAYOUT CHUẨN 100% - 2 KHỐI CỐ ĐỊNH, KHÔNG LỆCH -->
+  <div class="main-layout">
+    <!-- FORM BÊN TRÁI -->
+    <div class="form-section">
+      <div class="container">
+        <h2 class="introduction text-center">
+          Tụi mình có chuẩn bị một bất ngờ nhỏ cho bạn nè
+        </h2>
+        <div class="inner-wrapper">
+          <div class="card">
+            <form id="name-form" action="{{ url_for('profile') }}" method="GET">
+              <label for="name" class="name-label">Hãy điền tên của bạn vào đây nhé</label>
+              <div class="position-relative d-inline-block mx-auto">
+                <input type="text" id="name" name="name" placeholder="Nhập tên của bạn vào"
+                  class="form-control name-input text-overflow-ellipsis" autocomplete="off" required />
+              </div>
+              <button type="submit" class="btn btn-primary mt-3">GỬI → </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAROUSEL BÊN PHẢI -->
+    <div class="carousel-section">
+      <div class="carousel-container">
+        <div class="carousel-slide">
+          <div class="carousel-slide">
+            <img
+              src="https://res.cloudinary.com/dogyjotxv/image/upload/f_auto,q_auto/v1764342305/575723388_855420560320786_2043952751979308807_n_d8tyx8.jpg"
+              alt="Lớp A13" loading="lazy" decoding="async">
+            <img
+              src="https://res.cloudinary.com/dogyjotxv/image/upload/f_auto,q_auto/v1764343486/566650380_1351236903248246_8300753759662927379_n_b7rw33.jpg"
+              alt="Lớp A13" loading="lazy" decoding="async">
+            <img
+              src="https://res.cloudinary.com/dogyjotxv/image/upload/f_auto,q_auto/v1764344292/552756848_2987988694745768_5057741052424652426_n_ko6jcb.jpg"
+              alt="Lớp A13" loading="lazy" decoding="async">
+            <img
+              src="https://res.cloudinary.com/dogyjotxv/image/upload/f_auto,q_auto/v1764344293/494358641_1320406325719527_2451176833111229280_n_1_fhlvnq.jpg"
+              alt="Lớp A13" loading="lazy" decoding="async">
+          </div>
+          <!-- Thêm ảnh thoải mái -->
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-prev">&lt;</button>
+          <div class="carousel-dots"></div>
+          <button class="carousel-next">&gt;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="autocomplete-suggestions" class="autocomplete-suggestions" style="display: none"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

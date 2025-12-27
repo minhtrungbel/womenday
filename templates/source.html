@@ -1,0 +1,71 @@
+<!-- templates/source.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Đảm bảo responsive trên mobile -->
+  <title>Source - Women Day</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='source.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+  <link rel="icon"
+    href="https://res.cloudinary.com/dogyjotxv/image/upload/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg"
+    type="image/png">
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="https://res.cloudinary.com/dogyjotxv/image/upload/w_32,h_32,c_fill/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="https://res.cloudinary.com/dogyjotxv/image/upload/w_16,h_16,c_fill/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg">
+  <link rel="apple-touch-icon" sizes="180x180"
+    href="https://res.cloudinary.com/dogyjotxv/image/upload/w_180,h_180,c_fill,r_max/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg">
+  <link rel="apple-touch-icon" sizes="192x192"
+    href="https://res.cloudinary.com/dogyjotxv/image/upload/w_192,h_192,c_fill,r_max/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg">
+  <link rel="apple-touch-icon" sizes="512x512"
+    href="https://res.cloudinary.com/dogyjotxv/image/upload/w_512,h_512,c_fill,r_max/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-0">
+      <div class="navbar-text-custom">A13․2024-2027<br>
+        <span>THPT TRẦN KHAI NGUYÊN</span>
+      </div>
+      <!-- LOGO LÒI ĐUÔI -->
+      <a class="navbar-brand logo-outer" href="{{ url_for('home') }}">
+        <img src="https://res.cloudinary.com/dogyjotxv/image/upload/v1763570718/home_logo_nt0lkn.svg" alt="Home"
+          class="logo-svg">
+      </a>
+
+      <!-- BỎ HOÀN TOÀN NÚT TOGGLER + HIỆN LUÔN MENU TRÊN MOBILE -->
+      <div class="navbar-collapse collapse show" id="navbarNav">
+        <ul class="navbar-nav ms-auto"> <!-- ms-auto = đẩy sang phải -->
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ url_for('source') }}">SOURCE</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('link') }}">LINK</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+  <div class="container text-center mt-4">
+    <h1>Source Page</h1>
+    <div class="card-body">
+      <p class="fact">Đây là trang Source. Bạn có thể thêm các nguồn thông tin, tài liệu, hoặc liên kết liên quan tại
+        đây.</p>
+      <ul class="list-unstyled">
+        <li><a href="#" class="text-decoration-none">Nguồn 1: Ví dụ tài liệu</a></li>
+        <li><a href="#" class="text-decoration-none">Nguồn 2: Liên kết tham khảo</a></li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
