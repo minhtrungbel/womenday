@@ -291,7 +291,6 @@ form {
   box-shadow: 0 10px 25px rgba(228, 33, 57, 0.6);
 }
 
-/* Desktop: container lệch trái */
 @media (min-width: 796px) {
   .container {
     margin-left: 4% !important;
@@ -337,7 +336,6 @@ form {
   box-sizing: border-box;
 }
 
-/* Form & Carousel desktop */
 .form-section {
   flex: 0 0 560px;
 }
@@ -447,65 +445,72 @@ form {
     transparent 58%,
     transparent 100%
   );
-  animation: diagonalShine 12s infinite linear;
+  animation: diagonalShine 10s infinite linear;
   pointer-events: none;
   z-index: 1;
+  animation-duration: 12s;
 }
 
 /* ======================================================
-   MOBILE: CẬP NHẬT THEO YÊU CẦU MỚI NHẤT
-   - Container (form): nhỏ hơn, chữ nhỏ hơn, padding giảm
-   - Carousel: bỏ viền đen khó chịu (background hồng phấn thay #000), bo góc lại đẹp
+   MOBILE: FORM HÌNH CHỮ NHẬT NGANG + CAROUSEL GIỮ NGUYÊN FULL VIỀN
    ====================================================== */
 @media (max-width: 991.98px) {
+  /* Layout dọc */
   .main-layout {
     flex-direction: column !important;
-    gap: 2rem; /* giảm gap chút cho gọn */
+    gap: 2.5rem;
     padding: 1rem 0 2rem;
     align-items: center;
   }
 
-  /* Container form: nhỏ hơn, mỏng hơn (chiều dọc giảm) */
+  /* Form: rộng hơn + thấp hơn → hình chữ nhật ngang */
   .form-section {
     flex: none;
     width: 100%;
-    max-width: 340px; /* giảm từ 380px → 340px, gọn hơn */
+    max-width: 520px; /* Rộng ngang hơn để rõ hình chữ nhật */
   }
 
   .form-section .container {
-    margin: 0.8rem auto !important;
-    padding: 1.4rem 1rem; /* padding giảm → mỏng hơn chiều dọc */
+    margin: 1rem auto !important;
+    padding: 1rem 2rem !important; /* Giảm padding dọc mạnh → thấp hơn */
     max-width: 100%;
-    border-radius: 24px;
+    border-radius: 28px;
   }
 
-  /* Chữ trong form nhỏ hơn trên mobile */
+  /* Thu nhỏ chữ + khoảng cách để khung gọn hơn */
   .introduction {
-    font-size: 1.6rem !important; /* giảm từ 1.9rem */
-    margin-bottom: 0.5rem;
+    font-size: 1.7rem !important;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
   }
 
   .name-label {
-    font-size: 1.1rem !important; /* nhỏ hơn */
-    margin-bottom: 6px;
+    font-size: 1.15rem !important;
+    margin-bottom: 5px;
   }
 
   .name-input {
-    padding: 0.45rem 2rem;
-    font-size: 0.95rem;
+    padding: 0.5rem 2.5rem;
+    font-size: 1rem;
+    max-width: 100% !important;
   }
 
   .btn-primary {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
+    padding: 0.6rem 2rem;
+    font-size: 1.05rem;
+    margin-top: 0.4rem;
   }
 
-  /* Carousel full viền nhưng đẹp hơn */
+  .card {
+    padding: 20px 40px !important;
+  }
+
+  /* Carousel: giữ nguyên 100% như yêu cầu */
   .carousel-section {
     flex: none;
     width: 100vw !important;
     max-width: none !important;
-    margin: 0 -1rem 0 -1rem !important; /* ép sát viền (tránh safe area một số máy) */
+    margin: 0 !important;
     padding: 0 !important;
   }
 
@@ -513,23 +518,20 @@ form {
     height: auto !important;
     width: 100% !important;
     max-width: none !important;
-    border-radius: 20px !important; /* bo góc lại đẹp, không vuông gốc */
+    border-radius: 0 !important;
     overflow: hidden;
-    background: linear-gradient(to bottom, #fabacb, #f8a1b8) !important; /* thay nền đen bằng gradient hồng phấn nhẹ → hết viền đen khó chịu */
+    background: #000;
   }
 
-  /* Ảnh: giữ vuông vức, không viền đen thừa */
   .carousel-slide img {
     width: 100% !important;
     height: auto !important;
-    aspect-ratio: 1 / 1; /* vẫn giữ vuông đẹp */
     object-fit: contain !important;
     object-position: center !important;
     flex-shrink: 0;
     image-rendering: -webkit-optimize-contrast;
     transform: translateZ(0);
-    max-height: 85vh;
-    background: transparent !important; /* đảm bảo không có nền đen thừa */
+    max-height: 80vh;
   }
 
   .carousel-slide {
@@ -548,32 +550,29 @@ form {
   }
 
   .carousel-controls {
-    bottom: 16px;
+    bottom: 10px;
     width: 100%;
     left: 0;
     transform: none;
     justify-content: center;
-    padding: 10px 0;
-    background: rgba(0,0,0,0.15); /* thêm nền mờ nhẹ cho nút dễ nhìn hơn trên nền hồng */
-    border-radius: 30px;
   }
 }
 
 /* Máy siêu nhỏ */
 @media (max-width: 400px) {
   .form-section {
-    max-width: 310px;
+    max-width: 480px;
+  }
+
+  .form-section .container {
+    padding: 0.9rem 1.8rem !important;
   }
 
   .introduction {
-    font-size: 1.5rem !important;
-  }
-
-  .carousel-container {
-    border-radius: 16px !important;
+    font-size: 1.6rem !important;
   }
 
   .carousel-slide img {
-    max-height: 75vh;
+    max-height: 70vh;
   }
 }
