@@ -463,18 +463,17 @@ form {
     align-items: center;
   }
 
-  /* Form: rộng hơn + thấp hơn → hình chữ nhật ngang */
-  .form-section {
+.form-section {
     flex: none;
     width: 100%;
-    max-width: 520px; /* Rộng ngang hơn để rõ hình chữ nhật */
+    max-width: 380px; /* giữ nguyên */
   }
 
   .form-section .container {
     margin: 1rem auto !important;
-    padding: 1rem 2rem !important; /* Giảm padding dọc mạnh → thấp hơn */
+    padding: 1.6rem 1.2rem; /* giữ nguyên */
     max-width: 100%;
-    border-radius: 28px;
+    border-radius: 20px;
   }
 
   /* Thu nhỏ chữ + khoảng cách để khung gọn hơn */
@@ -576,3 +575,4 @@ form {
     max-height: 70vh;
   }
 }
+
