@@ -452,7 +452,7 @@ form {
 }
 
 /* ======================================================
-   MOBILE: FORM HÌNH CHỮ NHẬT NGANG + CAROUSEL GIỮ NGUYÊN FULL VIỀN
+   MOBILE: CONTAINER CÁCH LỀ HAI BÊN MỘT KHOẢNG + CAROUSEL GIỮ NGUYÊN FULL VIỀN, NỀN ĐEN
    ====================================================== */
 @media (max-width: 991.98px) {
   /* Layout dọc */
@@ -463,20 +463,22 @@ form {
     align-items: center;
   }
 
-.form-section {
+  /* Form: container cách lề hai bên một khoảng (khoảng 24px mỗi bên) */
+  .form-section {
     flex: none;
     width: 100%;
-    max-width: 380px; /* giữ nguyên */
+    max-width: none; /* Bỏ giới hạn cứng để dùng padding thay thế */
+    padding: 0 1.5rem; /* Cách lề hai bên 1.5rem (~24px), đẹp và thoáng */
   }
 
   .form-section .container {
     margin: 1rem auto !important;
-    padding: 1.6rem 1.2rem; /* giữ nguyên */
+    padding: 1.6rem 1.2rem;
     max-width: 100%;
     border-radius: 20px;
   }
 
-  /* Thu nhỏ chữ + khoảng cách để khung gọn hơn */
+  /* Thu nhỏ chữ + khoảng cách để khung gọn hơn (giữ nguyên như code bạn gửi) */
   .introduction {
     font-size: 1.7rem !important;
     margin-bottom: 0.6rem;
@@ -504,7 +506,7 @@ form {
     padding: 20px 40px !important;
   }
 
-  /* Carousel: giữ nguyên 100% như yêu cầu */
+  /* Carousel: giữ nguyên full viền + nền đen (không đổi sang hồng) */
   .carousel-section {
     flex: none;
     width: 100vw !important;
@@ -519,7 +521,7 @@ form {
     max-width: none !important;
     border-radius: 0 !important;
     overflow: hidden;
-    background: #000;
+    background: #000; /* Giữ nguyên nền đen */
   }
 
   .carousel-slide img {
@@ -560,11 +562,11 @@ form {
 /* Máy siêu nhỏ */
 @media (max-width: 400px) {
   .form-section {
-    max-width: 480px;
+    padding: 0 1rem; /* Giảm lề chút trên máy nhỏ */
   }
 
   .form-section .container {
-    padding: 0.9rem 1.8rem !important;
+    padding: 1.4rem 1rem !important;
   }
 
   .introduction {
@@ -575,4 +577,3 @@ form {
     max-height: 70vh;
   }
 }
-
