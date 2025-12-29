@@ -486,65 +486,91 @@ form {
     transform: translateX(80%) translateY(-100%);
   }
 }
+
 /* ======================================================
-   MOBILE: XẾP DỌC – FORM TRÊN, CAROUSEL NHỎ DƯỚI
+   MOBILE: CAROUSEL FULL VIỀN + THẤY FULL ẢNH (ĐÃ CHỈNH THEO YÊU CẦU MỚI NHẤT)
    ====================================================== */
 @media (max-width: 991.98px) {
-  /* 1. Layout dọc thay vì ngang */
+  /* Layout dọc */
   .main-layout {
     flex-direction: column !important;
-    gap: 2.5rem; /* khoảng cách giữa form và carousel */
-    padding: 1rem 1rem 2rem;
+    gap: 2.5rem;
+    padding: 1rem 0 2rem; /* XÓA padding ngang → full viền */
     align-items: center;
   }
 
-  /* 2. Form nhỏ lại, không còn lệch trái nữa */
+  /* Form giữ nguyên */
   .form-section {
     flex: none;
     width: 100%;
-    max-width: 420px; /* vừa đẹp trên mọi điện thoại */
+    max-width: 420px;
   }
 
-  /* Container form nhỏ hơn, sát mép hơn */
   .form-section .container {
     margin: 1rem auto !important;
     padding: 1.8rem 1.5rem;
     max-width: 100%;
   }
 
-  /* 3. Carousel nhỏ lại, nằm giữa */
+  /* Carousel FULL MÀN HÌNH MOBILE */
   .carousel-section {
     flex: none;
-    width: 100%;
-    max-width: 420px; /* hoặc 380px nếu bạn muốn nhỏ hơn nữa */
+    width: 100vw !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .carousel-container {
-    height: 480px !important; /* hoặc 420px – tùy bạn thích */
-    max-width: 100%;
-    border-radius: 24px;
+    height: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    border-radius: 0 !important; /* Không bo góc để full viền */
+    overflow: hidden;
+    background: #000;
   }
 
-  /* Ảnh trong carousel vẫn cover đẹp hơn khi nhỏ */
+  /* Ảnh: hiển thị full, không crop, giữ tỷ lệ gốc */
   .carousel-slide img {
-    object-fit: cover;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important; /* Thấy hết ảnh, không bị cắt */
+    object-position: center !important;
+    flex-shrink: 0;
+    image-rendering: -webkit-optimize-contrast;
+    transform: translateZ(0);
+    max-height: 80vh; /* Giới hạn chiều cao để dễ scroll */
   }
 
-  /* Nút prev/next to hơn cho dễ bấm */
+  .carousel-slide {
+    will-change: transform;
+    display: flex;
+    width: 100%;
+    height: auto !important;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Nút prev/next to hơn */
   .carousel-prev,
   .carousel-next {
     width: 48px;
     height: 48px;
     font-size: 1.6rem;
   }
+
+  /* Controls full width, căn giữa */
+  .carousel-controls {
+    bottom: 10px;
+    width: 100%;
+    left: 0;
+    transform: none;
+    justify-content: center;
+  }
 }
 
-/* Nếu bạn muốn trên điện thoại siêu nhỏ (<400px) thì carousel còn nhỏ hơn nữa cho cute */
+/* Máy siêu nhỏ */
 @media (max-width: 400px) {
-  .carousel-container {
-    height: 420px !important;
-  }
-  .carousel-section {
-    max-width: 360px;
+  .carousel-slide img {
+    max-height: 70vh;
   }
 }
