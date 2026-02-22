@@ -505,7 +505,7 @@ form {
   position: fixed;
   inset: 0;
   z-index: -2;
-  background-image: url('https://iili.io/qF7AZmP.png');
+  background-image: url('https://iili.io/qF0ATP9.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -550,7 +550,7 @@ form {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background-image: url('https://iili.io/qF7RruI.png');
+  background-image: url('https://iili.io/qF0Tgst.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -593,7 +593,7 @@ form {
   inset: 0;
   z-index: -1; /* giữa background(-2) và overlay(0) */
   pointer-events: none;
-  background-image: url('https://iili.io/qF7GJol.png');
+  background-image: url('https://iili.io/qF0uNC7.png');
   background-repeat: no-repeat;
   background-size: auto 100vh;       /* chiều cao vừa phải, giữ tỉ lệ */
   background-position: right 60px center; /* mặc định: cách rìa phải 60px */
