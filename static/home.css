@@ -49,14 +49,14 @@
       inset 0px 2px 1px rgba(106, 168, 245, 0.5);
   }
   .name-label {
-    font-size: 1.25rem;
-    line-height: 1.4;
+    font-size: 1rem;
+    line-height: 1.3;
   }
   .name-input {
     box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
       inset 0px 2px 1px rgba(96, 165, 250, 0.5);
     padding: 0.5rem 1rem;
-    font-size: 1rem;
+    font-size: 0.95rem;
     width: 100%;
     max-width: 420px !important;
   }
@@ -142,7 +142,7 @@ form {
     padding: 20px 15px !important;
   }
   .name-label {
-    font-size: 1.2rem !important;
+    font-size: 1rem !important;
     font-weight: 500 !important;
   }
 }
@@ -229,7 +229,11 @@ form {
     radial-gradient(at 69% 4%, hsla(354, 87%, 60%, 1) 0px, transparent 50%),
     radial-gradient(at 93% 91%, hsla(352, 76%, 50%, 1) 0px, transparent 50%);
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 25px rgba(99, 15, 35, 0.5), inset 0 2px 8px (#ffffff) !important;
+  box-shadow:
+    0 4px 12px rgba(255, 255, 255, 0.3),
+    0 12px 35px rgba(255, 255, 255, 0.25),
+    0 30px 70px rgba(255, 255, 255, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset !important;
   position: relative;
   overflow: hidden;
 }
@@ -291,9 +295,12 @@ form {
   box-shadow: 0 10px 25px rgba(228, 33, 57, 0.6);
 }
 
-@media (min-width: 796px) {
+/* ================== DESKTOP: CĂN TRÁI + CÁCH LỀ THEO MÀN HÌNH ================== */
+
+/* Tablet đứng / laptop nhỏ: 796px - 991px */
+@media (min-width: 796px) and (max-width: 991.98px) {
   .container {
-    margin-left: 4% !important;
+    margin-left: 10px !important;
     margin-right: auto !important;
     max-width: 500px;
   }
@@ -317,15 +324,92 @@ form {
   }
 }
 
-@media (min-width: 1200px) {
+/* Laptop / màn hình thường: 992px - 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    margin-left: 20px !important;
+    margin-right: auto !important;
+    max-width: 500px;
+  }
+
   #autocomplete-suggestions {
+    position: fixed !important;
+    background-color: white;
+    border: 1px solid #fabbcb;
+    border-radius: 12px;
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 9999 !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    font-size: 1rem;
+    text-align: center;
+    max-width: 90vw;
+    min-width: 260px;
+    width: auto !important;
+    visibility: hidden;
+  }
+}
+
+/* Màn hình lớn: 1200px - 1599px */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .container {
+    margin-left: 40px !important;
+    margin-right: auto !important;
+    max-width: 500px;
+  }
+
+  #autocomplete-suggestions {
+    position: fixed !important;
+    background-color: white;
+    border: 1px solid #fabbcb;
+    border-radius: 12px;
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 9999 !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    font-size: 1rem;
+    text-align: center;
+    max-width: 90vw;
+    min-width: 260px;
+    width: auto !important;
+    visibility: hidden;
+    max-width: 460px !important;
+  }
+}
+
+/* Màn hình rất lớn: 1600px trở lên */
+@media (min-width: 1600px) {
+  .container {
+    margin-left: 60px !important;
+    margin-right: auto !important;
+    max-width: 500px;
+  }
+
+  #autocomplete-suggestions {
+    position: fixed !important;
+    background-color: white;
+    border: 1px solid #fabbcb;
+    border-radius: 12px;
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 9999 !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    font-size: 1rem;
+    text-align: center;
+    max-width: 90vw;
+    min-width: 260px;
+    width: auto !important;
+    visibility: hidden;
     max-width: 460px !important;
   }
 }
 
 .main-layout {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 50px;
   padding: 0 50px;
@@ -334,128 +418,18 @@ form {
   padding-top: 3px;
   min-height: auto;
   box-sizing: border-box;
+  position: relative;
+  z-index: 1;
 }
 
 .form-section {
   flex: 0 0 560px;
 }
 
-.carousel-section {
-  flex: 0 0 650px;
-}
-
-.carousel-container {
-  position: relative;
-  border-radius: 30px;
-  overflow: hidden;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
-  width: 100%;
-  height: 428px;
-  background: #000;
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  flex-shrink: 0;
-  image-rendering: -webkit-optimize-contrast;
-  transform: translateZ(0);
-}
-
-.carousel-slide {
-  will-change: transform;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.carousel-controls {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 13px 30px;
-  z-index: 10;
-}
-
-.carousel-prev,
-.carousel-next {
-  color: white;
-  background: none;
-  border: none;
-  width: 33px;
-  height: 33px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.35s ease;
-}
-
-.carousel-prev:hover,
-.carousel-next:hover {
-  background: #ff1493;
-  transform: scale(1.18);
-  box-shadow: 0 6px 18px rgba(255, 20, 147, 0.5);
-}
-
-.carousel-dots {
-  display: flex;
-  gap: 2px;
-  margin: 0;
-  padding: 0;
-}
-
-.carousel-dots span {
-  font-size: 26px;
-  color: white;
-  opacity: 0.6;
-  cursor: pointer;
-  user-select: none;
-  transition: opacity 0.35s ease, text-shadow 0.35s ease;
-}
-
-.carousel-dots span:hover,
-.carousel-dots span.active {
-  opacity: 1 !important;
-  text-shadow: 0 0 16px #ff69b4;
-}
-
-.carousel-container::before {
-  content: "";
-  position: absolute;
-  top: -150%;
-  left: -150%;
-  width: 400%;
-  height: 400%;
-  background: linear-gradient(
-    45deg,
-    transparent 0%,
-    transparent 42%,
-    rgba(255, 240, 245, 0.2) 50%,
-    transparent 58%,
-    transparent 100%
-  );
-  animation: diagonalShine 10s infinite linear;
-  pointer-events: none;
-  z-index: 1;
-  animation-duration: 12s;
-}
-
 /* ======================================================
    MOBILE: CONTAINER CÁCH LỀ HAI BÊN MỘT KHOẢNG + CAROUSEL GIỮ NGUYÊN FULL VIỀN, NỀN ĐEN
    ====================================================== */
 @media (max-width: 991.98px) {
-  /* Layout dọc */
   .main-layout {
     flex-direction: column !important;
     gap: 2.5rem;
@@ -463,12 +437,11 @@ form {
     align-items: center;
   }
 
-  /* Form: container cách lề hai bên một khoảng (khoảng 24px mỗi bên) */
   .form-section {
     flex: none;
     width: 100%;
-    max-width: none; /* Bỏ giới hạn cứng để dùng padding thay thế */
-    padding: 0 1.5rem; /* Cách lề hai bên 1.5rem (~24px), đẹp và thoáng */
+    max-width: none;
+    padding: 0 1.5rem;
   }
 
   .form-section .container {
@@ -478,7 +451,6 @@ form {
     border-radius: 20px;
   }
 
-  /* Thu nhỏ chữ + khoảng cách để khung gọn hơn (giữ nguyên như code bạn gửi) */
   .introduction {
     font-size: 1.7rem !important;
     margin-bottom: 0.6rem;
@@ -486,13 +458,13 @@ form {
   }
 
   .name-label {
-    font-size: 1.15rem !important;
+    font-size: 1rem !important;
     margin-bottom: 5px;
   }
 
   .name-input {
     padding: 0.5rem 2.5rem;
-    font-size: 1rem;
+    font-size: 0.95rem !important;
     max-width: 100% !important;
   }
 
@@ -505,64 +477,12 @@ form {
   .card {
     padding: 20px 40px !important;
   }
-
-  /* Carousel: giữ nguyên full viền + nền đen (không đổi sang hồng) */
-  .carousel-section {
-    flex: none;
-    width: 100vw !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .carousel-container {
-    height: auto !important;
-    width: 100% !important;
-    max-width: none !important;
-    border-radius: 0 !important;
-    overflow: hidden;
-    background: #000; /* Giữ nguyên nền đen */
-  }
-
-  .carousel-slide img {
-    width: 100% !important;
-    height: auto !important;
-    object-fit: contain !important;
-    object-position: center !important;
-    flex-shrink: 0;
-    image-rendering: -webkit-optimize-contrast;
-    transform: translateZ(0);
-    max-height: 80vh;
-  }
-
-  .carousel-slide {
-    will-change: transform;
-    display: flex;
-    width: 100%;
-    height: auto !important;
-    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .carousel-prev,
-  .carousel-next {
-    width: 48px;
-    height: 48px;
-    font-size: 1.6rem;
-  }
-
-  .carousel-controls {
-    bottom: 10px;
-    width: 100%;
-    left: 0;
-    transform: none;
-    justify-content: center;
-  }
 }
 
 /* Máy siêu nhỏ */
 @media (max-width: 400px) {
   .form-section {
-    padding: 0 1rem; /* Giảm lề chút trên máy nhỏ */
+    padding: 0 1rem;
   }
 
   .form-section .container {
@@ -573,7 +493,143 @@ form {
     font-size: 1.6rem !important;
   }
 
-  .carousel-slide img {
-    max-height: 70vh;
+  .name-input {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* ================== BACKGROUND LAYER ================== */
+
+/* Base chung cho mọi thiết bị */
+.background-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: url('https://iili.io/qF7AZmP.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;       /* Luôn phủ full màn hình, không bị khoảng trống */
+  pointer-events: none;
+  opacity: 1;
+  /* Mặc định: giữ nguyên độ rõ */
+  filter: brightness(1) contrast(1) saturate(1);
+}
+
+/* ---- DESKTOP (≥ 992px): ảnh rõ hơn, sắc nét hơn ---- */
+@media (min-width: 992px) {
+  .background-layer {
+    background-size: cover;
+    background-position: center center;
+    /* Tăng nhẹ brightness + contrast để ảnh rõ và sắc hơn */
+    filter: brightness(1.08) contrast(1.12) saturate(1.06);
+  }
+}
+
+/* ---- MÀN HÌNH RẤT LỚN (≥ 1600px): tăng thêm chút ---- */
+@media (min-width: 1600px) {
+  .background-layer {
+    filter: brightness(1.1) contrast(1.15) saturate(1.08);
+  }
+}
+
+/* ---- MOBILE (≤ 991px): ưu tiên hiển thị phần trên ảnh (hoa + chữ 8/3) ---- */
+@media (max-width: 991.98px) {
+  .background-layer {
+    background-size: cover;
+    background-position: center top;
+    filter: brightness(1.03) contrast(1.05) saturate(1);
+  }
+}
+/* ================== OVERLAY LAYER (đè lên background-layer) ================== */
+
+.overlay-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: url('https://iili.io/qF7RruI.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  pointer-events: none;
+  opacity: 1;
+  filter: brightness(1) contrast(1) saturate(1);
+}
+
+@media (min-width: 992px) {
+  .overlay-layer {
+    background-size: cover;
+    background-position: center center;
+    filter: brightness(1.08) contrast(1.12) saturate(1.06);
+  }
+}
+
+@media (min-width: 1600px) {
+  .overlay-layer {
+    filter: brightness(1.1) contrast(1.15) saturate(1.08);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .overlay-layer {
+    background-size: cover;
+    background-position: center top;
+    filter: brightness(1.03) contrast(1.05) saturate(1);
+  }
+}
+
+/* ================== MID LAYER (giữa background và overlay) ================== */
+
+.mid-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1; /* giữa background(-2) và overlay(0) */
+  pointer-events: none;
+  background-image: url('https://iili.io/qF7GJol.png');
+  background-repeat: no-repeat;
+  background-size: auto 100vh;       /* chiều cao vừa phải, giữ tỉ lệ */
+  background-position: right 60px center; /* mặc định: cách rìa phải 60px */
+  filter: brightness(1.08) contrast(1.12) saturate(1.06);
+}
+
+/* ≥ 1600px: cách rìa phải 60px */
+@media (min-width: 1600px) {
+  .mid-layer {
+    background-position: right 60px center;
+    background-size: auto 103vh;
+    filter: brightness(1.1) contrast(1.15) saturate(1.08);
+  }
+}
+
+/* 1200px - 1599px: cách rìa phải 40px */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .mid-layer {
+    background-position: right 40px center;
+    background-size: auto 98vh;
+  }
+}
+
+/* 992px - 1199px: cách rìa phải 20px */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .mid-layer {
+    background-position: right 20px center;
+    background-size: auto 93vh;
+  }
+}
+
+/* 796px - 991px: cách rìa phải 10px */
+@media (min-width: 796px) and (max-width: 991.98px) {
+  .mid-layer {
+    background-position: right 10px center;
+    background-size: auto 88vh;
+  }
+}
+
+/* Mobile ≤ 795px: ẩn đi hoặc giữ nhỏ ở dưới */
+@media (max-width: 795px) {
+  .mid-layer {
+    background-position: center bottom;
+    background-size: auto 55vh;
+    filter: brightness(1.13) contrast(1.15) saturate(1.1);
+    opacity: 0.7;
   }
 }
