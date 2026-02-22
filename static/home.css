@@ -508,11 +508,15 @@ form {
   background-image: url('https://iili.io/qF7AZmP.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;       /* Luôn phủ full màn hình, không bị khoảng trống */
+  background-size: cover;
   pointer-events: none;
   opacity: 1;
-  /* Mặc định: giữ nguyên độ rõ */
   filter: brightness(1) contrast(1) saturate(1);
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* ---- DESKTOP (≥ 992px): ảnh rõ hơn, sắc nét hơn ---- */
@@ -553,6 +557,11 @@ form {
   pointer-events: none;
   opacity: 1;
   filter: brightness(1) contrast(1) saturate(1);
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 @media (min-width: 992px) {
@@ -589,6 +598,12 @@ form {
   background-size: auto 100vh;       /* chiều cao vừa phải, giữ tỉ lệ */
   background-position: right 60px center; /* mặc định: cách rìa phải 60px */
   filter: brightness(1.08) contrast(1.12) saturate(1.06);
+  /* Buộc GPU render sớm, tránh delay/flash trên mobile */
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* ≥ 1600px: cách rìa phải 60px */
@@ -624,12 +639,25 @@ form {
   }
 }
 
-/* Mobile ≤ 795px: ẩn đi hoặc giữ nhỏ ở dưới */
+/* Mobile ≤ 795px: đặt dưới container, không fixed full screen */
 @media (max-width: 795px) {
   .mid-layer {
+    /* Chuyển sang absolute để tính vị trí theo document, không phủ viewport */
+    position: absolute;
+    inset: auto;                  /* reset inset: 0 từ base */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Chiều cao: chỉ chiếm phần dưới trang (dưới container) */
+    height: 52vh;
+    /* Căn giữa ngang, sát đáy */
     background-position: center bottom;
-    background-size: auto 55vh;
+    background-size: auto 52vh;
     filter: brightness(1.13) contrast(1.15) saturate(1.1);
-    opacity: 0.7;
+    opacity: 0.85;
+    /* Đảm bảo render sớm, không delay */
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 }
