@@ -649,7 +649,7 @@ form {
     right: 0;
     bottom: 0;
     /* Chiều cao: chỉ chiếm phần dưới trang (dưới container) */
-    height: 55vh;
+    height: 52vh;
     /* Căn giữa ngang, sát đáy */
     background-position: center bottom;
     background-size: auto 52vh;
