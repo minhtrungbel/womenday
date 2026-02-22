@@ -2,17 +2,30 @@
 document.addEventListener("DOMContentLoaded", function () {
   // ==================== AUTOCOMPLETE + FORM ====================
   let names = [];
+  let namesLoaded = false;
+
+  const input = document.getElementById("name");
+  const suggestionsDiv = document.getElementById("autocomplete-suggestions");
+  const form = document.getElementById("name-form");
+
+  // ---- Loading state cho input khi fetch /api/names ----
+  input.setAttribute("placeholder", "Đang tải...");
+  input.disabled = true;
 
   fetch("/api/names")
     .then((r) => r.json())
     .then((d) => {
       names = d.names;
+      namesLoaded = true;
+      input.disabled = false;
+      input.setAttribute("placeholder", "Nhập tên của bạn vào");
     })
-    .catch(console.error);
-
-  const input = document.getElementById("name");
-  const suggestionsDiv = document.getElementById("autocomplete-suggestions");
-  const form = document.getElementById("name-form");
+    .catch(() => {
+      // Nếu lỗi vẫn cho nhập bình thường, không block người dùng
+      namesLoaded = true;
+      input.disabled = false;
+      input.setAttribute("placeholder", "Nhập tên của bạn vào");
+    });
 
   function updateSuggestionsPosition() {
     if (suggestionsDiv.children.length === 0) {
@@ -129,13 +142,3 @@ document.addEventListener("DOMContentLoaded", function () {
     true
   );
 });
-// Trong hàm updateSuggestionsPosition()
-suggestionsDiv.style.display = "block";
-suggestionsDiv.style.visibility = "hidden";
-void suggestionsDiv.offsetHeight; // force reflow
-// ... phần tính top/left còn lại ...
-
-// Thêm dòng này ở cuối hàm
-suggestionsDiv.classList.add('visible-scroll'); // chỉ để trigger
-setTimeout(() => suggestionsDiv.classList.remove('visible-scroll'), 50);
-
