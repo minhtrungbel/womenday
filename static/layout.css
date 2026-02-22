@@ -1,3 +1,4 @@
+/* LAYOUT.CSS */
 body {
   font-family: "Segoe UI", sans-serif;
   background-color: hsla(336, 100%, 92%, 1);
@@ -12,6 +13,7 @@ body {
   min-height: 100vh;
   margin: 0;
 }
+
 .navbar {
   background: linear-gradient(
     to right,
@@ -20,47 +22,42 @@ body {
     #f34455 80%,
     #e2223b 100%
   );
-  height: 58px; /* Chiều cao cố định – KHÔNG bị dãn */
+  height: 58px;
   padding: 0 !important;
-  overflow: visible !important; /* BẮT BUỘC để đuôi lòi ra */
+  overflow: visible !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   position: relative;
 }
-/* ================== HIỆN LUÔN MENU TRÊN ĐIỆN THOẠI - KHÔNG CÒN TOGGLER ================== */
-.navbar-collapse {
-  display: flex !important; /* Luôn hiển thị */
-}
 
-.navbar-toggler {
-  display: none !important; /* Ẩn hoàn toàn nút 3 gạch */
-}
-/* Đẹp ngang hàng, khoảng cách đều, chữ nhỏ hơn chút trên mobile */
+.navbar-collapse { display: flex !important; }
+.navbar-toggler { display: none !important; }
+
 .navbar-nav {
-  flex-direction: row !important; /* ngang hàng */
-  margin-right: 0.75rem;
+  flex-direction: row !important;
+  margin-right: 0.75rem; 
 }
 
 .navbar-nav .nav-link {
   font-family: "Samsung Sharp Bold", sans-serif;
   padding: 0.5rem 0.75rem !important;
   font-size: 1rem;
-  color: #fabbcb !important; /* giữ nguyên màu như desktop */
+  color: #fabbcb !important;
   font-weight: 600;
   position: relative;
   opacity: 0.75;
-  transition: color 0.3s ease, opacity 0.3s ease;
+  transition: color 0.3s ease, opacity 0.3s ease; 
 }
 
 .navbar-nav .nav-link::after {
   content: "";
   position: absolute;
-  bottom: 3px; /* cách chữ một chút */
+  bottom: 3px;
   left: 0;
   width: 0;
-  height: 3px; /* độ dày underline */
+  height: 3px;
   background-color: #860033;
-  transition: width 0.4s ease;
+  transition: width 0.4s ease; 
   transform-origin: left;
 }
 
@@ -69,92 +66,52 @@ body {
   color: #860033 !important;
   opacity: 1;
 }
-/* Chỉ hiện underline trên màn hình lớn (desktop/tablet ≥992px) */
+
 @media (min-width: 992px) {
   .navbar-nav .nav-link:hover::after,
   .navbar-nav .nav-link:active::after {
-    width: 100%; /* kéo dài full theo chữ */
-  }
-}
-/* Trên mobile (<992px): ẩn hoàn toàn underline */
-@media (max-width: 991.98px) {
-  .navbar-nav .nav-link::after {
-    display: none; /* không có underline khi hover trên điện thoại */
+    width: 100%;
   }
 }
 
+@media (max-width: 991.98px) {
+  .navbar-nav .nav-link::after { display: none; }
+}
+
 @media (max-width: 576px) {
-  .navbar-nav {
-    margin-right: 0.5rem;
-  }
+  .navbar-nav { margin-right: 0.5rem; }
   .navbar-nav .nav-link {
     font-size: 1.025rem;
     padding: 0.4rem 0.6rem !important;
   }
 }
-/* Thẻ a bao ngoài để logo lòi ra */
+
+/* LOGO & CHỮ */
 .logo-outer {
   margin: 0;
-  padding: 0; /* Cách rìa trái đẹp */
+  padding: 0;
   display: block;
-  height: 0; /* Quan trọng: không làm tăng chiều cao navbar */
+  height: 0;
 }
 
-/* Logo thực sự */
 .logo-svg {
-  height: 92px; /* Kích thước đẹp nhất với logo của bạn */
+  height: 92px;
   width: auto;
   position: absolute;
-  top: -18px; /* Đẩy lên để sát mép trên navbar */
+  top: -18px;
   left: 0;
   transition: transform 0.3s ease;
   margin-left: 20px;
   margin-top: 16px;
 }
 
-/* Hover nhẹ nhàng */
-.logo-svg:hover {
-  transform: translateY(-5px) scale(1.05);
-}
+.logo-svg:hover { transform: translateY(-5px) scale(1.05); }
 
-/* Mobile – thu nhỏ nhưng vẫn lòi đuôi đẹp */
-@media (max-width: 576px) {
-  .navbar {
-    height: 62px;
-  }
-  .logo-outer {
-    margin-left: 10px;
-  }
-  .logo-svg {
-    height: 88px;
-    width: auto;
-    top: calc(-18px - env(safe-area-inset-top, 0px)) !important;
-    left: -5px;
-  }
-}
-
-@media (max-width: 400px) {
-  .logo-svg {
-    height: 82px;
-    top: -12px;
-    width: auto;
-    top: calc(-18px - env(safe-area-inset-top, 0px)) !important;
-  }
-}
-/* Riêng cho mấy máy Android cũ cực kỳ "cứng đầu" (OPPO A83, Vivo Y71, v.v.) */
-@supports (-webkit-touch-callout: none) {
-  @media (max-width: 576px) {
-    .logo-svg {
-      top: -22px !important; /* ép chết luôn, dính sát mép trên */
-    }
-  }
-}
-/* ====================== CHỮ A13 & TRƯỜNG - BÊN TRÁI LOGO ====================== */
 .navbar-text-custom {
-  position: absolute; /* QUAN TRỌNG NHẤT: thoát khỏi flow bình thường */
-  left: 133px; /* Điều chỉnh số này để chữ sát logo vừa đẹp */
+  position: absolute;
+  left: 133px;
   top: 50%;
-  transform: translateY(-50%); /* Căn giữa theo chiều dọc hoàn hảo */
+  transform: translateY(-50%);
   color: #670d26;
   font-family: "Bebas Neue", sans-serif;
   line-height: 1.1;
@@ -164,8 +121,8 @@ body {
   font-size: 1.6rem;
   font-weight: 800;
   letter-spacing: 1px;
-  z-index: 10; /* Đảm bảo chữ nằm trên nền navbar */
-  white-space: nowrap; /* Không bị xuống dòng */
+  z-index: 10;
+  white-space: nowrap;
 }
 
 .navbar-text-custom span {
@@ -178,22 +135,78 @@ body {
   margin-top: -2px;
 }
 
-/* ====================== RESPONSIVE – VẪN DÍNH TRÁI LOGO TRÊN MỌI MÀN HÌNH ====================== */
-@media (max-width: 576px) {
+/* RESPONSIVE MOBILE - ĐÃ TĂNG KHOẢNG CÁCH CHỮ RA XA LOGO */
+@media (max-width: 359px) {
+  .navbar { height: 60px; }
+  .logo-outer { margin-left: 6px; }
+  .logo-svg {
+    height: 70px;
+    top: -12px;
+    margin-left: 8px;
+    margin-top: 10px;
+  }
   .navbar-text-custom {
-    left: 103px !important; /* Đẩy sát logo hơn một chút trên mobile */
-    font-size: 1.36rem;
+    left: 80px !important;   /* ← ĐÃ TĂNG +12px so với trước (70px) */
+    font-size: 1.1rem;
+    top: 50%;
+  }
+  .navbar-text-custom span {
+    font-size: 0.42rem;
+    margin-top: -1px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 414px) {
+  .navbar { height: 62px; }
+  .logo-outer { margin-left: 8px; }
+  .logo-svg {
+    height: 75px;
+    top: -14px;
+    margin-left: 10px;
+    margin-top: 12px;
+  }
+  .navbar-text-custom {
+    left: 90px !important;   /* ← ĐÃ TĂNG +12px so với trước (80px) */
+    font-size: 1.2rem;
+    top: 48%;
+  }
+  .navbar-text-custom span {
+    font-size: 0.45rem;
+    margin-top: -1px;
+  }
+}
+
+@media (min-width: 415px) and (max-width: 576px) {
+  .navbar { height: 64px; }
+  .logo-outer { margin-left: 10px; }
+  .logo-svg {
+    height: 82px;
+    top: -16px;
+    margin-left: 12px;
+    margin-top: 14px;
+  }   
+  .navbar-text-custom {
+    left: 102px !important;  /* ← ĐÃ TĂNG +10px so với trước (95px) */
+    font-size: 1.3rem;
     top: 47%;
   }
   .navbar-text-custom span {
     font-size: 0.5rem;
+    margin-top: -1px;
   }
 }
-html,
-body {
+
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 576px) {
+    .logo-svg { top: -20px !important; }
+  }
+}
+
+html, body {
   min-height: 100vh;
-  height: auto; /* Cho phép cao hơn màn hình */
-  overflow-y: auto; /* QUAN TRỌNG: bật scroll dọc */
+  height: auto;
+  overflow-y: auto;
   overflow-x: hidden;
   margin: 0;
+  overscroll-behavior: none; /* THÊM DÒNG NÀY */
 }
