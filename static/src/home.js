@@ -1,58 +1,5 @@
 // static/js/home.js
 document.addEventListener("DOMContentLoaded", function () {
-  // ==================== CAROUSEL ====================
-  const slide = document.querySelector(".carousel-slide");
-  const images = slide.querySelectorAll("img");
-  const prev = document.querySelector(".carousel-prev");
-  const next = document.querySelector(".carousel-next");
-  const dotsContainer = document.querySelector(".carousel-dots");
-
-  let index = 0;
-  const total = images.length;
-
-  // Tạo dots tự động
-images.forEach((_, i) => {
-  const dot = document.createElement("span");
-  dot.className = "dot";
-  dot.innerHTML = "․";
-  dot.addEventListener("click", () => goTo(i));
-  dotsContainer.appendChild(dot);
-});
-  const dots = dotsContainer.querySelectorAll("span");
-  if (dots.length > 0) dots[0].classList.add("active");
-
-  function update() {
-    slide.style.transform = `translateX(${-index * 100}%)`;
-    dots.forEach((d, i) => d.classList.toggle("active", i === index));
-  }
-
-  function goTo(n) {
-    index = (n + total) % total;
-    update();
-    resetTimer();
-  }
-
-  prev.addEventListener("click", () => goTo(index - 1));
-  next.addEventListener("click", () => goTo(index + 1));
-
-  // Auto slide 5s
-  let timer = setInterval(() => goTo( index + 1), 5000);
-  function resetTimer() {
-    clearInterval(timer);
-    timer = setInterval(() => goTo(index + 1), 5000);
-  }
-
-  // Pause khi hover/touch
-  const container = document.querySelector(".carousel-container");
-  container.addEventListener("mouseenter", () => clearInterval(timer));
-  container.addEventListener("mouseleave", resetTimer);
-  container.addEventListener("touchstart", () => clearInterval(timer), {
-    passive: true,
-  });
-  container.addEventListener("touchend", resetTimer);
-
-  update();
-
   // ==================== AUTOCOMPLETE + FORM ====================
   let names = [];
 
