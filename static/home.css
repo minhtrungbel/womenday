@@ -511,11 +511,6 @@ form {
   background-size: cover;       /* Luôn phủ full màn hình, không bị khoảng trống */
   pointer-events: none;
   opacity: 1;
-   -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  will-change: transform;
   /* Mặc định: giữ nguyên độ rõ */
   filter: brightness(1) contrast(1) saturate(1);
 }
@@ -557,11 +552,6 @@ form {
   background-size: cover;
   pointer-events: none;
   opacity: 1;
-   -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  will-change: transform;
   filter: brightness(1) contrast(1) saturate(1);
 }
 
@@ -599,11 +589,6 @@ form {
   background-size: auto 100vh;       /* chiều cao vừa phải, giữ tỉ lệ */
   background-position: right 60px center; /* mặc định: cách rìa phải 60px */
   filter: brightness(1.08) contrast(1.12) saturate(1.06);
-   -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  will-change: transform;
 }
 
 /* ≥ 1600px: cách rìa phải 60px */
@@ -642,20 +627,9 @@ form {
 /* Mobile ≤ 795px: ẩn đi hoặc giữ nhỏ ở dưới */
 @media (max-width: 795px) {
   .mid-layer {
-    background-position: center 80%;   /* xích xuống dưới hơn, tăng % để xuống thêm */
-    background-size: auto 42vh;        /* nhỏ lại so với 55vh cũ */
+    background-position: center bottom;
+    background-size: auto 55vh;
     filter: brightness(1.13) contrast(1.15) saturate(1.1);
-    opacity: 0.9;
-  }
-}
-/* FIX RIÊNG CHO iOS SAFARI */
-@supports (-webkit-touch-callout: none) {
-  .background-layer,
-  .overlay-layer,
-  .mid-layer {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    opacity: 0.7;
   }
 }
