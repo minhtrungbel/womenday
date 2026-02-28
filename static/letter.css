@@ -1,0 +1,215 @@
+/* ========================================
+   LETTER.CSS — styles riêng cho trang thư
+   ======================================== */
+
+/* ================== HỘP QUÀ TRANG LETTER ================== */
+.letter-hopqua-layer {
+  position: fixed;
+  left: -2vw;
+  bottom: -8vh;
+  z-index: 4;
+  pointer-events: none;
+
+  background-image: url('https://res.cloudinary.com/dogyjotxv/image/upload/v1772170817/hopqua_tkxhji.png');
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: auto 55vh;
+  width: 45vw;
+  height: 70vh;
+
+  filter: brightness(1.05) contrast(1.08) saturate(1.05);
+}
+
+@media (min-width: 1600px) {
+  .letter-hopqua-layer {
+    background-size: auto 82vh; width: 55vw; height: 95vh;
+    left: -5vw; bottom: -13vh;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .letter-hopqua-layer {
+    background-size: auto 82vh; width: 55vw; height: 95vh;
+    left: -9vw; bottom: -36vh;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .letter-hopqua-layer {
+    background-size: auto 70vh; width: 52vw; height: 84vh;
+    left: -6vw; bottom: -22vh;
+  }
+}
+@media (min-width: 796px) and (max-width: 991.98px) {
+  .letter-hopqua-layer {
+    background-size: auto 60vh; width: 52vw; height: 75vh;
+    left: -4vw; bottom: -14vh;
+  }
+}
+@media (max-width: 795px) {
+  .letter-hopqua-layer {
+    background-size: auto 42vh; width: 60vw; height: 56vh;
+    left: -2vw; bottom: -7vh;
+  }
+}
+@media (max-width: 414px) {
+  .letter-hopqua-layer {
+    background-size: auto 34vh; width: 65vw; height: 46vh;
+    left: -1vw; bottom: -6vh;
+  }
+}
+
+
+/* ================== KHUNG NỘI DUNG THƯ ================== */
+/*
+  CHUẨN: 1200–1599px → size: auto 110% | position: 0% -20%
+  Màn lớn hơn: size tăng nhẹ, position y âm hơn (ảnh dịch lên)
+  Màn nhỏ hơn: size giảm dần, position y âm ít hơn (ảnh dịch xuống lại)
+*/
+.letter-content-frame {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image: url('https://res.cloudinary.com/dogyjotxv/image/upload/v1772279773/khungnoidung_1_1_qyd4ee.png');
+  background-repeat: no-repeat;
+  background-size: auto 110%;
+  background-position: 0% -20%;
+
+  filter: brightness(1.05) contrast(1.1) saturate(1.05);
+}
+
+/* 1200–1599px: CHUẨN */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .letter-content-frame {
+    background-size: auto 110%;
+    background-position: 0% -20%;
+  }
+}
+
+/* ≥ 1600px: màn to hơn → tăng size, y âm hơn chút để vẫn canh giữa */
+@media (min-width: 1600px) {
+  .letter-content-frame {
+    background-size: auto 115%;
+    background-position: 0% -25%;
+  }
+}
+
+/* 992–1199px: màn nhỏ hơn → giảm size, y âm ít hơn */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .letter-content-frame {
+    background-size: auto 100%;
+    background-position: 0% -10%;
+  }
+}
+
+/* 796–991px */
+@media (min-width: 796px) and (max-width: 991.98px) {
+  .letter-content-frame {
+    background-size: auto 90%;
+    background-position: 0% -5%;
+  }
+}
+
+/* 415–795px: mobile lớn → size vừa màn, y về 0 hoặc dương nhỏ */
+@media (min-width: 415px) and (max-width: 795px) {
+  .letter-content-frame {
+    background-size: auto 80%;
+    background-position: center 2%;
+    filter: brightness(1.03) contrast(1.06) saturate(1.02);
+  }
+}
+
+/* ≤ 414px: mobile nhỏ */
+@media (max-width: 414px) {
+  .letter-content-frame {
+    background-size: auto 72%;
+    background-position: center 5%;
+    filter: brightness(1.03) contrast(1.06) saturate(1.02);
+  }
+}
+
+
+/* ================== NỘI DUNG THƯ ================== */
+.letter-info-card {
+  position: fixed;
+  z-index: 9;
+  pointer-events: none;
+
+  top: 50%;
+  left: 18%;
+  transform: translateY(-50%);
+  width: 32%;
+  max-width: 440px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px 28px;
+}
+
+.letter-info-card .letter-greeting {
+  font-family: "Samsung Sharp Bold", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fabbcb;
+  margin-bottom: 4px;
+}
+
+.letter-info-card .letter-body {
+  font-family: "Samsung Sharp Bold", sans-serif;
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: #ffd6e2;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.letter-info-card .letter-signature {
+  font-family: "Samsung Sharp Bold", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fabbcb;
+  margin-top: 12px;
+  text-align: center;
+}
+
+@media (min-width: 1600px) {
+  .letter-info-card { left: 19%; width: 30%; padding: 28px 32px; }
+  .letter-info-card .letter-greeting { font-size: 1.35rem; }
+  .letter-info-card .letter-body     { font-size: 1.02rem; }
+}
+
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .letter-info-card { left: 18%; width: 31%; padding: 22px 26px; }
+  .letter-info-card .letter-greeting { font-size: 1.25rem; }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .letter-info-card { left: 16%; width: 33%; padding: 18px 22px; }
+  .letter-info-card .letter-greeting { font-size: 1.1rem; }
+  .letter-info-card .letter-body     { font-size: 0.87rem; }
+}
+
+@media (min-width: 796px) and (max-width: 991.98px) {
+  .letter-info-card { top: 48%; left: 13%; width: 36%; padding: 14px 18px; gap: 7px; }
+  .letter-info-card .letter-greeting { font-size: 1rem; }
+  .letter-info-card .letter-body     { font-size: 0.82rem; }
+  .letter-info-card .letter-signature { font-size: 0.78rem; }
+}
+
+@media (max-width: 795px) {
+  .letter-info-card {
+    top: 50%; left: 5%; right: 44%; width: auto; max-width: none;
+    transform: translateY(-50%); padding: 12px 14px; gap: 6px;
+  }
+  .letter-info-card .letter-greeting { font-size: 0.95rem; }
+  .letter-info-card .letter-body     { font-size: 0.78rem; line-height: 1.55; }
+  .letter-info-card .letter-signature { font-size: 0.73rem; margin-top: 8px; }
+}
+
+@media (max-width: 414px) {
+  .letter-info-card { padding: 10px 11px; gap: 5px; right: 45%; }
+  .letter-info-card .letter-greeting { font-size: 0.88rem; }
+  .letter-info-card .letter-body     { font-size: 0.73rem; }
+  .letter-info-card .letter-signature { font-size: 0.7rem; }
+}
