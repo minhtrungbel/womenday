@@ -330,6 +330,14 @@ def profile():
         return render_template('profile.html', profile=None, error="Vui lòng nhập tên")
 
     norm = normalize_name(name)
+    from flask import url_for
+    gif_filename = f"gif/{norm}.gif"
+    gif_path = os.path.join(app.static_folder, gif_filename)
+
+    if os.path.exists(gif_path):
+        gif_url = url_for('static', filename=gif_filename)
+    else:
+        gif_url = None
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute(
@@ -351,6 +359,7 @@ def profile():
             'audio':          row[5],
             'avatar':         row[6],
             'song':           row[7],
+            'gif':            gif_url
         }
         return render_template('profile.html', profile=profile_data)
     else:
