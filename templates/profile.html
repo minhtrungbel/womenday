@@ -1,166 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profile - Women Day</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='profile.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='fonts.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='layout.css') }}"
+    />
+    <link
+      rel="preload"
+      href="https://res.cloudinary.com/dogyjotxv/image/upload/v1763570718/home_logo_nt0lkn.svg"
+      as="image"
+    />
+    <link
+      rel="icon"
+      href="https://res.cloudinary.com/dogyjotxv/image/upload/v1771757135/logo_ioneoh.png"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://res.cloudinary.com/dogyjotxv/image/upload/w_32,h_32,c_fill/v1771757135/logo_ioneoh.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://res.cloudinary.com/dogyjotxv/image/upload/w_16,h_16,c_fill/v1771757135/logo_ioneoh.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://res.cloudinary.com/dogyjotxv/image/upload/w_180,h_180,c_fill,r_max/v1771757135/logo_ioneoh.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="192x192"
+      href="https://res.cloudinary.com/dogyjotxv/image/upload/w_192,h_192,c_fill,r_max/v1771757135/logo_ioneoh.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="512x512"
+      href="https://res.cloudinary.com/dogyjotxv/image/upload/w_512,h_512,c_fill,r_max/v1771757135/logo_ioneoh.png"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/dogyjotxv/image/upload/v1771912129/hoa_r%C6%A1i-l%E1%BB%9Bp_%C4%91%E1%BA%A7u_ti%C3%AAn_%C4%91%C3%A8_l%C3%AAn_t%E1%BA%A5t_c%E1%BA%A3_tr%E1%BB%AB_n%C3%BAt_nh%E1%BA%ADn_qu%C3%A0_nh%E1%BA%A1c_zbb9eo.png"
+    />
+    {% if profile and profile.avatar %}
+    <link rel="preload" as="image" href="{{ profile.avatar }}" />
+    {% endif %}
+    <style>
+      * {
+        touch-action: manipulation;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Profile - Women Day</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='fonts.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
-  <link rel="preload" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1763570718/home_logo_nt0lkn.svg" as="image">
-  <link rel="icon" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1771757135/logo_ioneoh.png" type="image/png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_32,h_32,c_fill/v1771757135/logo_ioneoh.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_16,h_16,c_fill/v1771757135/logo_ioneoh.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_180,h_180,c_fill,r_max/v1771757135/logo_ioneoh.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_192,h_192,c_fill,r_max/v1771757135/logo_ioneoh.png">
-  <link rel="apple-touch-icon" sizes="512x512" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_512,h_512,c_fill,r_max/v1771757135/logo_ioneoh.png">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="format-detection" content="telephone=no" />
-  <link rel="preload" as="image" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1771912129/hoa_r%C6%A1i-l%E1%BB%9Bp_%C4%91%E1%BA%A7u_ti%C3%AAn_%C4%91%C3%A8_l%C3%AAn_t%E1%BA%A5t_c%E1%BA%A3_tr%E1%BB%AB_n%C3%BAt_nh%E1%BA%ADn_qu%C3%A0_nh%E1%BA%A1c_zbb9eo.png">
-  {% if profile and profile.avatar %}
-  <link rel="preload" as="image" href="{{ profile.avatar }}">
-  {% endif %}
-  <style>* { touch-action: manipulation; }</style>
-</head>
+  <body>
+    <div class="profile-overlay-layer"></div>
 
-<body>
-  <div class="profile-overlay-layer"></div>
-
-  {% if profile %}
-  <div class="profile-content-frame"></div>
-  {% if profile.avatar %}
-  <div class="profile-avatar-layer" style="background-image: url('{{ profile.avatar }}');"></div>
-  {% endif %}
-  {% endif %}
-
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container-fluid px-0">
-      <a class="navbar-brand logo-outer" href="{{ url_for('home') }}">
-        <img src="https://res.cloudinary.com/dogyjotxv/image/upload/v1763570718/home_logo_nt0lkn.svg" alt="Home" class="logo-svg">
-      </a>
-      <div class="navbar-text-custom">A13․2024-2027<br>
-        <span>THPT TRẦN KHAI NGUYÊN</span>
+    {% if profile %}
+    <div class="profile-content-frame"></div>
+    {% if profile.avatar %}
+    <div
+      class="profile-avatar-layer"
+      style="background-image: url('{{ profile.avatar }}');"
+    ></div>
+    {% endif %} {% if profile.gif %}
+    <div class="profile-gif-layer">
+      <img src="{{ profile.gif }}" class="profile-gif" />
+    </div>
+    {% endif %} {% endif %}
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid px-0">
+        <a class="navbar-brand logo-outer" href="{{ url_for('home') }}">
+          <img
+            src="https://res.cloudinary.com/dogyjotxv/image/upload/v1763570718/home_logo_nt0lkn.svg"
+            alt="Home"
+            class="logo-svg"
+          />
+        </a>
+        <div class="navbar-text-custom">
+          A13․2024-2027<br />
+          <span>THPT TRẦN KHAI NGUYÊN</span>
+        </div>
+        <div class="collapse navbar-collapse show" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('source') }}">SOURCE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('link') }}">LINK</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="collapse navbar-collapse show" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('source') }}">SOURCE</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('link') }}">LINK</a></li>
-        </ul>
+    </nav>
+
+    {% if profile %}
+
+    <!-- LAYER ẢNH PROFILE -->
+    {% if profile.layer %}
+    <div
+      class="profile-page"
+      style="background-image: url('{{ profile.layer }}');"
+    ></div>
+    {% endif %}
+
+    <!-- AUDIO -->
+    {% if profile.audio %}
+    <audio
+      id="profile-audio"
+      src="{{ profile.audio }}"
+      preload="auto"
+      loop
+    ></audio>
+    {% endif %}
+    <div id="audio-trigger" style="display: none"></div>
+
+    <!-- MUSIC BAR -->
+    {% if profile.audio %}
+    <div class="music-bar" id="music-bar">
+      <div class="music-bar__wave">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="music-bar__title-wrap">
+        <span class="music-bar__title" id="music-bar-title"
+          >{{ profile.song or 'Nhạc nền'
+          }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ profile.song or 'Nhạc nền'
+          }}</span
+        >
+      </div>
+      <button class="music-bar__btn" id="music-bar-btn" aria-label="Play/Pause">
+        <svg width="0" height="0" style="position: absolute">
+          <defs>
+            <linearGradient
+              id="btn-icon-gradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop offset="0%" stop-color="#FFDBE9" />
+              <stop offset="100%" stop-color="#FE94B2" />
+            </linearGradient>
+            <linearGradient
+              id="btn-hover-gradient"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <stop offset="0%" stop-color="#670D26" />
+              <stop offset="100%" stop-color="#2B0013" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <svg class="icon-play" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" fill="url(#btn-icon-gradient)" />
+        </svg>
+        <svg class="icon-pause" viewBox="0 0 24 24">
+          <path
+            d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"
+            fill="url(#btn-icon-gradient)"
+          />
+        </svg>
+      </button>
+    </div>
+    {% endif %}
+
+    <!-- GIFT BAR -->
+    <div class="gift-bar" id="gift-bar">
+      <!-- NÚT TRÒN ĐEN TRÁI -->
+      <button class="gift-bar__btn" id="gift-bar-btn" aria-label="Nhận quà">
+        <!-- Gradient defs cho icon -->
+        <svg width="0" height="0" style="position: absolute">
+          <defs>
+            <linearGradient
+              id="gift-icon-grad"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <stop offset="0%" stop-color="#FFDBE9" />
+              <stop offset="100%" stop-color="#FE94B2" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <!-- SVG gift box — fill đổi thành gradient #FFDBE9 → #FE94B2 -->
+        <svg
+          class="gift-bar__icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M3 16.3168L3 13.4642C3.37228 13.6792 3.78288 13.8362 4.21973 13.9231C4.61143 14.001 5.02655 14.0005 5.37106 14L5.417 14C9.80567 13.9965 14.1944 13.9965 18.5831 14L18.629 14C18.9735 14.0005 19.3886 14.001 19.7803 13.9231C20.2171 13.8362 20.6277 13.6792 21 13.4642L21 16.3168C21 17.1582 21.0001 17.8832 20.9179 18.4637C20.8297 19.0859 20.631 19.6823 20.1213 20.166C19.6117 20.6497 18.9833 20.8384 18.3278 20.922C17.7161 21.0001 16.9523 21 16.0658 21H7.93417C7.04768 21 6.28387 21.0001 5.67221 20.922C5.0167 20.8384 4.38835 20.6497 3.87868 20.166C3.36902 19.6823 3.17028 19.0859 3.08215 18.4637C2.99991 17.8832 2.99995 17.1582 3 16.3168ZM13 17C13 16.4477 12.5523 16 12 16C11.4477 16 11 16.4477 11 17V18C11 18.5523 11.4477 19 12 19C12.5523 19 13 18.5523 13 18V17Z"
+            fill="url(#gift-icon-grad)"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M5.71099 2.87475C4.81028 3.77546 4.64197 4.98504 5.0038 6.00293C4.7912 6.008 4.59628 6.02163 4.41479 6.05773C3.22473 6.29444 2.29445 7.22471 2.05773 8.41476C1.99948 8.70761 1.99974 9.03544 2.00004 9.41613L2.00009 9.5L2.00004 9.58387C1.99974 9.96456 1.99948 10.2924 2.05773 10.5852C2.29445 11.7753 3.22473 12.7056 4.41479 12.9423C4.70765 13.0005 5.03548 13.0003 5.41617 13C9.80538 12.9965 14.1946 12.9965 18.5838 13C18.9645 13.0003 19.2924 13.0005 19.5852 12.9423C20.7753 12.7056 21.7056 11.7753 21.9423 10.5852C22.0005 10.2924 22.0003 9.9646 22 9.58393L21.9999 9.5L22 9.4161C22.0003 9.03544 22.0005 8.70759 21.9423 8.41476C21.7056 7.22471 20.7753 6.29445 19.5852 6.05773C19.4037 6.02163 19.2088 6.008 18.9961 6.00293C19.3579 4.98504 19.1896 3.77546 18.2889 2.87475C17.0258 1.61166 14.9413 1.72259 13.8232 3.12018L12 5.39921L10.1767 3.12018C9.05866 1.72259 6.97408 1.61166 5.71099 2.87475ZM12 7C11.4477 7 11 7.44772 11 8V10C11 10.5523 11.4477 11 12 11C12.5523 11 13 10.5523 13 10V8C13 7.44772 12.5523 7 12 7ZM7.82839 6C6.9434 6 6.49105 4.92312 7.1252 4.28897C7.54788 3.86629 8.24376 3.90552 8.61499 4.36957L9.91933 6H7.82839ZM16.1715 6C17.0565 6 17.5089 4.92312 16.8747 4.28897C16.452 3.86629 15.7562 3.90552 15.3849 4.36957L14.0806 6H16.1715Z"
+            fill="url(#gift-icon-grad)"
+          />
+        </svg>
+      </button>
+
+      <!-- PILL THANH -->
+      <div class="gift-bar__pill">
+        <span class="gift-bar__label">BẤM ĐỂ NHẬN QUÀ</span>
       </div>
     </div>
-  </nav>
 
-  {% if profile %}
-
-  <!-- LAYER ẢNH PROFILE -->
-  {% if profile.layer %}
-  <div class="profile-page" style="background-image: url('{{ profile.layer }}');"></div>
-  {% endif %}
-
-  <!-- AUDIO -->
-  {% if profile.audio %}
-  <audio id="profile-audio" src="{{ profile.audio }}" preload="auto" loop></audio>
-  {% endif %}
-  <div id="audio-trigger" style="display:none;"></div>
-
-  <!-- MUSIC BAR -->
-  {% if profile.audio %}
-  <div class="music-bar" id="music-bar">
-    <div class="music-bar__wave">
-      <span></span><span></span><span></span><span></span><span></span>
-    </div>
-    <div class="music-bar__title-wrap">
-      <span class="music-bar__title" id="music-bar-title">{{ profile.song or 'Nhạc nền' }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ profile.song or 'Nhạc nền' }}</span>
-    </div>
-    <button class="music-bar__btn" id="music-bar-btn" aria-label="Play/Pause">
-      <svg width="0" height="0" style="position:absolute">
-        <defs>
-          <linearGradient id="btn-icon-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#FFDBE9"/>
-            <stop offset="100%" stop-color="#FE94B2"/>
-          </linearGradient>
-          <linearGradient id="btn-hover-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#670D26"/>
-            <stop offset="100%" stop-color="#2B0013"/>
-          </linearGradient>
-        </defs>
-      </svg>
-      <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="url(#btn-icon-gradient)"/></svg>
-      <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="url(#btn-icon-gradient)"/></svg>
-    </button>
-  </div>
-  {% endif %}
-
-  <!-- GIFT BAR -->
-  <div class="gift-bar" id="gift-bar">
-
-    <!-- NÚT TRÒN ĐEN TRÁI -->
-    <button class="gift-bar__btn" id="gift-bar-btn" aria-label="Nhận quà">
-      <!-- Gradient defs cho icon -->
-      <svg width="0" height="0" style="position:absolute">
-        <defs>
-          <linearGradient id="gift-icon-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#FFDBE9"/>
-            <stop offset="100%" stop-color="#FE94B2"/>
-          </linearGradient>
-        </defs>
-      </svg>
-      <!-- SVG gift box — fill đổi thành gradient #FFDBE9 → #FE94B2 -->
-      <svg class="gift-bar__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M3 16.3168L3 13.4642C3.37228 13.6792 3.78288 13.8362 4.21973 13.9231C4.61143 14.001 5.02655 14.0005 5.37106 14L5.417 14C9.80567 13.9965 14.1944 13.9965 18.5831 14L18.629 14C18.9735 14.0005 19.3886 14.001 19.7803 13.9231C20.2171 13.8362 20.6277 13.6792 21 13.4642L21 16.3168C21 17.1582 21.0001 17.8832 20.9179 18.4637C20.8297 19.0859 20.631 19.6823 20.1213 20.166C19.6117 20.6497 18.9833 20.8384 18.3278 20.922C17.7161 21.0001 16.9523 21 16.0658 21H7.93417C7.04768 21 6.28387 21.0001 5.67221 20.922C5.0167 20.8384 4.38835 20.6497 3.87868 20.166C3.36902 19.6823 3.17028 19.0859 3.08215 18.4637C2.99991 17.8832 2.99995 17.1582 3 16.3168ZM13 17C13 16.4477 12.5523 16 12 16C11.4477 16 11 16.4477 11 17V18C11 18.5523 11.4477 19 12 19C12.5523 19 13 18.5523 13 18V17Z" fill="url(#gift-icon-grad)"/>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.71099 2.87475C4.81028 3.77546 4.64197 4.98504 5.0038 6.00293C4.7912 6.008 4.59628 6.02163 4.41479 6.05773C3.22473 6.29444 2.29445 7.22471 2.05773 8.41476C1.99948 8.70761 1.99974 9.03544 2.00004 9.41613L2.00009 9.5L2.00004 9.58387C1.99974 9.96456 1.99948 10.2924 2.05773 10.5852C2.29445 11.7753 3.22473 12.7056 4.41479 12.9423C4.70765 13.0005 5.03548 13.0003 5.41617 13C9.80538 12.9965 14.1946 12.9965 18.5838 13C18.9645 13.0003 19.2924 13.0005 19.5852 12.9423C20.7753 12.7056 21.7056 11.7753 21.9423 10.5852C22.0005 10.2924 22.0003 9.9646 22 9.58393L21.9999 9.5L22 9.4161C22.0003 9.03544 22.0005 8.70759 21.9423 8.41476C21.7056 7.22471 20.7753 6.29445 19.5852 6.05773C19.4037 6.02163 19.2088 6.008 18.9961 6.00293C19.3579 4.98504 19.1896 3.77546 18.2889 2.87475C17.0258 1.61166 14.9413 1.72259 13.8232 3.12018L12 5.39921L10.1767 3.12018C9.05866 1.72259 6.97408 1.61166 5.71099 2.87475ZM12 7C11.4477 7 11 7.44772 11 8V10C11 10.5523 11.4477 11 12 11C12.5523 11 13 10.5523 13 10V8C13 7.44772 12.5523 7 12 7ZM7.82839 6C6.9434 6 6.49105 4.92312 7.1252 4.28897C7.54788 3.86629 8.24376 3.90552 8.61499 4.36957L9.91933 6H7.82839ZM16.1715 6C17.0565 6 17.5089 4.92312 16.8747 4.28897C16.452 3.86629 15.7562 3.90552 15.3849 4.36957L14.0806 6H16.1715Z" fill="url(#gift-icon-grad)"/>
-      </svg>
-    </button>
-
-    <!-- PILL THANH -->
-    <div class="gift-bar__pill">
-      <span class="gift-bar__label">BẤM ĐỂ NHẬN QUÀ</span>
+    <!-- PROFILE INFO CARD — nội dung hiển thị trong khung profile frame -->
+    <div class="profile-info-card">
+      {% if profile.name %}
+      <div class="info-name">{{ profile.name }}</div>
+      {% endif %} {% if profile.nickname %}
+      <div class="info-nickname">{{ profile.nickname }}</div>
+      {% endif %} {% if profile.nickname or profile.things_we_love or
+      profile.favorite_song %}
+      <div class="info-divider"></div>
+      {% endif %} {% if profile.things_we_love %}
+      <div class="info-label">Điều tụi mình thích về cậu</div>
+      <div class="info-value">{{ profile.things_we_love }}</div>
+      {% endif %} {% if profile.favorite_song %}
+      <div class="info-label">Bài nhạc yêu thích</div>
+      <div class="info-value">{{ profile.favorite_song }}</div>
+      {% endif %}
     </div>
 
-  </div>
+    {% else %}
 
-  <!-- PROFILE INFO CARD — nội dung hiển thị trong khung profile frame -->
-  <div class="profile-info-card">
-    {% if profile.name %}
-    <div class="info-name">{{ profile.name }}</div>
+    <!-- KHÔNG TÌM THẤY PROFILE -->
+    <div class="profile-not-found">
+      <h1>Profile không tồn tại</h1>
+      {% if error %}
+      <p class="text-danger">{{ error }}</p>
+      {% endif %}
+      <a
+        href="{{ url_for('home') }}"
+        class="btn btn-primary mt-3"
+        id="back-button"
+        >Quay lại</a
+      >
+    </div>
+
     {% endif %}
 
-    {% if profile.nickname %}
-    <div class="info-nickname">{{ profile.nickname }}</div>
-    {% endif %}
-
-    {% if profile.nickname or profile.things_we_love or profile.favorite_song %}
-    <div class="info-divider"></div>
-    {% endif %}
-
-    {% if profile.things_we_love %}
-    <div class="info-label">Điều tụi mình thích về cậu</div>
-    <div class="info-value">{{ profile.things_we_love }}</div>
-    {% endif %}
-
-    {% if profile.favorite_song %}
-    <div class="info-label">Bài nhạc yêu thích</div>
-    <div class="info-value">{{ profile.favorite_song }}</div>
-    {% endif %}
-  </div>
-
-  {% else %}
-
-  <!-- KHÔNG TÌM THẤY PROFILE -->
-  <div class="profile-not-found">
-    <h1>Profile không tồn tại</h1>
-    {% if error %}<p class="text-danger">{{ error }}</p>{% endif %}
-    <a href="{{ url_for('home') }}" class="btn btn-primary mt-3" id="back-button">Quay lại</a>
-  </div>
-
-  {% endif %}
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script defer src="{{ url_for('static', filename='src/profile.js') }}"></script>
-</body>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      defer
+      src="{{ url_for('static', filename='src/profile.js') }}"
+    ></script>
+  </body>
 </html>
