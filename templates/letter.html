@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thư - Women Day</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='letter.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='prilayout.css') }}">
+  <link rel="preload" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1763570718/home_logo_nt0lkn.svg" as="image">
+  <link rel="icon" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1771757135/logo_ioneoh.png" type="image/png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_32,h_32,c_fill/v1771757135/logo_ioneoh.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_16,h_16,c_fill/v1771757135/logo_ioneoh.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_180,h_180,c_fill,r_max/v1771757135/logo_ioneoh.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_192,h_192,c_fill,r_max/v1771757135/logo_ioneoh.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_512,h_512,c_fill,r_max/v1771757135/logo_ioneoh.png">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="preload" as="image" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1771912129/hoa_r%C6%A1i-l%E1%BB%9Bp_%C4%91%E1%BA%A7u_ti%C3%AAn_%C4%91%C3%A8_l%C3%AAn_t%E1%BA%A5t_c%E1%BA%A3_tr%E1%BB%AB_n%C3%BAt_nh%E1%BA%ADn_qu%C3%A0_nh%E1%BA%A1c_zbb9eo.png">
+  <link rel="preload" as="image" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1772279773/khungnoidung_1_1_qyd4ee.png">
+  <link rel="preload" as="image" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1772170817/hopqua_tkxhji.png">
+  <style>* { touch-action: manipulation; }</style>
+</head>
+
+<body>
+
+  <!-- HOA RƠI OVERLAY (z-index 1) -->
+  <div class="profile-overlay-layer"></div>
+
+  <!-- HỘP QUÀ — dưới góc trái, z-index 4 (đè lên khung) -->
+  <div class="letter-hopqua-layer"></div>
+
+  <!-- KHUNG NỘI DUNG THƯ (z-index 0) -->
+  <div class="letter-content-frame"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-0">
+      <a class="navbar-brand logo-outer" href="{{ url_for('home') }}">
+        <img src="https://res.cloudinary.com/dogyjotxv/image/upload/v1763570718/home_logo_nt0lkn.svg" alt="Home" class="logo-svg">
+      </a>
+      <div class="navbar-text-custom">A13․2024-2027<br>
+        <span>THPT TRẦN KHAI NGUYÊN</span>
+      </div>
+      <div class="collapse navbar-collapse show" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('source') }}">SOURCE</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('link') }}">LINK</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- NỘI DUNG THƯ (z-index 9) -->
+  {% if profile %}
+  <div class="letter-info-card">
+    {% if profile.name %}
+    <div class="letter-greeting">Kính gửi {{ profile.name }},</div>
+    {% endif %}
+    {% if profile.letter_content %}
+    <div class="letter-body">{{ profile.letter_content }}</div>
+    {% endif %}
+    <div class="letter-signature">08/03/2026 – Tập thể nam 11A13</div>
+  </div>
+  {% endif %}
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="{{ url_for('static', filename='src/profile.js') }}"></script>
+</body>
+
+</html>
