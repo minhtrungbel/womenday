@@ -6,10 +6,9 @@ import cloudinary
 import cloudinary.uploader
 from dotenv import load_dotenv
 import socket
-# Load .env
+
 load_dotenv()
 
-# Cấu hình Cloudinary
 cloudinary.config(
     cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
     api_key=os.getenv("CLOUDINARY_API_KEY"),
@@ -19,7 +18,6 @@ cloudinary.config(
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
-# Chuẩn hóa tên
 def normalize_name(name):
     name = name.strip().lower()
     name = ''.join(c for c in unicodedata.normalize('NFD', name) if unicodedata.category(c) != 'Mn')
@@ -27,26 +25,27 @@ def normalize_name(name):
     name = ''.join(replacements.get(c, c) for c in name)
     name = name.replace(" ", "")
     mapping = {
-        "vbt": "vobaotran", 
-        "lnbt": "lenguyenbaotran", 
+        "vbt": "vobaotran",
+        "lnbt": "lenguyenbaotran",
         "bka": "buikieuanh",
-        "tngl": "trinhngocgialinh", 
-        "hnkn": "huynhnguyenkimngan", 
+        "tngl": "trinhngocgialinh",
+        "hnkn": "huynhnguyenkimngan",
         "lnk": "lengocnhaky",
-        "tnntt": "trannguyenngocthienthanh", 
-        "nnb": "nguyenngocbich", 
+        "tnntt": "trannguyenngocthienthanh",
+        "nnb": "nguyenngocbich",
         "thtn": "tranhatuyetnhu",
-        "dtta": "dothithanhan", 
-        "tth": "tranthihanh", 
+        "dtta": "dothithanhan",
+        "tth": "tranthihanh",
         "dka": "dokhanhan",
-        "lnh": "lieunhuhien", 
+        "lnh": "lieunhuhien",
+        "typ": "tranyenphuong",
     }
     return mapping.get(name, name)
 
-# Khởi tạo DB + thêm dữ liệu
 def init_db():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
+
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS updates (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -56,68 +55,241 @@ def init_db():
             timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     ''')
+
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS profiles (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             short_name TEXT UNIQUE,
             full_name TEXT,
-            bio TEXT,
-            image_url TEXT,
-            audio_url TEXT
+            nickname TEXT,
+            favorite_song TEXT,
+            things_we_love TEXT,
+            layer_url TEXT,
+            audio_url TEXT,
+            avatar_url TEXT
         )
     ''')
-    cursor.execute('DELETE FROM profiles')
 
+    # Migration an toàn: tự thêm cột mới nếu DB cũ chưa có
+    existing_columns = [row[1] for row in cursor.execute("PRAGMA table_info(profiles)").fetchall()]
+    for col, col_type in [
+        ("nickname", "TEXT"),
+        ("favorite_song", "TEXT"),
+        ("things_we_love", "TEXT"),
+        ("song", "TEXT"),
+        ("letter_content", "TEXT"),   # nội dung thư — dùng trong trang letter
+        ("letter_image_url", "TEXT"), # ảnh thư — dùng trong trang letter
+    ]:
+        if col not in existing_columns:
+            cursor.execute(f"ALTER TABLE profiles ADD COLUMN {col} {col_type} DEFAULT ''")
+
+    # ==============================================================
+    # THỨ TỰ CỘT:
+    # short_name | full_name | nickname | favorite_song | things_we_love
+    # | layer_url | audio_url | avatar_url | song | letter_content | letter_image_url
+    #
+    # Điền nội dung vào các chuỗi "" bên dưới mỗi profile:
+    #   "" thứ 1 = biệt danh
+    #   "" thứ 2 = bài nhạc yêu thích (hiển thị trong info card)
+    #   "" thứ 3 = điều tụi mình thích về cậu
+    #   "" thứ 4 = tên bài nhạc chạy trên music bar (vd: "Chìm Sâu - MCK")
+    #   "" thứ 5 = nội dung thư (dùng trong trang letter)
+    #   "" thứ 6 = URL ảnh thư (dùng trong trang letter)
+    # ==============================================================
     profiles = [
-        ("vobaotran", "Võ Bảo Trân", "Võ Bảo Trân là một nhà thiết kế xuất sắc, đam mê nghệ thuật và màu sắc.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/vo_bao_tran.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/1_music.mp3"),
-        ("lenguyenbaotran", "Lê Nguyễn Bảo Trân", "Lê Nguyễn Bảo Trân là một người sáng tạo, yêu thích khám phá những điều mới mẻ.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/le_nguyen_bao_tran.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/2_music.mp3"),
-        ("buikieuanh", "Bùi Kiều Anh", "Bùi Kiều Anh là một cá nhân năng động, luôn truyền cảm hứng cho mọi người xung quanh.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/bui_kieu_anh.jpg",
-         "https://res.cloudinary.com/dogyjotxv/video/upload/v1762270650/1_zuziql.mp3"),
-        ("trinhngocgialinh", "Trịnh Ngọc Gia Linh", "Trịnh Ngọc Gia Linh đam mê công nghệ và có khả năng lãnh đạo tuyệt vời.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/trinh_ngoc_gia_linh.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/4_music.mp3"),
-        ("huynhnguyenkimngan", "Huỳnh Nguyễn Kim Ngân", "Huỳnh Nguyễn Kim Ngân là một người yêu thích văn hóa và nghệ thuật truyền thống.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/huynh_nguyen_kim_ngan.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/5_music.mp3"),
-        ("lengocnhaky", "Lê Ngọc Nhã Kỳ", "Lê Ngọc Nhã Kỳ có niềm đam mê với âm nhạc và sáng tác.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/le_ngoc_nha_ky.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/6_music.mp3"),
-        ("trannguyenngocthienthanh", "Trần Nguyễn Ngọc Thiên Thanh", "Trần Nguyễn Ngọc Thiên Thanh là một người yêu thiên nhiên và môi trường.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/tran_nguyen_ngoc_thien_thanh.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/7_music.mp3"),
-        ("lungocbich", "Lữ Ngọc Bích", "Lữ Ngọc Bích là một người có tâm hồn nghệ sĩ, yêu thích hội họa.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/lu_ngoc_bich.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/8_music.mp3"),
-        ("tranhatuyetnhu", "Trần Hà Tuyết Như", "Trần Hà Tuyết Như luôn tìm tòi và sáng tạo trong lĩnh vực thời trang.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/tran_ha_tuyet_nhu.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/9_music.mp3"),
-        ("dothithanhan", "Đỗ Thị Thanh An", "Đỗ Thị Thanh An là một cá nhân nhiệt huyết, yêu thích các hoạt động cộng đồng.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/do_thi_thanh_an.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/10_music.mp3"),
-        ("tranthihanh", "Trần Thị Hạnh", "Trần Thị Hạnh có niềm đam mê với giáo dục và chia sẻ tri thức.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/tran_thi_hanh.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/11_music.mp3"),
-        ("dokhanhan", "Đỗ Khánh An", "Đỗ Khánh An là một người yêu sách và có sở thích viết lách.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/do_khanh_an.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/12_music.mp3"),
-        ("lieunhuhien", "Liêu Như Hiền", "Liêu Như Hiền là một cá nhân đầy năng lượng, đam mê sáng tạo nội dung số.",
-         "https://res.cloudinary.com/dxxx/image/upload/v123/womenday/uploads/lieu_nhu_hien.jpg",
-         "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/13_music.mp3"),
+        (
+            "vobaotran", "Võ Bảo Trân",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1771951780/votran2_rcmb4w.png",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772207141/VSTRA_-_Ai_Ngo%C3%A0i_Anh_Official_Audio_j8abwy.mp3",
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772022864/votran1_bgdgxr.png",
+            "Ai Ngoài Anh ∙ VSTRA",   # tên bài trên music bar (vd: "Tên bài - Tác giả")
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
+        (
+            "lenguyenbaotran", "Lê Nguyễn Bảo Trân",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954229/letran2_epjgp6.png",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772206464/Ph%C3%A1o_Northside-M%E1%BB%99t_Ng%C3%A0y_Ch%E1%BA%B3ng_N%E1%BA%AFng_ft.thobaymauofficial_Official_MV_hwkpvk.mp3",
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036653/letran1_xkztjc.png",
+            "Một Ngày Chẳng Nắng ∙ Pháo Northside",   # tên bài trên music bar
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
+        (
+            "buikieuanh", "Bùi Kiều Anh",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954223/kieuanh2_qlujkd.png",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772211147/06._Ch%E1%BB%89_M%E1%BB%99t_%C4%90%C3%AAm_N%E1%BB%AFa_Th%C3%B4i_-_RPT_MCK_ft._tlinh_99_the_album_slzrxh.mp3",
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036650/kieuanh1_tcql5x.png",
+            "Chỉ Một Đêm Nữa Thôi ∙ MCK",   # tên bài trên music bar
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
+        (
+            "trinhngocgialinh", "Trịnh Ngọc Gia Linh",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772113738/gialinh2_1_k4bes6.png",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772212283/GO-CORTIS_yfqtlh.mp3",
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036650/gialinh1_nfsmt0.png",
+            "GO ∙ CORTIS",   # tên bài trên music bar
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
+        (
+            "huynhnguyenkimngan", "Huỳnh Nguyễn Kim Ngân",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954221/kimngan2_tsqlkc.png",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772210869/PUPPY_DANGRANGTO_-_WRONG_TIMES_Live_at_LAB_RADAR_ZLAB_fp0cc6.mp3",
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036653/kimngan1_lbbfmu.png",
+            "Wrong Times ∙ Young Puppy x DANGRANGTO",   # tên bài trên music bar
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
+        (
+            "lengocnhaky", "Lê Ngọc Nhã Kỳ",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772003999/nhaky2_yubc2h.png",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772207799/D%C3%B9_Cho_Mai_V%E1%BB%81_Sau_Official_Music_Video_buitruonglinh_z2cxcm.mp3",
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036596/nhaky1_ce1jio.png",
+            "Dù Cho Mai Về Sau ∙ Bùi Trường Linh",   # tên bài trên music bar
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
+        (
+            "trannguyenngocthienthanh", "Trần Nguyễn Ngọc Thiên Thanh",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954084/thienthanh2_rhec6l.png",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772210416/MASHUP_ROCK_THI%E1%BB%86P_H%E1%BB%92NG_T%C3%93C_TI%C3%8AN_MAIQUINN_MU%E1%BB%98II_YEOLAN_%C4%90%C3%80O_T%E1%BB%AC_A1J_x_DTAP_LSX_2025_ryzvda.mp3",
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036596/thienthanh1_pizmpn.png",
+            "Mashup Rock Thiệp Hổng∙Tóc Tiên x MaiQuinn x Yeolan x Đào Tử A1J",   # tên bài trên music bar
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
+        (
+            "lungocbich", "Lữ Ngọc Bích",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954086/ngocbich2_jyiiqf.png",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772209832/Simple_Love_-_Obito_x_Seachains_x_Davis_x_Lena_Official_MV_dkr0vw.mp3",
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036596/ngocbich1_picblc.png",
+            "Simple Love ∙ Obito x Seachains",   # tên bài trên music bar
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
+        (
+            "tranhatuyetnhu", "Trần Hà Tuyết Như",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954085/tuyetnhu2_ptkhyr.png",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772209373/RIO_-_v%E1%BA%A1n_v%E1%BA%ADt_nh%C6%B0_mu%E1%BB%91n_ta_b%C3%AAn_nhau_Official_MV_csfksl.mp3",
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772030901/tuyetnhu1_dlwi9z.png",
+            "Vạn Vật Như Muốn Ta Bên Nhau ∙ RIO",   # tên bài trên music bar
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
+        (
+            "dothithanhan", "Đỗ Thị Thanh An",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954329/cothanhan2_zcahg1.png",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772213432/Maroon_5-_Sugar_de74hs.mp3",
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036649/cothanhan1_qohuyz.png",
+            "Sugar ∙ Maroon5",   # tên bài trên music bar
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
+        (
+            "tranthihanh", "Trần Thị Hạnh",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "",
+            "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/11_music.mp3",
+            "",
+            "",   # tên bài trên music bar
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
+        (
+            "dokhanhan", "Đỗ Khánh An",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "",
+            "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/12_music.mp3",
+            "",
+            "",   # tên bài trên music bar
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
+        (
+            "lieunhuhien", "Liêu Như Hiền",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772201008/nhuhien2_ue8uc0.png",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772211507/Low_G_In_Love_ft._JustaTee_L2K_The_Album_szcc8e.mp3",
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772201013/nhuhien1_eyfkzu.png",
+            "In Love ∙ Low G x JustaTee",   # tên bài trên music bar
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
+        (
+            "tranyenphuong", "Trần Yến Phương",
+            "",   # biệt danh
+            "",   # bài nhạc yêu thích
+            "",   # điều tụi mình thích về cậu
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772199597/coyenphuong2_tykgpk.png",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772213306/M%E1%BA%B7t_M%E1%BB%99c-VAnh_hqdv3t.mp3",
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772199593/coyenphuong1_jkkpvx.png",
+            "Mặt Mộc ∙ VAnh x Phạm Nguyên Ngọc",   # tên bài trên music bar
+            "",   # nội dung thư (letter)
+            "",   # URL ảnh thư (letter)
+        ),
     ]
 
-    cursor.executemany("INSERT OR IGNORE INTO profiles VALUES (NULL, ?, ?, ?, ?, ?)", profiles)
+    cursor.executemany(
+        """INSERT INTO profiles
+               (short_name, full_name, nickname, favorite_song, things_we_love,
+                layer_url, audio_url, avatar_url, song, letter_content, letter_image_url)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+           ON CONFLICT(short_name) DO UPDATE SET
+               full_name        = excluded.full_name,
+               nickname         = excluded.nickname,
+               favorite_song    = excluded.favorite_song,
+               things_we_love   = excluded.things_we_love,
+               layer_url        = excluded.layer_url,
+               audio_url        = excluded.audio_url,
+               avatar_url       = excluded.avatar_url,
+               song             = excluded.song,
+               letter_content   = excluded.letter_content,
+               letter_image_url = excluded.letter_image_url""",
+        profiles
+    )
     conn.commit()
     conn.close()
 
-# Khởi tạo DB khi chạy lần đầu
 init_db()
 
-# Trang chủ
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
@@ -146,7 +318,6 @@ def home():
     conn.close()
     return render_template('home.html', updates=updates)
 
-# === PROFILE: HỖ TRỢ CẢ GET (từ home) VÀ POST ===
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     name = ''
@@ -161,20 +332,57 @@ def profile():
     norm = normalize_name(name)
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT full_name, bio, image_url, audio_url FROM profiles WHERE short_name = ?", (norm,))
+    cursor.execute(
+        """SELECT full_name, nickname, favorite_song, things_we_love,
+                  layer_url, audio_url, avatar_url, song
+           FROM profiles WHERE short_name = ?""",
+        (norm,)
+    )
     row = cursor.fetchone()
     conn.close()
 
     if row:
         profile_data = {
-            'name': row[0],
-            'bio': row[1],
-            'image': row[2],
-            'audio': row[3]
+            'name':           row[0],
+            'nickname':       row[1],
+            'favorite_song':  row[2],
+            'things_we_love': row[3],
+            'layer':          row[4],
+            'audio':          row[5],
+            'avatar':         row[6],
+            'song':           row[7],
         }
         return render_template('profile.html', profile=profile_data)
     else:
         return render_template('profile.html', profile=None, error="Không tìm thấy profile")
+
+@app.route('/letter', methods=['GET'])
+def letter():
+    name = request.args.get('name', '').strip()
+
+    if not name:
+        return render_template('letter.html', profile=None)
+
+    norm = normalize_name(name)
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute(
+        """SELECT full_name, letter_content, letter_image_url
+           FROM profiles WHERE short_name = ?""",
+        (norm,)
+    )
+    row = cursor.fetchone()
+    conn.close()
+
+    if row:
+        profile_data = {
+            'name':             row[0],
+            'letter_content':   row[1],
+            'letter_image_url': row[2],
+        }
+        return render_template('letter.html', profile=profile_data)
+    else:
+        return render_template('letter.html', profile=None)
 
 @app.route('/source')
 def source():
@@ -193,15 +401,11 @@ def get_names():
     conn.close()
     return jsonify({'names': names})
 
-# Thay toàn bộ đoạn if __name__ == '__main__': hiện tại bằng đoạn này
 if __name__ == '__main__':
-    # LẤY IP MÁY TÍNH TRONG MẠNG WIFI (192.168.x.x)
     try:
-        # Cách lấy IP nội bộ chính xác nhất 99.9% trường hợp
         local_ip = socket.gethostbyname(socket.gethostname())
     except:
         local_ip = "127.0.0.1"
-    # Chỉ in ra khi đang chạy local (không có biến PORT → tức là đang code ở nhà)
     if os.getenv("PORT") is None:
         print("=" * 60)
         print("       TRANG A13 ĐÃ CHẠY THÀNH CÔNG!")
@@ -215,6 +419,6 @@ if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
         port=int(os.getenv("PORT", 5000)),
-        debug=(os.getenv("PORT") is None),   # local → debug=True, Render → debug=False
-        use_reloader=(os.getenv("PORT") is None)  # chỉ reload khi đang code local
+        debug=(os.getenv("PORT") is None),
+        use_reloader=(os.getenv("PORT") is None)
     )
