@@ -79,6 +79,10 @@ def init_db():
         ("song", "TEXT"),
         ("letter_content", "TEXT"),   # nội dung thư — dùng trong trang letter
         ("letter_image_url", "TEXT"), # ảnh thư — dùng trong trang letter
+        ("gif_up", "TEXT"),           # gif di chuyển lên
+        ("gif_down", "TEXT"),         # gif di chuyển xuống
+        ("gif_left", "TEXT"),         # gif di chuyển ngang trái
+        ("gif_right", "TEXT"),        # gif di chuyển ngang phải
     ]:
         if col not in existing_columns:
             cursor.execute(f"ALTER TABLE profiles ADD COLUMN {col} {col_type} DEFAULT ''")
@@ -87,6 +91,7 @@ def init_db():
     # THỨ TỰ CỘT:
     # short_name | full_name | nickname | favorite_song | things_we_love
     # | layer_url | audio_url | avatar_url | song | letter_content | letter_image_url
+    # | gif_up | gif_down | gif_left | gif_right
     #
     # Điền nội dung vào các chuỗi "" bên dưới mỗi profile:
     #   "" thứ 1 = biệt danh
@@ -95,6 +100,10 @@ def init_db():
     #   "" thứ 4 = tên bài nhạc chạy trên music bar (vd: "Chìm Sâu - MCK")
     #   "" thứ 5 = nội dung thư (dùng trong trang letter)
     #   "" thứ 6 = URL ảnh thư (dùng trong trang letter)
+    #   "" thứ 7 = URL gif up (di chuyển lên xuống)
+    #   "" thứ 8 = URL gif down (di chuyển lên xuống)
+    #   "" thứ 9 = URL gif left (di chuyển ngang)
+    #   "" thứ 10 = URL gif right (di chuyển ngang)
     # ==============================================================
     profiles = [
         (
@@ -108,6 +117,10 @@ def init_db():
             "Ai Ngoài Anh ∙ VSTRA",   # tên bài trên music bar (vd: "Tên bài - Tác giả")
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "",   # gif up
+            "",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
         (
             "lenguyenbaotran", "Lê Nguyễn Bảo Trân",
@@ -120,6 +133,10 @@ def init_db():
             "Một Ngày Chẳng Nắng ∙ Pháo Northside",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "",   # gif up
+            "",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
         (
             "buikieuanh", "Bùi Kiều Anh",
@@ -132,6 +149,10 @@ def init_db():
             "Chỉ Một Đêm Nữa Thôi ∙ MCK",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772294406/Buoc_Toc_-_Up_fekvlr.gif",     # gif up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772294406/Buoc_Toc_-_Down_gpwews.gif",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
         (
             "trinhngocgialinh", "Trịnh Ngọc Gia Linh",
@@ -144,6 +165,10 @@ def init_db():
             "GO ∙ CORTIS",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "",   # gif up
+            "",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
         (
             "huynhnguyenkimngan", "Huỳnh Nguyễn Kim Ngân",
@@ -156,6 +181,10 @@ def init_db():
             "Wrong Times ∙ Young Puppy x DANGRANGTO",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "",   # gif up
+            "",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
         (
             "lengocnhaky", "Lê Ngọc Nhã Kỳ",
@@ -168,6 +197,10 @@ def init_db():
             "Dù Cho Mai Về Sau ∙ Bùi Trường Linh",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "",   # gif up
+            "",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
         (
             "trannguyenngocthienthanh", "Trần Nguyễn Ngọc Thiên Thanh",
@@ -175,11 +208,15 @@ def init_db():
             "",   # bài nhạc yêu thích
             "",   # điều tụi mình thích về cậu
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954084/thienthanh2_rhec6l.png",
-            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772210416/MASHUP_ROCK_THI%E1%BB%86P_H%E1%BB%92NG_T%C3%93C_TI%C3%8AN_MAIQUINN_MU%E1%BB%98II_YEOLAN_%C4%90%C3%80O_T%E1%BB%AC_A1J_x_DTAP_LSX_2025_ryzvda.mp3",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772210416/MASHUP_ROCK_THI%E1%BB%86P_H%E1%BB%92NG_T%C3%93C_TI%C3%8AN_MAIQUINN_MU%E1%BB%98II_YEOLAN_%C4%80O_T%E1%BB%AC_A1J_x_DTAP_LSX_2025_ryzvda.mp3",
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036596/thienthanh1_pizmpn.png",
             "Mashup Rock Thiệp Hổng∙Tóc Tiên x MaiQuinn x Yeolan x Đào Tử A1J",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "",   # gif up
+            "",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
         (
             "lungocbich", "Lữ Ngọc Bích",
@@ -192,6 +229,10 @@ def init_db():
             "Simple Love ∙ Obito x Seachains",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "",   # gif up
+            "",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
         (
             "tranhatuyetnhu", "Trần Hà Tuyết Như",
@@ -204,6 +245,10 @@ def init_db():
             "Vạn Vật Như Muốn Ta Bên Nhau ∙ RIO",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "",   # gif up
+            "",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
         (
             "dothithanhan", "Đỗ Thị Thanh An",
@@ -216,6 +261,10 @@ def init_db():
             "Sugar ∙ Maroon5",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "",   # gif up
+            "",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
         (
             "tranthihanh", "Trần Thị Hạnh",
@@ -228,6 +277,10 @@ def init_db():
             "",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "",   # gif up
+            "",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
         (
             "dokhanhan", "Đỗ Khánh An",
@@ -240,6 +293,10 @@ def init_db():
             "",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "",   # gif up
+            "",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
         (
             "lieunhuhien", "Liêu Như Hiền",
@@ -252,6 +309,10 @@ def init_db():
             "In Love ∙ Low G x JustaTee",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "",   # gif up
+            "",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
         (
             "tranyenphuong", "Trần Yến Phương",
@@ -264,14 +325,19 @@ def init_db():
             "Mặt Mộc ∙ VAnh x Phạm Nguyên Ngọc",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
+            "",   # gif up
+            "",   # gif down
+            "",   # gif left
+            "",   # gif right
         ),
     ]
 
     cursor.executemany(
         """INSERT INTO profiles
                (short_name, full_name, nickname, favorite_song, things_we_love,
-                layer_url, audio_url, avatar_url, song, letter_content, letter_image_url)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                layer_url, audio_url, avatar_url, song, letter_content, letter_image_url,
+                gif_up, gif_down, gif_left, gif_right)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
            ON CONFLICT(short_name) DO UPDATE SET
                full_name        = excluded.full_name,
                nickname         = excluded.nickname,
@@ -282,7 +348,11 @@ def init_db():
                avatar_url       = excluded.avatar_url,
                song             = excluded.song,
                letter_content   = excluded.letter_content,
-               letter_image_url = excluded.letter_image_url""",
+               letter_image_url = excluded.letter_image_url,
+               gif_up           = excluded.gif_up,
+               gif_down         = excluded.gif_down,
+               gif_left         = excluded.gif_left,
+               gif_right        = excluded.gif_right""",
         profiles
     )
     conn.commit()
@@ -330,19 +400,12 @@ def profile():
         return render_template('profile.html', profile=None, error="Vui lòng nhập tên")
 
     norm = normalize_name(name)
-    from flask import url_for
-    gif_filename = f"gif/{norm}.gif"
-    gif_path = os.path.join(app.static_folder, gif_filename)
-
-    if os.path.exists(gif_path):
-        gif_url = url_for('static', filename=gif_filename)
-    else:
-        gif_url = None
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute(
         """SELECT full_name, nickname, favorite_song, things_we_love,
-                  layer_url, audio_url, avatar_url, song
+                  layer_url, audio_url, avatar_url, song,
+                  gif_up, gif_down, gif_left, gif_right
            FROM profiles WHERE short_name = ?""",
         (norm,)
     )
@@ -359,7 +422,10 @@ def profile():
             'audio':          row[5],
             'avatar':         row[6],
             'song':           row[7],
-            'gif':            gif_url
+            'gif_up':         row[8],
+            'gif_down':       row[9],
+            'gif_left':       row[10],
+            'gif_right':      row[11],
         }
         return render_template('profile.html', profile=profile_data)
     else:
