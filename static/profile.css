@@ -462,12 +462,6 @@
   transform: scale(1.08);
 }
 
-/* Khi hover btn → SVG icon đổi sang màu gradient của btn gốc (#670D26 → #2B0013) */
-.music-bar__btn:hover .icon-play path,
-.music-bar__btn:hover .icon-pause path {
-  fill: url(#btn-hover-gradient);
-}
-
 .music-bar__btn:active {
   transform: scale(0.93);
   box-shadow: 0 1px 6px rgba(43,0,19,0.4);
@@ -518,7 +512,7 @@
 /* 360–414px: BASELINE */
 @media (min-width: 360px) and (max-width: 414px) {
   .music-bar {
-    top: 51%;
+    top: 61%;
     left: 32%;
     transform: translate(-50%, -50%);
     width: 50vw;
@@ -551,7 +545,7 @@
 /* 415–576px: rộng hơn → top tăng nhẹ, left tăng nhẹ, width rộng hơn */
 @media (min-width: 415px) and (max-width: 576px) {
   .music-bar {
-    top: 51%;
+    top: 61%;
     left: 34%;
     transform: translate(-50%, -50%);
     width: 54vw;
@@ -1450,5 +1444,14 @@ img.img-fluid {
     width: 120px;
     top: 20%;
     left: 28%;
+  }
+}
+/* ======== iOS Safari fix: music bar (100vh bug) ======== */
+@supports (-webkit-touch-callout: none) {
+  @media (min-width: 360px) and (max-width: 414px) {
+    .music-bar { top: 57% !important; }
+  }
+  @media (min-width: 415px) and (max-width: 576px) {
+    .music-bar { top: 57% !important; }
   }
 }
