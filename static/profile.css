@@ -512,7 +512,7 @@
 /* 360–414px: BASELINE */
 @media (min-width: 360px) and (max-width: 414px) {
   .music-bar {
-    top: 61%;
+    top: 57%;
     left: 32%;
     transform: translate(-50%, -50%);
     width: 50vw;
@@ -545,7 +545,7 @@
 /* 415–576px: rộng hơn → top tăng nhẹ, left tăng nhẹ, width rộng hơn */
 @media (min-width: 415px) and (max-width: 576px) {
   .music-bar {
-    top: 61%;
+    top: 57%;
     left: 34%;
     transform: translate(-50%, -50%);
     width: 54vw;
@@ -1449,9 +1449,9 @@ img.img-fluid {
 /* ======== iOS Safari fix: music bar (100vh bug) ======== */
 @supports (-webkit-touch-callout: none) {
   @media (min-width: 360px) and (max-width: 414px) {
-    .music-bar { top: 57% !important; }
+    .music-bar { top: 53% !important; }
   }
   @media (min-width: 415px) and (max-width: 576px) {
-    .music-bar { top: 57% !important; }
+    .music-bar { top: 53% !important; }
   }
 }
