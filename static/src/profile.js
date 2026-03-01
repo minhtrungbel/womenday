@@ -140,31 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // sync ngay khi load
     syncBarState();
   }
-// === GIFT BAR — chuyển sang /letter?name=... ===
-const giftBarBtn = document.getElementById('gift-bar-btn');
-if (giftBarBtn) {
-  giftBarBtn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    const params = new URLSearchParams(window.location.search);
-    const name = params.get('name') || '';
-    const url = new URL('/letter', window.location.origin);
-    if (name) url.searchParams.set('name', name);
-    sessionStorage.setItem('audio_allowed', 'true');
-    location.href = url.toString();
-  });
-}
-const giftBar = document.getElementById('gift-bar');
-if (giftBar) {
-  giftBar.addEventListener('click', function (e) {
-    e.stopPropagation();
-    const params = new URLSearchParams(window.location.search);
-    const name = params.get('name') || '';
-    const url = new URL('/letter', window.location.origin);
-    if (name) url.searchParams.set('name', name);
-    sessionStorage.setItem('audio_allowed', 'true');
-    location.href = url.toString();
-  });
-}
+
   // Nút quay lại
   if (backButton) {
     backButton.addEventListener("click", function (e) {
@@ -182,7 +158,11 @@ if (giftBar) {
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") {
       wasHidden = true;
-      stopAudio();
+      // Dừng ngay lập tức không fade để iOS kịp xử lý
+      clearInterval(fadeInInterval);
+      audio.pause();
+      isPlaying = false;
+      saveAudioState();
     } else if (
       wasHidden &&
       sessionStorage.getItem("audio_allowed") === "true"
@@ -195,10 +175,18 @@ if (giftBar) {
   });
 
   // === DỌN DẸP KHI RỜI TRANG ===
-  const cleanup = () => {
-    stopAudio();
+  // pagehide: iOS Safari dùng cái này thay vì beforeunload
+  window.addEventListener("pagehide", () => {
+    clearInterval(fadeInInterval);
+    audio.pause();
+    isPlaying = false;
     sessionStorage.removeItem(SESSION_KEY);
-  };
-  window.addEventListener("pagehide", cleanup);
-  window.addEventListener("beforeunload", cleanup);
+  }, false);
+
+  window.addEventListener("beforeunload", () => {
+    clearInterval(fadeInInterval);
+    audio.pause();
+    isPlaying = false;
+    sessionStorage.removeItem(SESSION_KEY);
+  });
 });
