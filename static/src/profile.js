@@ -141,6 +141,21 @@ document.addEventListener("DOMContentLoaded", function () {
     syncBarState();
   }
 
+  // === GIFT BAR → chuyển sang trang letter ===
+  const giftBarBtn = document.getElementById('gift-bar-btn');
+  if (giftBarBtn) {
+    giftBarBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get('name');
+      if (name) {
+        const url = new URL('/letter', window.location.origin);
+        url.searchParams.set('name', name);
+        location.href = url.toString();
+      }
+    });
+  }
+
   // Nút quay lại
   if (backButton) {
     backButton.addEventListener("click", function (e) {
@@ -158,11 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") {
       wasHidden = true;
-      // Dừng ngay lập tức không fade để iOS kịp xử lý
-      clearInterval(fadeInInterval);
-      audio.pause();
-      isPlaying = false;
-      saveAudioState();
+      stopAudio();
     } else if (
       wasHidden &&
       sessionStorage.getItem("audio_allowed") === "true"
@@ -175,18 +186,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // === DỌN DẸP KHI RỜI TRANG ===
-  // pagehide: iOS Safari dùng cái này thay vì beforeunload
-  window.addEventListener("pagehide", () => {
-    clearInterval(fadeInInterval);
-    audio.pause();
-    isPlaying = false;
+  const cleanup = () => {
+    stopAudio();
     sessionStorage.removeItem(SESSION_KEY);
-  }, false);
-
-  window.addEventListener("beforeunload", () => {
-    clearInterval(fadeInInterval);
-    audio.pause();
-    isPlaying = false;
-    sessionStorage.removeItem(SESSION_KEY);
-  });
+  };
+  window.addEventListener("pagehide", cleanup);
+  window.addEventListener("beforeunload", cleanup);
 });
