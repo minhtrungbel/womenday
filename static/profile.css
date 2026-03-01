@@ -476,10 +476,10 @@
 .music-bar.playing .icon-play  { display: none; }
 .music-bar.playing .icon-pause { display: block; }
 
-/* ≤359px: nhỏ hơn baseline → top cao hơn, left ít hơn, width hẹp hơn */
+/* ≤359px */
 @media (max-width: 359px) {
   .music-bar {
-    top: 46%;
+    top: 50%;
     left: 28%;
     transform: translate(-50%, -50%);
     width: 46vw;
@@ -509,10 +509,10 @@
   }
 }
 
-/* 360–414px: BASELINE */
+/* 360–414px: BASELINE — xích xuống 4% so với trước */
 @media (min-width: 360px) and (max-width: 414px) {
   .music-bar {
-    top: 51%;
+    top: 55%;
     left: 32%;
     transform: translate(-50%, -50%);
     width: 50vw;
@@ -542,10 +542,10 @@
   }
 }
 
-/* 415–576px: rộng hơn → top tăng nhẹ, left tăng nhẹ, width rộng hơn */
+/* 415–576px — xích xuống 4% */
 @media (min-width: 415px) and (max-width: 576px) {
   .music-bar {
-    top: 51%;
+    top: 55%;
     left: 34%;
     transform: translate(-50%, -50%);
     width: 54vw;
@@ -575,10 +575,10 @@
   }
 }
 
-/* 577–795px */
+/* 577–795px — xích xuống 4% */
 @media (min-width: 577px) and (max-width: 795px) {
   .music-bar {
-    top: 55%;
+    top: 59%;
     left: 40%;
     transform: translate(-50%, -50%);
     width: 56vw;
@@ -608,9 +608,10 @@
   }
 }
 
+/* 796–991.98px — xích xuống 20px */
 @media (min-width: 796px) and (max-width: 991.98px) {
   .music-bar {
-    top: 70px;
+    top: 90px;
     left: 72%;
     transform: translateX(-50%);
     width: 290px;
@@ -626,6 +627,22 @@
     width: 38px;
     height: 38px;
     margin-right: -15px;
+  }
+}
+
+/* ======== iOS Safari: music bar fix (100vh bug) ======== */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 359px) {
+    .music-bar { top: 47%; }
+  }
+  @media (min-width: 360px) and (max-width: 414px) {
+    .music-bar { top: 52%; }
+  }
+  @media (min-width: 415px) and (max-width: 576px) {
+    .music-bar { top: 52%; }
+  }
+  @media (min-width: 577px) and (max-width: 795px) {
+    .music-bar { top: 56%; }
   }
 }
 
@@ -1137,10 +1154,10 @@ img.img-fluid {
   margin: 10px 0;
 }
 
-/* ≤359px: nhỏ hơn baseline → top thấp hơn, left ít hơn, font nhỏ hơn */
+/* ≤359px */
 @media (max-width: 359px) {
   .profile-info-card {
-    top: 58%;
+    top: 62%;
     left: 3%;
     right: 3%;
     width: auto;
@@ -1174,10 +1191,10 @@ img.img-fluid {
   }
 }
 
-/* 360–414px: BASELINE */
+/* 360–414px: BASELINE — xích xuống 4% */
 @media (min-width: 360px) and (max-width: 414px) {
   .profile-info-card {
-    top: 62%;
+    top: 66%;
     left: 5%;
     right: 3%;
     width: auto;
@@ -1211,10 +1228,10 @@ img.img-fluid {
   }
 }
 
-/* 415–576px: rộng hơn → top tăng nhẹ, left tăng nhẹ, font lớn hơn chút */
+/* 415–576px — xích xuống 4% */
 @media (min-width: 415px) and (max-width: 576px) {
   .profile-info-card {
-    top: 63%;
+    top: 67%;
     left: 6%;
     right: 3%;
     width: auto;
@@ -1248,10 +1265,10 @@ img.img-fluid {
   }
 }
 
-/* 577–795px */
+/* 577–795px — xích xuống 4% */
 @media (min-width: 577px) and (max-width: 795px) {
   .profile-info-card {
-    top: 64%;
+    top: 68%;
     left: 7%;
     right: 4%;
     width: auto;
@@ -1285,9 +1302,10 @@ img.img-fluid {
   }
 }
 
+/* 796–991.98px — xích xuống ~5% */
 @media (min-width: 796px) and (max-width: 991.98px) {
   .profile-info-card {
-    top: 15%;
+    top: 20%;
     left: 56%;
     width: 22%;
     max-width: 220px;
@@ -1311,6 +1329,22 @@ img.img-fluid {
   .profile-info-card .info-label {
     font-size: 0.52rem;
     margin-top: 10px;
+  }
+}
+
+/* ======== iOS Safari: info card fix (100vh bug) ======== */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 359px) {
+    .profile-info-card { top: 58% !important; }
+  }
+  @media (min-width: 360px) and (max-width: 414px) {
+    .profile-info-card { top: 62% !important; }
+  }
+  @media (min-width: 415px) and (max-width: 576px) {
+    .profile-info-card { top: 63% !important; }
+  }
+  @media (min-width: 577px) and (max-width: 795px) {
+    .profile-info-card { top: 64% !important; }
   }
 }
 
