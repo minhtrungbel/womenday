@@ -471,7 +471,10 @@
   width: 18px;
   height: 18px;
 }
-
+.music-bar__btn:hover .icon-play path,
+.music-bar__btn:hover .icon-pause path {
+  fill: url(#btn-hover-gradient);
+}
 .icon-pause { display: none; }
 .music-bar.playing .icon-play  { display: none; }
 .music-bar.playing .icon-pause { display: block; }
