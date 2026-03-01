@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-  const giftBarpill = document.getElementById('gift-bar-pill');
+  const giftBarpill = document.querySelector('.gift-bar__pill');
   if (giftBarpill) {
     giftBarpill.addEventListener('click', (e) => {
       e.stopPropagation();
