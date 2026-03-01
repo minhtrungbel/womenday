@@ -155,7 +155,19 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
+  const giftBarpill = document.getElementById('gift-bar-pill');
+  if (giftBarpill) {
+    giftBarpill.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get('name');
+      if (name) {
+        const url = new URL('/letter', window.location.origin);
+        url.searchParams.set('name', name);
+        location.href = url.toString();
+      }
+    });
+  }
   // Nút quay lại
   if (backButton) {
     backButton.addEventListener("click", function (e) {
