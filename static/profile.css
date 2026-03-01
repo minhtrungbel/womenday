@@ -512,7 +512,7 @@
 /* 360–414px: BASELINE */
 @media (min-width: 360px) and (max-width: 414px) {
   .music-bar {
-    top: 55%;
+    top: 59%;
     left: 32%;
     transform: translate(-50%, -50%);
     width: 50vw;
@@ -545,7 +545,7 @@
 /* 415–576px: rộng hơn → top tăng nhẹ, left tăng nhẹ, width rộng hơn */
 @media (min-width: 415px) and (max-width: 576px) {
   .music-bar {
-    top: 55%;
+    top: 59%;
     left: 34%;
     transform: translate(-50%, -50%);
     width: 54vw;
@@ -1446,33 +1446,22 @@ img.img-fluid {
     left: 28%;
   }
 }
-/* ======== iOS Safari: music bar & info card fix (100vh bug) ======== */
+/* ======== iOS Safari fix: music bar & info card (100vh bug) ======== */
 @supports (-webkit-touch-callout: none) {
-  /* Music bar: Safari tính viewport cao hơn thực → kéo lên lại */
   @media (max-width: 359px) {
     .music-bar { top: 47% !important; }
-  }
-  @media (min-width: 360px) and (max-width: 414px) {
-    .music-bar { top: 52% !important; }
-  }
-  @media (min-width: 415px) and (max-width: 576px) {
-    .music-bar { top: 52% !important; }
-  }
-  @media (min-width: 577px) and (max-width: 795px) {
-    .music-bar { top: 56% !important; }
-  }
-
-  /* Info card: tương tự */
-  @media (max-width: 359px) {
     .profile-info-card { top: 58% !important; }
   }
   @media (min-width: 360px) and (max-width: 414px) {
+    .music-bar { top: 55% !important; }
     .profile-info-card { top: 62% !important; }
   }
   @media (min-width: 415px) and (max-width: 576px) {
+    .music-bar { top: 55% !important; }
     .profile-info-card { top: 63% !important; }
   }
   @media (min-width: 577px) and (max-width: 795px) {
+    .music-bar { top: 56% !important; }
     .profile-info-card { top: 64% !important; }
   }
 }
