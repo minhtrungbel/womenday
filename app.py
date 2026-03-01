@@ -208,7 +208,7 @@ def init_db():
             "",   # bài nhạc yêu thích
             "",   # điều tụi mình thích về cậu
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954084/thienthanh2_rhec6l.png",
-            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772210416/MASHUP_ROCK_THI%E1%BB%86P_H%E1%BB%92NG_T%C3%93C_TI%C3%8AN_MAIQUINN_MU%E1%BB%98II_YEOLAN_%C4%80O_T%E1%BB%AC_A1J_x_DTAP_LSX_2025_ryzvda.mp3",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772210416/MASHUP_ROCK_THI%E1%BB%86P_H%E1%BB%92NG_T%C3%93C_TI%C3%8AN_MAIQUINN_MU%E1%BB%98II_YEOLAN_%C4%90%C3%80O_T%E1%BB%AC_A1J_x_DTAP_LSX_2025_ryzvda.mp3",
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036596/thienthanh1_pizmpn.png",
             "Mashup Rock Thiệp Hổng∙Tóc Tiên x MaiQuinn x Yeolan x Đào Tử A1J",   # tên bài trên music bar
             "",   # nội dung thư (letter)
