@@ -144,9 +144,9 @@ def init_db():
             "",   # bài nhạc yêu thích
             "",   # điều tụi mình thích về cậu
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954223/kieuanh2_qlujkd.png",
-            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772211147/06._Ch%E1%BB%89_M%E1%BB%99t_%C4%90%C3%AAm_N%E1%BB%AFa_Th%C3%B4i_-_RPT_MCK_ft._tlinh_99_the_album_slzrxh.mp3",
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772454983/Nghe_nh%C6%B0_t%C3%ACnh_y%C3%AAu_-_MCK_remixx_prod_mp3cut.net_wppsbw.mp3",
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036650/kieuanh1_tcql5x.png",
-            "Chỉ Một Đêm Nữa Thôi ∙ MCK",   # tên bài trên music bar
+            "Nghe Như Tình Yêu ∙ MCK",   # tên bài trên music bar
             "",   # nội dung thư (letter)
             "",   # URL ảnh thư (letter)
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772294406/Buoc_Toc_-_Up_fekvlr.gif",     # gif up
