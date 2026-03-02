@@ -1,16 +1,105 @@
 // static/js/profile.js
 document.addEventListener("DOMContentLoaded", function () {
-  const audio = document.getElementById("profile-audio");
+
+  // ==================== TOUCH HOVER EFFECT (1-2s rồi về bình thường) ====================
+  function addTouchHover(el, duration = 1200) {
+    if (!el) return;
+    el.addEventListener("touchstart", () => {
+      el.classList.add("touch-hover");
+    }, { passive: true });
+    el.addEventListener("touchend", () => {
+      setTimeout(() => el.classList.remove("touch-hover"), duration);
+    }, { passive: true });
+    el.addEventListener("touchcancel", () => {
+      el.classList.remove("touch-hover");
+    }, { passive: true });
+  }
+
+  addTouchHover(document.getElementById("music-bar-btn"), 1200);
+  addTouchHover(document.getElementById("gift-bar-btn"), 1200);
+  addTouchHover(document.querySelector(".gift-bar__pill"), 1200);
+
+  // ==================== IOS SAFARI: fix toàn bộ layout dùng bottom thay top ====================
+  // Safari mobile có thanh địa chỉ ở dưới + 100vh không chính xác
+  // → dùng bottom thay top cho mọi element cần canh vị trí trên mobile iOS
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  if (isIOS) {
+    const musicBarEl    = document.getElementById('music-bar');
+    const giftBarEl     = document.getElementById('gift-bar');
+
+    // Tính navbar height thực tế
+    function getNavbarHeight() {
+      const navbar = document.querySelector('.navbar');
+      return navbar ? navbar.offsetHeight : 58;
+    }
+
+    function applyIOSLayout() {
+      const vw = window.innerWidth;
+      const navH = getNavbarHeight();
+
+      // Chỉ can thiệp trên mobile (< 796px)
+      if (vw >= 796) {
+        // Reset về CSS gốc cho tablet/desktop
+        if (musicBarEl) {
+          musicBarEl.style.cssText = '';
+        }
+        if (giftBarEl) {
+          giftBarEl.style.cssText = '';
+        }
+        return;
+      }
+
+      // === MUSIC BAR: dùng bottom thay top để tránh thanh Safari che ===
+      if (musicBarEl) {
+        // Tính width theo breakpoint
+        let barWidth, barLeft;
+        if (vw <= 359) {
+          barWidth = Math.min(Math.max(vw * 0.46, 148), 175) + 'px';
+          barLeft = '28%';
+        } else if (vw <= 414) {
+          barWidth = Math.min(Math.max(vw * 0.50, 175), 210) + 'px';
+          barLeft = '32%';
+        } else if (vw <= 576) {
+          barWidth = Math.min(Math.max(vw * 0.54, 183), 222) + 'px';
+          barLeft = '34%';
+        } else {
+          barWidth = Math.min(Math.max(vw * 0.56, 190), 240) + 'px';
+          barLeft = '40%';
+        }
+        musicBarEl.style.top       = '';
+        musicBarEl.style.bottom    = '180px'; // trên thanh Safari + gift bar
+        musicBarEl.style.left      = barLeft;
+        musicBarEl.style.transform = 'translateX(-50%)';
+        musicBarEl.style.width     = barWidth;
+      }
+
+      // === GIFT BAR: đã dùng bottom trong CSS nên chỉ cần đảm bảo an toàn với Safari ===
+      if (giftBarEl) {
+        // Safari bottom bar cao ~83px, ta thêm buffer
+        giftBarEl.style.bottom = '20px';
+        giftBarEl.style.left   = '50%';
+        giftBarEl.style.transform = 'translateX(-50%)';
+      }
+    }
+
+    applyIOSLayout();
+    window.addEventListener('resize', applyIOSLayout);
+    // Safari thay đổi viewport khi scroll → recalc
+    window.addEventListener('scroll', applyIOSLayout, { passive: true });
+  }
+
+  // ==================== AUDIO ====================
+  const audio        = document.getElementById("profile-audio");
   const audioTrigger = document.getElementById("audio-trigger");
-  const backButton = document.getElementById("back-button");
+  const backButton   = document.getElementById("back-button");
 
   if (!audio) return;
 
-  let isPlaying = false;
+  let isPlaying     = false;
   let fadeInInterval = null;
-  const SESSION_KEY = "profile_audio_state";
+  const SESSION_KEY  = "profile_audio_state";
 
-  // Lưu trạng thái để khôi phục khi quay lại tab
   function saveAudioState() {
     sessionStorage.setItem(
       SESSION_KEY,
@@ -65,7 +154,6 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((err) => {
         console.warn("Autoplay bị chặn:", err);
-        // Không hiện UI gì, cơ chế unlock qua audio-trigger sẽ xử lý
       });
   }
 
@@ -76,7 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
     saveAudioState();
   }
 
-  // === TỰ ĐỘNG PHÁT KHI VÀO TRANG (nếu đã tương tác) ===
   if (sessionStorage.getItem("audio_allowed") === "true") {
     setTimeout(() => {
       if (restoreAudioState()) {
@@ -88,15 +175,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 0);
   }
 
-  // === DỰ PHÒNG: CHẠM / CLICK ĐẦU TIÊN BẤT KỲ ĐÂU ===
   const unlockAudio = () => {
     playAudio();
     sessionStorage.setItem("audio_allowed", "true");
   };
-  document.body.addEventListener("click", unlockAudio, { once: true });
+  document.body.addEventListener("click",      unlockAudio, { once: true });
   document.body.addEventListener("touchstart", unlockAudio, { once: true });
 
-  // === AUDIO TRIGGER: element vô hình, gán thêm listener nếu cần ===
   if (audioTrigger) {
     audioTrigger.addEventListener("click", () => {
       playAudio();
@@ -137,7 +222,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     audio.addEventListener('play',  syncBarState);
     audio.addEventListener('pause', syncBarState);
-    // sync ngay khi load
     syncBarState();
   }
 
@@ -155,6 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
   const giftBarpill = document.querySelector('.gift-bar__pill');
   if (giftBarpill) {
     giftBarpill.addEventListener('click', (e) => {
@@ -168,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-  // Nút quay lại
+
   if (backButton) {
     backButton.addEventListener("click", function (e) {
       e.preventDefault();
@@ -180,7 +265,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // === XỬ LÝ RA / VÀO TAB (iOS & Android) ===
   let wasHidden = false;
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") {
@@ -197,11 +281,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // === DỌN DẸP KHI RỜI TRANG ===
   const cleanup = () => {
     stopAudio();
     sessionStorage.removeItem(SESSION_KEY);
   };
-  window.addEventListener("pagehide", cleanup);
-  window.addEventListener("beforeunload", cleanup);
+  window.addEventListener("pagehide",      cleanup);
+  window.addEventListener("beforeunload",  cleanup);
 });
