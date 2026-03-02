@@ -1,7 +1,6 @@
 // static/js/profile.js
 document.addEventListener("DOMContentLoaded", function () {
 
-  // ==================== IOS SAFARI: fix toàn bộ layout dùng bottom thay top ====================
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
   if (isIOS) {
@@ -23,34 +22,30 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // === MUSIC BAR: bottom thay top + xích xuống thêm 2vh so với vị trí Android ===
       if (musicBarEl) {
         let barWidth, barLeft;
         if (vw <= 359) {
-          barWidth = Math.min(Math.max(vw * 0.46, 146), 173) + 'px'; /* -1% */
+          barWidth = Math.min(Math.max(vw * 0.46, 148), 175) + 'px';
           barLeft  = '28%';
         } else if (vw <= 414) {
-          barWidth = Math.min(Math.max(vw * 0.50, 173), 208) + 'px';
+          barWidth = Math.min(Math.max(vw * 0.50, 175), 210) + 'px';
           barLeft  = '32%';
         } else if (vw <= 576) {
-          barWidth = Math.min(Math.max(vw * 0.54, 181), 220) + 'px';
+          barWidth = Math.min(Math.max(vw * 0.54, 183), 222) + 'px';
           barLeft  = '34%';
         } else {
-          barWidth = Math.min(Math.max(vw * 0.56, 188), 238) + 'px';
+          barWidth = Math.min(Math.max(vw * 0.56, 190), 240) + 'px';
           barLeft  = '40%';
         }
         musicBarEl.style.top       = '';
-        // xích xuống 2vh so với JS cũ (180px + 11vh → 180px + 9vh)
-        musicBarEl.style.bottom    = 'calc(180px + 9vh)';
+        musicBarEl.style.bottom    = 'calc(180px + 12vh)'; /* ← 11vh → 12vh: xích lên 1% */
         musicBarEl.style.left      = barLeft;
         musicBarEl.style.transform = 'translateX(-50%)';
         musicBarEl.style.width     = barWidth;
       }
 
-      // === GIFT BAR: nhỏ lại 1% + xích xuống 1vh ===
       if (giftBarEl) {
-        // xích xuống 1vh so với trước (20px - 3vh → 20px - 4vh)
-        giftBarEl.style.bottom    = 'calc(20px - 4vh)';
+        giftBarEl.style.bottom    = 'calc(20px - 3vh)';
         giftBarEl.style.left      = '50%';
         giftBarEl.style.transform = 'translateX(-50%)';
       }
@@ -73,11 +68,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const SESSION_KEY  = "profile_audio_state";
 
   function saveAudioState() {
-    sessionStorage.setItem(SESSION_KEY, JSON.stringify({
-      src: audio.src,
-      currentTime: audio.currentTime,
-      loop: audio.loop,
-    }));
+    sessionStorage.setItem(
+      SESSION_KEY,
+      JSON.stringify({
+        src: audio.src,
+        currentTime: audio.currentTime,
+        loop: audio.loop,
+      })
+    );
   }
 
   function restoreAudioState() {
@@ -114,7 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function playAudio() {
     if (isPlaying) return;
-    audio.play()
+    audio
+      .play()
       .then(() => {
         isPlaying = true;
         fadeIn();
@@ -144,31 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // ─────────────────────────────────────────────────────────────────────────
-  // iOS AUTOPLAY FIX
-  // Cách tiếp cận: dùng AudioContext.resume() + play() ngay tại gesture đầu tiên
-  // Đồng thời thử "silent unlock" — tạo buffer trống để mở khoá AudioContext
-  // trước khi hiện overlay, tối ưu cho iOS 15+
-  // ─────────────────────────────────────────────────────────────────────────
-  function unlockAudioContextAndPlay() {
-    // Bước 1: Mở khoá AudioContext bằng buffer trống (silent unlock)
-    try {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (AudioCtx) {
-        const ctx = new AudioCtx();
-        const buf = ctx.createBuffer(1, 1, 22050);
-        const src = ctx.createBufferSource();
-        src.buffer = buf;
-        src.connect(ctx.destination);
-        src.start(0);
-        ctx.resume().catch(() => {});
-      }
-    } catch (e) {}
-
-    // Bước 2: Play audio thật
-    unlockAndPlay();
-  }
-
   function showIOSOverlay() {
     if (document.getElementById("ios-audio-overlay")) return;
 
@@ -182,38 +156,38 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
     overlay.style.cssText = [
-      "position:fixed","inset:0","z-index:99999",
-      "display:flex","align-items:center","justify-content:center",
+      "position:fixed", "inset:0", "z-index:99999",
+      "display:flex", "align-items:center", "justify-content:center",
       "background:linear-gradient(135deg,rgba(103,13,38,0.93) 0%,rgba(43,0,19,0.96) 100%)",
-      "backdrop-filter:blur(10px)","-webkit-backdrop-filter:blur(10px)",
-      "cursor:pointer","touch-action:manipulation",
+      "backdrop-filter:blur(10px)", "-webkit-backdrop-filter:blur(10px)",
+      "cursor:pointer", "touch-action:manipulation",
       "transition:opacity 0.35s ease"
     ].join(";");
 
     overlay.querySelector(".ios-overlay__inner").style.cssText = [
-      "display:flex","flex-direction:column","align-items:center","gap:14px",
+      "display:flex", "flex-direction:column", "align-items:center", "gap:14px",
       "animation:ios-pulse 1.3s ease-in-out infinite alternate"
     ].join(";");
 
     overlay.querySelector(".ios-overlay__icon").style.cssText = [
       "font-size:3.8rem",
       "background:linear-gradient(to bottom,#FFDBE9,#FE94B2)",
-      "-webkit-background-clip:text","-webkit-text-fill-color:transparent",
+      "-webkit-background-clip:text", "-webkit-text-fill-color:transparent",
       "background-clip:text",
       "filter:drop-shadow(0 0 20px rgba(254,148,178,0.8))"
     ].join(";");
 
     overlay.querySelector(".ios-overlay__text").style.cssText = [
       "font-family:'Bebas Neue','Samsung Sharp Bold',sans-serif",
-      "font-size:2.6rem","letter-spacing:4px",
+      "font-size:2.6rem", "letter-spacing:4px",
       "background:linear-gradient(to right,#FFDBE9,#FE94B2)",
-      "-webkit-background-clip:text","-webkit-text-fill-color:transparent",
+      "-webkit-background-clip:text", "-webkit-text-fill-color:transparent",
       "background-clip:text"
     ].join(";");
 
     overlay.querySelector(".ios-overlay__sub").style.cssText = [
       "font-family:'Samsung Sharp Bold',sans-serif",
-      "font-size:0.88rem","color:rgba(255,219,233,0.72)",
+      "font-size:0.88rem", "color:rgba(255,219,233,0.72)",
       "letter-spacing:0.4px"
     ].join(";");
 
@@ -228,39 +202,17 @@ document.addEventListener("DOMContentLoaded", function () {
       e.stopPropagation();
       overlay.style.opacity = "0";
       setTimeout(() => overlay.remove(), 380);
-      // Dùng unlockAudioContextAndPlay thay vì unlockAndPlay để unlock AudioContext
-      unlockAudioContextAndPlay();
+      unlockAndPlay();
     }
-
-    // touchstart: quan trọng — iOS yêu cầu play() được gọi trực tiếp trong event handler
     overlay.addEventListener("touchstart", dismiss, { once: true, passive: false });
     overlay.addEventListener("click",      dismiss, { once: true });
 
     document.body.appendChild(overlay);
-
-    // Thử autoplay ngay khi trang load (iOS 17+ đôi khi cho phép nếu không có interaction guard)
-    // Nếu thành công thì tắt overlay
-    setTimeout(() => {
-      if (!audio.paused) return; // đã chạy rồi, không cần overlay
-      audio.play().then(() => {
-        isPlaying = true;
-        fadeIn();
-        saveAudioState();
-        // Autoplay thành công → tắt overlay luôn
-        overlay.style.opacity = "0";
-        setTimeout(() => {
-          if (overlay.parentNode) overlay.remove();
-        }, 380);
-      }).catch(() => {
-        // Bình thường — iOS chặn, overlay vẫn hiện chờ user tap
-      });
-    }, 300);
   }
 
   if (isIOS_audio) {
     showIOSOverlay();
   } else {
-    // Non-iOS: thử autoplay, nếu fail thì tap bất kỳ đâu
     if (sessionStorage.getItem("audio_allowed") === "true") {
       setTimeout(() => {
         if (restoreAudioState()) {
@@ -271,9 +223,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }, 0);
     }
-    const unlockAudioOnce = () => unlockAndPlay();
-    document.body.addEventListener("click",      unlockAudioOnce, { once: true });
-    document.body.addEventListener("touchstart", unlockAudioOnce, { once: true });
+    const unlockAudio = () => unlockAndPlay();
+    document.body.addEventListener("click",      unlockAudio, { once: true });
+    document.body.addEventListener("touchstart", unlockAudio, { once: true });
   }
 
   if (audioTrigger) {
@@ -316,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
     syncBarState();
   }
 
-  // === GIFT BAR → chuyển sang trang letter ===
+  // === GIFT BAR ===
   const giftBarBtn = document.getElementById('gift-bar-btn');
   if (giftBarBtn) {
     giftBarBtn.addEventListener('click', (e) => {
@@ -361,7 +313,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.visibilityState === "hidden") {
       wasHidden = true;
       stopAudio();
-    } else if (wasHidden && sessionStorage.getItem("audio_allowed") === "true") {
+    } else if (
+      wasHidden &&
+      sessionStorage.getItem("audio_allowed") === "true"
+    ) {
       if (restoreAudioState()) playAudio();
       wasHidden = false;
     }
