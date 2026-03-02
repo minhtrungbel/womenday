@@ -3,9 +3,10 @@
    RGB: 250, 187, 203
    CMYK: 0%, 25%, 19%, 2%
    ======================================== */
+
 .container {
   border-radius: 30px;
-  padding: 2rem;      
+  padding: 2rem;
   margin: 3rem auto;
   max-width: 500px;
   text-align: center;
@@ -35,46 +36,10 @@
   box-shadow: 0 0 0 3px rgba(250, 187, 203, 0.3);
 }
 
-/* GIỮ NGUYÊN MARGIN, PADDING, TOP, POSITION */
-@media (max-width: 576px) {
-  .container {
-    position: absolute;
-    margin: 1.25rem 1.35rem;
-    padding: 1.6rem;
-    max-width: none;
-    width: auto;
-    border-radius: 18px;
-    margin-top: 13%;
-    box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
-      inset 0px 2px 1px rgba(106, 168, 245, 0.5);
-  }
-  .name-label {
-    font-size: 1rem;
-    line-height: 1.3;
-  }
-  .name-input {
-    box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
-      inset 0px 2px 1px rgba(96, 165, 250, 0.5);
-    padding: 0.5rem 1rem;
-    font-size: 0.95rem;
-    width: 100%;
-    max-width: 420px !important;
-  }
-  .btn-primary {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-  }
-}
-
-/* CÁC STYLE CŨ - GIỮ NGUYÊN 100% */
 .card {
   color: transparent;
   background-color: hsla(336, 100%, 92%, 1);
-  background-image: radial-gradient(
-      at 37% 100%,
-      hsla(343, 78%, 82%, 1) 0px,
-      transparent 50%
-    ),
+  background-image: radial-gradient(at 37% 100%, hsla(343, 78%, 82%, 1) 0px, transparent 50%),
     radial-gradient(at 100% 100%, hsla(343, 100%, 76%, 1) 0px, transparent 50%),
     radial-gradient(at 0% 7%, hsla(344, 100%, 87%, 1) 0px, transparent 50%);
   border-radius: 15px;
@@ -83,12 +48,14 @@
   padding: 40px 60px;
   background-color: #f5f5f5;
 }
+
 form {
   margin-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .name-label {
   font-family: "Prompt Medium", sans-serif;
   font-size: 20px;
@@ -97,6 +64,7 @@ form {
   margin-bottom: 8px;
   word-wrap: break-word;
 }
+
 .name-input {
   padding: 0.5rem 2.75em;
   width: 100%;
@@ -109,14 +77,16 @@ form {
   transition: all 0.3s ease;
   background-color: white;
 }
+
 .name-input.form-control {
   border-color: lightblue;
 }
+
 .name-input:focus {
   border-color: #d6336c;
   box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
 }
-/* Làm chữ tiêu đề + input nổi bật trên nền đỏ đậm */
+
 .introduction {
   font-family: "Prompt Medium", sans-serif;
   color: white !important;
@@ -124,27 +94,11 @@ form {
   font-size: 1.9rem !important;
 }
 
-/* FIX TRÀN + AUTOCOMPLETE KHÔNG BỊ CHE */
 .inner-wrapper {
   max-width: 100%;
   overflow: hidden;
   padding: 0 0.5rem;
   box-sizing: border-box;
-}
-@media (max-width: 576px) {
-  .inner-wrapper {
-    padding: 0 0.25rem;
-  }
-  .name-input {
-    max-width: 100% !important;
-  }
-  .card {
-    padding: 20px 15px !important;
-  }
-  .name-label {
-    font-size: 1rem !important;
-    font-weight: 500 !important;
-  }
 }
 
 #autocomplete-suggestions {
@@ -218,14 +172,10 @@ form {
   }
 }
 
-/* ================== PHẦN GRADIENT CONTAINER ================== */
+/* ================== GRADIENT CONTAINER ================== */
 .container {
   background-color: hsla(340, 94%, 70%, 1);
-  background-image: radial-gradient(
-      at 25% 88%,
-      hsla(345, 63%, 58%, 1) 0px,
-      transparent 50%
-    ),
+  background-image: radial-gradient(at 25% 88%, hsla(345, 63%, 58%, 1) 0px, transparent 50%),
     radial-gradient(at 69% 4%, hsla(354, 87%, 60%, 1) 0px, transparent 50%),
     radial-gradient(at 93% 91%, hsla(352, 76%, 50%, 1) 0px, transparent 50%);
   backdrop-filter: blur(10px);
@@ -259,12 +209,8 @@ form {
 }
 
 @keyframes diagonalShine {
-  0% {
-    transform: translateX(-100%) translateY(80%);
-  }
-  100% {
-    transform: translateX(80%) translateY(-100%);
-  }
+  0%   { transform: translateX(-100%) translateY(80%); }
+  100% { transform: translateX(80%) translateY(-100%); }
 }
 
 .name-input,
@@ -276,11 +222,7 @@ form {
 
 .btn-primary {
   background-color: hsla(340, 94%, 70%, 1);
-  background-image: radial-gradient(
-      at 25% 88%,
-      hsla(345, 63%, 58%, 1) 0px,
-      transparent 50%
-    ),
+  background-image: radial-gradient(at 25% 88%, hsla(345, 63%, 58%, 1) 0px, transparent 50%),
     radial-gradient(at 69% 4%, hsla(354, 87%, 60%, 1) 0px, transparent 50%),
     radial-gradient(at 93% 91%, hsla(352, 76%, 50%, 1) 0px, transparent 50%) !important;
   color: white !important;
@@ -295,14 +237,16 @@ form {
   box-shadow: 0 10px 25px rgba(228, 33, 57, 0.6);
 }
 
-/* ================== DESKTOP: CĂN TRÁI + CÁCH LỀ THEO MÀN HÌNH ================== */
+/* ================== DESKTOP: top theo breakpoint (chuẩn 1200–1599 = 45px) ================== */
 
-/* Tablet đứng / laptop nhỏ: 796px - 991px */
+/* 796–991px */
 @media (min-width: 796px) and (max-width: 991.98px) {
   .container {
     margin-left: 10px !important;
     margin-right: auto !important;
     max-width: 500px;
+    position: relative;
+    top: 28px;
   }
 
   #autocomplete-suggestions {
@@ -324,12 +268,14 @@ form {
   }
 }
 
-/* Laptop / màn hình thường: 992px - 1199px */
+/* 992–1199px */
 @media (min-width: 992px) and (max-width: 1199px) {
   .container {
     margin-left: 20px !important;
     margin-right: auto !important;
     max-width: 500px;
+    position: relative;
+    top: 36px;
   }
 
   #autocomplete-suggestions {
@@ -351,12 +297,14 @@ form {
   }
 }
 
-/* Màn hình lớn: 1200px - 1599px */
+/* 1200–1599px — CHUẨN top: 45px */
 @media (min-width: 1200px) and (max-width: 1599px) {
   .container {
     margin-left: 40px !important;
     margin-right: auto !important;
     max-width: 500px;
+    position: relative;
+    top: 45px;
   }
 
   #autocomplete-suggestions {
@@ -379,12 +327,14 @@ form {
   }
 }
 
-/* Màn hình rất lớn: 1600px trở lên */
+/* ≥1600px */
 @media (min-width: 1600px) {
   .container {
     margin-left: 60px !important;
     margin-right: auto !important;
     max-width: 500px;
+    position: relative;
+    top: 52px;
   }
 
   #autocomplete-suggestions {
@@ -407,6 +357,7 @@ form {
   }
 }
 
+/* ================== LAYOUT ================== */
 .main-layout {
   display: flex;
   justify-content: flex-start;
@@ -426,9 +377,57 @@ form {
   flex: 0 0 560px;
 }
 
-/* ======================================================
-   MOBILE: CONTAINER CÁCH LỀ HAI BÊN MỘT KHOẢNG + CAROUSEL GIỮ NGUYÊN FULL VIỀN, NỀN ĐEN
-   ====================================================== */
+/* ================== MOBILE ================== */
+@media (max-width: 576px) {
+  .container {
+    position: absolute;
+    margin: 1.25rem 1.35rem;
+    padding: 1.6rem;
+    max-width: none;
+    width: auto;
+    border-radius: 18px;
+    top: 16%;
+    box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
+      inset 0px 2px 1px rgba(106, 168, 245, 0.5);
+  }
+
+  .name-label {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .name-input {
+    box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
+      inset 0px 2px 1px rgba(96, 165, 250, 0.5);
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 420px !important;
+  }
+
+  .btn-primary {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .inner-wrapper {
+    padding: 0 0.25rem;
+  }
+
+  .name-input {
+    max-width: 100% !important;
+  }
+
+  .card {
+    padding: 20px 15px !important;
+  }
+
+  .name-label {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+  }
+}
+
 @media (max-width: 991.98px) {
   .main-layout {
     flex-direction: column !important;
@@ -479,7 +478,6 @@ form {
   }
 }
 
-/* Máy siêu nhỏ */
 @media (max-width: 400px) {
   .form-section {
     padding: 0 1rem;
@@ -499,8 +497,6 @@ form {
 }
 
 /* ================== BACKGROUND LAYER ================== */
-
-/* Base chung cho mọi thiết bị */
 .background-layer {
   position: fixed;
   inset: 0;
@@ -519,24 +515,20 @@ form {
   -webkit-backface-visibility: hidden;
 }
 
-/* ---- DESKTOP (≥ 992px): ảnh rõ hơn, sắc nét hơn ---- */
 @media (min-width: 992px) {
   .background-layer {
     background-size: cover;
     background-position: center center;
-    /* Tăng nhẹ brightness + contrast để ảnh rõ và sắc hơn */
     filter: brightness(1.08) contrast(1.12) saturate(1.06);
   }
 }
 
-/* ---- MÀN HÌNH RẤT LỚN (≥ 1600px): tăng thêm chút ---- */
 @media (min-width: 1600px) {
   .background-layer {
     filter: brightness(1.1) contrast(1.15) saturate(1.08);
   }
 }
 
-/* ---- MOBILE (≤ 991px): ưu tiên hiển thị phần trên ảnh (hoa + chữ 8/3) ---- */
 @media (max-width: 991.98px) {
   .background-layer {
     background-size: cover;
@@ -544,8 +536,8 @@ form {
     filter: brightness(1.03) contrast(1.05) saturate(1);
   }
 }
-/* ================== OVERLAY LAYER (đè lên background-layer) ================== */
 
+/* ================== OVERLAY LAYER ================== */
 .overlay-layer {
   position: fixed;
   inset: 0;
@@ -586,19 +578,17 @@ form {
   }
 }
 
-/* ================== MID LAYER (giữa background và overlay) ================== */
-
+/* ================== MID LAYER ================== */
 .mid-layer {
   position: fixed;
   inset: 0;
-  z-index: -1; /* giữa background(-2) và overlay(0) */
+  z-index: -1;
   pointer-events: none;
   background-image: url('https://iili.io/qF0uNC7.png');
   background-repeat: no-repeat;
-  background-size: auto 100vh;       /* chiều cao vừa phải, giữ tỉ lệ */
-  background-position: right 60px center; /* mặc định: cách rìa phải 60px */
+  background-size: auto 100vh;
+  background-position: right 60px center;
   filter: brightness(1.08) contrast(1.12) saturate(1.06);
-  /* Buộc GPU render sớm, tránh delay/flash trên mobile */
   will-change: transform;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -606,7 +596,6 @@ form {
   -webkit-backface-visibility: hidden;
 }
 
-/* ≥ 1600px: cách rìa phải 60px */
 @media (min-width: 1600px) {
   .mid-layer {
     background-position: right 60px center;
@@ -615,7 +604,6 @@ form {
   }
 }
 
-/* 1200px - 1599px: cách rìa phải 40px */
 @media (min-width: 1200px) and (max-width: 1599px) {
   .mid-layer {
     background-position: right 40px center;
@@ -623,7 +611,6 @@ form {
   }
 }
 
-/* 992px - 1199px: cách rìa phải 20px */
 @media (min-width: 992px) and (max-width: 1199px) {
   .mid-layer {
     background-position: right 20px center;
@@ -631,7 +618,6 @@ form {
   }
 }
 
-/* 796px - 991px: cách rìa phải 10px */
 @media (min-width: 796px) and (max-width: 991.98px) {
   .mid-layer {
     background-position: right 10px center;
@@ -639,26 +625,22 @@ form {
   }
 }
 
-/* Mobile ≤ 795px: đặt dưới container, không fixed full screen */
+/* Mobile ≤795px — xích mid-layer xuống */
 @media (max-width: 795px) {
   .mid-layer {
-    /* Chuyển sang absolute để tính vị trí theo document, không phủ viewport */
     position: absolute;
-    inset: auto;                  /* reset inset: 0 từ base */
+    inset: auto;
     left: 0;
     right: 0;
     bottom: 0;
-    /* Chiều cao: chỉ chiếm phần dưới trang (dưới container) */
+    top: 68vh;
     height: 52vh;
-    /* Căn giữa ngang, sát đáy */
     background-position: center bottom;
     background-size: auto 52vh;
     filter: brightness(1.13) contrast(1.15) saturate(1.1);
     opacity: 0.95;
-    /* Đảm bảo render sớm, không delay */
     will-change: transform;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
   }
-
 }
