@@ -334,3 +334,4 @@ function applyIOSLayout() {
   window.addEventListener("pagehide",     cleanup);
   window.addEventListener("beforeunload", cleanup);
 });
+
