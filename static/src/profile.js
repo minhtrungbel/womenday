@@ -12,44 +12,49 @@ document.addEventListener("DOMContentLoaded", function () {
       return navbar ? navbar.offsetHeight : 58;
     }
 
-    function applyIOSLayout() {
-      const vw   = window.innerWidth;
-      const navH = getNavbarHeight();
+function applyIOSLayout() {
+  const vw   = window.innerWidth;
+  const navH = getNavbarHeight();
 
-      if (vw >= 796) {
-        if (musicBarEl) musicBarEl.style.cssText = '';
-        if (giftBarEl)  giftBarEl.style.cssText  = '';
-        return;
-      }
+  if (vw >= 796) {
+    if (musicBarEl) musicBarEl.style.cssText = '';
+    if (giftBarEl)  giftBarEl.style.cssText  = '';
+    return;
+  }
 
-      if (musicBarEl) {
-        let barWidth, barLeft;
-        if (vw <= 359) {
-          barWidth = Math.min(Math.max(vw * 0.46, 148), 175) + 'px';
-          barLeft  = '28%';
-        } else if (vw <= 414) {
-          barWidth = Math.min(Math.max(vw * 0.50, 175), 210) + 'px';
-          barLeft  = '32%';
-        } else if (vw <= 576) {
-          barWidth = Math.min(Math.max(vw * 0.54, 183), 222) + 'px';
-          barLeft  = '34%';
-        } else {
-          barWidth = Math.min(Math.max(vw * 0.56, 190), 240) + 'px';
-          barLeft  = '40%';
-        }
-        musicBarEl.style.top       = '';
-        musicBarEl.style.bottom    = 'calc(180px + 12vh)'; /* ← 11vh → 12vh: xích lên 1% */
-        musicBarEl.style.left      = barLeft;
-        musicBarEl.style.transform = 'translateX(-50%)';
-        musicBarEl.style.width     = barWidth;
-      }
-
-      if (giftBarEl) {
-        giftBarEl.style.bottom    = 'calc(20px - 3vh)';
-        giftBarEl.style.left      = '50%';
-        giftBarEl.style.transform = 'translateX(-50%)';
-      }
+  if (musicBarEl) {
+    let barWidth, barLeft;
+    if (vw <= 359) {
+      /* nhỏ 2%: 0.46 → 0.451, max 175 → 171 */
+      barWidth = Math.min(Math.max(vw * 0.451, 145), 171) + 'px';
+      barLeft  = '28%';
+    } else if (vw <= 414) {
+      /* nhỏ 2%: 0.50 → 0.49, max 210 → 206 */
+      barWidth = Math.min(Math.max(vw * 0.49, 171), 206) + 'px';
+      barLeft  = '32%';
+    } else if (vw <= 576) {
+      /* nhỏ 2%: 0.54 → 0.529, max 222 → 218 */
+      barWidth = Math.min(Math.max(vw * 0.529, 179), 218) + 'px';
+      barLeft  = '34%';
+    } else {
+      /* nhỏ 2%: 0.56 → 0.549, max 240 → 235 */
+      barWidth = Math.min(Math.max(vw * 0.549, 186), 235) + 'px';
+      barLeft  = '40%';
     }
+    musicBarEl.style.top       = '';
+    /* xuống 1.5%: 12vh → 10.5vh */
+    musicBarEl.style.bottom    = 'calc(180px + 10.5vh)';
+    musicBarEl.style.left      = barLeft;
+    musicBarEl.style.transform = 'translateX(-50%)';
+    musicBarEl.style.width     = barWidth;
+  }
+
+  if (giftBarEl) {
+    giftBarEl.style.bottom    = 'calc(20px - 3vh)';
+    giftBarEl.style.left      = '50%';
+    giftBarEl.style.transform = 'translateX(-50%)';
+  }
+}
 
     applyIOSLayout();
     window.addEventListener('resize', applyIOSLayout);
