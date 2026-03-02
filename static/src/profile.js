@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
           barLeft = '40%';
         }
         musicBarEl.style.top       = '';
-        musicBarEl.style.bottom    = 'calc(180px + 7vh)'; // trên thanh Safari + gift bar, xích lên 7vh
+        musicBarEl.style.bottom    = 'calc(180px + 14vh)'; // trên thanh Safari + gift bar, xích lên thêm 7%
         musicBarEl.style.left      = barLeft;
         musicBarEl.style.transform = 'translateX(-50%)';
         musicBarEl.style.width     = barWidth;
