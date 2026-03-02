@@ -1,28 +1,27 @@
 /* ========================================
-    MÀU NỀN CHÍNH: #FABBCB (Pantone hồng phấn)
-    RGB: 250, 187, 203
-    CMYK: 0%, 25%, 19%, 2%
-    ======================================== */
-/* NỀN PHỤ: Form (trắng trong suốt nhẹ) */
+   MÀU NỀN CHÍNH: #FABBCB (Pantone hồng phấn)
+   RGB: 250, 187, 203
+   CMYK: 0%, 25%, 19%, 2%
+   ======================================== */
+
 .container {
-  background-color: rgba(255, 255, 255, 0.92); /* Trắng trong suốt */
+  background-color: rgba(255, 255, 255, 0.92);
   border-radius: 20px;
   padding: 2rem;
   margin: 3rem auto;
   max-width: 500px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(250, 187, 203, 0.3); /* Viền nhạt #FABBCB */
+  border: 1px solid rgba(250, 187, 203, 0.3);
 }
 
-/* Tiêu đề: dùng màu #FABBCB */
 h1 {
-  color: #d6406e; /* Hồng đậm hơn để nổi bật */
+  color: #d6406e;
   font-weight: 700;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive */
+/* Mobile */
 @media (max-width: 768px) {
   .container {
     position: absolute;
@@ -34,11 +33,43 @@ h1 {
     width: 90%;
     left: 5%;
   }
+
   .card-body {
     position: relative;
     top: 80px;
   }
+
   h1 {
     font-size: 1.8rem;
+  }
+}
+
+/* ================== DESKTOP: CÁCH NAVBAR MỘT KHOẢNG ================== */
+
+@media (min-width: 796px) and (max-width: 991.98px) {
+  .container {
+    position: relative;
+    top: 24px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    position: relative;
+    top: 30px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .container {
+    position: relative;
+    top: 38px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    position: relative;
+    top: 44px;
   }
 }
