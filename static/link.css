@@ -3,7 +3,7 @@
    RGB: 250, 187, 203
    CMYK: 0%, 25%, 19%, 2%
    ======================================== */
-/* NỀN PHỤ: Form (trắng trong suốt nhẹ) */
+
 .container {
   background-color: rgba(255, 255, 255, 0.92);
   border-radius: 16px;
@@ -15,16 +15,13 @@
   border: 1px solid rgba(250, 187, 203, 0.3);
 }
 
-/* Tiêu đề: dùng màu #FABBCB */
 h1 {
   color: #d6406e;
   font-weight: 700;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-/* ========================================
-   QR SECTION - CĂN GIỮA HOÀN HẢO TRÊN MỌI THIẾT BỊ
-   ======================================== */
 
+/* QR SECTION */
 .qr-container {
   display: flex;
   flex-direction: column;
@@ -71,32 +68,31 @@ h1 {
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
 }
 
-/* ========================================
-   RESPONSIVE – ĐẨY QR LÊN TRÊN MỘT CHÚT TRÊN ĐIỆN THOẠI
-   ======================================== */
-
+/* Mobile */
 @media (max-width: 768px) {
   .container {
     margin: 1.5rem auto;
     padding: 1.5rem;
     border-radius: 12px;
   }
+
   h1 {
     font-size: 1.8rem;
   }
+
   .navbar-nav {
     text-align: left;
   }
+
   .nav-link {
     font-size: 1.2rem;
   }
 
-  /* Đẩy toàn bộ QR lên trên (gần navbar hơn) */
   .qr-container {
     position: absolute;
     min-height: calc(100vh - 60px);
-    padding: 1rem 1rem; /* Giảm padding trên/dưới */
-    justify-content: center; /* Đẩy lên đầu */
+    padding: 1rem 1rem;
+    justify-content: center;
     align-items: center;
     bottom: 11%;
   }
@@ -124,7 +120,7 @@ h1 {
 
 @media (max-width: 480px) {
   .qr-container {
-    padding-top: 2.5rem; /* Đẩy lên gần hơn */
+    padding-top: 2.5rem;
   }
 
   .qr-container2 {
@@ -148,15 +144,43 @@ h1 {
   .qr-container {
     padding-top: 2rem;
   }
+
   .qr-title {
     font-size: 1.45rem;
   }
+
   .qr-image {
     max-width: 250px;
   }
 }
 
-/* Các style khác giữ nguyên */
+/* ================== DESKTOP: CÁCH NAVBAR MỘT KHOẢNG ================== */
+
+@media (min-width: 796px) and (max-width: 991.98px) {
+  .qr-container {
+    padding-top: 82px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .qr-container {
+    padding-top: 88px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .qr-container {
+    padding-top: 96px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .qr-container {
+    padding-top: 102px;
+  }
+}
+
+/* Styles khác */
 .information {
   color: rgb(114, 209, 238);
 }
