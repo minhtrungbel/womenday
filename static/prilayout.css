@@ -1,18 +1,11 @@
 /* LAYOUT.CSS */
 body {
   font-family: "Segoe UI", sans-serif;
-  background-color: hsla(336, 100%, 92%, 1);
-  background-image: radial-gradient(
-      at 100% 75%,
-      hsla(343, 98%, 78%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 81% 0%, hsla(343, 98%, 78%, 1) 0px, transparent 50%),
-    radial-gradient(at 5% 92%, hsla(343, 98%, 78%, 1) 0px, transparent 50%);
+  background: linear-gradient(to top, #670D26 0%, #2B0013 100%);
   color: #333;
   min-height: 100vh;
   margin: 0;
-  position: relative; /* cần cho mid-layer absolute trên mobile */
+  position: relative;
 }
 
 .navbar {
@@ -216,3 +209,4 @@ html, body {
   overflow-x: hidden;
   margin: 0;
 }
+
