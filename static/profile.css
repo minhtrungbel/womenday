@@ -1386,25 +1386,25 @@ img.img-fluid {
   @media (max-width: 359px) {
     .profile-info-card {
       top: unset !important;
-      bottom: calc(145px + env(safe-area-inset-bottom, 0px)); /* +25px so với 120px */
+      bottom: calc(145px + 10vh + env(safe-area-inset-bottom, 0px)); /* xích lên thêm 10vh */
     }
   }
   @media (min-width: 360px) and (max-width: 414px) {
     .profile-info-card {
       top: unset !important;
-      bottom: calc(160px + env(safe-area-inset-bottom, 0px)); /* +30px so với 130px */
+      bottom: calc(160px + 10vh + env(safe-area-inset-bottom, 0px)); /* xích lên thêm 10vh */
     }
   }
   @media (min-width: 415px) and (max-width: 576px) {
     .profile-info-card {
       top: unset !important;
-      bottom: calc(172px + env(safe-area-inset-bottom, 0px)); /* +32px so với 140px */
+      bottom: calc(172px + 10vh + env(safe-area-inset-bottom, 0px)); /* xích lên thêm 10vh */
     }
   }
   @media (min-width: 577px) and (max-width: 795px) {
     .profile-info-card {
       top: unset !important;
-      bottom: calc(178px + env(safe-area-inset-bottom, 0px)); /* +33px so với 145px */
+      bottom: calc(178px + 10vh + env(safe-area-inset-bottom, 0px)); /* xích lên thêm 10vh */
     }
   }
 
