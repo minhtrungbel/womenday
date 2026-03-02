@@ -3,7 +3,10 @@
    BASELINE BREAKPOINT: 360px–414px
    ======================================== */
 
-/* ================== HOA RƠI OVERLAY LAYER ================== */
+/* ================== iOS Safari: enable :active trên touch ================== */
+/* Safari chặn :active theo mặc định, trick này bật lại không cần JS */
+body { cursor: pointer; }
+
 .profile-overlay-layer {
   position: fixed;
   inset: 0;
@@ -151,12 +154,31 @@
   }
 }
 
-/* iOS Safari: top được tính từ navbar thực, tránh bị lệch */
+/* iOS Safari: top được tính từ navbar thực, tránh bị lệch
+   + khung to hơn 5% (tăng background-size thêm 5% mỗi breakpoint) */
 @supports (-webkit-touch-callout: none) {
-  @media (max-width: 795px) {
+  @media (max-width: 359px) {
     .profile-content-frame {
-      top: env(safe-area-inset-top, 0px);
       top: calc(58px + env(safe-area-inset-top, 0px));
+      background-size: auto 32%; /* 27% + 5% */
+    }
+  }
+  @media (min-width: 360px) and (max-width: 414px) {
+    .profile-content-frame {
+      top: calc(58px + env(safe-area-inset-top, 0px));
+      background-size: auto 35%; /* 30% + 5% */
+    }
+  }
+  @media (min-width: 415px) and (max-width: 576px) {
+    .profile-content-frame {
+      top: calc(58px + env(safe-area-inset-top, 0px));
+      background-size: auto 39%; /* 34% + 5% */
+    }
+  }
+  @media (min-width: 577px) and (max-width: 795px) {
+    .profile-content-frame {
+      top: calc(58px + env(safe-area-inset-top, 0px));
+      background-size: auto 45%; /* 40% + 5% */
     }
   }
 }
@@ -474,16 +496,17 @@
   z-index: 1;
 }
 
-.music-bar__btn:hover,
-.music-bar__btn.touch-hover {
+.music-bar__btn:hover {
   background: linear-gradient(to bottom, #FFDBE9 0%, #FE94B2 100%);
   box-shadow: 0 3px 18px rgba(254, 148, 178, 0.7), 0 0 0 2.5px rgba(254, 148, 178, 0.35);
   transform: scale(1.08);
 }
 
+/* Mobile: bấm vào sáng ngay, nhả ra tắt ngay - không delay */
 .music-bar__btn:active {
+  background: linear-gradient(to bottom, #FFDBE9 0%, #FE94B2 100%);
+  box-shadow: 0 3px 18px rgba(254, 148, 178, 0.7), 0 0 0 2.5px rgba(254, 148, 178, 0.35);
   transform: scale(0.93);
-  box-shadow: 0 1px 6px rgba(43,0,19,0.4);
 }
 
 .music-bar__btn svg {
@@ -492,8 +515,8 @@
 }
 .music-bar__btn:hover .icon-play path,
 .music-bar__btn:hover .icon-pause path,
-.music-bar__btn.touch-hover .icon-play path,
-.music-bar__btn.touch-hover .icon-pause path {
+.music-bar__btn:active .icon-play path,
+.music-bar__btn:active .icon-pause path {
   fill: url(#btn-hover-gradient);
 }
 .icon-pause {
@@ -794,8 +817,7 @@ img.img-fluid {
   touch-action: manipulation;
 }
 
-.gift-bar__btn:hover,
-.gift-bar__btn.touch-hover {
+.gift-bar__btn:hover {
   transform: scale(1.07);
   box-shadow:
     0 0 42px 14px rgba(240, 70, 83, 0.65),
@@ -803,8 +825,13 @@ img.img-fluid {
     0 0 0 3px rgba(240, 70, 83, 0.3);
 }
 
+/* Mobile: bấm vào sáng ngay, nhả ra tắt ngay */
 .gift-bar__btn:active {
   transform: scale(0.95);
+  box-shadow:
+    0 0 42px 14px rgba(240, 70, 83, 0.65),
+    0 6px 24px rgba(43, 0, 19, 0.7),
+    0 0 0 3px rgba(240, 70, 83, 0.3);
 }
 
 .gift-bar__icon {
@@ -827,15 +854,17 @@ img.img-fluid {
   transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-.gift-bar:hover .gift-bar__pill,
-.gift-bar__pill.touch-hover {
+.gift-bar:hover .gift-bar__pill {
   transform: scale(1.07);
   background: linear-gradient(to right, #ffffff, #fabbcb);
   box-shadow: 0 10px 25px rgba(228, 33, 57, 0.6), 0 2px 8px rgba(0,0,0,0.15);
 }
 
-.gift-bar:active .gift-bar__pill {
+/* Mobile: bấm vào đổi màu ngay, nhả ra về ngay */
+.gift-bar__pill:active {
   transform: scale(0.99);
+  background: linear-gradient(to right, #ffffff, #fabbcb);
+  box-shadow: 0 10px 25px rgba(228, 33, 57, 0.6), 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .gift-bar__label {
@@ -853,7 +882,7 @@ img.img-fluid {
 }
 
 .gift-bar:hover .gift-bar__label,
-.gift-bar__pill.touch-hover .gift-bar__label {
+.gift-bar__pill:active .gift-bar__label {
   background: linear-gradient(to right, #630f23, #860033);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1351,30 +1380,38 @@ img.img-fluid {
 }
 
 /* iOS Safari: top dùng % bị lệch vì 100vh sai trên Safari
-   → dùng bottom để canh info card trên mobile iOS */
+   → dùng bottom để canh info card trên mobile iOS
+   — xích lên 5%: tăng bottom thêm ~5vh so với trước */
 @supports (-webkit-touch-callout: none) {
   @media (max-width: 359px) {
     .profile-info-card {
       top: unset !important;
-      bottom: calc(120px + env(safe-area-inset-bottom, 0px));
+      bottom: calc(145px + env(safe-area-inset-bottom, 0px)); /* +25px so với 120px */
     }
   }
   @media (min-width: 360px) and (max-width: 414px) {
     .profile-info-card {
       top: unset !important;
-      bottom: calc(130px + env(safe-area-inset-bottom, 0px));
+      bottom: calc(160px + env(safe-area-inset-bottom, 0px)); /* +30px so với 130px */
     }
   }
   @media (min-width: 415px) and (max-width: 576px) {
     .profile-info-card {
       top: unset !important;
-      bottom: calc(140px + env(safe-area-inset-bottom, 0px));
+      bottom: calc(172px + env(safe-area-inset-bottom, 0px)); /* +32px so với 140px */
     }
   }
   @media (min-width: 577px) and (max-width: 795px) {
     .profile-info-card {
       top: unset !important;
-      bottom: calc(145px + env(safe-area-inset-bottom, 0px));
+      bottom: calc(178px + env(safe-area-inset-bottom, 0px)); /* +33px so với 145px */
+    }
+  }
+
+  /* Gift bar iOS: xích xuống 3% — JS cũng override nhưng CSS là fallback */
+  @media (max-width: 795px) {
+    .gift-bar {
+      bottom: calc(20px - 3vh + env(safe-area-inset-bottom, 0px));
     }
   }
 }
