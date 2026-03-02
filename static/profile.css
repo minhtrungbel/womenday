@@ -527,7 +527,7 @@ body {
 /* ≤359px — xuống 1% */
 @media (max-width: 359px) {
   .music-bar {
-    top: 47%;
+    top: 46%;
     left: 28%;
     transform: translate(-50%, -50%);
     width: 46vw;
@@ -560,7 +560,7 @@ body {
 /* 360–414px — xuống 1% */
 @media (min-width: 360px) and (max-width: 414px) {
   .music-bar {
-    top: 58%;
+    top: 57%;
     left: 32%;
     transform: translate(-50%, -50%);
     width: 50vw;
@@ -593,7 +593,7 @@ body {
 /* 415–576px — xuống 1% */
 @media (min-width: 415px) and (max-width: 576px) {
   .music-bar {
-    top: 58%;
+    top: 57%;
     left: 34%;
     transform: translate(-50%, -50%);
     width: 54vw;
@@ -626,7 +626,7 @@ body {
 /* 577–795px — xuống 1% */
 @media (min-width: 577px) and (max-width: 795px) {
   .music-bar {
-    top: 56%;
+    top: 55%;
     left: 40%;
     transform: translate(-50%, -50%);
     width: 56vw;
@@ -1228,7 +1228,7 @@ img.img-fluid {
 /* ≤359px */
 @media (max-width: 359px) {
   .profile-info-card {
-    top: 58%;
+    top: 60%;
     left: 3%;
     right: 3%;
     width: auto;
@@ -1265,7 +1265,7 @@ img.img-fluid {
 /* 360–414px */
 @media (min-width: 360px) and (max-width: 414px) {
   .profile-info-card {
-    top: 62%;
+    top: 64%;
     left: 5%;
     right: 3%;
     width: auto;
@@ -1302,7 +1302,7 @@ img.img-fluid {
 /* 415–576px */
 @media (min-width: 415px) and (max-width: 576px) {
   .profile-info-card {
-    top: 63%;
+    top: 65%;
     left: 6%;
     right: 3%;
     width: auto;
@@ -1339,7 +1339,7 @@ img.img-fluid {
 /* 577–795px */
 @media (min-width: 577px) and (max-width: 795px) {
   .profile-info-card {
-    top: 64%;
+    top: 66%;
     left: 7%;
     right: 4%;
     width: auto;
@@ -1471,38 +1471,37 @@ img.img-fluid {
     font-size: 0.59rem;
   }
 }
-
-/* iOS Safari — profile-info-card xuống 3% (10vh → 7vh) */
+/*IOS Safari: profile info card safe-area*/
 @supports (-webkit-touch-callout: none) {
   @media (max-width: 359px) {
     .profile-info-card {
       top: unset !important;
-      bottom: calc(145px + 7vh + env(safe-area-inset-bottom, 0px));
+      bottom: calc(145px + 5vh + env(safe-area-inset-bottom, 0px));   /* 7vh → 5vh */
     }
   }
 
   @media (min-width: 360px) and (max-width: 414px) {
     .profile-info-card {
       top: unset !important;
-      bottom: calc(160px + 7vh + env(safe-area-inset-bottom, 0px));
+      bottom: calc(160px + 5vh + env(safe-area-inset-bottom, 0px));   /* 7vh → 5vh */
     }
   }
 
   @media (min-width: 415px) and (max-width: 576px) {
     .profile-info-card {
       top: unset !important;
-      bottom: calc(172px + 7vh + env(safe-area-inset-bottom, 0px));
+      bottom: calc(172px + 5vh + env(safe-area-inset-bottom, 0px));   /* 7vh → 5vh */
     }
   }
 
   @media (min-width: 577px) and (max-width: 795px) {
     .profile-info-card {
       top: unset !important;
-      bottom: calc(178px + 7vh + env(safe-area-inset-bottom, 0px));
+      bottom: calc(178px + 5vh + env(safe-area-inset-bottom, 0px));   /* 7vh → 5vh */
     }
   }
 
-  /* Gift bar iOS */
+  /* Gift bar iOS — giữ nguyên */
   @media (max-width: 795px) {
     .gift-bar {
       bottom: calc(20px - 3vh + env(safe-area-inset-bottom, 0px));
