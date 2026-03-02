@@ -36,10 +36,49 @@
   box-shadow: 0 0 0 3px rgba(250, 187, 203, 0.3);
 }
 
+/* GIỮ NGUYÊN MARGIN, PADDING, TOP, POSITION */
+@media (max-width: 576px) {
+  .container {
+    position: absolute;
+    margin: 1.25rem 1.35rem;
+    padding: 1.6rem;
+    max-width: none;
+    width: auto;
+    border-radius: 18px;
+    top: 40px;
+    box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
+      inset 0px 2px 1px rgba(106, 168, 245, 0.5);
+  }
+
+  .name-label {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .name-input {
+    box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
+      inset 0px 2px 1px rgba(96, 165, 250, 0.5);
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 420px !important;
+  }
+
+  .btn-primary {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* CÁC STYLE CŨ - GIỮ NGUYÊN 100% */
 .card {
   color: transparent;
   background-color: hsla(336, 100%, 92%, 1);
-  background-image: radial-gradient(at 37% 100%, hsla(343, 78%, 82%, 1) 0px, transparent 50%),
+  background-image: radial-gradient(
+      at 37% 100%,
+      hsla(343, 78%, 82%, 1) 0px,
+      transparent 50%
+    ),
     radial-gradient(at 100% 100%, hsla(343, 100%, 76%, 1) 0px, transparent 50%),
     radial-gradient(at 0% 7%, hsla(344, 100%, 87%, 1) 0px, transparent 50%);
   border-radius: 15px;
@@ -87,6 +126,7 @@ form {
   box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
 }
 
+/* Làm chữ tiêu đề + input nổi bật trên nền đỏ đậm */
 .introduction {
   font-family: "Prompt Medium", sans-serif;
   color: white !important;
@@ -94,11 +134,31 @@ form {
   font-size: 1.9rem !important;
 }
 
+/* FIX TRÀN + AUTOCOMPLETE KHÔNG BỊ CHE */
 .inner-wrapper {
   max-width: 100%;
   overflow: hidden;
   padding: 0 0.5rem;
   box-sizing: border-box;
+}
+
+@media (max-width: 576px) {
+  .inner-wrapper {
+    padding: 0 0.25rem;
+  }
+
+  .name-input {
+    max-width: 100% !important;
+  }
+
+  .card {
+    padding: 20px 15px !important;
+  }
+
+  .name-label {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+  }
 }
 
 #autocomplete-suggestions {
@@ -172,10 +232,14 @@ form {
   }
 }
 
-/* ================== GRADIENT CONTAINER ================== */
+/* ================== PHẦN GRADIENT CONTAINER ================== */
 .container {
   background-color: hsla(340, 94%, 70%, 1);
-  background-image: radial-gradient(at 25% 88%, hsla(345, 63%, 58%, 1) 0px, transparent 50%),
+  background-image: radial-gradient(
+      at 25% 88%,
+      hsla(345, 63%, 58%, 1) 0px,
+      transparent 50%
+    ),
     radial-gradient(at 69% 4%, hsla(354, 87%, 60%, 1) 0px, transparent 50%),
     radial-gradient(at 93% 91%, hsla(352, 76%, 50%, 1) 0px, transparent 50%);
   backdrop-filter: blur(10px);
@@ -209,8 +273,12 @@ form {
 }
 
 @keyframes diagonalShine {
-  0%   { transform: translateX(-100%) translateY(80%); }
-  100% { transform: translateX(80%) translateY(-100%); }
+  0% {
+    transform: translateX(-100%) translateY(80%);
+  }
+  100% {
+    transform: translateX(80%) translateY(-100%);
+  }
 }
 
 .name-input,
@@ -222,7 +290,11 @@ form {
 
 .btn-primary {
   background-color: hsla(340, 94%, 70%, 1);
-  background-image: radial-gradient(at 25% 88%, hsla(345, 63%, 58%, 1) 0px, transparent 50%),
+  background-image: radial-gradient(
+      at 25% 88%,
+      hsla(345, 63%, 58%, 1) 0px,
+      transparent 50%
+    ),
     radial-gradient(at 69% 4%, hsla(354, 87%, 60%, 1) 0px, transparent 50%),
     radial-gradient(at 93% 91%, hsla(352, 76%, 50%, 1) 0px, transparent 50%) !important;
   color: white !important;
@@ -237,16 +309,19 @@ form {
   box-shadow: 0 10px 25px rgba(228, 33, 57, 0.6);
 }
 
-/* ================== DESKTOP: top theo breakpoint (chuẩn 1200–1599 = 45px) ================== */
+/* ================== DESKTOP: CĂN TRÁI + margin-top THEO MÀN HÌNH ================== */
+/* CHUẨN: 1200–1599px = margin-top: 45px
+   796–991px  = 30px  (nhỏ hơn vì màn nhỏ hơn)
+   992–1199px = 38px  (trung gian)
+   ≥1600px    = 55px  (lớn hơn vì màn lớn hơn)             */
 
-/* 796–991px */
+/* Tablet đứng / laptop nhỏ: 796px - 991px */
 @media (min-width: 796px) and (max-width: 991.98px) {
   .container {
     margin-left: 10px !important;
     margin-right: auto !important;
+    top: 35px !important;
     max-width: 500px;
-    position: relative;
-    top: 28px;
   }
 
   #autocomplete-suggestions {
@@ -268,14 +343,13 @@ form {
   }
 }
 
-/* 992–1199px */
+/* Laptop / màn hình thường: 992px - 1199px */
 @media (min-width: 992px) and (max-width: 1199px) {
   .container {
     margin-left: 20px !important;
     margin-right: auto !important;
+  top: 40px !important;
     max-width: 500px;
-    position: relative;
-    top: 36px;
   }
 
   #autocomplete-suggestions {
@@ -297,14 +371,13 @@ form {
   }
 }
 
-/* 1200–1599px — CHUẨN top: 45px */
+/* Màn hình lớn: 1200px - 1599px — CHUẨN margin-top: 45px */
 @media (min-width: 1200px) and (max-width: 1599px) {
   .container {
     margin-left: 40px !important;
     margin-right: auto !important;
+    top: 45px !important;
     max-width: 500px;
-    position: relative;
-    top: 45px;
   }
 
   #autocomplete-suggestions {
@@ -319,22 +392,20 @@ form {
     padding: 8px 0;
     font-size: 1rem;
     text-align: center;
-    max-width: 90vw;
+    max-width: 460px !important;
     min-width: 260px;
     width: auto !important;
     visibility: hidden;
-    max-width: 460px !important;
   }
 }
 
-/* ≥1600px */
+/* Màn hình rất lớn: 1600px trở lên */
 @media (min-width: 1600px) {
   .container {
     margin-left: 60px !important;
     margin-right: auto !important;
+    top: 50px !important;
     max-width: 500px;
-    position: relative;
-    top: 52px;
   }
 
   #autocomplete-suggestions {
@@ -349,15 +420,13 @@ form {
     padding: 8px 0;
     font-size: 1rem;
     text-align: center;
-    max-width: 90vw;
+    max-width: 460px !important;
     min-width: 260px;
     width: auto !important;
     visibility: hidden;
-    max-width: 460px !important;
   }
 }
 
-/* ================== LAYOUT ================== */
 .main-layout {
   display: flex;
   justify-content: flex-start;
@@ -377,57 +446,9 @@ form {
   flex: 0 0 560px;
 }
 
-/* ================== MOBILE ================== */
-@media (max-width: 576px) {
-  .container {
-    position: absolute;
-    margin: 1.25rem 1.35rem;
-    padding: 1.6rem;
-    max-width: none;
-    width: auto;
-    border-radius: 18px;
-    top: 16%;
-    box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
-      inset 0px 2px 1px rgba(106, 168, 245, 0.5);
-  }
-
-  .name-label {
-    font-size: 1rem;
-    line-height: 1.3;
-  }
-
-  .name-input {
-    box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
-      inset 0px 2px 1px rgba(96, 165, 250, 0.5);
-    padding: 0.5rem 1rem;
-    font-size: 0.95rem;
-    width: 100%;
-    max-width: 420px !important;
-  }
-
-  .btn-primary {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-  }
-
-  .inner-wrapper {
-    padding: 0 0.25rem;
-  }
-
-  .name-input {
-    max-width: 100% !important;
-  }
-
-  .card {
-    padding: 20px 15px !important;
-  }
-
-  .name-label {
-    font-size: 1rem !important;
-    font-weight: 500 !important;
-  }
-}
-
+/* ======================================================
+   MOBILE: CONTAINER + MID LAYER XÍCH XUỐNG
+   ====================================================== */
 @media (max-width: 991.98px) {
   .main-layout {
     flex-direction: column !important;
@@ -443,8 +464,9 @@ form {
     padding: 0 1.5rem;
   }
 
+  /* XÍCH XUỐNG: tăng margin-top để container cách navbar hơn */
   .form-section .container {
-    margin: 1rem auto !important;
+    margin: 2.5rem auto 1rem !important;
     padding: 1.6rem 1.2rem;
     max-width: 100%;
     border-radius: 20px;
@@ -478,6 +500,7 @@ form {
   }
 }
 
+/* Máy siêu nhỏ */
 @media (max-width: 400px) {
   .form-section {
     padding: 0 1rem;
@@ -497,6 +520,8 @@ form {
 }
 
 /* ================== BACKGROUND LAYER ================== */
+
+/* Base chung cho mọi thiết bị */
 .background-layer {
   position: fixed;
   inset: 0;
@@ -515,6 +540,7 @@ form {
   -webkit-backface-visibility: hidden;
 }
 
+/* ---- DESKTOP (≥ 992px) ---- */
 @media (min-width: 992px) {
   .background-layer {
     background-size: cover;
@@ -523,12 +549,14 @@ form {
   }
 }
 
+/* ---- MÀN HÌNH RẤT LỚN (≥ 1600px) ---- */
 @media (min-width: 1600px) {
   .background-layer {
     filter: brightness(1.1) contrast(1.15) saturate(1.08);
   }
 }
 
+/* ---- MOBILE (≤ 991px) ---- */
 @media (max-width: 991.98px) {
   .background-layer {
     background-size: cover;
@@ -538,6 +566,7 @@ form {
 }
 
 /* ================== OVERLAY LAYER ================== */
+
 .overlay-layer {
   position: fixed;
   inset: 0;
@@ -579,6 +608,7 @@ form {
 }
 
 /* ================== MID LAYER ================== */
+
 .mid-layer {
   position: fixed;
   inset: 0;
@@ -596,6 +626,7 @@ form {
   -webkit-backface-visibility: hidden;
 }
 
+/* ≥ 1600px */
 @media (min-width: 1600px) {
   .mid-layer {
     background-position: right 60px center;
@@ -604,6 +635,7 @@ form {
   }
 }
 
+/* 1200px - 1599px */
 @media (min-width: 1200px) and (max-width: 1599px) {
   .mid-layer {
     background-position: right 40px center;
@@ -611,6 +643,7 @@ form {
   }
 }
 
+/* 992px - 1199px */
 @media (min-width: 992px) and (max-width: 1199px) {
   .mid-layer {
     background-position: right 20px center;
@@ -618,6 +651,7 @@ form {
   }
 }
 
+/* 796px - 991px */
 @media (min-width: 796px) and (max-width: 991.98px) {
   .mid-layer {
     background-position: right 10px center;
@@ -625,7 +659,7 @@ form {
   }
 }
 
-/* Mobile ≤795px — xích mid-layer xuống */
+/* Mobile ≤ 795px: XÍCH XUỐNG — giảm height để mid-layer bắt đầu thấp hơn trên trang */
 @media (max-width: 795px) {
   .mid-layer {
     position: absolute;
@@ -633,14 +667,23 @@ form {
     left: 0;
     right: 0;
     bottom: 0;
-    top: 68vh;
-    height: 52vh;
+    height: 45vh;
     background-position: center bottom;
-    background-size: auto 52vh;
+    background-size: auto 45vh;
     filter: brightness(1.13) contrast(1.15) saturate(1.1);
     opacity: 0.95;
     will-change: transform;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
+  }
+}
+
+/* iOS Safari: mid-layer tránh lệch 100vh */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 795px) {
+    .mid-layer {
+      height: 43vh;
+      background-size: auto 43vh;
+    }
   }
 }
