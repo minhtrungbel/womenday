@@ -667,7 +667,7 @@ form {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 45vh;
+    height: 43vh;
     background-position: center bottom;
     background-size: auto 45vh;
     filter: brightness(1.13) contrast(1.15) saturate(1.1);
@@ -682,8 +682,43 @@ form {
 @supports (-webkit-touch-callout: none) {
   @media (max-width: 795px) {
     .mid-layer {
-      height: 43vh;
+      height: 41vh;
       background-size: auto 43vh;
+      bottom: 0;
     }
+  }
+}
+@media (max-width: 359px) {
+  .mid-layer {
+    height: 40vh;
+    background-size: auto 42vh;
+    bottom: -3px !important;
+  }
+}
+
+/* 360–414px: BASELINE */
+@media (min-width: 360px) and (max-width: 414px) {
+  .mid-layer {
+    height: 42vh;
+    background-size: auto 44vh;
+    bottom: -5px !important;
+  }
+}
+
+/* 415–576px */
+@media (min-width: 415px) and (max-width: 576px) {
+  .mid-layer {
+    height: 44vh;
+    background-size: auto 46vh;
+    bottom: -7px !important;
+  }
+}
+
+/* 577–795px */
+@media (min-width: 577px) and (max-width: 795px) {
+  .mid-layer {
+    height: 46vh;
+    background-size: auto 48vh;
+    bottom: -9px !important;
   }
 }
