@@ -50,17 +50,16 @@ document.addEventListener("DOMContentLoaded", function () {
           barLeft = '40%';
         }
         musicBarEl.style.top       = '';
-        musicBarEl.style.bottom    = 'calc(180px + 14vh)'; // trên thanh Safari + gift bar, xích lên thêm 7%
+        musicBarEl.style.bottom    = 'calc(180px + 11vh)'; // xích xuống 3% so với trước (14vh → 11vh)
         musicBarEl.style.left      = barLeft;
         musicBarEl.style.transform = 'translateX(-50%)';
         musicBarEl.style.width     = barWidth;
       }
 
-      // === GIFT BAR: đã dùng bottom trong CSS nên chỉ cần đảm bảo an toàn với Safari ===
+      // === GIFT BAR: xích xuống 3% so với trước ===
       if (giftBarEl) {
-        // Safari bottom bar cao ~83px, ta thêm buffer
-        giftBarEl.style.bottom = '20px';
-        giftBarEl.style.left   = '50%';
+        giftBarEl.style.bottom    = 'calc(20px - 3vh)'; // xích xuống 3vh
+        giftBarEl.style.left      = '50%';
         giftBarEl.style.transform = 'translateX(-50%)';
       }
     }
@@ -146,29 +145,109 @@ document.addEventListener("DOMContentLoaded", function () {
     saveAudioState();
   }
 
-  if (sessionStorage.getItem("audio_allowed") === "true") {
-    setTimeout(() => {
-      if (restoreAudioState()) {
-        playAudio();
-      } else {
-        audio.currentTime = 0;
-        playAudio();
-      }
-    }, 0);
+  const isIOS_audio = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  // Hàm unlock + play audio sau gesture
+  function unlockAndPlay() {
+    sessionStorage.setItem("audio_allowed", "true");
+    if (restoreAudioState()) {
+      playAudio();
+    } else {
+      audio.currentTime = 0;
+      playAudio();
+    }
   }
 
-  const unlockAudio = () => {
-    playAudio();
-    sessionStorage.setItem("audio_allowed", "true");
-  };
-  document.body.addEventListener("click",      unlockAudio, { once: true });
-  document.body.addEventListener("touchstart", unlockAudio, { once: true });
+  // iOS: hiện overlay "chạm để vào" để lấy gesture → unlock audio
+  function showIOSOverlay() {
+    if (document.getElementById("ios-audio-overlay")) return;
+
+    const overlay = document.createElement("div");
+    overlay.id = "ios-audio-overlay";
+    overlay.innerHTML = `
+      <div class="ios-overlay__inner">
+        <div class="ios-overlay__icon">♪</div>
+        <div class="ios-overlay__text">Chạm để vào</div>
+        <div class="ios-overlay__sub">Trang có nhạc nền dành cho bạn 🌸</div>
+      </div>
+    `;
+    overlay.style.cssText = [
+      "position:fixed", "inset:0", "z-index:99999",
+      "display:flex", "align-items:center", "justify-content:center",
+      "background:linear-gradient(135deg,rgba(103,13,38,0.93) 0%,rgba(43,0,19,0.96) 100%)",
+      "backdrop-filter:blur(10px)", "-webkit-backdrop-filter:blur(10px)",
+      "cursor:pointer", "touch-action:manipulation",
+      "transition:opacity 0.35s ease"
+    ].join(";");
+
+    overlay.querySelector(".ios-overlay__inner").style.cssText = [
+      "display:flex", "flex-direction:column", "align-items:center", "gap:14px",
+      "animation:ios-pulse 1.3s ease-in-out infinite alternate"
+    ].join(";");
+
+    overlay.querySelector(".ios-overlay__icon").style.cssText = [
+      "font-size:3.8rem",
+      "background:linear-gradient(to bottom,#FFDBE9,#FE94B2)",
+      "-webkit-background-clip:text", "-webkit-text-fill-color:transparent",
+      "background-clip:text",
+      "filter:drop-shadow(0 0 20px rgba(254,148,178,0.8))"
+    ].join(";");
+
+    overlay.querySelector(".ios-overlay__text").style.cssText = [
+      "font-family:'Bebas Neue','Samsung Sharp Bold',sans-serif",
+      "font-size:2.6rem", "letter-spacing:4px",
+      "background:linear-gradient(to right,#FFDBE9,#FE94B2)",
+      "-webkit-background-clip:text", "-webkit-text-fill-color:transparent",
+      "background-clip:text"
+    ].join(";");
+
+    overlay.querySelector(".ios-overlay__sub").style.cssText = [
+      "font-family:'Samsung Sharp Bold',sans-serif",
+      "font-size:0.88rem", "color:rgba(255,219,233,0.72)",
+      "letter-spacing:0.4px"
+    ].join(";");
+
+    if (!document.getElementById("ios-overlay-style")) {
+      const s = document.createElement("style");
+      s.id = "ios-overlay-style";
+      s.textContent = "@keyframes ios-pulse{from{transform:scale(0.96);opacity:0.82}to{transform:scale(1.04);opacity:1}}";
+      document.head.appendChild(s);
+    }
+
+    function dismiss(e) {
+      e.stopPropagation();
+      overlay.style.opacity = "0";
+      setTimeout(() => overlay.remove(), 380);
+      unlockAndPlay();
+    }
+    overlay.addEventListener("touchstart", dismiss, { once: true, passive: false });
+    overlay.addEventListener("click",      dismiss, { once: true });
+
+    document.body.appendChild(overlay);
+  }
+
+  if (isIOS_audio) {
+    // iOS: luôn hiện overlay vì autoplay bị chặn hoàn toàn
+    showIOSOverlay();
+  } else {
+    // Non-iOS: thử autoplay, nếu fail thì tap bất kỳ đâu
+    if (sessionStorage.getItem("audio_allowed") === "true") {
+      setTimeout(() => {
+        if (restoreAudioState()) {
+          playAudio();
+        } else {
+          audio.currentTime = 0;
+          playAudio();
+        }
+      }, 0);
+    }
+    const unlockAudio = () => unlockAndPlay();
+    document.body.addEventListener("click",      unlockAudio, { once: true });
+    document.body.addEventListener("touchstart", unlockAudio, { once: true });
+  }
 
   if (audioTrigger) {
-    audioTrigger.addEventListener("click", () => {
-      playAudio();
-      sessionStorage.setItem("audio_allowed", "true");
-    });
+    audioTrigger.addEventListener("click", () => unlockAndPlay());
   }
 
   // === MUSIC BAR ===
