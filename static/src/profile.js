@@ -1,24 +1,6 @@
 // static/js/profile.js
 document.addEventListener("DOMContentLoaded", function () {
 
-  // ==================== TOUCH HOVER EFFECT (1-2s rồi về bình thường) ====================
-  function addTouchHover(el, duration = 1200) {
-    if (!el) return;
-    el.addEventListener("touchstart", () => {
-      el.classList.add("touch-hover");
-    }, { passive: true });
-    el.addEventListener("touchend", () => {
-      setTimeout(() => el.classList.remove("touch-hover"), duration);
-    }, { passive: true });
-    el.addEventListener("touchcancel", () => {
-      el.classList.remove("touch-hover");
-    }, { passive: true });
-  }
-
-  addTouchHover(document.getElementById("music-bar-btn"), 1200);
-  addTouchHover(document.getElementById("gift-bar-btn"), 1200);
-  addTouchHover(document.querySelector(".gift-bar__pill"), 1200);
-
   // ==================== IOS SAFARI: fix toàn bộ layout dùng bottom thay top ====================
   // Safari mobile có thanh địa chỉ ở dưới + 100vh không chính xác
   // → dùng bottom thay top cho mọi element cần canh vị trí trên mobile iOS
@@ -68,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
           barLeft = '40%';
         }
         musicBarEl.style.top       = '';
-        musicBarEl.style.bottom    = '180px'; // trên thanh Safari + gift bar
+        musicBarEl.style.bottom    = 'calc(180px + 7vh)'; // trên thanh Safari + gift bar, xích lên 7vh
         musicBarEl.style.left      = barLeft;
         musicBarEl.style.transform = 'translateX(-50%)';
         musicBarEl.style.width     = barWidth;
