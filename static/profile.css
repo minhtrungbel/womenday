@@ -86,7 +86,6 @@
   filter: brightness(1.05) contrast(1.1) saturate(1.05);
 }
 
-/* ≤359px: màn nhỏ hơn baseline → bottom âm nhiều hơn, size nhỏ hơn, right ít âm hơn */
 @media (max-width: 359px) {
   .profile-content-frame {
     bottom: -110vw;
@@ -95,7 +94,6 @@
   }
 }
 
-/* 360–414px: BASELINE */
 @media (min-width: 360px) and (max-width: 414px) {
   .profile-content-frame {
     bottom: -95vw;
@@ -104,7 +102,6 @@
   }
 }
 
-/* 415–576px: rộng hơn baseline → bottom âm ít hơn, size lớn hơn, right ít âm hơn */
 @media (min-width: 415px) and (max-width: 576px) {
   .profile-content-frame {
     bottom: -83vw;
@@ -113,7 +110,6 @@
   }
 }
 
-/* 577–795px */
 @media (min-width: 577px) and (max-width: 795px) {
   .profile-content-frame {
     bottom: -52vw;
@@ -122,7 +118,6 @@
   }
 }
 
-/* 796px+: bottom = 0, desktop layout */
 @media (min-width: 796px) and (max-width: 991.98px) {
   .profile-content-frame {
     bottom: 0;
@@ -153,6 +148,16 @@
     background-size: auto 88%;
     background-position: right 0px center;
     filter: brightness(1.07) contrast(1.12) saturate(1.07);
+  }
+}
+
+/* iOS Safari: top được tính từ navbar thực, tránh bị lệch */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 795px) {
+    .profile-content-frame {
+      top: env(safe-area-inset-top, 0px);
+      top: calc(58px + env(safe-area-inset-top, 0px));
+    }
   }
 }
 
@@ -262,6 +267,15 @@
     background-size: auto 115%;
     background-position: left 0px top;
     filter: brightness(1.07) contrast(1.12) saturate(1.07);
+  }
+}
+
+/* iOS Safari: dùng -webkit-fill-available thay 100vh để tránh lệch */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 795px) {
+    .profile-avatar-layer {
+      height: -webkit-fill-available;
+    }
   }
 }
 
@@ -375,30 +389,30 @@
   height: 6px;
   animation-delay: 0s;
 }
-
 .music-bar__wave span:nth-child(2) {
   height: 12px;
   animation-delay: 0.15s;
 }
-
 .music-bar__wave span:nth-child(3) {
   height: 8px;
   animation-delay: 0.3s;
 }
-
 .music-bar__wave span:nth-child(4) {
   height: 13px;
   animation-delay: 0.45s;
 }
-
 .music-bar__wave span:nth-child(5) {
   height: 5px;
   animation-delay: 0.6s;
 }
 
 @keyframes wave-bounce {
-  0%, 100% { transform: scaleY(0.4); }
-  50%       { transform: scaleY(1);  }
+  0%, 100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
 }
 
 .music-bar.paused .music-bar__wave span {
@@ -433,8 +447,12 @@
 }
 
 @keyframes marquee-scroll {
-  0%   { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .music-bar__btn {
@@ -456,7 +474,8 @@
   z-index: 1;
 }
 
-.music-bar__btn:hover {
+.music-bar__btn:hover,
+.music-bar__btn.touch-hover {
   background: linear-gradient(to bottom, #FFDBE9 0%, #FE94B2 100%);
   box-shadow: 0 3px 18px rgba(254, 148, 178, 0.7), 0 0 0 2.5px rgba(254, 148, 178, 0.35);
   transform: scale(1.08);
@@ -472,14 +491,22 @@
   height: 18px;
 }
 .music-bar__btn:hover .icon-play path,
-.music-bar__btn:hover .icon-pause path {
+.music-bar__btn:hover .icon-pause path,
+.music-bar__btn.touch-hover .icon-play path,
+.music-bar__btn.touch-hover .icon-pause path {
   fill: url(#btn-hover-gradient);
 }
-.icon-pause { display: none; }
-.music-bar.playing .icon-play  { display: none; }
-.music-bar.playing .icon-pause { display: block; }
+.icon-pause {
+  display: none;
+}
+.music-bar.playing .icon-play {
+  display: none;
+}
+.music-bar.playing .icon-pause {
+  display: block;
+}
 
-/* ≤359px: nhỏ hơn baseline → top cao hơn, left ít hơn, width hẹp hơn */
+/* ≤359px */
 @media (max-width: 359px) {
   .music-bar {
     top: 46%;
@@ -491,22 +518,18 @@
     padding: 3px 4px 3px 7px;
     gap: 4px;
   }
-
   .music-bar__title {
     font-size: 0.63rem;
   }
-
   .music-bar__btn {
     width: 27px;
     height: 27px;
     margin-right: -10px;
   }
-
   .music-bar__btn svg {
     width: 10px;
     height: 10px;
   }
-
   .music-bar__wave span {
     width: 2px;
   }
@@ -524,28 +547,24 @@
     padding: 4px 6px 4px 9px;
     gap: 5px;
   }
-
   .music-bar__title {
     font-size: 0.70rem;
   }
-
   .music-bar__btn {
     width: 32px;
     height: 32px;
     margin-right: -12px;
   }
-
   .music-bar__btn svg {
     width: 12px;
     height: 12px;
   }
-
   .music-bar__wave span {
     width: 2.5px;
   }
 }
 
-/* 415–576px: rộng hơn → top tăng nhẹ, left tăng nhẹ, width rộng hơn */
+/* 415–576px */
 @media (min-width: 415px) and (max-width: 576px) {
   .music-bar {
     top: 57%;
@@ -557,22 +576,18 @@
     padding: 4px 6px 4px 10px;
     gap: 5px;
   }
-
   .music-bar__title {
     font-size: 0.73rem;
   }
-
   .music-bar__btn {
     width: 34px;
     height: 34px;
     margin-right: -13px;
   }
-
   .music-bar__btn svg {
     width: 13px;
     height: 13px;
   }
-
   .music-bar__wave span {
     width: 2.5px;
   }
@@ -590,22 +605,18 @@
     padding: 5px 6px 5px 10px;
     gap: 6px;
   }
-
   .music-bar__title {
     font-size: 0.75rem;
   }
-
   .music-bar__btn {
     width: 36px;
     height: 36px;
     margin-right: -14px;
   }
-
   .music-bar__btn svg {
     width: 14px;
     height: 14px;
   }
-
   .music-bar__wave span {
     width: 3px;
   }
@@ -620,11 +631,9 @@
     padding: 4px 6px 4px 10px;
     gap: 8px;
   }
-
   .music-bar__title {
     font-size: 0.90rem;
   }
-
   .music-bar__btn {
     width: 38px;
     height: 38px;
@@ -639,7 +648,6 @@
     transform: translateX(-50%);
     width: 330px;
   }
-
   .music-bar__title {
     font-size: 0.86rem;
   }
@@ -652,7 +660,6 @@
     transform: translateX(-50%);
     width: 380px;
   }
-
   .music-bar__title {
     font-size: 0.95rem;
   }
@@ -667,20 +674,29 @@
     padding: 5px 6px 5px 13px;
     gap: 12px;
   }
-
   .music-bar__title {
     font-size: 0.98rem;
   }
-
   .music-bar__btn {
     width: 46px;
     height: 46px;
     margin-right: -18px;
   }
-
   .music-bar__btn svg {
     width: 20px;
     height: 20px;
+  }
+}
+
+/* iOS Safari: top dùng % bị lệch vì 100vh sai → JS override bằng bottom
+   CSS này chỉ đảm bảo transition mượt */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 795px) {
+    .music-bar {
+      transition: bottom 0.15s ease;
+      /* top bị JS override bằng bottom, nên ta xóa top ở đây */
+      top: unset !important;
+    }
   }
 }
 
@@ -778,7 +794,8 @@ img.img-fluid {
   touch-action: manipulation;
 }
 
-.gift-bar__btn:hover {
+.gift-bar__btn:hover,
+.gift-bar__btn.touch-hover {
   transform: scale(1.07);
   box-shadow:
     0 0 42px 14px rgba(240, 70, 83, 0.65),
@@ -807,10 +824,11 @@ img.img-fluid {
   min-width: 300px;
   position: relative;
   z-index: 1;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-.gift-bar:hover .gift-bar__pill {
+.gift-bar:hover .gift-bar__pill,
+.gift-bar__pill.touch-hover {
   transform: scale(1.07);
   background: linear-gradient(to right, #ffffff, #fabbcb);
   box-shadow: 0 10px 25px rgba(228, 33, 57, 0.6), 0 2px 8px rgba(0,0,0,0.15);
@@ -834,127 +852,116 @@ img.img-fluid {
   transition: color 0.3s ease;
 }
 
-.gift-bar:hover .gift-bar__label {
+.gift-bar:hover .gift-bar__label,
+.gift-bar__pill.touch-hover .gift-bar__label {
   background: linear-gradient(to right, #630f23, #860033);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* ≤359px */
 @media (max-width: 359px) {
   .gift-bar {
     bottom: 14px;
     left: 50%;
     transform: translateX(-50%);
   }
-
   .gift-bar__btn {
     width: 58px;
     height: 58px;
     margin-right: -19px;
   }
-
   .gift-bar__icon {
     width: 34px;
     height: 34px;
   }
-
   .gift-bar__pill {
     height: 46px;
     min-width: 190px;
     padding: 0 18px 0 30px;
   }
-
   .gift-bar__label {
     font-size: 1.4rem;
     letter-spacing: 1px;
   }
 }
 
+/* 360–414px */
 @media (min-width: 360px) and (max-width: 414px) {
   .gift-bar {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
   }
-
   .gift-bar__btn {
     width: 68px;
     height: 68px;
     margin-right: -22px;
   }
-
   .gift-bar__icon {
     width: 40px;
     height: 40px;
   }
-
   .gift-bar__pill {
     height: 56px;
     min-width: 225px;
     padding: 0 26px 0 38px;
   }
-
   .gift-bar__label {
     font-size: 1.65rem;
     letter-spacing: 1.5px;
   }
 }
 
+/* 415–576px */
 @media (min-width: 415px) and (max-width: 576px) {
   .gift-bar {
     bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
   }
-
   .gift-bar__btn {
     width: 72px;
     height: 72px;
     margin-right: -24px;
   }
-
   .gift-bar__icon {
     width: 42px;
     height: 42px;
   }
-
   .gift-bar__pill {
     height: 58px;
     min-width: 238px;
     padding: 0 28px 0 40px;
   }
-
   .gift-bar__label {
     font-size: 1.75rem;
     letter-spacing: 1.5px;
   }
 }
 
+/* 577–795px */
 @media (min-width: 577px) and (max-width: 795px) {
   .gift-bar {
     bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
   }
-
   .gift-bar__btn {
     width: 76px;
     height: 76px;
     margin-right: -26px;
   }
-
   .gift-bar__icon {
     width: 44px;
     height: 44px;
   }
-
   .gift-bar__pill {
     height: 62px;
     min-width: 255px;
     padding: 0 30px 0 44px;
   }
-
   .gift-bar__label {
     font-size: 1.85rem;
     letter-spacing: 2px;
@@ -967,24 +974,20 @@ img.img-fluid {
     left: 75%;
     transform: translateX(-50%);
   }
-
   .gift-bar__btn {
     width: 70px;
     height: 70px;
     margin-right: -22px;
   }
-
   .gift-bar__icon {
     width: 42px;
     height: 42px;
   }
-
   .gift-bar__pill {
     height: 56px;
     min-width: 245px;
     padding: 0 28px 0 40px;
   }
-
   .gift-bar__label {
     font-size: 1.8rem;
   }
@@ -996,24 +999,20 @@ img.img-fluid {
     left: 77%;
     transform: translateX(-50%);
   }
-
   .gift-bar__btn {
     width: 78px;
     height: 78px;
     margin-right: -26px;
   }
-
   .gift-bar__icon {
     width: 48px;
     height: 48px;
   }
-
   .gift-bar__pill {
     height: 62px;
     min-width: 270px;
     padding: 0 32px 0 46px;
   }
-
   .gift-bar__label {
     font-size: 2.2rem;
   }
@@ -1025,24 +1024,20 @@ img.img-fluid {
     left: 79%;
     transform: translateX(-50%);
   }
-
   .gift-bar__btn {
     width: 88px;
     height: 88px;
     margin-right: -30px;
   }
-
   .gift-bar__icon {
     width: 52px;
     height: 52px;
   }
-
   .gift-bar__pill {
     height: 68px;
     min-width: 300px;
     padding: 0 36px 0 52px;
   }
-
   .gift-bar__label {
     font-size: 2.6rem;
   }
@@ -1054,27 +1049,32 @@ img.img-fluid {
     left: 81%;
     transform: translateX(-50%);
   }
-
   .gift-bar__btn {
     width: 96px;
     height: 96px;
     margin-right: -34px;
   }
-
   .gift-bar__icon {
     width: 58px;
     height: 58px;
   }
-
   .gift-bar__pill {
     height: 74px;
     min-width: 330px;
     padding: 0 40px 0 60px;
   }
-
   .gift-bar__label {
     font-size: 2.75rem;
     letter-spacing: 2px;
+  }
+}
+
+/* iOS Safari: gift bar dùng safe-area để không bị thanh home bar che */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 795px) {
+    .gift-bar {
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    }
   }
 }
 
@@ -1140,7 +1140,7 @@ img.img-fluid {
   margin: 10px 0;
 }
 
-/* ≤359px: nhỏ hơn baseline → top thấp hơn, left ít hơn, font nhỏ hơn */
+/* ≤359px */
 @media (max-width: 359px) {
   .profile-info-card {
     top: 58%;
@@ -1150,28 +1150,23 @@ img.img-fluid {
     max-width: none;
     padding: 6px 7px;
   }
-
   .profile-info-card .info-name {
     font-size: 0.85rem;
     margin-bottom: 2px;
   }
-
   .profile-info-card .info-nickname {
     font-size: 0.66rem;
     margin-bottom: 5px;
   }
-
   .profile-info-card .info-value {
     font-size: 0.63rem;
     line-height: 1.4;
   }
-
   .profile-info-card .info-label {
     font-size: 0.48rem;
     margin-top: 6px;
     margin-bottom: 2px;
   }
-
   .profile-info-card .info-divider {
     margin: 4px 0;
   }
@@ -1187,34 +1182,29 @@ img.img-fluid {
     max-width: none;
     padding: 8px 9px;
   }
-
   .profile-info-card .info-name {
     font-size: 1rem;
     margin-bottom: 3px;
   }
-
   .profile-info-card .info-nickname {
     font-size: 0.8rem;
     margin-bottom: 8px;
   }
-
   .profile-info-card .info-value {
     font-size: 0.76rem;
     line-height: 1.5;
   }
-
   .profile-info-card .info-label {
     font-size: 0.6rem;
     margin-top: 8px;
     margin-bottom: 2px;
   }
-
   .profile-info-card .info-divider {
     margin: 5px 0;
   }
 }
 
-/* 415–576px: rộng hơn → top tăng nhẹ, left tăng nhẹ, font lớn hơn chút */
+/* 415–576px */
 @media (min-width: 415px) and (max-width: 576px) {
   .profile-info-card {
     top: 63%;
@@ -1224,28 +1214,23 @@ img.img-fluid {
     max-width: none;
     padding: 9px 10px;
   }
-
   .profile-info-card .info-name {
     font-size: 1.02rem;
     margin-bottom: 3px;
   }
-
   .profile-info-card .info-nickname {
     font-size: 0.78rem;
     margin-bottom: 8px;
   }
-
   .profile-info-card .info-value {
     font-size: 0.73rem;
     line-height: 1.5;
   }
-
   .profile-info-card .info-label {
     font-size: 0.55rem;
     margin-top: 8px;
     margin-bottom: 2px;
   }
-
   .profile-info-card .info-divider {
     margin: 6px 0;
   }
@@ -1261,28 +1246,23 @@ img.img-fluid {
     max-width: none;
     padding: 10px 12px;
   }
-
   .profile-info-card .info-name {
     font-size: 1.08rem;
     margin-bottom: 3px;
   }
-
   .profile-info-card .info-nickname {
     font-size: 0.8rem;
     margin-bottom: 8px;
   }
-
   .profile-info-card .info-value {
     font-size: 0.76rem;
     line-height: 1.5;
   }
-
   .profile-info-card .info-label {
     font-size: 0.56rem;
     margin-top: 8px;
     margin-bottom: 2px;
   }
-
   .profile-info-card .info-divider {
     margin: 6px 0;
   }
@@ -1296,21 +1276,17 @@ img.img-fluid {
     max-width: 220px;
     padding: 12px 12px;
   }
-
   .profile-info-card .info-name {
     font-size: 1.05rem;
     margin-bottom: 4px;
   }
-
   .profile-info-card .info-nickname {
     font-size: 0.72rem;
     margin-bottom: 10px;
   }
-
   .profile-info-card .info-value {
     font-size: 0.7rem;
   }
-
   .profile-info-card .info-label {
     font-size: 0.52rem;
     margin-top: 10px;
@@ -1325,19 +1301,15 @@ img.img-fluid {
     max-width: 245px;
     padding: 16px 14px;
   }
-
   .profile-info-card .info-name {
     font-size: 1.2rem;
   }
-
   .profile-info-card .info-nickname {
     font-size: 0.8rem;
   }
-
   .profile-info-card .info-value {
     font-size: 0.75rem;
   }
-
   .profile-info-card .info-label {
     font-size: 0.55rem;
   }
@@ -1351,7 +1323,6 @@ img.img-fluid {
     max-width: 270px;
     padding: 20px 16px;
   }
-
   .profile-info-card .info-name {
     font-size: 1.4rem;
   }
@@ -1365,21 +1336,46 @@ img.img-fluid {
     max-width: 290px;
     padding: 24px 20px;
   }
-
   .profile-info-card .info-name {
     font-size: 1.55rem;
   }
-
   .profile-info-card .info-nickname {
     font-size: 0.98rem;
   }
-
   .profile-info-card .info-value {
     font-size: 0.92rem;
   }
-
   .profile-info-card .info-label {
     font-size: 0.62rem;
+  }
+}
+
+/* iOS Safari: top dùng % bị lệch vì 100vh sai trên Safari
+   → dùng bottom để canh info card trên mobile iOS */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 359px) {
+    .profile-info-card {
+      top: unset !important;
+      bottom: calc(120px + env(safe-area-inset-bottom, 0px));
+    }
+  }
+  @media (min-width: 360px) and (max-width: 414px) {
+    .profile-info-card {
+      top: unset !important;
+      bottom: calc(130px + env(safe-area-inset-bottom, 0px));
+    }
+  }
+  @media (min-width: 415px) and (max-width: 576px) {
+    .profile-info-card {
+      top: unset !important;
+      bottom: calc(140px + env(safe-area-inset-bottom, 0px));
+    }
+  }
+  @media (min-width: 577px) and (max-width: 795px) {
+    .profile-info-card {
+      top: unset !important;
+      bottom: calc(145px + env(safe-area-inset-bottom, 0px));
+    }
   }
 }
 
@@ -1417,7 +1413,6 @@ img.img-fluid {
     left: 13%;
   }
 }
-
 @media (min-width: 360px) and (max-width: 414px) {
   .profile-gif {
     width: 90px;
@@ -1425,7 +1420,6 @@ img.img-fluid {
     left: 15%;
   }
 }
-
 @media (min-width: 415px) and (max-width: 576px) {
   .profile-gif {
     width: 96px;
@@ -1433,7 +1427,6 @@ img.img-fluid {
     left: 17%;
   }
 }
-
 @media (min-width: 577px) and (max-width: 795px) {
   .profile-gif {
     width: 102px;
@@ -1441,20 +1434,10 @@ img.img-fluid {
     left: 19%;
   }
 }
-
 @media (min-width: 796px) and (max-width: 991.98px) {
   .profile-gif {
     width: 120px;
     top: 20%;
     left: 28%;
-  }
-}
-/* ======== iOS Safari fix: music bar (100vh bug) ======== */
-@supports (-webkit-touch-callout: none) {
-  @media (min-width: 360px) and (max-width: 414px) {
-    .music-bar { top: 53% !important; }
-  }
-  @media (min-width: 415px) and (max-width: 576px) {
-    .music-bar { top: 53% !important; }
   }
 }
