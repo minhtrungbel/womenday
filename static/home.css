@@ -1,770 +1,770 @@
-/* ========================================
-   MÀU NỀN CHÍNH: #FABBCB (Pantone hồng phấn)
-   RGB: 250, 187, 203
-   CMYK: 0%, 25%, 19%, 2%
-   ======================================== */
+  /* ========================================
+    MÀU NỀN CHÍNH: #FABBCB (Pantone hồng phấn)
+    RGB: 250, 187, 203
+    CMYK: 0%, 25%, 19%, 2%
+    ======================================== */
 
-.container {
-  border-radius: 30px;
-  padding: 2rem;
-  margin: 3rem auto;
-  max-width: 500px;
-  text-align: center;
-  border: 1px solid rgba(250, 187, 203, 0.3);
-}
-
-.btn-primary {
-  font-family: "Samsung Sharp Bold", sans-serif;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  color: white;
-  touch-action: manipulation;
-}
-
-.form-control,
-.form-label {
-  background-color: white;
-  color: #333;
-  border: 1px solid #fabbcb;
-  border-radius: 8px;
-}
-
-.form-control:focus {
-  border-color: #e91e63;
-  box-shadow: 0 0 0 3px rgba(250, 187, 203, 0.3);
-}
-
-/* GIỮ NGUYÊN MARGIN, PADDING, TOP, POSITION */
-@media (max-width: 576px) {
   .container {
-    position: absolute;
-    margin: 1.25rem 1.35rem;
-    padding: 1.6rem;
-    max-width: none;
-    width: auto;
-    border-radius: 18px;
-    top: 40px;
-    box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
-      inset 0px 2px 1px rgba(106, 168, 245, 0.5);
-  }
-
-  .name-label {
-    font-size: 1rem;
-    line-height: 1.3;
-  }
-
-  .name-input {
-    box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
-      inset 0px 2px 1px rgba(96, 165, 250, 0.5);
-    padding: 0.5rem 1rem;
-    font-size: 0.95rem;
-    width: 100%;
-    max-width: 420px !important;
+    border-radius: 30px;
+    padding: 2rem;
+    margin: 3rem auto;
+    max-width: 500px;
+    text-align: center;
+    border: 1px solid rgba(250, 187, 203, 0.3);
   }
 
   .btn-primary {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-  }
-}
-
-/* CÁC STYLE CŨ - GIỮ NGUYÊN 100% */
-.card {
-  color: transparent;
-  background-color: hsla(336, 100%, 92%, 1);
-  background-image: radial-gradient(
-      at 37% 100%,
-      hsla(343, 78%, 82%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 100% 100%, hsla(343, 100%, 76%, 1) 0px, transparent 50%),
-    radial-gradient(at 0% 7%, hsla(344, 100%, 87%, 1) 0px, transparent 50%);
-  border-radius: 15px;
-  box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
-    inset 0px 2px 1px rgba(96, 165, 250, 0.5);
-  padding: 40px 60px;
-  background-color: #f5f5f5;
-}
-
-form {
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.name-label {
-  font-family: "Prompt Medium", sans-serif;
-  font-size: 20px;
-  font-weight: 500;
-  color: #f05e70;
-  margin-bottom: 8px;
-  word-wrap: break-word;
-}
-
-.name-input {
-  padding: 0.5rem 2.75em;
-  width: 100%;
-  max-width: 420px;
-  border-radius: 25px;
-  border: 1px solid lightblue;
-  outline: none;
-  font-size: 1rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  background-color: white;
-}
-
-.name-input.form-control {
-  border-color: lightblue;
-}
-
-.name-input:focus {
-  border-color: #d6336c;
-  box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
-}
-
-/* Làm chữ tiêu đề + input nổi bật trên nền đỏ đậm */
-.introduction {
-  font-family: "Prompt Medium", sans-serif;
-  color: white !important;
-  font-weight: 800 !important;
-  font-size: 1.9rem !important;
-}
-
-/* FIX TRÀN + AUTOCOMPLETE KHÔNG BỊ CHE */
-.inner-wrapper {
-  max-width: 100%;
-  overflow: hidden;
-  padding: 0 0.5rem;
-  box-sizing: border-box;
-}
-
-@media (max-width: 576px) {
-  .inner-wrapper {
-    padding: 0 0.25rem;
+    font-family: "Samsung Sharp Bold", sans-serif;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    color: white;
+    touch-action: manipulation;
   }
 
-  .name-input {
-    max-width: 100% !important;
+  .form-control,
+  .form-label {
+    background-color: white;
+    color: #333;
+    border: 1px solid #fabbcb;
+    border-radius: 8px;
   }
 
+  .form-control:focus {
+    border-color: #e91e63;
+    box-shadow: 0 0 0 3px rgba(250, 187, 203, 0.3);
+  }
+
+  /* GIỮ NGUYÊN MARGIN, PADDING, TOP, POSITION */
+  @media (max-width: 576px) {
+    .container {
+      position: absolute;
+      margin: 1.25rem 1.35rem;
+      padding: 1.6rem;
+      max-width: none;
+      width: auto;
+      border-radius: 18px;
+      top: 40px;
+      box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
+        inset 0px 2px 1px rgba(106, 168, 245, 0.5);
+    }
+
+    .name-label {
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    .name-input {
+      box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
+        inset 0px 2px 1px rgba(96, 165, 250, 0.5);
+      padding: 0.5rem 1rem;
+      font-size: 0.95rem;
+      width: 100%;
+      max-width: 420px !important;
+    }
+
+    .btn-primary {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+  }
+
+  /* CÁC STYLE CŨ - GIỮ NGUYÊN 100% */
   .card {
-    padding: 20px 15px !important;
+    color: transparent;
+    background-color: hsla(336, 100%, 92%, 1);
+    background-image: radial-gradient(
+        at 37% 100%,
+        hsla(343, 78%, 82%, 1) 0px,
+        transparent 50%
+      ),
+      radial-gradient(at 100% 100%, hsla(343, 100%, 76%, 1) 0px, transparent 50%),
+      radial-gradient(at 0% 7%, hsla(344, 100%, 87%, 1) 0px, transparent 50%);
+    border-radius: 15px;
+    box-shadow: 0px 4px 4px -2px rgba(14, 21, 45, 0.5),
+      inset 0px 2px 1px rgba(96, 165, 250, 0.5);
+    padding: 40px 60px;
+    background-color: #f5f5f5;
   }
 
-  .name-label {
-    font-size: 1rem !important;
-    font-weight: 500 !important;
-  }
-}
-
-#autocomplete-suggestions {
-  position: fixed !important;
-  background-color: white;
-  border: 1px solid #fabbcb;
-  border-radius: 20px;
-  max-height: 260px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  z-index: 9999 !important;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  display: none;
-  width: auto !important;
-  max-width: 90% !important;
-  min-width: 240px;
-  padding: 12px 0;
-  font-size: 1.1rem;
-  text-align: center;
-  pointer-events: auto;
-  touch-action: pan-y;
-}
-
-.autocomplete-suggestion {
-  padding: 14px 18px;
-  cursor: pointer;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-weight: 500;
-}
-
-.autocomplete-suggestion:hover,
-.autocomplete-suggestion.tapped {
-  background-color: #fabbcb;
-  color: white;
-  border-radius: 8px;
-  margin: 0 10px;
-}
-
-#autocomplete-suggestions::-webkit-scrollbar {
-  width: 5px;
-}
-
-#autocomplete-suggestions::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-#autocomplete-suggestions::-webkit-scrollbar-thumb:hover {
-  background: #fabbcb;
-  border-radius: 10px;
-}
-
-@media (max-width: 991.98px) {
-  #autocomplete-suggestions {
-    max-height: 280px;
-    padding: 14px 0;
-    min-width: 260px;
-  }
-
-  .autocomplete-suggestion {
-    padding: 18px 24px;
-    font-size: 1.15rem;
-  }
-
-  #autocomplete-suggestions::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
-  }
-}
-
-/* ================== PHẦN GRADIENT CONTAINER ================== */
-.container {
-  background-color: hsla(340, 94%, 70%, 1);
-  background-image: radial-gradient(
-      at 25% 88%,
-      hsla(345, 63%, 58%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 69% 4%, hsla(354, 87%, 60%, 1) 0px, transparent 50%),
-    radial-gradient(at 93% 91%, hsla(352, 76%, 50%, 1) 0px, transparent 50%);
-  backdrop-filter: blur(10px);
-  box-shadow:
-    0 4px 12px rgba(255, 255, 255, 0.3),
-    0 12px 35px rgba(255, 255, 255, 0.25),
-    0 30px 70px rgba(255, 255, 255, 0.15),
-    0 0 0 1px rgba(255, 255, 255, 0.2) inset !important;
-  position: relative;
-  overflow: hidden;
-}
-
-.container::before {
-  content: "";
-  position: absolute;
-  top: -150%;
-  left: -150%;
-  width: 400%;
-  height: 400%;
-  background: linear-gradient(
-    45deg,
-    transparent 0%,
-    transparent 42%,
-    rgba(255, 240, 245, 0.25) 50%,
-    transparent 58%,
-    transparent 100%
-  );
-  animation: diagonalShine 10s infinite linear;
-  pointer-events: none;
-  z-index: 1;
-}
-
-@keyframes diagonalShine {
-  0% {
-    transform: translateX(-100%) translateY(80%);
-  }
-  100% {
-    transform: translateX(80%) translateY(-100%);
-  }
-}
-
-.name-input,
-.form-control {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  border: 2px solid rgba(255, 255, 255, 0.6) !important;
-  font-weight: 600;
-}
-
-.btn-primary {
-  background-color: hsla(340, 94%, 70%, 1);
-  background-image: radial-gradient(
-      at 25% 88%,
-      hsla(345, 63%, 58%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 69% 4%, hsla(354, 87%, 60%, 1) 0px, transparent 50%),
-    radial-gradient(at 93% 91%, hsla(352, 76%, 50%, 1) 0px, transparent 50%) !important;
-  color: white !important;
-  font-weight: 700 !important;
-}
-
-.btn-primary:hover,
-.btn-primary.tapped {
-  background: linear-gradient(to right, #ffffff, #fabbcb) !important;
-  color: #630f23 !important;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(228, 33, 57, 0.6);
-}
-
-/* ================== DESKTOP: CĂN TRÁI + margin-top THEO MÀN HÌNH ================== */
-/* CHUẨN: 1200–1599px = margin-top: 45px
-   796–991px  = 30px  (nhỏ hơn vì màn nhỏ hơn)
-   992–1199px = 38px  (trung gian)
-   ≥1600px    = 55px  (lớn hơn vì màn lớn hơn)             */
-
-/* Tablet đứng / laptop nhỏ: 796px - 991px */
-@media (min-width: 796px) and (max-width: 991.98px) {
-  .container {
-    margin-left: 10px !important;
-    margin-right: auto !important;
-    top: 35px !important;
-    max-width: 500px;
-  }
-
-  #autocomplete-suggestions {
-    position: fixed !important;
-    background-color: white;
-    border: 1px solid #fabbcb;
-    border-radius: 12px;
-    max-height: 220px;
-    overflow-y: auto;
-    z-index: 9999 !important;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    padding: 8px 0;
-    font-size: 1rem;
-    text-align: center;
-    max-width: 90vw;
-    min-width: 260px;
-    width: auto !important;
-    visibility: hidden;
-  }
-}
-
-/* Laptop / màn hình thường: 992px - 1199px */
-@media (min-width: 992px) and (max-width: 1199px) {
-  .container {
-    margin-left: 20px !important;
-    margin-right: auto !important;
-  top: 40px !important;
-    max-width: 500px;
-  }
-
-  #autocomplete-suggestions {
-    position: fixed !important;
-    background-color: white;
-    border: 1px solid #fabbcb;
-    border-radius: 12px;
-    max-height: 220px;
-    overflow-y: auto;
-    z-index: 9999 !important;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    padding: 8px 0;
-    font-size: 1rem;
-    text-align: center;
-    max-width: 90vw;
-    min-width: 260px;
-    width: auto !important;
-    visibility: hidden;
-  }
-}
-
-/* Màn hình lớn: 1200px - 1599px — CHUẨN margin-top: 45px */
-@media (min-width: 1200px) and (max-width: 1599px) {
-  .container {
-    margin-left: 40px !important;
-    margin-right: auto !important;
-    top: 45px !important;
-    max-width: 500px;
-  }
-
-  #autocomplete-suggestions {
-    position: fixed !important;
-    background-color: white;
-    border: 1px solid #fabbcb;
-    border-radius: 12px;
-    max-height: 220px;
-    overflow-y: auto;
-    z-index: 9999 !important;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    padding: 8px 0;
-    font-size: 1rem;
-    text-align: center;
-    max-width: 460px !important;
-    min-width: 260px;
-    width: auto !important;
-    visibility: hidden;
-  }
-}
-
-/* Màn hình rất lớn: 1600px trở lên */
-@media (min-width: 1600px) {
-  .container {
-    margin-left: 60px !important;
-    margin-right: auto !important;
-    top: 50px !important;
-    max-width: 500px;
-  }
-
-  #autocomplete-suggestions {
-    position: fixed !important;
-    background-color: white;
-    border: 1px solid #fabbcb;
-    border-radius: 12px;
-    max-height: 220px;
-    overflow-y: auto;
-    z-index: 9999 !important;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    padding: 8px 0;
-    font-size: 1rem;
-    text-align: center;
-    max-width: 460px !important;
-    min-width: 260px;
-    width: auto !important;
-    visibility: hidden;
-  }
-}
-
-.main-layout {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 50px;
-  padding: 0 50px;
-  max-width: 1800px;
-  margin: 0 auto;
-  padding-top: 3px;
-  min-height: auto;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 1;
-}
-
-.form-section {
-  flex: 0 0 560px;
-}
-
-/* ======================================================
-   MOBILE: CONTAINER + MID LAYER XÍCH XUỐNG
-   ====================================================== */
-@media (max-width: 991.98px) {
-  .main-layout {
-    flex-direction: column !important;
-    gap: 2.5rem;
-    padding: 1rem 0 2rem;
+  form {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
 
-  .form-section {
-    flex: none;
-    width: 100%;
-    max-width: none;
-    padding: 0 1.5rem;
-  }
-
-  /* XÍCH XUỐNG: tăng margin-top để container cách navbar hơn */
-  .form-section .container {
-    margin: 2.5rem auto 1rem !important;
-    padding: 1.6rem 1.2rem;
-    max-width: 100%;
-    border-radius: 20px;
-  }
-
-  .introduction {
-    font-size: 1.7rem !important;
-    margin-bottom: 0.6rem;
-    line-height: 1.2;
-  }
-
   .name-label {
-    font-size: 1rem !important;
-    margin-bottom: 5px;
+    font-family: "Prompt Medium", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #f05e70;
+    margin-bottom: 8px;
+    word-wrap: break-word;
   }
 
   .name-input {
-    padding: 0.5rem 2.5rem;
-    font-size: 0.95rem !important;
-    max-width: 100% !important;
+    padding: 0.5rem 2.75em;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 25px;
+    border: 1px solid lightblue;
+    outline: none;
+    font-size: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    background-color: white;
+  }
+
+  .name-input.form-control {
+    border-color: lightblue;
+  }
+
+  .name-input:focus {
+    border-color: #d6336c;
+    box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
+  }
+
+  /* Làm chữ tiêu đề + input nổi bật trên nền đỏ đậm */
+  .introduction {
+    font-family: "Prompt Medium", sans-serif;
+    color: white !important;
+    font-weight: 800 !important;
+    font-size: 1.9rem !important;
+  }
+
+  /* FIX TRÀN + AUTOCOMPLETE KHÔNG BỊ CHE */
+  .inner-wrapper {
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 576px) {
+    .inner-wrapper {
+      padding: 0 0.25rem;
+    }
+
+    .name-input {
+      max-width: 100% !important;
+    }
+
+    .card {
+      padding: 20px 15px !important;
+    }
+
+    .name-label {
+      font-size: 1rem !important;
+      font-weight: 500 !important;
+    }
+  }
+
+  #autocomplete-suggestions {
+    position: fixed !important;
+    background-color: white;
+    border: 1px solid #fabbcb;
+    border-radius: 20px;
+    max-height: 260px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    z-index: 9999 !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    display: none;
+    width: auto !important;
+    max-width: 90% !important;
+    min-width: 240px;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    text-align: center;
+    pointer-events: auto;
+    touch-action: pan-y;
+  }
+
+  .autocomplete-suggestion {
+    padding: 14px 18px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+  }
+
+  .autocomplete-suggestion:hover,
+  .autocomplete-suggestion.tapped {
+    background-color: #fabbcb;
+    color: white;
+    border-radius: 8px;
+    margin: 0 10px;
+  }
+
+  #autocomplete-suggestions::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  #autocomplete-suggestions::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  #autocomplete-suggestions::-webkit-scrollbar-thumb:hover {
+    background: #fabbcb;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 991.98px) {
+    #autocomplete-suggestions {
+      max-height: 280px;
+      padding: 14px 0;
+      min-width: 260px;
+    }
+
+    .autocomplete-suggestion {
+      padding: 18px 24px;
+      font-size: 1.15rem;
+    }
+
+    #autocomplete-suggestions::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+    }
+  }
+
+  /* ================== PHẦN GRADIENT CONTAINER ================== */
+  .container {
+    background-color: hsla(340, 94%, 70%, 1);
+    background-image: radial-gradient(
+        at 25% 88%,
+        hsla(345, 63%, 58%, 1) 0px,
+        transparent 50%
+      ),
+      radial-gradient(at 69% 4%, hsla(354, 87%, 60%, 1) 0px, transparent 50%),
+      radial-gradient(at 93% 91%, hsla(352, 76%, 50%, 1) 0px, transparent 50%);
+    backdrop-filter: blur(10px);
+    box-shadow:
+      0 4px 12px rgba(255, 255, 255, 0.3),
+      0 12px 35px rgba(255, 255, 255, 0.25),
+      0 30px 70px rgba(255, 255, 255, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.2) inset !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container::before {
+    content: "";
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 400%;
+    height: 400%;
+    background: linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 42%,
+      rgba(255, 240, 245, 0.25) 50%,
+      transparent 58%,
+      transparent 100%
+    );
+    animation: diagonalShine 10s infinite linear;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes diagonalShine {
+    0% {
+      transform: translateX(-100%) translateY(80%);
+    }
+    100% {
+      transform: translateX(80%) translateY(-100%);
+    }
+  }
+
+  .name-input,
+  .form-control {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border: 2px solid rgba(255, 255, 255, 0.6) !important;
+    font-weight: 600;
   }
 
   .btn-primary {
-    padding: 0.6rem 2rem;
-    font-size: 1.05rem;
-    margin-top: 0.4rem;
+    background-color: hsla(340, 94%, 70%, 1);
+    background-image: radial-gradient(
+        at 25% 88%,
+        hsla(345, 63%, 58%, 1) 0px,
+        transparent 50%
+      ),
+      radial-gradient(at 69% 4%, hsla(354, 87%, 60%, 1) 0px, transparent 50%),
+      radial-gradient(at 93% 91%, hsla(352, 76%, 50%, 1) 0px, transparent 50%) !important;
+    color: white !important;
+    font-weight: 700 !important;
   }
 
-  .card {
-    padding: 20px 40px !important;
+  .btn-primary:hover,
+  .btn-primary.tapped {
+    background: linear-gradient(to right, #ffffff, #fabbcb) !important;
+    color: #630f23 !important;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(228, 33, 57, 0.6);
   }
-}
 
-/* Máy siêu nhỏ */
-@media (max-width: 400px) {
+  /* ================== DESKTOP: CĂN TRÁI + margin-top THEO MÀN HÌNH ================== */
+  /* CHUẨN: 1200–1599px = margin-top: 45px
+    796–991px  = 30px  (nhỏ hơn vì màn nhỏ hơn)
+    992–1199px = 38px  (trung gian)
+    ≥1600px    = 55px  (lớn hơn vì màn lớn hơn)             */
+
+  /* Tablet đứng / laptop nhỏ: 796px - 991px */
+  @media (min-width: 796px) and (max-width: 991.98px) {
+    .container {
+      margin-left: 10px !important;
+      margin-right: auto !important;
+      top: 35px !important;
+      max-width: 500px;
+    }
+
+    #autocomplete-suggestions {
+      position: fixed !important;
+      background-color: white;
+      border: 1px solid #fabbcb;
+      border-radius: 12px;
+      max-height: 220px;
+      overflow-y: auto;
+      z-index: 9999 !important;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      padding: 8px 0;
+      font-size: 1rem;
+      text-align: center;
+      max-width: 90vw;
+      min-width: 260px;
+      width: auto !important;
+      visibility: hidden;
+    }
+  }
+
+  /* Laptop / màn hình thường: 992px - 1199px */
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+      margin-left: 20px !important;
+      margin-right: auto !important;
+    top: 40px !important;
+      max-width: 500px;
+    }
+
+    #autocomplete-suggestions {
+      position: fixed !important;
+      background-color: white;
+      border: 1px solid #fabbcb;
+      border-radius: 12px;
+      max-height: 220px;
+      overflow-y: auto;
+      z-index: 9999 !important;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      padding: 8px 0;
+      font-size: 1rem;
+      text-align: center;
+      max-width: 90vw;
+      min-width: 260px;
+      width: auto !important;
+      visibility: hidden;
+    }
+  }
+
+  /* Màn hình lớn: 1200px - 1599px — CHUẨN margin-top: 45px */
+  @media (min-width: 1200px) and (max-width: 1599px) {
+    .container {
+      margin-left: 50px !important;
+      margin-right: auto !important;
+      top: 50 px !important;
+      max-width: 500px;
+    }
+
+    #autocomplete-suggestions {
+      position: fixed !important;
+      background-color: white;
+      border: 1px solid #fabbcb;
+      border-radius: 12px;
+      max-height: 220px;
+      overflow-y: auto;
+      z-index: 9999 !important;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      padding: 8px 0;
+      font-size: 1rem;
+      text-align: center;
+      max-width: 460px !important;
+      min-width: 260px;
+      width: auto !important;
+      visibility: hidden;
+    }
+  }
+
+  /* Màn hình rất lớn: 1600px trở lên */
+  @media (min-width: 1600px) {
+    .container {
+      margin-left: 60px !important;
+      margin-right: auto !important;
+      top: 50px !important;
+      max-width: 500px;
+    }
+
+    #autocomplete-suggestions {
+      position: fixed !important;
+      background-color: white;
+      border: 1px solid #fabbcb;
+      border-radius: 12px;
+      max-height: 220px;
+      overflow-y: auto;
+      z-index: 9999 !important;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      padding: 8px 0;
+      font-size: 1rem;
+      text-align: center;
+      max-width: 460px !important;
+      min-width: 260px;
+      width: auto !important;
+      visibility: hidden;
+    }
+  }
+
+  .main-layout {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+    padding: 0 50px;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding-top: 3px;
+    min-height: auto;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+  }
+
   .form-section {
-    padding: 0 1rem;
+    flex: 0 0 560px;
   }
 
-  .form-section .container {
-    padding: 1.4rem 1rem !important;
+  /* ======================================================
+    MOBILE: CONTAINER + MID LAYER XÍCH XUỐNG
+    ====================================================== */
+  @media (max-width: 991.98px) {
+    .main-layout {
+      flex-direction: column !important;
+      gap: 2.5rem;
+      padding: 1rem 0 2rem;
+      align-items: center;
+    }
+
+    .form-section {
+      flex: none;
+      width: 100%;
+      max-width: none;
+      padding: 0 1.5rem;
+    }
+
+    /* XÍCH XUỐNG: tăng margin-top để container cách navbar hơn */
+    .form-section .container {
+      margin: 2.5rem auto 1rem !important;
+      padding: 1.6rem 1.2rem;
+      max-width: 100%;
+      border-radius: 20px;
+    }
+
+    .introduction {
+      font-size: 1.7rem !important;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+
+    .name-label {
+      font-size: 1rem !important;
+      margin-bottom: 5px;
+    }
+
+    .name-input {
+      padding: 0.5rem 2.5rem;
+      font-size: 0.95rem !important;
+      max-width: 100% !important;
+    }
+
+    .btn-primary {
+      padding: 0.6rem 2rem;
+      font-size: 1.05rem;
+      margin-top: 0.4rem;
+    }
+
+    .card {
+      padding: 20px 40px !important;
+    }
   }
 
-  .introduction {
-    font-size: 1.6rem !important;
+  /* Máy siêu nhỏ */
+  @media (max-width: 400px) {
+    .form-section {
+      padding: 0 1rem;
+    }
+
+    .form-section .container {
+      padding: 1.4rem 1rem !important;
+    }
+
+    .introduction {
+      font-size: 1.6rem !important;
+    }
+
+    .name-input {
+      font-size: 0.9rem !important;
+    }
   }
 
-  .name-input {
-    font-size: 0.9rem !important;
-  }
-}
+  /* ================== BACKGROUND LAYER ================== */
 
-/* ================== BACKGROUND LAYER ================== */
-
-/* Base chung cho mọi thiết bị */
-.background-layer {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background-image: url('https://iili.io/qF0ATP9.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  pointer-events: none;
-  opacity: 0.7;
-  filter: brightness(1) contrast(1) saturate(1);
-  will-change: transform;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-/* ---- DESKTOP (≥ 992px) ---- */
-@media (min-width: 992px) {
+  /* Base chung cho mọi thiết bị */
   .background-layer {
-    background-size: cover;
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image: url('https://iili.io/qF0ATP9.png');
+    background-repeat: no-repeat;
     background-position: center center;
-    filter: brightness(1.08) contrast(1.12) saturate(1.06);
-  }
-}
-
-/* ---- MÀN HÌNH RẤT LỚN (≥ 1600px) ---- */
-@media (min-width: 1600px) {
-  .background-layer {
-    filter: brightness(1.1) contrast(1.15) saturate(1.08);
-  }
-}
-
-/* ---- MOBILE (≤ 991px) ---- */
-@media (max-width: 991.98px) {
-  .background-layer {
     background-size: cover;
-    background-position: center top;
-    filter: brightness(1.03) contrast(1.05) saturate(1);
-  }
-}
-
-/* ================== OVERLAY LAYER ================== */
-
-.overlay-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background-image: url('https://iili.io/qF0Tgst.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  pointer-events: none;
-  opacity: 0.5;
-  filter: brightness(1) contrast(1) saturate(1);
-  will-change: transform;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-@media (min-width: 992px) {
-  .overlay-layer {
-    background-size: cover;
-    background-position: center center;
-    filter: brightness(1.08) contrast(1.12) saturate(1.06);
-  }
-}
-
-@media (min-width: 1600px) {
-  .overlay-layer {
-    filter: brightness(1.1) contrast(1.15) saturate(1.08);
-  }
-}
-
-@media (max-width: 991.98px) {
-  .overlay-layer {
-    background-size: cover;
-    background-position: center top;
-    filter: brightness(1.03) contrast(1.05) saturate(1);
-  }
-}
-
-/* ================== MID LAYER ================== */
-
-.mid-layer {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image: url('https://iili.io/qF0uNC7.png');
-  background-repeat: no-repeat;
-  background-size: auto 100vh;
-  background-position: right 60px center;
-  filter: brightness(1.08) contrast(1.12) saturate(1.06);
-  will-change: transform;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-/* ≥ 1600px */
-@media (min-width: 1600px) {
-  .mid-layer {
-    background-position: right 60px center;
-    background-size: auto 103vh;
-    filter: brightness(1.1) contrast(1.15) saturate(1.08);
-  }
-}
-
-/* 1200px - 1599px */
-@media (min-width: 1200px) and (max-width: 1599px) {
-  .mid-layer {
-    background-position: right 40px center;
-    background-size: auto 98vh;
-  }
-}
-
-/* 992px - 1199px */
-@media (min-width: 992px) and (max-width: 1199px) {
-  .mid-layer {
-    background-position: right 20px center;
-    background-size: auto 93vh;
-  }
-}
-
-/* 796px - 991px */
-@media (min-width: 796px) and (max-width: 991.98px) {
-  .mid-layer {
-    background-position: right 10px center;
-    background-size: auto 88vh;
-  }
-}
-
-/* Mobile ≤ 795px: Android — xích xuống nhẹ */
-@media (max-width: 795px) {
-  .mid-layer {
-    position: absolute;
-    inset: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 40vh;          /* 43vh → 40vh: xích xuống ~3vh */
-    background-position: center bottom;
-    background-size: auto 42vh;   /* 45vh → 42vh */
-    filter: brightness(1.13) contrast(1.15) saturate(1.1);
-    opacity: 0.95;
+    pointer-events: none;
+    opacity: 0.7;
+    filter: brightness(1) contrast(1) saturate(1);
     will-change: transform;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
-}
 
-/* iOS Safari: xích xuống nhiều hơn Android (~5vh thêm) */
-@supports (-webkit-touch-callout: none) {
-  @media (max-width: 795px) {
-    .mid-layer {
-      height: 35vh;              /* 41vh → 35vh */
-      background-size: auto 37vh; /* 43vh → 37vh */
-      bottom: 0;
+  /* ---- DESKTOP (≥ 992px) ---- */
+  @media (min-width: 992px) {
+    .background-layer {
+      background-size: cover;
+      background-position: center center;
+      filter: brightness(1.08) contrast(1.12) saturate(1.06);
     }
   }
-}
 
-/* ≤359px */
-@media (max-width: 359px) {
-  .mid-layer {
-    height: 37vh;              /* 40vh → 37vh */
-    background-size: auto 39vh; /* 42vh → 39vh */
-    bottom: -3px !important;
+  /* ---- MÀN HÌNH RẤT LỚN (≥ 1600px) ---- */
+  @media (min-width: 1600px) {
+    .background-layer {
+      filter: brightness(1.1) contrast(1.15) saturate(1.08);
+    }
   }
-}
 
-/* iOS Safari ≤359px */
-@supports (-webkit-touch-callout: none) {
+  /* ---- MOBILE (≤ 991px) ---- */
+  @media (max-width: 991.98px) {
+    .background-layer {
+      background-size: cover;
+      background-position: center top;
+      filter: brightness(1.03) contrast(1.05) saturate(1);
+    }
+  }
+
+  /* ================== OVERLAY LAYER ================== */
+
+  .overlay-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image: url('https://iili.io/qF0Tgst.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    pointer-events: none;
+    opacity: 0.5;
+    filter: brightness(1) contrast(1) saturate(1);
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  @media (min-width: 992px) {
+    .overlay-layer {
+      background-size: cover;
+      background-position: center center;
+      filter: brightness(1.08) contrast(1.12) saturate(1.06);
+    }
+  }
+
+  @media (min-width: 1600px) {
+    .overlay-layer {
+      filter: brightness(1.1) contrast(1.15) saturate(1.08);
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    .overlay-layer {
+      background-size: cover;
+      background-position: center top;
+      filter: brightness(1.03) contrast(1.05) saturate(1);
+    }
+  }
+
+  /* ================== MID LAYER ================== */
+
+  .mid-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: url('https://iili.io/qF0uNC7.png');
+    background-repeat: no-repeat;
+    background-size: auto 100vh;
+    background-position: right 60px center;
+    filter: brightness(1.08) contrast(1.12) saturate(1.06);
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* ≥ 1600px */
+  @media (min-width: 1600px) {
+    .mid-layer {
+      background-position: right 60px center;
+      background-size: auto 103vh;
+      filter: brightness(1.1) contrast(1.15) saturate(1.08);
+    }
+  }
+
+  /* 1200px - 1599px */
+  @media (min-width: 1200px) and (max-width: 1599px) {
+    .mid-layer {
+      background-position: right 40px center;
+      background-size: auto 98vh;
+    }
+  }
+
+  /* 992px - 1199px */
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .mid-layer {
+      background-position: right 20px center;
+      background-size: auto 93vh;
+    }
+  }
+
+  /* 796px - 991px */
+  @media (min-width: 796px) and (max-width: 991.98px) {
+    .mid-layer {
+      background-position: right 10px center;
+      background-size: auto 88vh;
+    }
+  }
+
+  /* Mobile ≤ 795px: Android — xích xuống nhẹ */
+  @media (max-width: 795px) {
+    .mid-layer {
+      position: absolute;
+      inset: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 40vh;          /* 43vh → 40vh: xích xuống ~3vh */
+      background-position: center bottom;
+      background-size: auto 42vh;   /* 45vh → 42vh */
+      filter: brightness(1.13) contrast(1.15) saturate(1.1);
+      opacity: 0.95;
+      will-change: transform;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+  }
+
+  /* iOS Safari: xích xuống nhiều hơn Android (~5vh thêm) */
+  @supports (-webkit-touch-callout: none) {
+    @media (max-width: 795px) {
+      .mid-layer {
+        height: 35vh;              /* 41vh → 35vh */
+        background-size: auto 37vh; /* 43vh → 37vh */
+        bottom: 0;
+      }
+    }
+  }
+
+  /* ≤359px */
   @media (max-width: 359px) {
     .mid-layer {
-      height: 32vh;
-      background-size: auto 34vh;
+      height: 37vh;              /* 40vh → 37vh */
+      background-size: auto 39vh; /* 42vh → 39vh */
       bottom: -3px !important;
     }
   }
-}
 
-/* 360–414px: BASELINE */
-@media (min-width: 360px) and (max-width: 414px) {
-  .mid-layer {
-    height: 39vh;              /* 42vh → 39vh */
-    background-size: auto 41vh; /* 44vh → 41vh */
-    bottom: -5px !important;
+  /* iOS Safari ≤359px */
+  @supports (-webkit-touch-callout: none) {
+    @media (max-width: 359px) {
+      .mid-layer {
+        height: 32vh;
+        background-size: auto 34vh;
+        bottom: -3px !important;
+      }
+    }
   }
-}
 
-/* iOS Safari 360–414px */
-@supports (-webkit-touch-callout: none) {
+  /* 360–414px: BASELINE */
   @media (min-width: 360px) and (max-width: 414px) {
     .mid-layer {
-      height: 34vh;
-      background-size: auto 36vh;
+      height: 39vh;              /* 42vh → 39vh */
+      background-size: auto 41vh; /* 44vh → 41vh */
       bottom: -5px !important;
     }
   }
-}
 
-/* 415–576px */
-@media (min-width: 415px) and (max-width: 576px) {
-  .mid-layer {
-    height: 41vh;              /* 44vh → 41vh */
-    background-size: auto 43vh; /* 46vh → 43vh */
-    bottom: -7px !important;
+  /* iOS Safari 360–414px */
+  @supports (-webkit-touch-callout: none) {
+    @media (min-width: 360px) and (max-width: 414px) {
+      .mid-layer {
+        height: 34vh;
+        background-size: auto 36vh;
+        bottom: -5px !important;
+      }
+    }
   }
-}
 
-/* iOS Safari 415–576px */
-@supports (-webkit-touch-callout: none) {
+  /* 415–576px */
   @media (min-width: 415px) and (max-width: 576px) {
     .mid-layer {
-      height: 36vh;
-      background-size: auto 38vh;
+      height: 41vh;              /* 44vh → 41vh */
+      background-size: auto 43vh; /* 46vh → 43vh */
       bottom: -7px !important;
     }
   }
-}
 
-/* 577–795px */
-@media (min-width: 577px) and (max-width: 795px) {
-  .mid-layer {
-    height: 43vh;              /* 46vh → 43vh */
-    background-size: auto 45vh; /* 48vh → 45vh */
-    bottom: -9px !important;
+  /* iOS Safari 415–576px */
+  @supports (-webkit-touch-callout: none) {
+    @media (min-width: 415px) and (max-width: 576px) {
+      .mid-layer {
+        height: 36vh;
+        background-size: auto 38vh;
+        bottom: -7px !important;
+      }
+    }
   }
-}
 
-/* iOS Safari 577–795px */
-@supports (-webkit-touch-callout: none) {
+  /* 577–795px */
   @media (min-width: 577px) and (max-width: 795px) {
     .mid-layer {
-      height: 38vh;
-      background-size: auto 40vh;
+      height: 43vh;              /* 46vh → 43vh */
+      background-size: auto 45vh; /* 48vh → 45vh */
       bottom: -9px !important;
     }
   }
-}
+
+  /* iOS Safari 577–795px */
+  @supports (-webkit-touch-callout: none) {
+    @media (min-width: 577px) and (max-width: 795px) {
+      .mid-layer {
+        height: 38vh;
+        background-size: auto 40vh;
+        bottom: -9px !important;
+      }
+    }
+  }
