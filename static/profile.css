@@ -1575,42 +1575,4 @@
       left: 28%;
     }
   }
-  /* ================== ASPECT RATIO 16:10 ================== */
-/* Chỉ áp dụng cho màn 16:10 (tỉ lệ 8/5)                  */
-/* Máy 16:9 hoàn toàn không bị ảnh hưởng                   */
-
-/* 16:10 + 796–991px */
-@media (min-aspect-ratio: 16/10) and (max-aspect-ratio: 16/9) and (min-width: 796px) and (max-width: 991.98px) {
-  .profile-avatar-layer  { background-size: auto 108%; }
-  .profile-content-frame { background-size: auto 66%; }
-  .profile-info-card     { top: 17%; }
-  .gift-bar              { bottom: calc(38px + 1vh); }
-  .music-bar             { top: 71px; left: 72%; }
-}
-
-/* 16:10 + 992–1199px */
-@media (min-aspect-ratio: 16/10) and (max-aspect-ratio: 16/9) and (min-width: 992px) and (max-width: 1199px) {
-  .profile-avatar-layer  { background-size: auto 112%; }
-  .profile-content-frame { background-size: auto 74%; }
-  .profile-info-card     { top: 17%; }
-  .gift-bar              { bottom: 42px; }
-  .music-bar             { top: 71px; left: 74%; }
-}
-
-/* 16:10 + 1200–1599px — lấy mốc chuẩn từ 16:9, chỉ tinh chỉnh nhẹ */
-@media (min-aspect-ratio: 16/10) and (max-aspect-ratio: 16/9) and (min-width: 1200px) and (max-width: 1599px) {
-  .profile-avatar-layer  { background-size: auto 114%; }
-  .profile-content-frame { background-size: auto 79%; }
-  .profile-info-card     { top: 30%; }
-  .gift-bar              { bottom: 48px; }
-  .music-bar             { top: 74px; left: 76%; }
-}
-
-/* 16:10 + ≥1600px */
-@media (min-aspect-ratio: 16/10) and (max-aspect-ratio: 16/9) and (min-width: 1600px) {
-  .profile-avatar-layer  { background-size: auto 112%; }
-  .profile-content-frame { background-size: auto 84%; }
-  .profile-info-card     { top: 17%; }
-  .gift-bar              { bottom: 47px; }
-  .music-bar             { top: 71px; left: 78%; }
-}
+  
