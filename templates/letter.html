@@ -20,9 +20,14 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="format-detection" content="telephone=no" />
+
+  <!-- PRELOAD ảnh hộp quà & layers -->
+  <link rel="preload" as="image" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png">
+  <link rel="preload" as="image" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua2_lip9fb.png">
   <link rel="preload" as="image" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1771912129/hoa_r%C6%A1i-l%E1%BB%9Bp_%C4%91%E1%BA%A7u_ti%C3%AAn_%C4%91%C3%A8_l%C3%AAn_t%E1%BA%A5t_c%E1%BA%A3_tr%E1%BB%AB_n%C3%BAt_nh%E1%BA%ADn_qu%C3%A0_nh%E1%BA%A1c_zbb9eo.png">
   <link rel="preload" as="image" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1772279773/khungnoidung_1_1_qyd4ee.png">
   <link rel="preload" as="image" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1772170817/hopqua_tkxhji.png">
+
   <style>* { touch-action: manipulation; }</style>
 </head>
 
@@ -31,12 +36,74 @@
   <!-- HOA RƠI OVERLAY (z-index 1) -->
   <div class="profile-overlay-layer"></div>
 
-  <!-- HỘP QUÀ — dưới góc trái, z-index 4 (đè lên khung) -->
+  <!-- HỘP QUÀ GÓC TRÁI (z-index 4) -->
   <div class="letter-hopqua-layer"></div>
 
   <!-- KHUNG NỘI DUNG THƯ (z-index 0) -->
   <div class="letter-content-frame"></div>
 
+  <!-- HỘP QUÀ BÊN PHẢI: ruột + nắp -->
+  <div class="letter-gift-box" id="letter-gift-box"
+       data-password="{% if profile and profile.gift_password %}{{ profile.gift_password }}{% else %}0308{% endif %}">
+
+    <!-- Ruột hộp quà: dùng gift_image_url từ profile nếu có, fallback ảnh mặc định -->
+    {% if profile and profile.gift_image_url %}
+    <div class="letter-gift-inner" style="background-image: url('{{ profile.gift_image_url }}');"></div>
+    {% else %}
+    <div class="letter-gift-inner"></div>
+    {% endif %}
+
+    <!-- Nắp hộp quà (đè lên ruột) -->
+    <div class="letter-gift-lid" id="letter-gift-lid"></div>
+  </div>
+
+  <!-- PASSWORD POPUP -->
+<div class="letter-pwd-overlay" id="letter-pwd-overlay">
+  <div class="letter-pwd-box">
+
+    <button class="letter-pwd-close" id="letter-pwd-close" aria-label="Dong">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M18 6L6 18M6 6l12 12" stroke="#fff5f8" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="letter-pwd-title">Để mở quà,<br>hãy nhập mật khẩu</div>
+
+    <!-- 1 box hồng nhạt bọc cả note + error + input row -->
+    <div class="letter-pwd-note-box">
+
+      <div class="letter-pwd-note">Lưu ý: Vui lòng cân nhắc<br>kĩ trước khi tiếp tục</div>
+
+      <div class="letter-pwd-error" id="letter-pwd-error">Mật khẩu không đúng, vui lòng nhập lại</div>
+
+      <div class="letter-pwd-row">
+        <input type="text" class="letter-pwd-input" id="letter-pwd-input"
+               placeholder="Vui lòng nhập mật khẩu" autocomplete="off" />
+        <button class="letter-pwd-submit" id="letter-pwd-submit" aria-label="Xac nhan">
+          <!-- SVG defs gradient cho mũi tên hover — đặt inline 1 lần -->
+          <svg viewBox="0 0 24 24" overflow="visible">
+            <defs>
+              <linearGradient id="arrow-hover-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%"   stop-color="#FD94B2"/>
+                <stop offset="30%"  stop-color="#F04653"/>
+                <stop offset="100%" stop-color="#E42139"/>
+              </linearGradient>
+            </defs>
+            <path class="submit-arrow"
+                  d="M5 12h14M13 6l6 6-6 6"
+                  stroke="white"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  fill="none"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid px-0">
@@ -70,6 +137,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script defer src="{{ url_for('static', filename='src/profile.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='src/letter.js') }}"></script>
 </body>
 
 </html>
