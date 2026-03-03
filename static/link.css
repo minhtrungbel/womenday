@@ -1,186 +1,251 @@
-/* ========================================
-   MÀU NỀN CHÍNH: #FABBCB (Pantone hồng phấn)
-   RGB: 250, 187, 203
-   CMYK: 0%, 25%, 19%, 2%
-   ======================================== */
+/* ================= RESET ================= */
 
-.container {
-  background-color: rgba(255, 255, 255, 0.92);
-  border-radius: 16px;
-  padding: 5rem;
-  margin: 2rem auto;
-  max-width: 500px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(250, 187, 203, 0.3);
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-h1 {
-  color: #d6406e;
-  font-weight: 700;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-/* QR SECTION */
-.qr-container {
+/* ================= MAIN SECTION ================= */
+
+.link-section {
+  position: relative;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #ffd6e5 0%, #f48aa3 100%);
+}
+
+/* ================= BACKGROUND FLOWER ================= */
+
+.flower-layer {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://res.cloudinary.com/dogyjotxv/image/upload/v1772352556/hoa_r%C6%A1i_tcayxy.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1450px;
+  z-index: 1;
+}
+
+/* ================= CONTENT WRAPPER ================= */
+
+.link-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  z-index: 5;
+}
+
+/* ================= ARROW (PC) ================= */
+
+.arrow-pc {
+  position: absolute;
+  top: 5%;
+  left: 37%;
+  width: 400px;
+  z-index: 10;
+  opacity: 0.95;
+}
+
+/* ================= QR ================= */
+
+.qr-border img {
+  width: 600px;
+  border-radius: 30px;
+  display: block;
+}
+
+/* ================= RIGHT SIDE ================= */
+
+.right-box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 35px;
+}
+
+/* Scan + Icon wrapper */
+.scan-wrapper {
+  display: flex;
   align-items: center;
-  min-height: calc(100vh - 70px);
-  padding: 2rem 1rem;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
+  gap: 35px;
 }
 
-.qr-container2 {
-  width: 100%;
-  max-width: 500px;
-  background-color: #ffe4e1;
-  border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(8px);
+.scan-text {
+  position: relative;
+  top: 40px;
+  right: 140px;
+  width: 292px;
 }
 
-.qr-title {
-  color: #d6406e;
-  font-weight: 700;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  margin: 0 0 1rem 0;
-  font-size: 1.8rem;
-  line-height: 1.4;
+/* ================= SOCIAL ICON ================= */
+
+.social-icons-vertical {
+  position: relative;
+  right: 140px;
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
-.qr-image {
-  max-width: 300px;
-  width: 100%;
-  border: 3px solid #fabbcb;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+.social-icons-vertical a {
+  background: linear-gradient(180deg, #fd94b2 0%, #e42139 100%);
+  padding: 22px;
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  transition: 0.3s ease;
 }
 
-.qr-image:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+.social-icons-vertical a:hover {
+  transform: translateY(-8px);
 }
 
-/* Mobile */
+.social-icons-vertical img {
+  width: 55px;
+  height: 55px;
+  transform: scale(1.5);
+}
+
+/* ================= URL ================= */
+
+.site-url {
+  position: relative;
+  right: 120px;
+  top: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffdbe9;
+  padding: 1px 1px;
+  border-radius: 15px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 27px;
+  color: #670d26;
+  width: fit-content;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+}
+
+.url-icon {
+  position: relative;
+  right: 1px;
+  width: 36px;
+  height: 36px;
+  background: #860033;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-url img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+}
+
+.site-url span {
+  letter-spacing: 1.5px;
+}
+
+/* ================================================= */
+/* ================= MOBILE ======================== */
+/* ================================================= */
+
 @media (max-width: 768px) {
-  .container {
-    margin: 1.5rem auto;
-    padding: 1.5rem;
-    border-radius: 12px;
+  .qr-border img {
+    width: 500px;
+    max-width: none; /* QUAN TRỌNG */
+  }
+  .link-content {
+    flex-direction: column;
+    gap: 35px;
   }
 
-  h1 {
-    font-size: 1.8rem;
+  .qr-border img {
+    position: relative;
+    top: 3px;
+    width: 350px;
+    transform: scale(1.3);
   }
 
-  .navbar-nav {
-    text-align: left;
+  .arrow-pc {
+    top: 41%;
+    left: -103px;
+    width: 310px;
+    transform: scaleX(-1) rotate(78deg);
   }
 
-  .nav-link {
-    font-size: 1.2rem;
+  .scan-text,
+  .social-icons-vertical,
+  .site-url {
+    position: static;
+    right: 0;
+    top: 0;
   }
 
-  .qr-container {
-    position: absolute;
-    min-height: calc(100vh - 60px);
-    padding: 1rem 1rem;
+  .scan-wrapper {
     justify-content: center;
-    align-items: center;
-    bottom: 11%;
+    gap: 18px;
   }
 
-  .qr-container2 {
-    width: 92%;
-    max-width: 420px;
-    padding: 22px;
-    border-radius: 22px;
-    margin-bottom: 1.8rem;
-    box-shadow: 3px 3px 10px rgba(23, 37, 84, 0.35);
+  .scan-text {
+    width: 200px;
   }
 
-  .qr-title {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
+  .social-icons-vertical {
+    gap: 15px;
   }
 
-  .qr-image {
-    max-width: 300px;
-    border-width: 3px;
-    border-radius: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .qr-container {
-    padding-top: 2.5rem;
+  .social-icons-vertical a {
+    padding: 14px;
+    border-radius: 18px;
   }
 
-  .qr-container2 {
-    width: 94%;
-    max-width: 380px;
-    padding: 20px;
-    margin-bottom: 1.6rem;
+  .social-icons-vertical img {
+    width: 40px;
+    height: 40px;
   }
 
-  .qr-title {
-    font-size: 1.6rem;
+  .site-url {
+    margin-top: 15px;
+    font-size: 18px;
+    padding: 2px 1px;
+    justify-content: center;
   }
-
-  .qr-image {
-    max-width: 270px;
-    border-width: 2.5px;
+  .url-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 15px;
   }
 }
 
-@media (max-width: 360px) {
-  .qr-container {
-    padding-top: 2rem;
+/* ===== VERY SMALL DEVICES ===== */
+
+@media (max-width: 359px) {
+  .qr-border img {
+    width: 300px;
   }
 
-  .qr-title {
-    font-size: 1.45rem;
+  .arrow-pc {
+    top: 70px;
+    left: -10px;
+    width: 90px;
   }
 
-  .qr-image {
-    max-width: 250px;
-  }
-}
-
-/* ================== DESKTOP: CÁCH NAVBAR MỘT KHOẢNG ================== */
-
-@media (min-width: 796px) and (max-width: 991.98px) {
-  .qr-container {
-    padding-top: 82px;
+  .scan-text {
+    width: 160px;
   }
 }
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  .qr-container {
-    padding-top: 88px;
-  }
-}
-
-@media (min-width: 1200px) and (max-width: 1599px) {
-  .qr-container {
-    padding-top: 96px;
-  }
-}
-
-@media (min-width: 1600px) {
-  .qr-container {
-    padding-top: 102px;
-  }
-}
-
-/* Styles khác */
-.information {
-  color: rgb(114, 209, 238);
+.site-url {
+  cursor: pointer;
 }
