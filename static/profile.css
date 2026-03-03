@@ -527,7 +527,7 @@ body {
 /* ≤359px — xuống 1% */
 @media (max-width: 359px) {
   .music-bar {
-    top: 46%;
+    top: 47%;
     left: 28%;
     transform: translate(-50%, -50%);
     width: 46vw;
@@ -560,7 +560,7 @@ body {
 /* 360–414px — xuống 1% */
 @media (min-width: 360px) and (max-width: 414px) {
   .music-bar {
-    top: 57%;
+    top: 58%;
     left: 32%;
     transform: translate(-50%, -50%);
     width: 50vw;
@@ -593,7 +593,7 @@ body {
 /* 415–576px — xuống 1% */
 @media (min-width: 415px) and (max-width: 576px) {
   .music-bar {
-    top: 57%;
+    top: 58%;
     left: 34%;
     transform: translate(-50%, -50%);
     width: 54vw;
@@ -626,7 +626,7 @@ body {
 /* 577–795px — xuống 1% */
 @media (min-width: 577px) and (max-width: 795px) {
   .music-bar {
-    top: 55%;
+    top: 56%;
     left: 40%;
     transform: translate(-50%, -50%);
     width: 56vw;
@@ -1228,7 +1228,7 @@ img.img-fluid {
 /* ≤359px */
 @media (max-width: 359px) {
   .profile-info-card {
-    top: 60%;
+    top: 62%;
     left: 3%;
     right: 3%;
     width: auto;
@@ -1237,22 +1237,22 @@ img.img-fluid {
   }
 
   .profile-info-card .info-name {
-    font-size: 0.80rem;
+    font-size: 0.78rem;
     margin-bottom: 2px;
   }
 
   .profile-info-card .info-nickname {
-    font-size: 0.62rem;
+    font-size: 0.60rem;
     margin-bottom: 5px;
   }
 
   .profile-info-card .info-value {
-    font-size: 0.59rem;
+    font-size: 0.57rem;
     line-height: 1.4;
   }
 
   .profile-info-card .info-label {
-    font-size: 0.45rem;
+    font-size: 0.47rem;
     margin-top: 6px;
     margin-bottom: 2px;
   }
@@ -1265,7 +1265,7 @@ img.img-fluid {
 /* 360–414px */
 @media (min-width: 360px) and (max-width: 414px) {
   .profile-info-card {
-    top: 64%;
+    top: 66%;
     left: 5%;
     right: 3%;
     width: auto;
@@ -1274,22 +1274,22 @@ img.img-fluid {
   }
 
   .profile-info-card .info-name {
-    font-size: 0.94rem;
+    font-size: 0.92rem;
     margin-bottom: 3px;
   }
 
   .profile-info-card .info-nickname {
-    font-size: 0.75rem;
+    font-size: 0.73rem;
     margin-bottom: 8px;
   }
 
   .profile-info-card .info-value {
-    font-size: 0.71rem;
+    font-size: 0.69rem;
     line-height: 1.5;
   }
 
   .profile-info-card .info-label {
-    font-size: 0.56rem;
+    font-size: 0.54rem;
     margin-top: 8px;
     margin-bottom: 2px;
   }
@@ -1302,7 +1302,7 @@ img.img-fluid {
 /* 415–576px */
 @media (min-width: 415px) and (max-width: 576px) {
   .profile-info-card {
-    top: 65%;
+    top: 67%;
     left: 6%;
     right: 3%;
     width: auto;
@@ -1311,22 +1311,22 @@ img.img-fluid {
   }
 
   .profile-info-card .info-name {
-    font-size: 0.96rem;
+    font-size: 0.94rem;
     margin-bottom: 3px;
   }
 
   .profile-info-card .info-nickname {
-    font-size: 0.73rem;
+    font-size: 0.72rem;
     margin-bottom: 8px;
   }
 
   .profile-info-card .info-value {
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     line-height: 1.5;
   }
 
   .profile-info-card .info-label {
-    font-size: 0.52rem;
+    font-size: 0.50rem;
     margin-top: 8px;
     margin-bottom: 2px;
   }
@@ -1339,7 +1339,7 @@ img.img-fluid {
 /* 577–795px */
 @media (min-width: 577px) and (max-width: 795px) {
   .profile-info-card {
-    top: 66%;
+    top: 68%;
     left: 7%;
     right: 4%;
     width: auto;
@@ -1348,22 +1348,22 @@ img.img-fluid {
   }
 
   .profile-info-card .info-name {
-    font-size: 1.02rem;
+    font-size: 1.00rem;
     margin-bottom: 3px;
   }
 
   .profile-info-card .info-nickname {
-    font-size: 0.76rem;
+    font-size: 0.74rem;
     margin-bottom: 8px;
   }
 
   .profile-info-card .info-value {
-    font-size: 0.72rem;
+    font-size: 0.70rem;
     line-height: 1.5;
   }
 
   .profile-info-card .info-label {
-    font-size: 0.53rem;
+    font-size: 0.51rem;
     margin-top: 8px;
     margin-bottom: 2px;
   }
