@@ -1,22 +1,20 @@
 /* ========================================
-   LETTER.CSS — styles riêng cho trang thư
+   LETTER.CSS
    ======================================== */
 
-/* ================== HỘP QUÀ TRANG LETTER ================== */
+/* ================== HOP QUA GOC TRAI ================== */
 .letter-hopqua-layer {
   position: fixed;
   left: -2vw;
   bottom: -8vh;
   z-index: 4;
   pointer-events: none;
-
   background-image: url('https://res.cloudinary.com/dogyjotxv/image/upload/v1772170817/hopqua_tkxhji.png');
   background-repeat: no-repeat;
   background-position: left bottom;
   background-size: auto 55vh;
   width: 45vw;
   height: 70vh;
-
   filter: brightness(1.05) contrast(1.08) saturate(1.05);
 }
 
@@ -26,30 +24,35 @@
     left: -5vw; bottom: -13vh;
   }
 }
+
 @media (min-width: 1200px) and (max-width: 1599px) {
   .letter-hopqua-layer {
     background-size: auto 82vh; width: 55vw; height: 95vh;
     left: -9vw; bottom: -36vh;
   }
 }
+
 @media (min-width: 992px) and (max-width: 1199px) {
   .letter-hopqua-layer {
     background-size: auto 70vh; width: 52vw; height: 84vh;
     left: -6vw; bottom: -22vh;
   }
 }
+
 @media (min-width: 796px) and (max-width: 991.98px) {
   .letter-hopqua-layer {
     background-size: auto 60vh; width: 52vw; height: 75vh;
     left: -4vw; bottom: -14vh;
   }
 }
+
 @media (max-width: 795px) {
   .letter-hopqua-layer {
     background-size: auto 42vh; width: 60vw; height: 56vh;
     left: -2vw; bottom: -7vh;
   }
 }
+
 @media (max-width: 414px) {
   .letter-hopqua-layer {
     background-size: auto 34vh; width: 65vw; height: 46vh;
@@ -58,27 +61,19 @@
 }
 
 
-/* ================== KHUNG NỘI DUNG THƯ ================== */
-/*
-  CHUẨN: 1200–1599px → size: auto 110% | position: 0% -20%
-  Màn lớn hơn: size tăng nhẹ, position y âm hơn (ảnh dịch lên)
-  Màn nhỏ hơn: size giảm dần, position y âm ít hơn (ảnh dịch xuống lại)
-*/
+/* ================== KHUNG NOI DUNG THU ================== */
 .letter-content-frame {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-
   background-image: url('https://res.cloudinary.com/dogyjotxv/image/upload/v1772279773/khungnoidung_1_1_qyd4ee.png');
   background-repeat: no-repeat;
   background-size: auto 110%;
   background-position: 0% -20%;
-
   filter: brightness(1.05) contrast(1.1) saturate(1.05);
 }
 
-/* 1200–1599px: CHUẨN */
 @media (min-width: 1200px) and (max-width: 1599px) {
   .letter-content-frame {
     background-size: auto 110%;
@@ -86,7 +81,6 @@
   }
 }
 
-/* ≥ 1600px: màn to hơn → tăng size, y âm hơn chút để vẫn canh giữa */
 @media (min-width: 1600px) {
   .letter-content-frame {
     background-size: auto 115%;
@@ -94,7 +88,6 @@
   }
 }
 
-/* 992–1199px: màn nhỏ hơn → giảm size, y âm ít hơn */
 @media (min-width: 992px) and (max-width: 1199px) {
   .letter-content-frame {
     background-size: auto 100%;
@@ -102,7 +95,6 @@
   }
 }
 
-/* 796–991px */
 @media (min-width: 796px) and (max-width: 991.98px) {
   .letter-content-frame {
     background-size: auto 90%;
@@ -110,7 +102,6 @@
   }
 }
 
-/* 415–795px: mobile lớn → size vừa màn, y về 0 hoặc dương nhỏ */
 @media (min-width: 415px) and (max-width: 795px) {
   .letter-content-frame {
     background-size: auto 80%;
@@ -119,7 +110,6 @@
   }
 }
 
-/* ≤ 414px: mobile nhỏ */
 @media (max-width: 414px) {
   .letter-content-frame {
     background-size: auto 72%;
@@ -129,18 +119,16 @@
 }
 
 
-/* ================== NỘI DUNG THƯ ================== */
+/* ================== NOI DUNG THU ================== */
 .letter-info-card {
   position: fixed;
   z-index: 9;
   pointer-events: none;
-
   top: 50%;
   left: 18%;
   transform: translateY(-50%);
   width: 32%;
   max-width: 440px;
-
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -212,4 +200,441 @@
   .letter-info-card .letter-greeting { font-size: 0.88rem; }
   .letter-info-card .letter-body     { font-size: 0.73rem; }
   .letter-info-card .letter-signature { font-size: 0.7rem; }
+}
+
+
+/* ================== HOP QUA BEN PHAI (RUOT + NAP) ================== */
+
+/* Wrapper chính — nằm bên phải, kế content frame */
+.letter-gift-box {
+  position: fixed;
+  z-index: 5;
+  right: 3vw;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 38vw;
+  max-width: 560px;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+
+/* Ruột hộp quà — lớp dưới, ảnh profile-specific */
+.letter-gift-inner {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Nắp hộp quà — lớp trên, đè lên ruột */
+.letter-gift-lid {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua2_lip9fb.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  z-index: 2;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+  transform-origin: center top;
+}
+
+/* Trạng thái: hé nắp (sau khi nhập đúng mật khẩu) */
+.letter-gift-box.lid-ajar .letter-gift-lid {
+  transform: translateY(-18%) rotate(-8deg);
+}
+
+/* Trạng thái: nắp biến mất hoàn toàn (sau khi bấm lần 2) */
+.letter-gift-box.lid-open .letter-gift-lid {
+  opacity: 0;
+  transform: translateY(-60%) rotate(-20deg) scale(0.7);
+  pointer-events: none;
+}
+
+/* ---- Breakpoints hộp quà bên phải ---- */
+
+@media (min-width: 1600px) {
+  .letter-gift-box {
+    right: 3vw;
+    top: 52%;
+    width: 34vw;
+    max-width: 620px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .letter-gift-box {
+    right: 3vw;
+    top: 53%;
+    width: 36vw;
+    max-width: 560px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .letter-gift-box {
+    right: 2vw;
+    top: 54%;
+    width: 38vw;
+    max-width: 460px;
+  }
+}
+
+@media (min-width: 796px) and (max-width: 991.98px) {
+  .letter-gift-box {
+    right: 1vw;
+    top: 54%;
+    width: 40vw;
+    max-width: 380px;
+  }
+}
+
+@media (min-width: 415px) and (max-width: 795px) {
+  .letter-gift-box {
+    right: -2vw;
+    top: 52%;
+    width: 44vw;
+    max-width: 260px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 414px) {
+  .letter-gift-box {
+    right: -3vw;
+    top: 52%;
+    width: 47vw;
+    max-width: 210px;
+  }
+}
+
+@media (max-width: 359px) {
+  .letter-gift-box {
+    right: -3vw;
+    top: 52%;
+    width: 47vw;
+    max-width: 185px;
+  }
+}
+
+
+/* ================== PASSWORD POPUP ================== */
+
+/* Backdrop */
+.letter-pwd-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.68);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.letter-pwd-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Lớp ngoài — gradient đỏ của .container */
+.letter-pwd-box {
+  position: relative;
+  width: 80vw;
+  max-width: 420px;
+  border-radius: 36px;
+  padding: 28px 22px 26px;
+  overflow: hidden;
+
+  background-color: hsla(340, 94%, 70%, 1);
+  background-image:
+    radial-gradient(at 25% 88%, hsla(345, 63%, 58%, 1) 0px, transparent 50%),
+    radial-gradient(at 69%  4%, hsla(354, 87%, 60%, 1) 0px, transparent 50%),
+    radial-gradient(at 93% 91%, hsla(352, 76%, 50%, 1) 0px, transparent 50%);
+
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 4px 12px rgba(255, 255, 255, 0.3),
+    0 12px 35px rgba(255, 255, 255, 0.25),
+    0 30px 70px rgba(255, 255, 255, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+
+  transform: scale(0.85);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* diagonalShine của .container */
+.letter-pwd-box::before {
+  content: "";
+  position: absolute;
+  top: -150%; left: -150%;
+  width: 400%; height: 400%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%, transparent 42%,
+    rgba(255, 240, 245, 0.25) 50%,
+    transparent 58%, transparent 100%
+  );
+  animation: diagonalShine 10s infinite linear;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.letter-pwd-overlay.active .letter-pwd-box {
+  transform: scale(1);
+}
+
+/* Tất cả children đè lên ::before */
+.letter-pwd-box > * {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* Nút X — góc trái trên, không chiếm width 100% */
+.letter-pwd-close {
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  width: auto;
+}
+
+.letter-pwd-close svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Tiêu đề */
+.letter-pwd-title {
+  font-family: "Prompt Medium", "Samsung Sharp Bold", sans-serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #fff5f8;
+  text-align: center;
+  line-height: 1.22;
+  letter-spacing: 0.1px;
+  margin-top: -10px;
+  padding: 0 8px;
+}
+
+/* Box hồng nhạt — bọc note + error + input row */
+.letter-pwd-note-box {
+  background-color: hsla(336, 100%, 92%, 1);
+  background-image:
+    radial-gradient(at 37% 100%, hsla(343, 78%, 82%, 1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(343, 100%, 76%, 1) 0px, transparent 50%),
+    radial-gradient(at 0%   7%,  hsla(344, 100%, 87%, 1) 0px, transparent 50%);
+  box-shadow:
+    0px 4px 4px -2px rgba(14, 21, 45, 0.4),
+    inset 0px 2px 1px rgba(96, 165, 250, 0.4);
+  border-radius: 20px;
+  padding: 14px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Dòng lưu ý */
+.letter-pwd-note {
+  font-family: "Samsung Sharp Bold", sans-serif;
+  font-size: 0.95rem;
+  color: rgba(134, 0, 51, 0.68);
+  text-align: center;
+  line-height: 1.5;
+  width: 100%;
+}
+
+/* Dòng lỗi — ẩn mặc định, trượt xuống khi show */
+.letter-pwd-error {
+  font-family: "Samsung Sharp Bold", sans-serif;
+  font-size: 0.82rem;
+  color: #d6336c;
+  text-align: center;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease, max-height 0.2s ease;
+  line-height: 1.4;
+}
+
+.letter-pwd-error.show {
+  opacity: 1;
+  max-height: 40px;
+}
+
+/* Input row */
+.letter-pwd-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.97);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  padding: 3px 3px 3px 12px;
+  gap: 8px;
+  box-shadow:
+    0px 4px 4px -2px rgba(14, 21, 45, 0.4),
+    inset 0px 2px 1px rgba(96, 165, 250, 0.4);
+}
+
+.letter-pwd-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: "Samsung Sharp Bold", sans-serif;
+  font-size: 0.97rem;
+  font-weight: 600;
+  color: #860033;
+  caret-color: #E2223B;
+  min-width: 0;
+}
+
+.letter-pwd-input::placeholder {
+  color: rgba(134, 0, 51, 0.30);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+/* Nút submit — base: gradient đỏ btn-primary */
+.letter-pwd-submit {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsla(340, 94%, 70%, 1);
+  background-image:
+    radial-gradient(at 25% 88%, hsla(345, 63%, 58%, 1) 0px, transparent 50%),
+    radial-gradient(at 69%  4%, hsla(354, 87%, 60%, 1) 0px, transparent 50%),
+    radial-gradient(at 93% 91%, hsla(352, 76%, 50%, 1) 0px, transparent 50%);
+  box-shadow: 0 3px 14px rgba(240, 70, 83, 0.5);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.22s ease;
+}
+
+/* Hover nút: gradient hồng nhạt ảnh 2 */
+.letter-pwd-submit:hover {
+  background: linear-gradient(to bottom, #FFDBE9 0%, #FE94B2 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(228, 33, 57, 0.55);
+}
+
+.letter-pwd-submit:active {
+  transform: scale(0.93);
+}
+
+.letter-pwd-submit svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Mũi tên base: trắng */
+.letter-pwd-submit .submit-arrow {
+  stroke: white;
+  transition: stroke 0.22s ease;
+}
+
+/* Hover mũi tên: gradient đỏ ảnh 1 */
+.letter-pwd-submit:hover .submit-arrow {
+  stroke: url(#arrow-hover-grad);
+}
+
+
+/* ---- Responsive ---- */
+
+/* ≤359px */
+@media (max-width: 359px) {
+  .letter-pwd-box       { width: 90vw; border-radius: 26px; padding: 22px 14px 20px; gap: 11px; }
+  .letter-pwd-title     { font-size: 1.22rem; margin-top: -4px; }
+  .letter-pwd-note-box  { border-radius: 14px; padding: 11px 11px 9px; gap: 8px; }
+  .letter-pwd-note      { font-size: 0.78rem; }
+  .letter-pwd-error     { font-size: 0.70rem; }
+  .letter-pwd-row    { padding: 2px 2px 2px 10px; gap: 5px; }
+  .letter-pwd-input     { font-size: 0.85rem; }
+  .letter-pwd-submit    { width: 34px; height: 34px; }
+  .letter-pwd-submit svg { width: 13px; height: 13px; }
+}
+
+/* 360–414px */
+@media (min-width: 360px) and (max-width: 414px) {
+  .letter-pwd-box       { width: 86vw; border-radius: 30px; padding: 24px 16px 22px; gap: 12px; }
+  .letter-pwd-title     { font-size: 1.38rem;  margin-top: -5px; }
+  .letter-pwd-note-box  { border-radius: 16px; padding: 12px 12px 10px; gap: 9px; }
+  .letter-pwd-note      { font-size: 0.84rem; }
+  .letter-pwd-error     { font-size: 0.74rem; }
+    .letter-pwd-row    { padding: 3px 3px 3px 12px; gap: 5px; }
+  .letter-pwd-submit    { width: 38px; height: 38px; }
+  .letter-pwd-submit svg { width: 15px; height: 15px; }
+}
+
+/* 415–576px */
+@media (min-width: 415px) and (max-width: 576px) {
+  .letter-pwd-box       { width: 82vw; max-width: 390px; border-radius: 32px; padding: 26px 18px 24px; gap: 13px; }
+  .letter-pwd-title     { font-size: 1.48rem;  margin-top: -6px; }
+  .letter-pwd-note-box  { border-radius: 17px; padding: 13px 13px 11px; gap: 9px; }
+  .letter-pwd-note      { font-size: 0.88rem; }
+  .letter-pwd-submit    { width: 42px; height: 42px; }
+  .letter-pwd-row    { padding: 3px 3px 3px 14px; gap: 6px; }
+}
+
+/* 577–795px */
+@media (min-width: 577px) and (max-width: 795px) {
+  .letter-pwd-box       { width: 64vw; max-width: 400px; border-radius: 34px; padding: 26px 20px 24px; }
+  .letter-pwd-title     { font-size: 1.55rem; margin-top: -7px; }
+  .letter-pwd-note-box  { border-radius: 18px; }
+}
+
+/* 796–991px */
+@media (min-width: 796px) and (max-width: 991.98px) {
+  .letter-pwd-box       { width: 48vw; max-width: 420px; border-radius: 34px; padding: 28px 22px 26px; }
+  .letter-pwd-title     { font-size: 1.60rem; margin-top: -8px; }
+}
+
+/* 992–1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .letter-pwd-box       { width: 40vw; max-width: 420px; border-radius: 36px; padding: 28px 22px 26px; }
+  .letter-pwd-title     { font-size: 1.62rem; }
+}
+
+/* 1200–1599px */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .letter-pwd-box       { width: 32vw; max-width: 440px; border-radius: 36px; padding: 30px 24px 28px; }
+  .letter-pwd-title     { font-size: 1.65rem; }
+}
+
+/* ≥1600px */
+@media (min-width: 1600px) {
+  .letter-pwd-box       { width: 26vw; max-width: 480px; border-radius: 40px; padding: 34px 28px 30px; gap: 18px; }
+  .letter-pwd-title     { font-size: 1.85rem; margin-top: -12px; }
+  .letter-pwd-note-box  { border-radius: 22px; padding: 18px 18px 14px; gap: 13px; }
+  .letter-pwd-note      { font-size: 1.02rem; }
+  .letter-pwd-error     { font-size: 0.92rem; }
+  .letter-pwd-submit    { width: 52px; height: 52px; }
+  .letter-pwd-submit svg { width: 22px; height: 22px; }
+  .letter-pwd-row    { padding: 4px 4px 4px 16px; gap: 7px; }
 }
