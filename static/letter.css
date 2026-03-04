@@ -230,18 +230,44 @@
   pointer-events: none;
 }
 
-/* Nắp hộp quà — lớp trên, đè lên ruột */
+/* Nắp hộp quà — lớp trên, đè lên ruột
+   Dùng background-size (%) thay vì scale vì:
+   - transform đã được dùng cho animation mở/đóng nắp → scale sẽ conflict
+   - background-size % cho phép scale ảnh nền độc lập, không ảnh hưởng layout
+   - Chuẩn tham chiếu: 1200–1599px = 105% */
 .letter-gift-lid {
   position: absolute;
   inset: 0;
   background-image: url('https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua2_lip9fb.png');
   background-repeat: no-repeat;
-  background-size: contain;
   background-position: center center;
   z-index: 2;
   transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
   transform-origin: center top;
+  background-size: contain; /* mobile default: fit gọn, không bị crop */
 }
+
+/* ≥1600px: màn to, nắp cần phủ sát hơn → 108% */
+@media (min-width: 1600px) {
+  .letter-gift-lid { background-size: 108%; }
+}
+
+/* 1200–1599px: CHUẨN → 105% */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .letter-gift-lid { background-size: 105%; }
+}
+
+/* 992–1199px: laptop nhỏ → 102% */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .letter-gift-lid { background-size: 102%; }
+}
+
+/* 796–991px: tablet ngang → 100% (vừa khít) */
+@media (min-width: 796px) and (max-width: 991.98px) {
+  .letter-gift-lid { background-size: 100%; }
+}
+
+/* ≤795px: mobile — giữ contain, không override */
 
 /* Trạng thái: hé nắp (sau khi nhập đúng mật khẩu) */
 .letter-gift-box.lid-ajar .letter-gift-lid {
