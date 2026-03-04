@@ -1,31 +1,136 @@
 /* ========================================
-   MÀU NỀN CHÍNH: #FABBCB (Pantone hồng phấn)
-   RGB: 250, 187, 203
-   CMYK: 0%, 25%, 19%, 2%
-   ======================================== */
+    MÀU NỀN CHÍNH: #FABBCB (Pantone hồng phấn)
+    RGB: 250, 187, 203
+    CMYK: 0%, 25%, 19%, 2%
+    ======================================== */
+/* NỀN PHỤ: Form (trắng trong suốt nhẹ) */
+/* ================= RESET ================= */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.hoa-roi {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  z-index: -9;
+  pointer-events: none;
+}
+/* ================= BACKGROUND GRADIENT ================= */
+
+.source-bg {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, #670d26 0%, #2b0013 100%);
+  z-index: -10;
+}
+
+/* ================= A13 IMAGE ================= */
+
+.a13-bg {
+  position: fixed;
+  right: -450px;
+  bottom: -50px;
+  width: 100%;
+  height: 800px;
+  object-fit: contain;
+  opacity: 1;
+  z-index: -8;
+  pointer-events: none;
+  transform: scale(0.7);
+}
 
 .container {
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: rgba(255, 255, 255, 0.92); /* Trắng trong suốt */
   border-radius: 20px;
   padding: 2rem;
   margin: 3rem auto;
   max-width: 500px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(250, 187, 203, 0.3);
+  border: 1px solid rgba(250, 187, 203, 0.3); /* Viền nhạt #FABBCB */
 }
 
+/* Tiêu đề: dùng màu #FABBCB */
 h1 {
-  color: #d6406e;
+  color: #d6406e; /* Hồng đậm hơn để nổi bật */
   font-weight: 700;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-} 
+}
+/* ===== CREDIT TEXT ===== */
 
-/* Mobile */
+.credit-box {
+  position: absolute;
+  right: 8%;
+  top: 20%;
+  text-align: right;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  z-index: 5;
+}
+
+.credit-box p {
+  margin: 6px 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* ===== đội ngũ dz ===== */
+
+.section-title {
+  font-family: Montserrat Light;
+  position: relative;
+  display: inline-block;
+  margin: 18px 0 8px 0;
+  padding: 4px 18px;
+
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(206, 206, 206, 0.445) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* thanh nền phía sau */
+.section-title::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  height: 22px;
+
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+
+  z-index: -1;
+}
+
+/* tên lớn cuối */
+.big-name {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+/* ================= Mobile ================= */
+/* Responsive */
 @media (max-width: 768px) {
   .container {
     position: absolute;
-    top: 30%;
+    top: 26%;
     margin: 1.5rem auto;
     padding: 1.5rem;
     border-radius: 12px;
@@ -33,44 +138,56 @@ h1 {
     width: 90%;
     left: 5%;
   }
-
   .card-body {
     position: relative;
     top: 80px;
   }
-
   h1 {
     font-size: 1.8rem;
   }
-}
-
-/* ================== DESKTOP: CÁCH NAVBAR MỘT KHOẢNG ================== */
-
-@media (min-width: 796px) and (max-width: 991.98px) {
-  .container {
-    position: relative;
-    top: 38px;
+  .credit-box {
+    right: 5%;
+    top: 10%;
+    font-size: 13px;
+  }
+  .a13-bg {
+    right: -41px;
+    bottom: -50px;
+    width: 120%;
+    height: 80%;
+    opacity: 1.3;
+    transform: scale(0.65);
   }
 }
-
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 415px) and (max-width: 576px) {
   .container {
+    position: absolute;
+    top: 26%;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    border-radius: 12px;
+    height: 350px;
+    width: 90%;
+    left: 5%;
+  }
+  .card-body {
     position: relative;
-    top: 40px;
+    top: 80px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  .credit-box {
+    right: 5%;
+    top: 10%;
+    font-size: 13px;
+  }
+  .a13-bg {
+    right: -41px;
+    bottom: -50px;
+    width: 120%;
+    height: 80%;
+    opacity: 1.3;
+    transform: scale(0.65);
   }
 }
-
-@media (min-width: 1200px) and (max-width: 1599px) {
-  .container {
-    position: relative;
-    top: 50px;
-  }
-}
-
-@media (min-width: 1600px) {
-  .container {
-    position: relative;
-    top: 60px;
-  }
-}
-
