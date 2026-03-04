@@ -6,6 +6,8 @@ import cloudinary
 import cloudinary.uploader
 from dotenv import load_dotenv
 import socket
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 load_dotenv()
 
@@ -17,6 +19,14 @@ cloudinary.config(
 )
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
+
+# Gioi han API: 100 request / phut / IP
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=[],        # khong ap chung, chi ap cho route cu the
+    storage_uri="memory://"   # luu RAM, du cho app nho
+)
 
 def normalize_name(name):
     name = name.strip().lower()
@@ -66,16 +76,7 @@ def init_db():
             things_we_love TEXT,
             layer_url TEXT,
             audio_url TEXT,
-            avatar_url TEXT,
-            song TEXT,
-            letter_content TEXT,    
-            letter_image_url TEXT,  
-            gif_up TEXT,    
-            gif_down TEXT,  
-            gif_left TEXT,  
-            gif_right TEXT, 
-            gift_password TEXT, 
-            gift_image_url TEXT
+            avatar_url TEXT
         )
     ''')
 
@@ -92,8 +93,6 @@ def init_db():
         ("gif_down", "TEXT"),         # gif di chuyển xuống
         ("gif_left", "TEXT"),         # gif di chuyển ngang trái
         ("gif_right", "TEXT"),        # gif di chuyển ngang phải
-        ("gift_password", "TEXT"),    # mat khau mo hop qua
-        ("gift_image", "TEXT"),       # URL anh ruot hop qua (lop duoi)
     ]:
         if col not in existing_columns:
             cursor.execute(f"ALTER TABLE profiles ADD COLUMN {col} {col_type} DEFAULT ''")
@@ -102,7 +101,7 @@ def init_db():
     # THỨ TỰ CỘT:
     # short_name | full_name | nickname | favorite_song | things_we_love
     # | layer_url | audio_url | avatar_url | song | letter_content | letter_image_url
-    # | gif_up | gif_down | gif_left | gif_right | gift_password | gift_image
+    # | gif_up | gif_down | gif_left | gif_right
     #
     # Điền nội dung vào các chuỗi "" bên dưới mỗi profile:
     #   "" thứ 1 = biệt danh
@@ -115,8 +114,6 @@ def init_db():
     #   "" thứ 8 = URL gif down (di chuyển lên xuống)
     #   "" thứ 9 = URL gif left (di chuyển ngang)
     #   "" thứ 10 = URL gif right (di chuyển ngang)
-    #   "" thứ 11 = mật khẩu mở hộp quà (nếu có)
-    #   "" thứ 12 = URL ảnh ruột hộp quà (lớp dưới cùng)
     # ==============================================================
     profiles = [
         (
@@ -134,8 +131,6 @@ def init_db():
             "",   # gif down
             "",   # gif left
             "",   # gif right
-            "",   # mật khẩu mở hộp quà
-            "",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
         (
             "lenguyenbaotran", "Lê Nguyễn Bảo Trân",
@@ -152,8 +147,6 @@ def init_db():
             "",   # gif down
             "",   # gif left
             "",   # gif right
-            "",   # mật khẩu mở hộp quà
-            "",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
         (
             "buikieuanh", "Bùi Kiều Anh",
@@ -170,8 +163,6 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772294406/Buoc_Toc_-_Down_gpwews.gif",   # gif down
             "",   # gif left
             "",   # gif right
-            "",   # mật khẩu mở hộp quà
-            "",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
         (
             "trinhngocgialinh", "Trịnh Ngọc Gia Linh",
@@ -188,8 +179,6 @@ def init_db():
             "",   # gif down
             "",   # gif left
             "",   # gif right
-            "",   # mật khẩu mở hộp quà
-            "",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
         (
             "huynhnguyenkimngan", "Huỳnh Nguyễn Kim Ngân",
@@ -206,8 +195,6 @@ def init_db():
             "",   # gif down
             "",   # gif left
             "",   # gif right
-            "10082009hnkn",   # mật khẩu mở hộp quà
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
         (
             "lengocnhaky", "Lê Ngọc Nhã Kỳ",
@@ -224,8 +211,6 @@ def init_db():
             "",   # gif down
             "",   # gif left
             "",   # gif right
-            "",   # mật khẩu mở hộp quà
-            "",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
         (
             "trannguyenngocthienthanh", "Trần Nguyễn Ngọc Thiên Thanh",
@@ -242,8 +227,6 @@ def init_db():
             "",   # gif down
             "",   # gif left
             "",   # gif right
-            "",   # mật khẩu mở hộp quà
-            "",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
         (
             "lungocbich", "Lữ Ngọc Bích",
@@ -260,8 +243,6 @@ def init_db():
             "",   # gif down
             "",   # gif left
             "",   # gif right
-            "",   # mật khẩu mở hộp quà
-            "",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
         (
             "tranhatuyetnhu", "Trần Hà Tuyết Như",
@@ -278,8 +259,6 @@ def init_db():
             "",   # gif down
             "",   # gif left
             "",   # gif right
-            "",   # mật khẩu mở hộp quà
-            "",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
         (
             "dothithanhan", "Đỗ Thị Thanh An",
@@ -296,8 +275,6 @@ def init_db():
             "",   # gif down
             "",   # gif left
             "",   # gif right
-            "",   # mật khẩu mở hộp quà
-            "",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
         (
             "tranthihanh", "Trần Thị Hạnh",
@@ -314,8 +291,6 @@ def init_db():
             "",   # gif down
             "",   # gif left
             "",   # gif right
-            "",   # mật khẩu mở hộp quà
-            "",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
         (
             "dokhanhan", "Đỗ Khánh An",
@@ -332,8 +307,6 @@ def init_db():
             "",   # gif down
             "",   # gif left
             "",   # gif right
-            "",   # mật khẩu mở hộp quà
-            "",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
         (
             "lieunhuhien", "Liêu Như Hiền",
@@ -350,8 +323,6 @@ def init_db():
             "",   # gif down
             "",   # gif left
             "",   # gif right
-            "",   # mật khẩu mở hộp quà
-            "",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
         (
             "tranyenphuong", "Trần Yến Phương",
@@ -368,8 +339,6 @@ def init_db():
             "",   # gif down
             "",   # gif left
             "",   # gif right
-            "",   # mật khẩu mở hộp quà
-            "",   # URL ảnh ruột hộp quà (lớp dưới cùng)
         ),
     ]
 
@@ -377,8 +346,8 @@ def init_db():
         """INSERT INTO profiles
                (short_name, full_name, nickname, favorite_song, things_we_love,
                 layer_url, audio_url, avatar_url, song, letter_content, letter_image_url,
-                gif_up, gif_down, gif_left, gif_right, gift_password, gift_image_url)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                gif_up, gif_down, gif_left, gif_right)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
            ON CONFLICT(short_name) DO UPDATE SET
                full_name        = excluded.full_name,
                nickname         = excluded.nickname,
@@ -393,15 +362,18 @@ def init_db():
                gif_up           = excluded.gif_up,
                gif_down         = excluded.gif_down,
                gif_left         = excluded.gif_left,
-               gif_right        = excluded.gif_right,
-               gift_password    = excluded.gift_password,
-               gift_image_url   = excluded.gift_image_url""",
+               gif_right        = excluded.gif_right""",
         profiles
     )
     conn.commit()
     conn.close()
 
 init_db()
+
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    return jsonify(error="Quá nhiều yêu cầu, vui lòng thử lại sau.", retry_after=60), 429
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
@@ -484,7 +456,7 @@ def letter():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute(
-        """SELECT full_name, letter_content, letter_image_url, gift_password, gift_image_url
+        """SELECT full_name, letter_content, letter_image_url
            FROM profiles WHERE short_name = ?""",
         (norm,)
     )
@@ -496,8 +468,6 @@ def letter():
             'name':             row[0],
             'letter_content':   row[1],
             'letter_image_url': row[2],
-            'gift_password':    row[3],
-            'gift_image_url':   row[4],
         }
         return render_template('letter.html', profile=profile_data)
     else:
@@ -512,6 +482,7 @@ def link():
     return render_template('link.html')
 
 @app.route('/api/names')
+@limiter.limit("100 per minute")
 def get_names():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
