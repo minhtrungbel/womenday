@@ -11,20 +11,76 @@
   var CORRECT_PASSWORD = giftBox ? (giftBox.dataset.password || '0308') : '0308';
   var giftState = 'closed'; /* closed | ajar | open */
 
+  /* ---- Lockout config ---- */
+  var MAX_ATTEMPTS   = 5;
+  var LOCKOUT_SEC    = 30;
+  var failCount      = 0;
+  var lockoutTimer   = null; /* setInterval countdown */
+  var isLockedOut    = false;
+
+  /* ---- Bat / tat input + submit ---- */
+  function setInputDisabled(disabled) {
+    if (input)     input.disabled     = disabled;
+    if (submitBtn) submitBtn.disabled = disabled;
+  }
+
+  /* ---- Bat dau lockout 30s ---- */
+  function startLockout() {
+    isLockedOut = true;
+    setInputDisabled(true);
+    var remaining = LOCKOUT_SEC;
+
+    /* Hien thi dem nguoc ngay lap tuc */
+    showError('Vui lòng chờ ' + remaining + 's...');
+
+    lockoutTimer = setInterval(function () {
+      remaining -= 1;
+      if (remaining > 0) {
+        showError('Vui lòng chờ ' + remaining + 's...');
+      } else {
+        /* Het lockout: reset toan bo */
+        clearInterval(lockoutTimer);
+        lockoutTimer  = null;
+        isLockedOut   = false;
+        failCount     = 0;
+        setInputDisabled(false);
+        hideError();
+        if (input) { input.value = ''; input.focus(); }
+      }
+    }, 1000);
+  }
+
+  /* ---- Helper hien / an error ---- */
+  var attemptsSpan = document.getElementById('letter-pwd-attempts');
+
+  function showError(attemptsText) {
+    if (!errorMsg) return;
+    /* Chi cap nhat phan dong (span), phan tinh giu nguyen trong HTML */
+    if (attemptsSpan) attemptsSpan.textContent = attemptsText || '';
+    errorMsg.classList.add('show');
+  }
+  function hideError() {
+    if (errorMsg) errorMsg.classList.remove('show');
+    if (attemptsSpan) attemptsSpan.textContent = '';
+  }
+
   /* ---- Mo popup ---- */
   function openPopup() {
     if (!overlay) return;
     overlay.classList.add('active');
-    if (errorMsg) errorMsg.classList.remove('show');
+    hideError();
     if (input) {
       input.value = '';
       setTimeout(function () { input.focus(); }, 300);
     }
+    /* Neu dang lockout thi khoi phuc trang thai disable + message */
+    if (isLockedOut) setInputDisabled(true);
   }
 
   /* ---- Dong popup ---- */
   function closePopup() {
     if (overlay) overlay.classList.remove('active');
+    /* KHONG reset lockout khi dong — dem tiep khi mo lai */
   }
 
   /* ---- Rung dien thoai ---- */
@@ -52,18 +108,33 @@
 
   /* ---- Xu ly submit mat khau ---- */
   function handleSubmit() {
-    if (!input) return;
+    if (!input || isLockedOut) return;
     var val = input.value.trim();
+
     if (val === CORRECT_PASSWORD) {
-      /* Dung: dong popup, he nap */
+      /* Dung: reset dem, dong popup, he nap */
+      failCount   = 0;
+      isLockedOut = false;
+      if (lockoutTimer) { clearInterval(lockoutTimer); lockoutTimer = null; }
+      setInputDisabled(false);
       closePopup();
       giftState = 'ajar';
       if (giftBox) giftBox.classList.add('lid-ajar');
+
     } else {
-      /* Sai: hien loi, xoa input */
-      if (errorMsg) errorMsg.classList.add('show');
+      /* Sai: tang dem */
+      failCount += 1;
       input.value = '';
-      input.focus();
+
+      if (failCount >= MAX_ATTEMPTS) {
+        /* Du 5 lan sai: khoa */
+        startLockout();
+      } else {
+        /* Chua du: hien so lan con lai */
+        var left = MAX_ATTEMPTS - failCount;
+        showError('còn ' + left + ' lần thử.');
+        if (input) input.focus();
+      }
     }
   }
 
@@ -71,17 +142,14 @@
   if (giftBox) {
     giftBox.addEventListener('click', function () {
       if (giftState === 'closed') {
-        /* Lan 1: mo popup nhap mat khau */
         openPopup();
       } else if (giftState === 'ajar') {
-        /* Lan 2: rung + am thanh + nap bay di */
         triggerVibrate();
         playRumble();
         giftState = 'open';
         giftBox.classList.remove('lid-ajar');
         giftBox.classList.add('lid-open');
       }
-      /* Lan 3 tro di: khong lam gi them */
     });
   }
 
@@ -106,9 +174,9 @@
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); handleSubmit(); }
     });
-    /* An thong bao loi khi user bat dau go lai */
+    /* An thong bao loi khi user bat dau go lai (chi khi khong lockout) */
     input.addEventListener('input', function () {
-      if (errorMsg) errorMsg.classList.remove('show');
+      if (!isLockedOut) hideError();
     });
   }
 
