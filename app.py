@@ -172,8 +172,8 @@ def init_db():
             "",          # [10] letter_image_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772294406/Buoc_Toc_-_Up_fekvlr.gif",          # [11] gif_up
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772294406/Buoc_Toc_-_Down_gpwews.gif",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",          # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
             "0308",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
         ),
