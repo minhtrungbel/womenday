@@ -569,25 +569,43 @@
   pointer-events: none;
 }
 
-/* Mobile lid to hơn + clip bo tròn */
-@media (max-width: 795px) and (orientation: portrait) {
-  .letter-gift-box { overflow: hidden; border-radius: 12px; }
-  .letter-gift-lid { background-size: 112.5%; }
-}
-
 /* Desktop breakpoints gift-box */
 @media (min-width: 1600px) {
-  .letter-gift-box { right: 3vw; top: 52%; width: 34vw; max-width: 620px; }
+  .letter-gift-box {
+    right: 3vw;
+    top: 52%;
+    width: 34vw;
+    max-width: 620px;
+  }
 }
 @media (min-width: 1200px) and (max-width: 1599px) {
-  .letter-gift-box { right: 3vw; top: 53%; width: 36vw; max-width: 560px; }
+  .letter-gift-box {
+    right: 3vw;
+    top: 53%;
+    width: 36vw;
+    max-width: 560px;
+  }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-  .letter-gift-box { right: 2vw; top: 54%; width: 38vw; max-width: 460px; }
+  .letter-gift-box {
+    right: 2vw;
+    top: 54%;
+    width: 38vw;
+    max-width: 460px;
+  }
 }
 @media (min-width: 796px) and (max-width: 991.98px) {
-  .letter-gift-box { right: 1vw; top: 54%; width: 40vw; max-width: 380px; }
+  .letter-gift-box {
+    right: 1vw;
+    top: 54%;
+    width: 40vw;
+    max-width: 380px;
+  }
 }
+
+/* ================================================================
+   MOBILE gift-box
+   ================================================================ */
 
 @supports not (-webkit-touch-callout: none) {
   /* Android 577-795px */
@@ -605,7 +623,7 @@
   /* Android 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-gift-box {
-      top: 6%; bottom: auto; right: 50%;
+      top: 8%; bottom: auto; right: 50%;
       transform: translateX(50%);
       width: 76vw; max-width: 310px;
     }
@@ -614,10 +632,10 @@
       opacity: 0; transform: translateY(-70%) rotate(-22deg) scale(0.65); pointer-events: none;
     }
   }
-  /* Android 360-414px — xuống 1.5% so với chuẩn 7% */
+  /* Android 360-414px — CHUAN */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-gift-box {
-      top: 8.5%; bottom: auto; right: 50%;   /* 7% → 8.5% */
+      top: 8.5%; bottom: auto; right: 50%;
       transform: translateX(50%);
       width: 78vw; max-width: 295px;
     }
@@ -629,7 +647,7 @@
   /* Android <=359px */
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-gift-box {
-      top: 6%; bottom: auto; right: 50%;
+      top: 7%; bottom: auto; right: 50%;
       transform: translateX(50%);
       width: 80vw; max-width: 265px;
     }
@@ -644,7 +662,7 @@
   /* iOS 577-795px */
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(42% + env(safe-area-inset-bottom, 0px));   /* cao hơn: 38%→42% */
+      top: auto; bottom: calc(42% + env(safe-area-inset-bottom, 0px));
       right: 50%; transform: translateX(50%);
       width: 72vw; max-width: 320px;
     }
@@ -653,10 +671,10 @@
       opacity: 0; transform: translateY(-70%) rotate(-22deg) scale(0.65); pointer-events: none;
     }
   }
-  /* iOS 415-576px — cao mạnh lên */
+  /* iOS 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(44% + env(safe-area-inset-bottom, 0px));   /* cao mạnh: 34%→44% */
+      top: auto; bottom: calc(44% + env(safe-area-inset-bottom, 0px));
       right: 50%; transform: translateX(50%);
       width: 76vw; max-width: 310px;
     }
@@ -665,10 +683,10 @@
       opacity: 0; transform: translateY(-70%) rotate(-22deg) scale(0.65); pointer-events: none;
     }
   }
-  /* iOS 360-414px — cao mạnh lên */
+  /* iOS 360-414px — CHUAN */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(38% + env(safe-area-inset-bottom, 0px));   /* cao mạnh: 32%→38% */
+      top: auto; bottom: calc(40% + env(safe-area-inset-bottom, 0px));
       right: 50%; transform: translateX(50%);
       width: 78vw; max-width: 295px;
     }
@@ -680,7 +698,7 @@
   /* iOS <=359px */
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(36% + env(safe-area-inset-bottom, 0px));   /* cao hơn: 30%→36% */
+      top: auto; bottom: calc(46% + env(safe-area-inset-bottom, 0px));
       right: 50%; transform: translateX(50%);
       width: 80vw; max-width: 265px;
     }
@@ -690,8 +708,6 @@
     }
   }
 }
-
-
 /* ================== PASSWORD POPUP ================== */
 
 .letter-pwd-overlay {
