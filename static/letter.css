@@ -60,22 +60,10 @@
 
 /* ================================================================
    MOBILE hopqua-layer
-   CHIẾN LƯỢC: container left:0, width đủ chứa ảnh (không 100vw vì ảnh
-   sẽ bị scale lại theo container) → dùng background-position âm để
-   dịch ảnh sang trái, container phải đủ rộng để ảnh render đúng kích thước.
-
-   CHUẨN: Android 360-414px (bạn xác nhận)
-     width: 60vw, background-size: 205% auto, background-position: -42vw bottom
-     bottom: -17vh  (đẩy xuống tránh thanh home Android phía dưới)
-
-   Scale các breakpoint:
-     <=359px : nhỏ hơn ~5%  → size 195%, pos -40vw, w 58vw, bottom -16vh
-     415-576 : lớn hơn ~8%  → size 215%, pos -46vw, w 64vw, bottom -18vh
-     577-795 : lớn hơn ~15% → size 225%, pos -50vw, w 68vw, bottom -20vh
-
-   iOS: cùng width/size/position với Android tương ứng,
-        đổi anchor bottom→top và cộng thêm offset để tránh Safari search bar
-        (Safari bar ~9vh, nên top = tổng chiều cao - height + 9vh offset)
+   Chiến lược: left:0, background-position âm để dịch ảnh trái.
+   Android: xích xuống = tăng bottom âm thêm ~6-8vh so với chuẩn cũ
+   iOS: xích xuống = tăng top thêm ~6-8vh so với chuẩn cũ
+   415-576: nhỏ hơn (size giảm ~15%), xích trái (pos âm hơn), xuống nhiều nhất
    ================================================================ */
 
 @supports not (-webkit-touch-callout: none) {
@@ -86,7 +74,7 @@
       left: 0;
       width: 60vw;
       height: 72vh;
-      bottom: -21vh;
+      bottom: -28vh;
       top: auto;
       background-size: 205% auto;
       background-position: -42vw bottom;
@@ -99,22 +87,22 @@
       left: 0;
       width: 58vw;
       height: 68vh;
-      bottom: -20vh;
+      bottom: -26vh;
       top: auto;
       background-size: 195% auto;
       background-position: -40vw bottom;
     }
   }
 
-  /* Android 415-576px */
+  /* Android 415-576px — NHỎ HƠN, xích trái nhiều, xuống nhiều nhất */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-hopqua-layer {
       left: 0;
-      width: 64vw;
-      height: 76vh;
-      bottom: -22vh;
+      width: 54vw;
+      height: 64vh;
+      bottom: -33vh;
       top: auto;
-      background-size: 215% auto;
+      background-size: 185% auto;
       background-position: -46vw bottom;
     }
   }
@@ -125,7 +113,7 @@
       left: 0;
       width: 68vw;
       height: 82vh;
-      bottom: -24vh;
+      bottom: -31vh;
       top: auto;
       background-size: 225% auto;
       background-position: -50vw bottom;
@@ -135,13 +123,13 @@
 
 @supports (-webkit-touch-callout: none) {
 
-  /* iOS 360-414px — nhỏ hơn Android, xích trái, lùi xuống */
+  /* iOS 360-414px — CHUẨN */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-hopqua-layer {
       left: 0;
       width: 52vw;
       height: 65vh;
-      top: 34vh;
+      top: 40vh;
       bottom: auto;
       background-size: 185% auto;
       background-position: -38vw bottom;
@@ -154,22 +142,22 @@
       left: 0;
       width: 50vw;
       height: 62vh;
-      top: 36vh;
+      top: 42vh;
       bottom: auto;
       background-size: 175% auto;
       background-position: -35vw bottom;
     }
   }
 
-  /* iOS 415-576px */
+  /* iOS 415-576px — NHỎ HƠN, xích trái nhiều, xuống nhiều nhất */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-hopqua-layer {
       left: 0;
-      width: 56vw;
-      height: 69vh;
-      top: 30vh;
+      width: 46vw;
+      height: 58vh;
+      top: 46vh;
       bottom: auto;
-      background-size: 195% auto;
+      background-size: 165% auto;
       background-position: -42vw bottom;
     }
   }
@@ -180,7 +168,7 @@
       left: 0;
       width: 60vw;
       height: 74vh;
-      top: 24vh;
+      top: 31vh;
       bottom: auto;
       background-size: 205% auto;
       background-position: -46vw bottom;
@@ -228,7 +216,10 @@
 }
 
 /* ================================================================
-   MOBILE content-frame — giữ nguyên từ chuẩn
+   MOBILE content-frame
+   Xích xuống = tăng % dọc background-position
+   Android 360-414 cũ: 80% → mới: 90%
+   iOS tương tự nhưng % thấp hơn (Safari bar ở dưới)
    ================================================================ */
 
 @supports not (-webkit-touch-callout: none) {
@@ -236,28 +227,28 @@
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 128% auto;
-      background-position: 70% 80%;
+      background-position: 70% 90%;
     }
   }
   /* Android <=359px */
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 135% auto;
-      background-position: 69% 85%;
+      background-position: 69% 93%;
     }
   }
   /* Android 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 120% auto;
-      background-position: 71% 87%;
+      background-position: 71% 95%;
     }
   }
   /* Android 577-795px */
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 110% auto;
-      background-position: 72% 85%;
+      background-position: 72% 92%;
     }
   }
 }
@@ -267,28 +258,28 @@
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 127% auto;
-      background-position: 70% 70%;
+      background-position: 70% 78%;
     }
   }
   /* iOS <=359px */
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 135% auto;
-      background-position: 69% 75%;
+      background-position: 69% 82%;
     }
   }
   /* iOS 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 120% auto;
-      background-position: 71% 76%;
+      background-position: 71% 84%;
     }
   }
   /* iOS 577-795px */
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 110% auto;
-      background-position: 72% 73%;
+      background-position: 72% 80%;
     }
   }
 }
@@ -377,15 +368,12 @@
 
 /* ================================================================
    MOBILE letter-info-card
-   Mục tiêu: luôn nằm trong content-frame (vùng tối nửa dưới màn hình)
-   content-frame trên mobile nằm ở khoảng 45-90% chiều cao viewport
+   Mục tiêu: nằm trong content-frame (vùng tối đã xích xuống)
+   content-frame mới nằm ~60-95% viewport trên Android
+   → info-card cần top cao hơn trước (68-72% thay vì 54-58%)
 
-   Android: dùng top (% từ trên xuống) — thanh địa chỉ trên cùng nên
-            top ổn định hơn bottom
-   iOS:     dùng bottom + safe-area — thanh Safari ở dưới nên
-            bottom đảm bảo không bị che
-
-   CHUẨN: Android 360-414px → top: 58%, nội dung căn giữa vùng frame
+   Android: top tăng theo content-frame đã xích xuống
+   iOS: bottom giảm (gần bottom hơn) theo content-frame đã xích xuống
    ================================================================ */
 
 @supports not (-webkit-touch-callout: none) {
@@ -393,7 +381,7 @@
   /* Android 360-414px — CHUẨN */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-info-card {
-      top: 58%;
+      top: 68%;
       bottom: auto;
       left: 3%;
       right: 46%;
@@ -413,7 +401,7 @@
   /* Android <=359px */
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-info-card {
-      top: 60%;
+      top: 70%;
       bottom: auto;
       left: 2%;
       right: 44%;
@@ -433,7 +421,7 @@
   /* Android 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-info-card {
-      top: 56%;
+      top: 66%;
       bottom: auto;
       left: 3%;
       right: 46%;
@@ -453,7 +441,7 @@
   /* Android 577-795px */
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-info-card {
-      top: 54%;
+      top: 64%;
       bottom: auto;
       left: 3%;
       right: 46%;
@@ -473,11 +461,11 @@
 
 @supports (-webkit-touch-callout: none) {
 
-  /* iOS 360-414px — CHUẨN (cùng layout Android, đổi top→bottom) */
+  /* iOS 360-414px — CHUẨN */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-info-card {
       top: auto;
-      bottom: calc(10% + env(safe-area-inset-bottom, 0px));
+      bottom: calc(6% + env(safe-area-inset-bottom, 0px));
       left: 3%;
       right: 46%;
       width: auto;
@@ -497,7 +485,7 @@
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-info-card {
       top: auto;
-      bottom: calc(9% + env(safe-area-inset-bottom, 0px));
+      bottom: calc(5% + env(safe-area-inset-bottom, 0px));
       left: 2%;
       right: 44%;
       width: auto;
@@ -517,7 +505,7 @@
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-info-card {
       top: auto;
-      bottom: calc(11% + env(safe-area-inset-bottom, 0px));
+      bottom: calc(7% + env(safe-area-inset-bottom, 0px));
       left: 3%;
       right: 46%;
       width: auto;
@@ -537,7 +525,7 @@
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-info-card {
       top: auto;
-      bottom: calc(13% + env(safe-area-inset-bottom, 0px));
+      bottom: calc(8% + env(safe-area-inset-bottom, 0px));
       left: 3%;
       right: 46%;
       width: auto;
@@ -745,8 +733,6 @@
     }
   }
 }
-
-
 /* ================== PASSWORD POPUP ================== */
 
 .letter-pwd-overlay {
