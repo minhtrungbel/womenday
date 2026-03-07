@@ -7,15 +7,17 @@
   var submitBtn = document.getElementById('letter-pwd-submit');
   var errorMsg  = document.getElementById('letter-pwd-error');
 
-  /* Mat khau lay tu data-password tren #letter-gift-box, fallback '0308' */
-  var CORRECT_PASSWORD = giftBox ? (giftBox.dataset.password || '0308') : '0308';
+  /* Mat khau lay tu data-password tren #letter-gift-box */
+  /* Neu rong hoac khong co -> bo qua popup, mo thang nap */
+  var CORRECT_PASSWORD = giftBox ? (giftBox.dataset.password || '') : '';
+  var HAS_PASSWORD     = CORRECT_PASSWORD.trim() !== '';
   var giftState = 'closed'; /* closed | ajar | open */
 
   /* ---- Lockout config ---- */
   var MAX_ATTEMPTS   = 5;
   var LOCKOUT_SEC    = 30;
   var failCount      = 0;
-  var lockoutTimer   = null; /* setInterval countdown */
+  var lockoutTimer   = null;
   var isLockedOut    = false;
 
   /* ---- Bat / tat input + submit ---- */
@@ -30,7 +32,6 @@
     setInputDisabled(true);
     var remaining = LOCKOUT_SEC;
 
-    /* Hien thi dem nguoc ngay lap tuc */
     showError('Vui lòng chờ ' + remaining + 's...');
 
     lockoutTimer = setInterval(function () {
@@ -38,7 +39,6 @@
       if (remaining > 0) {
         showError('Vui lòng chờ ' + remaining + 's...');
       } else {
-        /* Het lockout: reset toan bo */
         clearInterval(lockoutTimer);
         lockoutTimer  = null;
         isLockedOut   = false;
@@ -55,7 +55,6 @@
 
   function showError(attemptsText) {
     if (!errorMsg) return;
-    /* Chi cap nhat phan dong (span), phan tinh giu nguyen trong HTML */
     if (attemptsSpan) attemptsSpan.textContent = attemptsText || '';
     errorMsg.classList.add('show');
   }
@@ -73,14 +72,18 @@
       input.value = '';
       setTimeout(function () { input.focus(); }, 300);
     }
-    /* Neu dang lockout thi khoi phuc trang thai disable + message */
     if (isLockedOut) setInputDisabled(true);
   }
 
   /* ---- Dong popup ---- */
   function closePopup() {
     if (overlay) overlay.classList.remove('active');
-    /* KHONG reset lockout khi dong — dem tiep khi mo lai */
+  }
+
+  /* ---- He nap hop qua ---- */
+  function openLid() {
+    giftState = 'ajar';
+    if (giftBox) giftBox.classList.add('lid-ajar');
   }
 
   /* ---- Rung dien thoai ---- */
@@ -112,25 +115,20 @@
     var val = input.value.trim();
 
     if (val === CORRECT_PASSWORD) {
-      /* Dung: reset dem, dong popup, he nap */
       failCount   = 0;
       isLockedOut = false;
       if (lockoutTimer) { clearInterval(lockoutTimer); lockoutTimer = null; }
       setInputDisabled(false);
       closePopup();
-      giftState = 'ajar';
-      if (giftBox) giftBox.classList.add('lid-ajar');
+      openLid();
 
     } else {
-      /* Sai: tang dem */
       failCount += 1;
       input.value = '';
 
       if (failCount >= MAX_ATTEMPTS) {
-        /* Du 5 lan sai: khoa */
         startLockout();
       } else {
-        /* Chua du: hien so lan con lai */
         var left = MAX_ATTEMPTS - failCount;
         showError('còn ' + left + ' lần thử.');
         if (input) input.focus();
@@ -142,7 +140,14 @@
   if (giftBox) {
     giftBox.addEventListener('click', function () {
       if (giftState === 'closed') {
-        openPopup();
+        if (HAS_PASSWORD) {
+          /* Co mat khau: hien popup binh thuong */
+          openPopup();
+        } else {
+          /* Khong co mat khau (3 profile Hanh/KhanhAn/NhuHien):
+             mo thang nap, khong hien popup */
+          openLid();
+        }
       } else if (giftState === 'ajar') {
         triggerVibrate();
         playRumble();
@@ -174,7 +179,6 @@
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); handleSubmit(); }
     });
-    /* An thong bao loi khi user bat dau go lai (chi khi khong lockout) */
     input.addEventListener('input', function () {
       if (!isLockedOut) hideError();
     });
