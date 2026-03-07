@@ -72,7 +72,6 @@ def init_db():
             short_name TEXT UNIQUE,
             full_name TEXT,
             nickname TEXT,
-            favorite_song TEXT,
             things_we_love TEXT,
             layer_url TEXT,
             audio_url TEXT,
@@ -84,7 +83,6 @@ def init_db():
     existing_columns = [row[1] for row in cursor.execute("PRAGMA table_info(profiles)").fetchall()]
     for col, col_type in [
         ("nickname",         "TEXT"),
-        ("favorite_song",    "TEXT"),
         ("things_we_love",   "TEXT"),
         ("song",             "TEXT"),
         ("letter_content",   "TEXT"),   # noi dung thu — dung trong trang letter
@@ -95,6 +93,7 @@ def init_db():
         ("gif_right",        "TEXT"),   # gif di chuyen ngang phai
         ("gift_password",    "TEXT"),   # [15] mat khau mo hop qua trang /letter
         ("gift_image",       "TEXT"),   # [16] URL anh ruot hop qua (lop duoi nap)
+        ("profile_password", "TEXT"),   # [17] mat khau mo trang profile (bao ve profile)
     ]:
         if col not in existing_columns:
             cursor.execute(f"ALTER TABLE profiles ADD COLUMN {col} {col_type} DEFAULT ''")
@@ -104,7 +103,6 @@ def init_db():
     #   [0]  short_name        -- ten viet lien khong dau, dung trong URL (?name=...)
     #   [1]  full_name         -- ho ten day du hien thi trong info card & thu
     #   [2]  nickname          -- biet danh (de trong "" neu chua co)
-    #   [3]  favorite_song     -- bai nhac yeu thich hien thi trong info card
     #   [4]  things_we_love    -- dieu tui minh thich ve cau (info card)
     #   [5]  layer_url         -- URL anh layer nen avatar (Cloudinary PNG)
     #   [6]  audio_url         -- URL file nhac MP3 (Cloudinary video)
@@ -117,14 +115,16 @@ def init_db():
     #   [13] gif_left          -- URL gif di chuyen sang trai
     #   [14] gif_right         -- URL gif di chuyen sang phai
     #   [15] gift_password     -- mat khau mo hop qua tren trang /letter
+    #                             RONG ("") = khong can mat khau, mo thang nap
     #   [16] gift_image        -- URL anh ruot hop qua (lop duoi nap, Cloudinary PNG)
+    #   [17] profile_password  -- mat khau bao ve trang /profile (hien popup ngay khi vao)
+    #                             RONG ("") = khong can mat khau de xem profile
     # ==============================================================
     profiles = [
         (
             "vobaotran",          # [0]  short_name
             "Võ Bảo Trân",          # [1]  full_name
             "",          # [2]  nickname
-            "",          # [3]  favorite_song
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771951780/votran2_rcmb4w.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772207141/VSTRA_-_Ai_Ngo%C3%A0i_Anh_Official_Audio_j8abwy.mp3",          # [6]  audio_url
@@ -138,12 +138,12 @@ def init_db():
             "",          # [14] gif_right
             "0308",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "",          # [17] profile_password
         ),
         (
             "lenguyenbaotran",          # [0]  short_name
             "Lê Nguyễn Bảo Trân",          # [1]  full_name
             "",          # [2]  nickname
-            "",          # [3]  favorite_song
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954229/letran2_epjgp6.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772206464/Ph%C3%A1o_Northside-M%E1%BB%99t_Ng%C3%A0y_Ch%E1%BA%B3ng_N%E1%BA%AFng_ft.thobaymauofficial_Official_MV_hwkpvk.mp3",          # [6]  audio_url
@@ -157,12 +157,12 @@ def init_db():
             "",          # [14] gif_right
             "0308",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "",          # [17] profile_password
         ),
         (
             "buikieuanh",          # [0]  short_name
             "Bùi Kiều Anh",          # [1]  full_name
             "",          # [2]  nickname
-            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772454983/Nghe_nh%C6%B0_t%C3%ACnh_y%C3%AAu_-_MCK_remixx_prod_mp3cut.net_wppsbw.mp3",          # [3]  favorite_song
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954223/kieuanh2_qlujkd.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772454983/Nghe_nh%C6%B0_t%C3%ACnh_y%C3%AAu_-_MCK_remixx_prod_mp3cut.net_wppsbw.mp3",          # [6]  audio_url
@@ -176,12 +176,12 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
             "0308",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "",          # [17] profile_password
         ),
         (
             "trinhngocgialinh",          # [0]  short_name
             "Trịnh Ngọc Gia Linh",          # [1]  full_name
             "",          # [2]  nickname
-            "",          # [3]  favorite_song
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772113738/gialinh2_1_k4bes6.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772212283/GO-CORTIS_yfqtlh.mp3",          # [6]  audio_url
@@ -195,12 +195,12 @@ def init_db():
             "",          # [14] gif_right
             "0308",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "",          # [17] profile_password
         ),
         (
             "huynhnguyenkimngan",          # [0]  short_name
             "Huỳnh Nguyễn Kim Ngân",          # [1]  full_name
             "",          # [2]  nickname
-            "",          # [3]  favorite_song
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954221/kimngan2_tsqlkc.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772210869/PUPPY_DANGRANGTO_-_WRONG_TIMES_Live_at_LAB_RADAR_ZLAB_fp0cc6.mp3",          # [6]  audio_url
@@ -214,12 +214,12 @@ def init_db():
             "",          # [14] gif_right
             "10082009hnkn",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "",          # [17] profile_password
         ),
         (
             "lengocnhaky",          # [0]  short_name
             "Lê Ngọc Nhã Kỳ",          # [1]  full_name
             "",          # [2]  nickname
-            "",          # [3]  favorite_song
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772003999/nhaky2_yubc2h.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772207799/D%C3%B9_Cho_Mai_V%E1%BB%81_Sau_Official_Music_Video_buitruonglinh_z2cxcm.mp3",          # [6]  audio_url
@@ -233,12 +233,12 @@ def init_db():
             "",          # [14] gif_right
             "0308",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "",          # [17] profile_password
         ),
         (
             "trannguyenngocthienthanh",          # [0]  short_name
             "Trần Nguyễn Ngọc Thiên Thanh",          # [1]  full_name
             "",          # [2]  nickname
-            "",          # [3]  favorite_song
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954084/thienthanh2_rhec6l.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772210416/MASHUP_ROCK_THI%E1%BB%86P_H%E1%BB%92NG_T%C3%93C_TI%C3%8AN_MAIQUINN_MU%E1%BB%98II_YEOLAN_%C4%90%C3%80O_T%E1%BB%AC_A1J_x_DTAP_LSX_2025_ryzvda.mp3",          # [6]  audio_url
@@ -252,12 +252,12 @@ def init_db():
             "",          # [14] gif_right
             "0308",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "",          # [17] profile_password
         ),
         (
             "lungocbich",          # [0]  short_name
             "Lữ Ngọc Bích",          # [1]  full_name
             "",          # [2]  nickname
-            "",          # [3]  favorite_song
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954086/ngocbich2_jyiiqf.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772209832/Simple_Love_-_Obito_x_Seachains_x_Davis_x_Lena_Official_MV_dkr0vw.mp3",          # [6]  audio_url
@@ -271,12 +271,12 @@ def init_db():
             "",          # [14] gif_right
             "0308",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "",          # [17] profile_password
         ),
         (
             "tranhatuyetnhu",          # [0]  short_name
             "Trần Hà Tuyết Như",          # [1]  full_name
             "",          # [2]  nickname
-            "",          # [3]  favorite_song
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954085/tuyetnhu2_ptkhyr.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772209373/RIO_-_v%E1%BA%A1n_v%E1%BA%ADt_nh%C6%B0_mu%E1%BB%91n_ta_b%C3%AAn_nhau_Official_MV_csfksl.mp3",          # [6]  audio_url
@@ -290,12 +290,12 @@ def init_db():
             "",          # [14] gif_right
             "0308",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "",          # [17] profile_password
         ),
         (
             "dothithanhan",          # [0]  short_name
             "Đỗ Thị Thanh An",          # [1]  full_name
             "",          # [2]  nickname
-            "",          # [3]  favorite_song
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954329/cothanhan2_zcahg1.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772213432/Maroon_5-_Sugar_de74hs.mp3",          # [6]  audio_url
@@ -309,69 +309,69 @@ def init_db():
             "",          # [14] gif_right
             "0308",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "",          # [17] profile_password
         ),
         (
-            "tranthihanh",          # [0]  short_name
-            "Trần Thị Hạnh",          # [1]  full_name
-            "",          # [2]  nickname
-            "",          # [3]  favorite_song
-            "",          # [4]  things_we_love
-            "",          # [5]  layer_url
-            "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/11_music.mp3",          # [6]  audio_url
-            "",          # [7]  avatar_url
-            "",          # [8]  song
-            "",          # [9]  letter_content
-            "",          # [10] letter_image_url
-            "",          # [11] gif_up
-            "",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
-            "0308",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "tranthihanh",                   # [0]  short_name
+            "Trần Thị Hạnh",                 # [1]  full_name
+            "",                              # [2]  nickname
+            "",                              # [4]  things_we_love
+            "",                              # [5]  layer_url
+            "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/11_music.mp3",  # [6]  audio_url
+            "",                              # [7]  avatar_url
+            "",                              # [8]  song
+            "",                              # [9]  letter_content
+            "",                              # [10] letter_image_url
+            "",                              # [11] gif_up
+            "",                              # [12] gif_down
+            "",                              # [13] gif_left
+            "",                              # [14] gif_right
+            "",                              # [15] gift_password — RONG: khong popup o /letter
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",  # [16] gift_image
+            "@12111982mehanh@",                          # [17] profile_password — CO: popup khi vao /profile
         ),
         (
-            "dokhanhan",          # [0]  short_name
-            "Đỗ Khánh An",          # [1]  full_name
-            "",          # [2]  nickname
-            "",          # [3]  favorite_song
-            "",          # [4]  things_we_love
-            "",          # [5]  layer_url
-            "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/12_music.mp3",          # [6]  audio_url
-            "",          # [7]  avatar_url
-            "",          # [8]  song
-            "",          # [9]  letter_content
-            "",          # [10] letter_image_url
-            "",          # [11] gif_up
-            "",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
-            "0308",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "dokhanhan",                     # [0]  short_name
+            "Đỗ Khánh An",                   # [1]  full_name
+            "",                              # [2]  nickname
+            "",                              # [4]  things_we_love
+            "",                              # [5]  layer_url
+            "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/12_music.mp3",  # [6]  audio_url
+            "",                              # [7]  avatar_url
+            "",                              # [8]  song
+            "",                              # [9]  letter_content
+            "",                              # [10] letter_image_url
+            "",                              # [11] gif_up
+            "",                              # [12] gif_down
+            "",                              # [13] gif_left
+            "",                              # [14] gif_right
+            "",                              # [15] gift_password — RONG: khong popup o /letter
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",  # [16] gift_image
+            "@07122013bong@",                          # [17] profile_password — CO: popup khi vao /profile
         ),
         (
-            "lieunhuhien",          # [0]  short_name
-            "Liêu Như Hiền",          # [1]  full_name
-            "",          # [2]  nickname
-            "",          # [3]  favorite_song
-            "",          # [4]  things_we_love
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772201008/nhuhien2_ue8uc0.png",          # [5]  layer_url
-            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772211507/Low_G_In_Love_ft._JustaTee_L2K_The_Album_szcc8e.mp3",          # [6]  audio_url
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772201013/nhuhien1_eyfkzu.png",          # [7]  avatar_url
-            "In Love ∙ Low G x JustaTee",          # [8]  song
-            "",          # [9]  letter_content
-            "",          # [10] letter_image_url
-            "",          # [11] gif_up
-            "",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
-            "0308",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "lieunhuhien",                   # [0]  short_name
+            "Liêu Như Hiền",                 # [1]  full_name
+            "",                              # [2]  nickname
+            "",                              # [4]  things_we_love
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772201008/nhuhien2_ue8uc0.png",  # [5]  layer_url
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772211507/Low_G_In_Love_ft._JustaTee_L2K_The_Album_szcc8e.mp3",  # [6]  audio_url
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772201013/nhuhien1_eyfkzu.png",  # [7]  avatar_url
+            "In Love ∙ Low G x JustaTee",    # [8]  song
+            "",                              # [9]  letter_content
+            "",                              # [10] letter_image_url
+            "",                              # [11] gif_up
+            "",                              # [12] gif_down
+            "",                              # [13] gif_left
+            "",                              # [14] gif_right
+            "",                              # [15] gift_password — RONG: khong popup o /letter
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",  # [16] gift_image
+            "@16062009hipic@",                          # [17] profile_password — CO: popup khi vao /profile
         ),
         (
             "tranyenphuong",          # [0]  short_name
             "Trần Yến Phương",          # [1]  full_name
             "",          # [2]  nickname
-            "",          # [3]  favorite_song
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772199597/coyenphuong2_tykgpk.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772213306/M%E1%BA%B7t_M%E1%BB%99c-VAnh_hqdv3t.mp3",          # [6]  audio_url
@@ -385,20 +385,20 @@ def init_db():
             "",          # [14] gif_right
             "0308",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "",          # [17] profile_password
         ),
     ]
 
     cursor.executemany(
         """INSERT INTO profiles
-               (short_name, full_name, nickname, favorite_song, things_we_love,
+               (short_name, full_name, nickname, things_we_love,
                 layer_url, audio_url, avatar_url, song, letter_content, letter_image_url,
                 gif_up, gif_down, gif_left, gif_right,
-                gift_password, gift_image)
+                gift_password, gift_image, profile_password)
            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
            ON CONFLICT(short_name) DO UPDATE SET
                full_name        = excluded.full_name,
                nickname         = excluded.nickname,
-               favorite_song    = excluded.favorite_song,
                things_we_love   = excluded.things_we_love,
                layer_url        = excluded.layer_url,
                audio_url        = excluded.audio_url,
@@ -411,7 +411,8 @@ def init_db():
                gif_left         = excluded.gif_left,
                gif_right        = excluded.gif_right,
                gift_password    = excluded.gift_password,
-               gift_image       = excluded.gift_image""",
+               gift_image       = excluded.gift_image,
+               profile_password = excluded.profile_password""",
         profiles
     )
     conn.commit()
@@ -466,9 +467,10 @@ def profile():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute(
-        """SELECT full_name, nickname, favorite_song, things_we_love,
+        """SELECT full_name, nickname, things_we_love,
                   layer_url, audio_url, avatar_url, song,
-                  gif_up, gif_down, gif_left, gif_right
+                  gif_up, gif_down, gif_left, gif_right,
+                  profile_password
            FROM profiles WHERE short_name = ?""",
         (norm,)
     )
@@ -477,18 +479,18 @@ def profile():
 
     if row:
         profile_data = {
-            'name':           row[0],
-            'nickname':       row[1],
-            'favorite_song':  row[2],
-            'things_we_love': row[3],
-            'layer':          row[4],
-            'audio':          row[5],
-            'avatar':         row[6],
-            'song':           row[7],
-            'gif_up':         row[8],
-            'gif_down':       row[9],
-            'gif_left':       row[10],
-            'gif_right':      row[11],
+            'name':             row[0],
+            'nickname':         row[1],
+            'things_we_love':   row[2],
+            'layer':            row[3],
+            'audio':            row[4],
+            'avatar':           row[5],
+            'song':             row[6],
+            'gif_up':           row[7],
+            'gif_down':         row[8],
+            'gif_left':         row[9],
+            'gif_right':        row[10],
+            'profile_password': row[11],
         }
         return render_template('profile.html', profile=profile_data)
     else:
@@ -518,8 +520,8 @@ def letter():
             'name':             row[0],
             'letter_content':   row[1],
             'letter_image_url': row[2],
-            'gift_password':    row[3],   # [15] mat khau mo hop qua
-            'gift_image':       row[4],   # [16] anh ruot hop qua
+            'gift_password':    row[3],
+            'gift_image':       row[4],
         }
         return render_template('letter.html', profile=profile_data)
     else:
@@ -564,4 +566,3 @@ if __name__ == '__main__':
         debug=(os.getenv("PORT") is None),
         use_reloader=(os.getenv("PORT") is None)
     )
-
