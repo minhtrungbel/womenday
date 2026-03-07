@@ -162,7 +162,7 @@ def init_db():
             "buikieuanh",          # [0]  short_name
             "Bùi Kiều Anh",          # [1]  full_name
             "",          # [2]  nickname
-            "",          # [3]  favorite_song
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772454983/Nghe_nh%C6%B0_t%C3%ACnh_y%C3%AAu_-_MCK_remixx_prod_mp3cut.net_wppsbw.mp3",          # [3]  favorite_song
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954223/kieuanh2_qlujkd.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772454983/Nghe_nh%C6%B0_t%C3%ACnh_y%C3%AAu_-_MCK_remixx_prod_mp3cut.net_wppsbw.mp3",          # [6]  audio_url
@@ -564,3 +564,4 @@ if __name__ == '__main__':
         debug=(os.getenv("PORT") is None),
         use_reloader=(os.getenv("PORT") is None)
     )
+
