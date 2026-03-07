@@ -1,4 +1,4 @@
-  /* ========================================
+/* ========================================
     MÀU NỀN CHÍNH: #FABBCB (Pantone hồng phấn)
     BASELINE BREAKPOINT: 360px–414px
     ======================================== */
@@ -1170,8 +1170,8 @@
     pointer-events: none;
     top: 28%;
     left: 58%;
-    width: 20%;
-    max-width: 270px;
+    width: 22%;
+    max-width: 330px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1182,11 +1182,14 @@
   /* Base font — giảm nhẹ cho cả desktop & Android */
   .profile-info-card .info-name {
     font-family: "Samsung Sharp Bold", sans-serif;
-    font-size: 1.28rem;
+    font-size: clamp(0.75rem, 1.45vw, 1.28rem);
     font-weight: 900;
     color: #860033;
-    line-height: 1.15;
+    line-height: 1.2;
     margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: visible;
+    max-width: none;
   }
 
   .profile-info-card .info-nickname {
@@ -1378,14 +1381,17 @@
     .profile-info-card {
       top: 15%;
       left: 56%;
-      width: 22%;
-      max-width: 220px;
+      width: 24%;
+      max-width: 280px;
       padding: 12px 12px;
     }
 
     .profile-info-card .info-name {
-      font-size: 0.99rem;
+      font-size: clamp(0.75rem, 1.08vw, 1.02rem);
       margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: visible;
+      max-width: none;
     }
 
     .profile-info-card .info-nickname {
@@ -1408,13 +1414,16 @@
     .profile-info-card {
       top: 15%;
       left: 57%;
-      width: 21%;
-      max-width: 245px;
+      width: 22%;
+      max-width: 300px;
       padding: 16px 14px;
     }
 
     .profile-info-card .info-name {
-      font-size: 1.14rem;
+      font-size: clamp(0.82rem, 1.18vw, 1.14rem);
+      white-space: nowrap;
+      overflow: visible;
+      max-width: none;
     }
 
     .profile-info-card .info-nickname {
@@ -1435,13 +1444,16 @@
     .profile-info-card {
       top: 28%;
       left: 58%;
-      width: 20%;
-      max-width: 270px;
+      width: 22%;
+      max-width: 330px;
       padding: 20px 16px;
     }
 
     .profile-info-card .info-name {
-      font-size: 1.33rem;
+      font-size: clamp(0.88rem, 1.35vw, 1.28rem);
+      white-space: nowrap;
+      overflow: visible;
+      max-width: none;
     }
   }
 
@@ -1450,13 +1462,16 @@
     .profile-info-card {
       top: 15%;
       left: 58%;
-      width: 19%;
-      max-width: 290px;
+      width: 22%;
+      max-width: 360px;
       padding: 24px 20px;
     }
 
     .profile-info-card .info-name {
-      font-size: 1.47rem;
+      font-size: clamp(0.95rem, 1.45vw, 1.38rem);
+      white-space: nowrap;
+      overflow: visible;
+      max-width: none;
     }
 
     .profile-info-card .info-nickname {
@@ -1575,4 +1590,3 @@
       left: 28%;
     }
   }
-  
