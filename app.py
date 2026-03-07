@@ -366,7 +366,7 @@ def init_db():
             "",                              # [14] gif_right
             "",                              # [15] gift_password — RONG: khong popup o /letter
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",  # [16] gift_image
-            "@16062009hipic@",                          # [17] profile_password — CO: popup khi vao /profile
+            "@16062009@",                          # [17] profile_password — CO: popup khi vao /profile
         ),
         (
             "tranyenphuong",          # [0]  short_name
@@ -566,3 +566,4 @@ if __name__ == '__main__':
         debug=(os.getenv("PORT") is None),
         use_reloader=(os.getenv("PORT") is None)
     )
+
