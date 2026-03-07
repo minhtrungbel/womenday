@@ -135,16 +135,16 @@
 
 @supports (-webkit-touch-callout: none) {
 
-  /* iOS 360-414px */
+  /* iOS 360-414px — nhỏ hơn Android, xích trái, lùi xuống */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-hopqua-layer {
       left: 0;
-      width: 60vw;
-      height: 72vh;
-      top: 24vh;
+      width: 52vw;
+      height: 65vh;
+      top: 34vh;
       bottom: auto;
-      background-size: 205% auto;
-      background-position: -42vw bottom;
+      background-size: 185% auto;
+      background-position: -38vw bottom;
     }
   }
 
@@ -152,12 +152,12 @@
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-hopqua-layer {
       left: 0;
-      width: 58vw;
-      height: 68vh;
-      top: 26vh;
+      width: 50vw;
+      height: 62vh;
+      top: 36vh;
       bottom: auto;
-      background-size: 195% auto;
-      background-position: -40vw bottom;
+      background-size: 175% auto;
+      background-position: -35vw bottom;
     }
   }
 
@@ -165,12 +165,12 @@
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-hopqua-layer {
       left: 0;
-      width: 64vw;
-      height: 76vh;
-      top: 20vh;
+      width: 56vw;
+      height: 69vh;
+      top: 30vh;
       bottom: auto;
-      background-size: 215% auto;
-      background-position: -46vw bottom;
+      background-size: 195% auto;
+      background-position: -42vw bottom;
     }
   }
 
@@ -178,12 +178,12 @@
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-hopqua-layer {
       left: 0;
-      width: 68vw;
-      height: 82vh;
-      top: 14vh;
+      width: 60vw;
+      height: 74vh;
+      top: 24vh;
       bottom: auto;
-      background-size: 225% auto;
-      background-position: -50vw bottom;
+      background-size: 205% auto;
+      background-position: -46vw bottom;
     }
   }
 }
@@ -597,11 +597,6 @@
 @media (min-width: 992px) and (max-width: 1199px) { .letter-gift-lid { background-size: 102%; } }
 @media (min-width: 796px) and (max-width: 991.98px) { .letter-gift-lid { background-size: 100%; } }
 
-/* Mobile lid to hơn — phủ rộng hơn container */
-@media (max-width: 795px) and (orientation: portrait) {
-  .letter-gift-lid { background-size: 118%; }
-}
-
 .letter-gift-box.lid-ajar .letter-gift-lid {
   transform: translateY(-18%) rotate(-8deg);
 }
@@ -653,7 +648,7 @@
   /* Android 577-795px */
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-gift-box {
-      top: 14%; bottom: auto; right: 50%;
+      top: 8%; bottom: auto; right: 50%;
       transform: translateX(50%);
       width: 72vw; max-width: 320px;
     }
@@ -665,7 +660,7 @@
   /* Android 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-gift-box {
-      top: 12%; bottom: auto; right: 50%;
+      top: 6%; bottom: auto; right: 50%;
       transform: translateX(50%);
       width: 76vw; max-width: 310px;
     }
@@ -677,7 +672,7 @@
   /* Android 360-414px — CHUAN */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-gift-box {
-      top: 13%; bottom: auto; right: 50%;
+      top: 7%; bottom: auto; right: 50%;
       transform: translateX(50%);
       width: 78vw; max-width: 295px;
     }
@@ -689,7 +684,7 @@
   /* Android <=359px */
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-gift-box {
-      top: 12%; bottom: auto; right: 50%;
+      top: 6%; bottom: auto; right: 50%;
       transform: translateX(50%);
       width: 80vw; max-width: 265px;
     }
@@ -704,7 +699,7 @@
   /* iOS 577-795px */
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(33% + env(safe-area-inset-bottom, 0px));
+      top: auto; bottom: calc(38% + env(safe-area-inset-bottom, 0px));
       right: 50%; transform: translateX(50%);
       width: 72vw; max-width: 320px;
     }
@@ -716,7 +711,7 @@
   /* iOS 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(29% + env(safe-area-inset-bottom, 0px));
+      top: auto; bottom: calc(34% + env(safe-area-inset-bottom, 0px));
       right: 50%; transform: translateX(50%);
       width: 76vw; max-width: 310px;
     }
@@ -728,7 +723,7 @@
   /* iOS 360-414px — CHUAN */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(27% + env(safe-area-inset-bottom, 0px));
+      top: auto; bottom: calc(32% + env(safe-area-inset-bottom, 0px));
       right: 50%; transform: translateX(50%);
       width: 78vw; max-width: 295px;
     }
@@ -740,7 +735,7 @@
   /* iOS <=359px */
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(25% + env(safe-area-inset-bottom, 0px));
+      top: auto; bottom: calc(30% + env(safe-area-inset-bottom, 0px));
       right: 50%; transform: translateX(50%);
       width: 80vw; max-width: 265px;
     }
