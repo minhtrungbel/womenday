@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='fonts.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='letter.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
   <link rel="preload" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1763570718/home_logo_nt0lkn.svg" as="image">
   <link rel="icon" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1771757135/logo_ioneoh.png" type="image/png">
@@ -27,6 +28,43 @@
 </head>
 
 <body>
+  {%- if profile and profile.profile_password %}
+  <!-- PROFILE GUARD POPUP -->
+  <div class="letter-pwd-overlay" id="profile-guard-overlay"
+       data-password="{{ profile.profile_password }}">
+    <div class="letter-pwd-box">
+      <button class="letter-pwd-close" id="profile-guard-close" aria-label="Dong">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18M6 6l12 12" stroke="#fff5f8" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="letter-pwd-title">Nhập mật khẩu<br>để xem profile</div>
+      <div class="letter-pwd-note-box">
+        <div class="letter-pwd-note">Lưu ý: Vui lòng cân nhắc<br>kĩ trước khi tiếp tục</div>
+        <div class="letter-pwd-error" id="profile-guard-error">Mật khẩu không đúng, vui lòng nhập lại bạn <span id="profile-guard-attempts"></span></div>
+        <div class="letter-pwd-row">
+          <input type="text" class="letter-pwd-input" id="profile-guard-input"
+                 placeholder="Vui lòng nhập mật khẩu" autocomplete="off" />
+          <button class="letter-pwd-submit" id="profile-guard-submit" aria-label="Xac nhan">
+            <svg viewBox="0 0 24 24" overflow="visible">
+              <defs>
+                <linearGradient id="pg-arrow-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%"   stop-color="#FD94B2"/>
+                  <stop offset="30%"  stop-color="#F04653"/>
+                  <stop offset="100%" stop-color="#E42139"/>
+                </linearGradient>
+              </defs>
+              <path class="submit-arrow" d="M5 12h14M13 6l6 6-6 6"
+                    stroke="white" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {%- endif %}
+
   <div class="profile-overlay-layer"></div>
 
   {% if profile %}
@@ -180,7 +218,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script defer src="{{ url_for('static', filename='src/profile.js') }}"></script>
   <script defer src="{{ url_for('static', filename='src/gif-mover.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='src/profile_guard.js') }}"></script>
 </body>
 
 </html>
-
