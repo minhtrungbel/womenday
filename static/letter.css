@@ -58,14 +58,6 @@
   }
 }
 
-/* ================================================================
-   MOBILE hopqua-layer
-   Chiến lược: left:0, background-position âm để dịch ảnh trái.
-   Android: xích xuống = tăng bottom âm thêm ~6-8vh so với chuẩn cũ
-   iOS: xích xuống = tăng top thêm ~6-8vh so với chuẩn cũ
-   415-576: nhỏ hơn (size giảm ~15%), xích trái (pos âm hơn), xuống nhiều nhất
-   ================================================================ */
-
 @supports not (-webkit-touch-callout: none) {
 
   /* Android 360-414px — CHUẨN */
@@ -123,13 +115,13 @@
 
 @supports (-webkit-touch-callout: none) {
 
-  /* iOS 360-414px — CHUẨN */
+  /* iOS 360-414px — xuống mạnh hơn */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-hopqua-layer {
       left: 0;
       width: 52vw;
       height: 65vh;
-      top: 40vh;
+      top: 46vh;   /* tăng từ 40vh → 46vh: xuống mạnh hơn */
       bottom: auto;
       background-size: 185% auto;
       background-position: -38vw bottom;
@@ -142,20 +134,20 @@
       left: 0;
       width: 50vw;
       height: 62vh;
-      top: 42vh;
+      top: 48vh;   /* tăng từ 42vh → 48vh */
       bottom: auto;
       background-size: 175% auto;
       background-position: -35vw bottom;
     }
   }
 
-  /* iOS 415-576px — NHỎ HƠN, xích trái nhiều, xuống nhiều nhất */
+  /* iOS 415-576px — NHỎ HƠN, xuống mạnh */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-hopqua-layer {
       left: 0;
       width: 46vw;
       height: 58vh;
-      top: 46vh;
+      top: 50vh;   /* tăng từ 46vh → 50vh */
       bottom: auto;
       background-size: 165% auto;
       background-position: -42vw bottom;
@@ -168,7 +160,7 @@
       left: 0;
       width: 60vw;
       height: 74vh;
-      top: 31vh;
+      top: 36vh;   /* tăng từ 31vh → 36vh */
       bottom: auto;
       background-size: 205% auto;
       background-position: -46vw bottom;
@@ -215,13 +207,6 @@
   }
 }
 
-/* ================================================================
-   MOBILE content-frame
-   Xích xuống = tăng % dọc background-position
-   Android 360-414 cũ: 80% → mới: 90%
-   iOS tương tự nhưng % thấp hơn (Safari bar ở dưới)
-   ================================================================ */
-
 @supports not (-webkit-touch-callout: none) {
   /* Android 360-414px — CHUẨN */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
@@ -254,32 +239,32 @@
 }
 
 @supports (-webkit-touch-callout: none) {
-  /* iOS 360-414px — CHUẨN */
+  /* iOS 360-414px — xuống nhẹ */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 127% auto;
-      background-position: 70% 78%;
+      background-position: 70% 82%;   /* tăng từ 78% → 82% */
     }
   }
   /* iOS <=359px */
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 135% auto;
-      background-position: 69% 82%;
+      background-position: 69% 86%;   /* tăng từ 82% → 86% */
     }
   }
   /* iOS 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 120% auto;
-      background-position: 71% 84%;
+      background-position: 71% 88%;   /* tăng từ 84% → 88% */
     }
   }
   /* iOS 577-795px */
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 110% auto;
-      background-position: 72% 80%;
+      background-position: 72% 84%;   /* tăng từ 80% → 84% */
     }
   }
 }
@@ -366,22 +351,12 @@
   .letter-info-card .letter-signature { font-size: 0.78rem; }
 }
 
-/* ================================================================
-   MOBILE letter-info-card
-   Mục tiêu: nằm trong content-frame (vùng tối đã xích xuống)
-   content-frame mới nằm ~60-95% viewport trên Android
-   → info-card cần top cao hơn trước (68-72% thay vì 54-58%)
-
-   Android: top tăng theo content-frame đã xích xuống
-   iOS: bottom giảm (gần bottom hơn) theo content-frame đã xích xuống
-   ================================================================ */
-
 @supports not (-webkit-touch-callout: none) {
 
-  /* Android 360-414px — CHUẨN */
+  /* Android 360-414px — xích lên 3% so với 68% */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-info-card {
-      top: 68%;
+      top: 65%;   /* giảm từ 68% → 65%: xích lên */
       bottom: auto;
       left: 3%;
       right: 46%;
@@ -461,7 +436,7 @@
 
 @supports (-webkit-touch-callout: none) {
 
-  /* iOS 360-414px — CHUẨN */
+  /* iOS 360-414px */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-info-card {
       top: auto;
@@ -594,43 +569,25 @@
   pointer-events: none;
 }
 
-/* Desktop breakpoints gift-box */
-@media (min-width: 1600px) {
-  .letter-gift-box {
-    right: 3vw;
-    top: 52%;
-    width: 34vw;
-    max-width: 620px;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1599px) {
-  .letter-gift-box {
-    right: 3vw;
-    top: 53%;
-    width: 36vw;
-    max-width: 560px;
-  }
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .letter-gift-box {
-    right: 2vw;
-    top: 54%;
-    width: 38vw;
-    max-width: 460px;
-  }
-}
-@media (min-width: 796px) and (max-width: 991.98px) {
-  .letter-gift-box {
-    right: 1vw;
-    top: 54%;
-    width: 40vw;
-    max-width: 380px;
-  }
+/* Mobile lid to hơn + clip bo tròn */
+@media (max-width: 795px) and (orientation: portrait) {
+  .letter-gift-box { overflow: hidden; border-radius: 12px; }
+  .letter-gift-lid { background-size: 112.5%; }
 }
 
-/* ================================================================
-   MOBILE gift-box
-   ================================================================ */
+/* Desktop breakpoints gift-box */
+@media (min-width: 1600px) {
+  .letter-gift-box { right: 3vw; top: 52%; width: 34vw; max-width: 620px; }
+}
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .letter-gift-box { right: 3vw; top: 53%; width: 36vw; max-width: 560px; }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .letter-gift-box { right: 2vw; top: 54%; width: 38vw; max-width: 460px; }
+}
+@media (min-width: 796px) and (max-width: 991.98px) {
+  .letter-gift-box { right: 1vw; top: 54%; width: 40vw; max-width: 380px; }
+}
 
 @supports not (-webkit-touch-callout: none) {
   /* Android 577-795px */
@@ -657,10 +614,10 @@
       opacity: 0; transform: translateY(-70%) rotate(-22deg) scale(0.65); pointer-events: none;
     }
   }
-  /* Android 360-414px — CHUAN */
+  /* Android 360-414px — xuống 1.5% so với chuẩn 7% */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-gift-box {
-      top: 7%; bottom: auto; right: 50%;
+      top: 8.5%; bottom: auto; right: 50%;   /* 7% → 8.5% */
       transform: translateX(50%);
       width: 78vw; max-width: 295px;
     }
@@ -687,7 +644,7 @@
   /* iOS 577-795px */
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(38% + env(safe-area-inset-bottom, 0px));
+      top: auto; bottom: calc(42% + env(safe-area-inset-bottom, 0px));   /* cao hơn: 38%→42% */
       right: 50%; transform: translateX(50%);
       width: 72vw; max-width: 320px;
     }
@@ -696,10 +653,10 @@
       opacity: 0; transform: translateY(-70%) rotate(-22deg) scale(0.65); pointer-events: none;
     }
   }
-  /* iOS 415-576px */
+  /* iOS 415-576px — cao mạnh lên */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(34% + env(safe-area-inset-bottom, 0px));
+      top: auto; bottom: calc(44% + env(safe-area-inset-bottom, 0px));   /* cao mạnh: 34%→44% */
       right: 50%; transform: translateX(50%);
       width: 76vw; max-width: 310px;
     }
@@ -708,10 +665,10 @@
       opacity: 0; transform: translateY(-70%) rotate(-22deg) scale(0.65); pointer-events: none;
     }
   }
-  /* iOS 360-414px — CHUAN */
+  /* iOS 360-414px — cao mạnh lên */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(32% + env(safe-area-inset-bottom, 0px));
+      top: auto; bottom: calc(38% + env(safe-area-inset-bottom, 0px));   /* cao mạnh: 32%→38% */
       right: 50%; transform: translateX(50%);
       width: 78vw; max-width: 295px;
     }
@@ -723,7 +680,7 @@
   /* iOS <=359px */
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(30% + env(safe-area-inset-bottom, 0px));
+      top: auto; bottom: calc(36% + env(safe-area-inset-bottom, 0px));   /* cao hơn: 30%→36% */
       right: 50%; transform: translateX(50%);
       width: 80vw; max-width: 265px;
     }
@@ -733,6 +690,8 @@
     }
   }
 }
+
+
 /* ================== PASSWORD POPUP ================== */
 
 .letter-pwd-overlay {
