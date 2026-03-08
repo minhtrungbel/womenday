@@ -358,7 +358,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772211507/Low_G_In_Love_ft._JustaTee_L2K_The_Album_szcc8e.mp3",  # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772201013/nhuhien1_eyfkzu.png",  # [7]  avatar_url
             "In Love ∙ Low G x JustaTee",    # [8]  song
-            "",                              # [9]  letter_content
+            "Anh biết em đã trải qua nhiều khó khăn và từng rất tự ti, điều đó làm anh nhớ đến chính mình ngày trước – từng nghĩ thành công chỉ là may mắn. Nhưng theo anh, ai rồi cũng có lúc rực rỡ, quan trọng là có đủ kiên nhẫn để chờ đến lúc đó. Anh mong em luôn tự tin theo đuổi ước mơ của mình. Món quà 8/3 này tuy trễ một ngày, nhưng anh mong nó sẽ khiến em vui hơn. Hãy luôn tự tin, xinh đẹp và vui vẻ nhé. Yêu em! ",                              # [9]  letter_content
             "",                              # [10] letter_image_url
             "",                              # [11] gif_up
             "",                              # [12] gif_down
