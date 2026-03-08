@@ -1179,26 +1179,43 @@
     padding: 20px 16px;
   }
 
-  /* Base font — giảm nhẹ cho cả desktop & Android */
+  /* "Họ và Tên:" + tên trên cùng dòng */
+  .profile-info-card .info-name-row {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    flex-wrap: nowrap;
+    margin-bottom: 8px;
+  }
+
+  .profile-info-card .info-name-label {
+    font-family: "Samsung Sharp Bold", sans-serif;
+    font-size: clamp(0.75rem, 1.45vw, 1.28rem);
+    font-weight: 900;
+    color: #860033;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
   .profile-info-card .info-name {
     font-family: "Samsung Sharp Bold", sans-serif;
     font-size: clamp(0.75rem, 1.45vw, 1.28rem);
     font-weight: 900;
     color: #860033;
     line-height: 1.2;
-    margin-bottom: 6px;
     white-space: nowrap;
     overflow: visible;
     max-width: none;
   }
 
+  /* Biệt danh: cùng màu, cùng size, cùng weight với name — cách name 1 khoảng */
   .profile-info-card .info-nickname {
     font-family: "Samsung Sharp Bold", sans-serif;
-    font-size: 0.84rem;
-    font-weight: 700;
+    font-size: clamp(0.75rem, 1.45vw, 1.28rem);
+    font-weight: 900;
     color: #860033;
-    opacity: 0.8;
-    margin-bottom: 14px;
+    margin-top: 4px;
+    margin-bottom: 12px;
   }
 
   .profile-info-card .info-label {
@@ -1238,31 +1255,13 @@
       max-width: none;
       padding: 6px 7px;
     }
-
-    .profile-info-card .info-name {
-      font-size: 0.80rem;
-      margin-bottom: 2px;
-    }
-
-    .profile-info-card .info-nickname {
-      font-size: 0.62rem;
-      margin-bottom: 5px;
-    }
-
-    .profile-info-card .info-value {
-      font-size: 0.59rem;
-      line-height: 1.4;
-    }
-
-    .profile-info-card .info-label {
-      font-size: 0.45rem;
-      margin-top: 6px;
-      margin-bottom: 2px;
-    }
-
-    .profile-info-card .info-divider {
-      margin: 4px 0;
-    }
+    .profile-info-card .info-name-row { gap: 4px; margin-bottom: 4px; }
+    .profile-info-card .info-name-label,
+    .profile-info-card .info-name     { font-size: 0.80rem; }
+    .profile-info-card .info-nickname { font-size: 0.80rem; margin-top: 3px; margin-bottom: 4px; }
+    .profile-info-card .info-value    { font-size: 0.59rem; line-height: 1.4; }
+    .profile-info-card .info-label    { font-size: 0.45rem; margin-top: 6px; margin-bottom: 2px; }
+    .profile-info-card .info-divider  { margin: 4px 0; }
   }
 
   /* 360–414px */
@@ -1275,31 +1274,13 @@
       max-width: none;
       padding: 8px 9px;
     }
-
-    .profile-info-card .info-name {
-      font-size: 0.94rem;
-      margin-bottom: 3px;
-    }
-
-    .profile-info-card .info-nickname {
-      font-size: 0.75rem;
-      margin-bottom: 8px;
-    }
-
-    .profile-info-card .info-value {
-      font-size: 0.71rem;
-      line-height: 1.5;
-    }
-
-    .profile-info-card .info-label {
-      font-size: 0.56rem;
-      margin-top: 8px;
-      margin-bottom: 2px;
-    }
-
-    .profile-info-card .info-divider {
-      margin: 5px 0;
-    }
+    .profile-info-card .info-name-row { gap: 4px; margin-bottom: 5px; }
+    .profile-info-card .info-name-label,
+    .profile-info-card .info-name     { font-size: 0.94rem; }
+    .profile-info-card .info-nickname { font-size: 0.94rem; margin-top: 4px; margin-bottom: 6px; }
+    .profile-info-card .info-value    { font-size: 0.71rem; line-height: 1.5; }
+    .profile-info-card .info-label    { font-size: 0.56rem; margin-top: 8px; margin-bottom: 2px; }
+    .profile-info-card .info-divider  { margin: 5px 0; }
   }
 
   /* 415–576px */
@@ -1312,31 +1293,13 @@
       max-width: none;
       padding: 9px 10px;
     }
-
-    .profile-info-card .info-name {
-      font-size: 0.96rem;
-      margin-bottom: 3px;
-    }
-
-    .profile-info-card .info-nickname {
-      font-size: 0.73rem;
-      margin-bottom: 8px;
-    }
-
-    .profile-info-card .info-value {
-      font-size: 0.68rem;
-      line-height: 1.5;
-    }
-
-    .profile-info-card .info-label {
-      font-size: 0.52rem;
-      margin-top: 8px;
-      margin-bottom: 2px;
-    }
-
-    .profile-info-card .info-divider {
-      margin: 6px 0;
-    }
+    .profile-info-card .info-name-row { gap: 5px; margin-bottom: 5px; }
+    .profile-info-card .info-name-label,
+    .profile-info-card .info-name     { font-size: 0.96rem; }
+    .profile-info-card .info-nickname { font-size: 0.96rem; margin-top: 4px; margin-bottom: 7px; }
+    .profile-info-card .info-value    { font-size: 0.68rem; line-height: 1.5; }
+    .profile-info-card .info-label    { font-size: 0.52rem; margin-top: 8px; margin-bottom: 2px; }
+    .profile-info-card .info-divider  { margin: 6px 0; }
   }
 
   /* 577–795px */
@@ -1349,31 +1312,13 @@
       max-width: none;
       padding: 10px 12px;
     }
-
-    .profile-info-card .info-name {
-      font-size: 1.02rem;
-      margin-bottom: 3px;
-    }
-
-    .profile-info-card .info-nickname {
-      font-size: 0.76rem;
-      margin-bottom: 8px;
-    }
-
-    .profile-info-card .info-value {
-      font-size: 0.72rem;
-      line-height: 1.5;
-    }
-
-    .profile-info-card .info-label {
-      font-size: 0.53rem;
-      margin-top: 8px;
-      margin-bottom: 2px;
-    }
-
-    .profile-info-card .info-divider {
-      margin: 6px 0;
-    }
+    .profile-info-card .info-name-row { gap: 5px; margin-bottom: 5px; }
+    .profile-info-card .info-name-label,
+    .profile-info-card .info-name     { font-size: 1.02rem; }
+    .profile-info-card .info-nickname { font-size: 1.02rem; margin-top: 4px; margin-bottom: 7px; }
+    .profile-info-card .info-value    { font-size: 0.72rem; line-height: 1.5; }
+    .profile-info-card .info-label    { font-size: 0.53rem; margin-top: 8px; margin-bottom: 2px; }
+    .profile-info-card .info-divider  { margin: 6px 0; }
   }
 
   /* 796–991px */
@@ -1385,28 +1330,12 @@
       max-width: 280px;
       padding: 12px 12px;
     }
-
-    .profile-info-card .info-name {
-      font-size: clamp(0.75rem, 1.08vw, 1.02rem);
-      margin-bottom: 4px;
-      white-space: nowrap;
-      overflow: visible;
-      max-width: none;
-    }
-
-    .profile-info-card .info-nickname {
-      font-size: 0.68rem;
-      margin-bottom: 10px;
-    }
-
-    .profile-info-card .info-value {
-      font-size: 0.66rem;
-    }
-
-    .profile-info-card .info-label {
-      font-size: 0.49rem;
-      margin-top: 10px;
-    }
+    .profile-info-card .info-name-row { gap: 5px; margin-bottom: 4px; }
+    .profile-info-card .info-name-label,
+    .profile-info-card .info-name     { font-size: clamp(0.75rem, 1.08vw, 1.02rem); white-space: nowrap; overflow: visible; }
+    .profile-info-card .info-nickname { font-size: clamp(0.75rem, 1.08vw, 1.02rem); margin-top: 4px; margin-bottom: 8px; }
+    .profile-info-card .info-value    { font-size: 0.66rem; }
+    .profile-info-card .info-label    { font-size: 0.49rem; margin-top: 10px; }
   }
 
   /* 992–1199px */
@@ -1418,25 +1347,12 @@
       max-width: 300px;
       padding: 16px 14px;
     }
-
-    .profile-info-card .info-name {
-      font-size: clamp(0.82rem, 1.18vw, 1.14rem);
-      white-space: nowrap;
-      overflow: visible;
-      max-width: none;
-    }
-
-    .profile-info-card .info-nickname {
-      font-size: 0.76rem;
-    }
-
-    .profile-info-card .info-value {
-      font-size: 0.71rem;
-    }
-
-    .profile-info-card .info-label {
-      font-size: 0.52rem;
-    }
+    .profile-info-card .info-name-row { gap: 5px; margin-bottom: 5px; }
+    .profile-info-card .info-name-label,
+    .profile-info-card .info-name     { font-size: clamp(0.82rem, 1.18vw, 1.14rem); white-space: nowrap; overflow: visible; }
+    .profile-info-card .info-nickname { font-size: clamp(0.82rem, 1.18vw, 1.14rem); margin-top: 4px; margin-bottom: 10px; }
+    .profile-info-card .info-value    { font-size: 0.71rem; }
+    .profile-info-card .info-label    { font-size: 0.52rem; }
   }
 
   /* 1200–1599px */
@@ -1448,13 +1364,10 @@
       max-width: 330px;
       padding: 20px 16px;
     }
-
-    .profile-info-card .info-name {
-      font-size: clamp(0.88rem, 1.35vw, 1.28rem);
-      white-space: nowrap;
-      overflow: visible;
-      max-width: none;
-    }
+    .profile-info-card .info-name-row { gap: 6px; margin-bottom: 6px; }
+    .profile-info-card .info-name-label,
+    .profile-info-card .info-name     { font-size: clamp(0.88rem, 1.35vw, 1.28rem); white-space: nowrap; overflow: visible; }
+    .profile-info-card .info-nickname { font-size: clamp(0.88rem, 1.35vw, 1.28rem); margin-top: 5px; margin-bottom: 12px; }
   }
 
   /* ≥1600px */
@@ -1466,25 +1379,12 @@
       max-width: 360px;
       padding: 24px 20px;
     }
-
-    .profile-info-card .info-name {
-      font-size: clamp(0.95rem, 1.45vw, 1.38rem);
-      white-space: nowrap;
-      overflow: visible;
-      max-width: none;
-    }
-
-    .profile-info-card .info-nickname {
-      font-size: 0.93rem;
-    }
-
-    .profile-info-card .info-value {
-      font-size: 0.87rem;
-    }
-
-    .profile-info-card .info-label {
-      font-size: 0.59rem;
-    }
+    .profile-info-card .info-name-row { gap: 7px; margin-bottom: 7px; }
+    .profile-info-card .info-name-label,
+    .profile-info-card .info-name     { font-size: clamp(0.95rem, 1.45vw, 1.38rem); white-space: nowrap; overflow: visible; }
+    .profile-info-card .info-nickname { font-size: clamp(0.95rem, 1.45vw, 1.38rem); margin-top: 5px; margin-bottom: 14px; }
+    .profile-info-card .info-value    { font-size: 0.87rem; }
+    .profile-info-card .info-label    { font-size: 0.59rem; }
   }
   /*IOS Safari: profile info card safe-area*/
   @supports (-webkit-touch-callout: none) {
