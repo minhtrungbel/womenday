@@ -130,7 +130,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772207141/VSTRA_-_Ai_Ngo%C3%A0i_Anh_Official_Audio_j8abwy.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772022864/votran1_bgdgxr.png",          # [7]  avatar_url
             "Ai Ngoài Anh ∙ VSTRA",          # [8]  song
-            "",          # [9]  letter_content
+            "Tụi mình muốn gửi lời cảm ơn chân thành đến Trân vì đã luôn là một mảnh ghép tuyệt vời trong tình bạn của chúng mình. Bà là một người rất dễ gần và vui tính. Chúc Võ Trân luôn cố gắng, học tập thật “siêu cấp” và lúc nào cũng gặp nhiều may mắn trên con đường sắp tới.",          # [9]  letter_content
             "",          # [10] letter_image_url
             "",          # [11] gif_up
             "",          # [12] gif_down
@@ -566,4 +566,3 @@ if __name__ == '__main__':
         debug=(os.getenv("PORT") is None),
         use_reloader=(os.getenv("PORT") is None)
     )
-
