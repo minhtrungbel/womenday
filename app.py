@@ -137,7 +137,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Left_1_mscldt.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Right_a3bc2i.gif",          # [14] gif_right
             "@27112009uwu@",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010262/vt_m0yvoo.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
@@ -156,7 +156,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Left_1_yifu8x.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Right_brceuy.gif",          # [14] gif_right
             "@29012009maile@",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010262/lt_iojeml.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
@@ -175,7 +175,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
             "@10052009pie@",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010262/ka_aib0bo.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
@@ -194,7 +194,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
             "@13022009chocosusu@",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010266/gl_z4hrdm.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
@@ -232,7 +232,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Left_1_yifu8x.gif ",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Right_brceuy.gif",          # [14] gif_right
             "@20102009lnnk@",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010263/nk_cmkl7s.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
@@ -251,7 +251,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Left_1_mscldt.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Right_a3bc2i.gif",          # [14] gif_right
             "@10052009tranmeo@",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010261/tt_abmz3l.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
@@ -270,7 +270,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Left_1_yifu8x.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Right_brceuy.gif",          # [14] gif_right
             "@16102009su@",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010262/nb_nkbidm.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
@@ -289,7 +289,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
             "@1102009benhu@",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010261/tn_gedlau.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
@@ -308,7 +308,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986295/Tan_Left_fcfxux.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986295/Tan_Right_1_m7leq8.gif",          # [14] gif_right
             "5/4cothanhan18tuoialice",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010267/ms.an_l1uwze.png ",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
@@ -316,9 +316,9 @@ def init_db():
             "Trần Thị Hạnh",                 # [1]  full_name
             "Biệt danh: Mẹ Hạnh",         # [2]  nickname
             "Điều chúng con thích về mẹ:mẹ luôn tha thứ cho con dù con đã nhiều lần mắc phải những lỗi lầm quá đáng, luôn ân cần chỉ bảo cho con nên người",                              # [4]  things_we_love
-            "",                              # [5]  layer_url
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010811/me2_r3o7rp.png",                              # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772993030/C%E1%BA%A3m_%C6%A1n_ng%C6%B0%E1%BB%9Di_%C4%91%C3%A3_th%E1%BB%A9c_gi%E1%BA%A5c_c%C3%B9ng_t%C3%B4i-_Ph%C3%B9ng_Kh%C3%A1nh_Linh_f4nl5e.mp3",  # [6]  audio_url
-            "",                              # [7]  avatar_url
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010809/me1_xvpir9.png",                              # [7]  avatar_url
             "Cảm ơn người thức giấc cùng tôi ∙ Phòng Khánh Linh",                              # [8]  song
             "Con muốn nhân ngày 8/3 này có thể gửi cho mẹ những lời chúc tốt đẹp nhất,cảm ơn mẹ vì đã là người phụ nữ của gia đình lúc nào cũng chăm lo cho 2 cha con con, không bao giờ la mắng con dù cho ba hay con có làm cho mẹ giận,có những ngày hành mẹ làm lên làm xuống nhưng mẹ lúc nào cũng dịu dàng và hết mình vì chúng con,con xin mượn ngày 8/3 để cảm ơn cho những gì mẹ đã làm cho con.",                              # [9]  letter_content
             "",                              # [10] letter_image_url
@@ -327,7 +327,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",                              # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif   ",                              # [14] gif_right
             "",                              # [15] gift_password — RONG: khong popup o /letter
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",  # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010712/me3_pu7e09.png",  # [16] gift_image
             "@12111982mehanh@",                          # [17] profile_password — CO: popup khi vao /profile
         ),
         (
@@ -335,9 +335,9 @@ def init_db():
             "Đỗ Khánh An",                   # [1]  full_name
             "Biệt danh: Bống",                              # [2]  nickname
             "Điều chúng anh thích về em:em luôn nghe theo những yêu cầu của anh dù nó có quá đáng và luôn vui vẻ dù cho anh có chọc em giận",                              # [4]  things_we_love
-            "",                              # [5]  layer_url
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010810/em2_z3lzso.png",                              # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772211507/Low_G_In_Love_ft._JustaTee_L2K_The_Album_szcc8e.mp3",  # [6]  audio_url
-            "",                              # [7]  avatar_url
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010813/em1_tkpsgx.png",                              # [7]  avatar_url
             "In Love ∙ Low G x JustaTee",                              # [8]  song
             "Nhân ngày 8/3 chúc Bống có một ngày quốc tế phụ nữ vui vẻ, lúc nào cũng có nhiều niềm vui trong cuộc sống và đặc biệt sớm có bồ nhe, cảm ơn bống vì đã chịu đựng những lần nhờ vả vô lý hay những yêu cầu khó hiểu của anh trong suốt những năm qua, chúc em có 1 ngày 8/3 thật vui vẻ nha",                              # [9]  letter_content
             "",                              # [10] letter_image_url
@@ -346,7 +346,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Left_1_mscldt.gif",                              # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Right_a3bc2i.gif",                              # [14] gif_right
             "",                              # [15] gift_password — RONG: khong popup o /letter
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",  # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010812/em3_a2ciuw.png",  # [16] gift_image
             "@07122013bong@",                          # [17] profile_password — CO: popup khi vao /profile
         ),
         (
@@ -365,7 +365,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",                              # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",                              # [14] gif_right
             "",                              # [15] gift_password — RONG: khong popup o /letter
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",  # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010266/nh_bjd7jt.png",  # [16] gift_image
             "@16062009@",                          # [17] profile_password — CO: popup khi vao /profile
         ),
         (
@@ -384,7 +384,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
             "@2807missphuongmaidinhmaidnh8386@",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010265/ms.phuong_gugoug.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
     ]
