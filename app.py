@@ -132,10 +132,10 @@ def init_db():
             "Ai Ngoài Anh ∙ VSTRA",          # [8]  song
             "Tụi mình muốn gửi lời cảm ơn chân thành đến Trân vì đã luôn là một mảnh ghép tuyệt vời trong tình bạn của chúng mình. Bà là một người rất dễ gần và vui tính. Chúc Võ Trân luôn cố gắng, học tập thật “siêu cấp” và lúc nào cũng gặp nhiều may mắn trên con đường sắp tới.",          # [9]  letter_content
             "",          # [10] letter_image_url
-            "",          # [11] gif_up
-            "",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986569/Buoc_Toc_-_Up_1_muf6le.gif",          # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986569/Buoc_Toc_-_Down_1_bamcqb.gif",          # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Left_1_mscldt.gif",          # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Right_a3bc2i.gif",          # [14] gif_right
             "@27112009uwu@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
@@ -151,10 +151,10 @@ def init_db():
             "Một Ngày Chẳng Nắng ∙ Pháo Northside",          # [8]  song
             "Tụi mình muốn gửi lời cảm ơn chân thành đến Lê trân  vì đã luôn là một người bạn dễ thương và chân thành trong lớp. Những khoảnh khắc học tập và sinh hoạt cùng nhau đều là những kỷ niệm rất đáng quý. Chúc Lê Trân luôn vui vẻ, tự tin với bản thân mình và đạt được thật nhiều thành công trong học tập cũng như trong những dự định sắp tới nhé!",          # [9]  letter_content
             "",          # [10] letter_image_url
-            "",          # [11] gif_up
-            "",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986569/Buoc_Toc_-_Up_1_muf6le.gif",          # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986569/Buoc_Toc_-_Down_1_bamcqb.gif",          # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Left_1_yifu8x.gif",          # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Right_brceuy.gif",          # [14] gif_right
             "@29012009maile@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
@@ -170,8 +170,8 @@ def init_db():
             "Nghe Như Tình Yêu ∙ MCK",          # [8]  song
             "Tụi mình muốn gửi lời cảm ơn chân thành đến Kiều Anh vì đã luôn là một người bạn dễ mến và hòa đồng trong lớp, lúc nào cũng cảm thấy không khí nhẹ nhàng và vui vẻ hơn hẳn. Chúc Kiều Anh luôn tự tin, học tập thật tốt và lúc nào cũng giữ được năng lượng tích cực của mình. Mong là trong những bài kiểm tra sắp tới, sẽ có thể “thu hoạch” thật nhiều điểm cao để còn khoe với cả lớp nữa nha!",          # [9]  letter_content
             "",          # [10] letter_image_url
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772294406/Buoc_Toc_-_Up_fekvlr.gif",          # [11] gif_up
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772294406/Buoc_Toc_-_Down_gpwews.gif",          # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Up_lmg6qu.gif",          # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Down_vsmfgx.gif",          # [12] gif_down
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
             "@10052009pie@",          # [15] gift_password
@@ -189,10 +189,10 @@ def init_db():
             "GO ∙ CORTIS",          # [8]  song
             "Tụi mình muốn gửi lời cảm ơn chân thành Linh vì sự thẳng thắn và luôn hết mình với bạn bè. Những lời góp ý hay sự cổ vũ của bà có ý nghĩa rất lớn . Chúc Gia Linh luôn thông minh, nhạy bén và ngày càng tỏa sáng với những thế mạnh riêng của bản thân nha!",          # [9]  letter_content
             "",          # [10] letter_image_url
-            "",          # [11] gif_up
-            "",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Up_lmg6qu.gif",          # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Down_vsmfgx.gif",          # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",          # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
             "@13022009chocosusu@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
@@ -208,10 +208,10 @@ def init_db():
             "Wrong Times ∙ Young Puppy x DANGRANGTO",          # [8]  song
             " Tụi mình muốn gửi lời cảm ơn chân thành đến Ngân vì đã luôn thân thiện và nhiệt tình với mọi người trong lớp. Bà không chỉ là thủ quỹ đầy cẩn thận của lớp mà còn là một kỹ sư vô cùng chăm chỉ. Chúc Kim Ngân luôn vui vẻ, học hành thuận lợi và ngày càng phát huy được những điểm mạnh của bản thân. Mong là sắp tới bà sẽ tiếp tục “tỏa sáng” trong lớp mình nha!",          # [9]  letter_content
             "",          # [10] letter_image_url
-            "",          # [11] gif_up
-            "",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Up_lmg6qu.gif",          # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Down_vsmfgx.gif",          # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",          # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
             "@10082009nolanchris@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
@@ -227,10 +227,10 @@ def init_db():
             "Dù Cho Mai Về Sau ∙ Bùi Trường Linh",          # [8]  song
             "Tụi mình muốn gửi lời cảm ơn chân thành đến Kỳ vì đã luôn là một người bạn điềm đạm và đáng tin cậy. Không chỉ bà luôn là người giữ vững kết quả hoc tập tốt trong lớp mà còn là người rất thân thiện và hài hước. Chúc Nhã Kỳ luôn giữ được sự nhẹ nhàng, tự tin và gặt hái được thật nhiều điểm 10 trong các bài kiểm tra sắp tới.",          # [9]  letter_content
             "",          # [10] letter_image_url
-            "",          # [11] gif_up
-            "",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986569/Buoc_Toc_-_Up_1_muf6le.gif",          # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986569/Buoc_Toc_-_Down_1_bamcqb.gif",          # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Left_1_yifu8x.gif ",          # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Right_brceuy.gif",          # [14] gif_right
             "@20102009lnnk@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
@@ -246,10 +246,10 @@ def init_db():
             "Mashup Rock Thiệp Hổng ∙ Tóc Tiên x MaiQuinn x Yeolan x Đào Tử A1J",          # [8]  song
             "Tụi mình muốn gửi lời cảm ơn chân thành đến Thanh vì nguồn năng lượng tích cực mà cậu mang lại cho cả nhóm. Bà là một mảnh ghép rất cá tính trong lớp và đó cũng là thứ giúp lớp chúng ta đoàn kết hơn . Mong Thiên Thanh lúc nào cũng giữ được tinh thần lạc quan và chinh phục được mọi mục tiêu mà cậu đang ấp ủ!",          # [9]  letter_content
             "",          # [10] letter_image_url
-            "",          # [11] gif_up
-            "",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986569/Buoc_Toc_-_Up_1_muf6le.gif",          # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986569/Buoc_Toc_-_Down_1_bamcqb.gif",          # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Left_1_mscldt.gif",          # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Right_a3bc2i.gif",          # [14] gif_right
             "@10052009tranmeo@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
@@ -265,10 +265,10 @@ def init_db():
             "Simple Love ∙ Obito x Seachains",          # [8]  song
             "Tụi mình muốn gửi lời cảm ơn chân thành đến Bích vì sự giúp đỡ nhiệt tình trong suốt thời gian qua  bọn mình rất trân trọng những lúc báo bài rất đúng giờ, một người lớp phó học tập gương mẫu. Ngoài ra cũng là người chịu rất nhìu áp lực từ thầy cô.  Chúc Bích luôn rạng rỡ, học tốt và mọi dự định cá nhân đều thành công rực rỡ nha!",          # [9]  letter_content
             "",          # [10] letter_image_url
-            "",          # [11] gif_up
-            "",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986569/Buoc_Toc_-_Up_1_muf6le.gif",          # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986569/Buoc_Toc_-_Down_1_bamcqb.gif",          # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Left_1_yifu8x.gif",          # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Right_brceuy.gif",          # [14] gif_right
             "@16102009su@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
@@ -284,10 +284,10 @@ def init_db():
             "Vạn Vật Như Muốn Ta Bên Nhau ∙ RIO",          # [8]  song
             "Tụi mình muốn gửi lời cảm ơn chân thành đến Như vì đã luôn góp phần làm cho lớp mình trở nên vui vẻ và nhiều tiếng cười hơn. Khi có bà  lúc nào cũng cảm thấy có thêm động lực học tập (và đôi khi cũng có thêm động lực… nói chuyện một chút xíu). Chúc Tuyết Như luôn giữ được sự lạc quan, học thật tốt và đạt được nhiều thành tích đáng tự hào trong thời gian tới!",          # [9]  letter_content
             "",          # [10] letter_image_url
-            "",          # [11] gif_up
-            "",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Up_lmg6qu.gif",          # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Down_vsmfgx.gif",          # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",          # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
             "@1102009benhu@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
@@ -303,10 +303,10 @@ def init_db():
             "Sugar ∙ Maroon5",          # [8]  song
             "Nhân ngày Quốc tế Phụ nữ 8/3, em xin gửi đến cô Thanh An những lời chúc tốt đẹp và chân thành nhất. Chúc cô luôn mạnh khỏe, vui vẻ và hạnh phúc trong cuộc sống. Cảm ơn cô vì đã luôn tận tâm giảng dạy, truyền đạt kiến thức và quan tâm đến chúng em.Chúc cô luôn giữ được sự nhiệt huyết với nghề và có thật nhiều niềm vui trong công việc cũng như trong cuộc sống.",          # [9]  letter_content
             "",          # [10] letter_image_url
-            "",          # [11] gif_up
-            "",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986295/TANup_pturcn.gif",          # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986295/Tan_down_fpecom.gif",          # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986295/Tan_Left_fcfxux.gif",          # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986295/Tan_Right_1_m7leq8.gif",          # [14] gif_right
             "5/4cothanhan18tuoialice",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
@@ -317,15 +317,15 @@ def init_db():
             "Biệt danh: Mẹ Hạnh",         # [2]  nickname
             "Điều chúng con thích về mẹ:mẹ luôn tha thứ cho con dù con đã nhiều lần mắc phải những lỗi lầm quá đáng, luôn ân cần chỉ bảo cho con nên người",                              # [4]  things_we_love
             "",                              # [5]  layer_url
-            "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/11_music.mp3",  # [6]  audio_url
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772993030/C%E1%BA%A3m_%C6%A1n_ng%C6%B0%E1%BB%9Di_%C4%91%C3%A3_th%E1%BB%A9c_gi%E1%BA%A5c_c%C3%B9ng_t%C3%B4i-_Ph%C3%B9ng_Kh%C3%A1nh_Linh_f4nl5e.mp3",  # [6]  audio_url
             "",                              # [7]  avatar_url
-            "",                              # [8]  song
-            "",                              # [9]  letter_content
+            "Cảm ơn người thức giấc cùng tôi ∙ Phòng Khánh Linh",                              # [8]  song
+            "Con muốn nhân ngày 8/3 này có thể gửi cho mẹ những lời chúc tốt đẹp nhất,cảm ơn mẹ vì đã là người phụ nữ của gia đình lúc nào cũng chăm lo cho 2 cha con con, không bao giờ la mắng con dù cho ba hay con có làm cho mẹ giận,có những ngày hành mẹ làm lên làm xuống nhưng mẹ lúc nào cũng dịu dàng và hết mình vì chúng con,con xin mượn ngày 8/3 để cảm ơn cho những gì mẹ đã làm cho con.",                              # [9]  letter_content
             "",                              # [10] letter_image_url
-            "",                              # [11] gif_up
-            "",                              # [12] gif_down
-            "",                              # [13] gif_left
-            "",                              # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Up_lmg6qu.gif",                              # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Down_vsmfgx.gif",                              # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",                              # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif   ",                              # [14] gif_right
             "",                              # [15] gift_password — RONG: khong popup o /letter
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",  # [16] gift_image
             "@12111982mehanh@",                          # [17] profile_password — CO: popup khi vao /profile
@@ -335,16 +335,16 @@ def init_db():
             "Đỗ Khánh An",                   # [1]  full_name
             "Biệt danh: Bống",                              # [2]  nickname
             "Điều chúng anh thích về em:em luôn nghe theo những yêu cầu của anh dù nó có quá đáng và luôn vui vẻ dù cho anh có chọc em giận",                              # [4]  things_we_love
-            "Điều chúng tớ thích về cậu:sự điềm đạm trầm tính,vui vẻ thân thiện của cậu khi làm việc nhóm cùng cậu",                              # [5]  layer_url
-            "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/12_music.mp3",  # [6]  audio_url
+            "",                              # [5]  layer_url
+            "https://res.cloudinary.com/dogyjotxv/video/upload/v1772211507/Low_G_In_Love_ft._JustaTee_L2K_The_Album_szcc8e.mp3",  # [6]  audio_url
             "",                              # [7]  avatar_url
-            "",                              # [8]  song
-            "",                              # [9]  letter_content
+            "In Love ∙ Low G x JustaTee",                              # [8]  song
+            "Nhân ngày 8/3 chúc Bống có một ngày quốc tế phụ nữ vui vẻ, lúc nào cũng có nhiều niềm vui trong cuộc sống và đặc biệt sớm có bồ nhe, cảm ơn bống vì đã chịu đựng những lần nhờ vả vô lý hay những yêu cầu khó hiểu của anh trong suốt những năm qua, chúc em có 1 ngày 8/3 thật vui vẻ nha",                              # [9]  letter_content
             "",                              # [10] letter_image_url
-            "",                              # [11] gif_up
-            "",                              # [12] gif_down
-            "",                              # [13] gif_left
-            "",                              # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986569/Buoc_Toc_-_Up_1_muf6le.gif",                              # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986569/Buoc_Toc_-_Down_1_bamcqb.gif",                              # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Left_1_mscldt.gif",                              # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Right_a3bc2i.gif",                              # [14] gif_right
             "",                              # [15] gift_password — RONG: khong popup o /letter
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",  # [16] gift_image
             "@07122013bong@",                          # [17] profile_password — CO: popup khi vao /profile
@@ -360,10 +360,10 @@ def init_db():
             "In Love ∙ Low G x JustaTee",    # [8]  song
             "Anh biết em đã trải qua nhiều khó khăn và từng rất tự ti, điều đó làm anh nhớ đến chính mình ngày trước – từng nghĩ thành công chỉ là may mắn. Nhưng theo anh, ai rồi cũng có lúc rực rỡ, quan trọng là có đủ kiên nhẫn để chờ đến lúc đó. Anh mong em luôn tự tin theo đuổi ước mơ của mình. Món quà 8/3 này tuy trễ một ngày, nhưng anh mong nó sẽ khiến em vui hơn. Hãy luôn tự tin, xinh đẹp và vui vẻ nhé. Yêu em! ",                              # [9]  letter_content
             "",                              # [10] letter_image_url
-            "",                              # [11] gif_up
-            "",                              # [12] gif_down
-            "",                              # [13] gif_left
-            "",                              # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Up_lmg6qu.gif ",                              # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Down_vsmfgx.gif",                              # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",                              # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",                              # [14] gif_right
             "",                              # [15] gift_password — RONG: khong popup o /letter
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",  # [16] gift_image
             "@16062009@",                          # [17] profile_password — CO: popup khi vao /profile
@@ -379,10 +379,10 @@ def init_db():
             "Mặt Mộc ∙ VAnh x Phạm Nguyên Ngọc",          # [8]  song
             "Tụi em xin cảm ơn cô vì đã luôn tận tâm giảng dạy, truyền đạt kiến thức và quan tâm đến học sinh, kiên nhẫn với lớp dù đôi lúc tụi em hơi… ồn ào có tổ chức. Chúc cô luôn giữ được sự nhiệt huyết với nghề và có thật nhiều niềm vui trong công việc cũng như trong cuộc sống.",# [9]  letter_content
             "",          # [10] letter_image_url
-            "",          # [11] gif_up
-            "",          # [12] gif_down
-            "",          # [13] gif_left
-            "",          # [14] gif_right
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Up_lmg6qu.gif",          # [11] gif_up
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Down_vsmfgx.gif",          # [12] gif_down
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",          # [13] gif_left
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
             "@2807missphuongmaidinhmaidnh8386@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
@@ -566,4 +566,3 @@ if __name__ == '__main__':
         debug=(os.getenv("PORT") is None),
         use_reloader=(os.getenv("PORT") is None)
     )
-
