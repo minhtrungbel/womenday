@@ -125,7 +125,7 @@ def init_db():
             "vobaotran",          # [0]  short_name
             "Võ Bảo Trân",          # [1]  full_name
             "Biệt danh: UwU",          # [2]  nickname
-            "",          # [4]  things_we_love
+            "Điều chúng tớ thích về cậu:thân thiện,hòa đồng,luôn hỗ trợ các bạn trong học tập",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771951780/votran2_rcmb4w.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772207141/VSTRA_-_Ai_Ngo%C3%A0i_Anh_Official_Audio_j8abwy.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772022864/votran1_bgdgxr.png",          # [7]  avatar_url
@@ -144,7 +144,7 @@ def init_db():
             "lenguyenbaotran",          # [0]  short_name
             "Lê Nguyễn Bảo Trân",          # [1]  full_name
             "Biệt danh: Mai Lê",          # [2]  nickname
-            "",          # [4]  things_we_love
+            "Điều chúng tớ thích về cậu:sự cá tính, hoạt bát và tự tin của cậu",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954229/letran2_epjgp6.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772206464/Ph%C3%A1o_Northside-M%E1%BB%99t_Ng%C3%A0y_Ch%E1%BA%B3ng_N%E1%BA%AFng_ft.thobaymauofficial_Official_MV_hwkpvk.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036653/letran1_xkztjc.png",          # [7]  avatar_url
@@ -163,7 +163,7 @@ def init_db():
             "buikieuanh",          # [0]  short_name
             "Bùi Kiều Anh",          # [1]  full_name
             "Biệt danh: pie",          # [2]  nickname
-            "",          # [4]  things_we_love
+            "Điều chúng tớ thích về cậu: sự vui tính, học giỏi, dễ thương của cậu",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954223/kieuanh2_qlujkd.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772454983/Nghe_nh%C6%B0_t%C3%ACnh_y%C3%AAu_-_MCK_remixx_prod_mp3cut.net_wppsbw.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036650/kieuanh1_tcql5x.png",          # [7]  avatar_url
@@ -182,7 +182,7 @@ def init_db():
             "trinhngocgialinh",          # [0]  short_name
             "Trịnh Ngọc Gia Linh",          # [1]  full_name
             "Biệt danh: chocosusu",          # [2]  nickname
-            "",          # [4]  things_we_love
+            "Điều chúng tớ thích về cậu:sự thân thiện vui vẻ hòa đồng và hay chơi game cùng chúng tớ",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772113738/gialinh2_1_k4bes6.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772212283/GO-CORTIS_yfqtlh.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036650/gialinh1_nfsmt0.png",          # [7]  avatar_url
@@ -201,7 +201,7 @@ def init_db():
             "huynhnguyenkimngan",          # [0]  short_name
             "Huỳnh Nguyễn Kim Ngân",          # [1]  full_name
             "Biệt danh: nolan, con bò đầu cọ",          # [2]  nickname
-            "",          # [4]  things_we_love
+            "Điều chúng tớ thích về cậu:năng động,dễ thương,luôn giúp đỡ tích cực mọi người trong công việc ",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954221/kimngan2_tsqlkc.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772210869/PUPPY_DANGRANGTO_-_WRONG_TIMES_Live_at_LAB_RADAR_ZLAB_fp0cc6.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036653/kimngan1_lbbfmu.png",          # [7]  avatar_url
@@ -220,7 +220,7 @@ def init_db():
             "lengocnhaky",          # [0]  short_name
             "Lê Ngọc Nhã Kỳ",          # [1]  full_name
             "Biệt danh: lowkỳ(lowkey)",          # [2]  nickname
-            "",          # [4]  things_we_love
+            "Điều chúng tớ thích về cậu:sự điềm đạm trầm tính,vui vẻ thân thiện của cậu khi làm việc nhóm cùng cậu",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772003999/nhaky2_yubc2h.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772207799/D%C3%B9_Cho_Mai_V%E1%BB%81_Sau_Official_Music_Video_buitruonglinh_z2cxcm.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036596/nhaky1_ce1jio.png",          # [7]  avatar_url
@@ -239,7 +239,7 @@ def init_db():
             "trannguyenngocthienthanh",          # [0]  short_name
             "Trần Nguyễn Ngọc Thiên Thanh",          # [1]  full_name
             "Biệt danh: Trần Meo",          # [2]  nickname
-            "",          # [4]  things_we_love
+            "Điều chúng tớ thích về cậu:sự hài hước và vui tính của cậu",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954084/thienthanh2_rhec6l.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772210416/MASHUP_ROCK_THI%E1%BB%86P_H%E1%BB%92NG_T%C3%93C_TI%C3%8AN_MAIQUINN_MU%E1%BB%98II_YEOLAN_%C4%90%C3%80O_T%E1%BB%AC_A1J_x_DTAP_LSX_2025_ryzvda.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036596/thienthanh1_pizmpn.png",          # [7]  avatar_url
@@ -258,7 +258,7 @@ def init_db():
             "lungocbich",          # [0]  short_name
             "Lữ Ngọc Bích",          # [1]  full_name
             "Biệt danh: Su",          # [2]  nickname
-            "",          # [4]  things_we_love
+            "Điều chúng tớ thích về cậu:vì cậu là một lớp phó học tập gương mẫu luôn có tinh thần và trách nhiệm giúp đỡ mọi người trong lớp",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954086/ngocbich2_jyiiqf.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772209832/Simple_Love_-_Obito_x_Seachains_x_Davis_x_Lena_Official_MV_dkr0vw.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036596/ngocbich1_picblc.png",          # [7]  avatar_url
@@ -277,7 +277,7 @@ def init_db():
             "tranhatuyetnhu",          # [0]  short_name
             "Trần Hà Tuyết Như",          # [1]  full_name
             "Biệt danh: Bé Như",          # [2]  nickname
-            "",          # [4]  things_we_love
+            "Điều chúng tớ thích về cậu:luôn mang lại năng lượng tích cực cho mọi người xung quanh",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954085/tuyetnhu2_ptkhyr.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772209373/RIO_-_v%E1%BA%A1n_v%E1%BA%ADt_nh%C6%B0_mu%E1%BB%91n_ta_b%C3%AAn_nhau_Official_MV_csfksl.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772030901/tuyetnhu1_dlwi9z.png",          # [7]  avatar_url
@@ -296,7 +296,7 @@ def init_db():
             "dothithanhan",          # [0]  short_name
             "Đỗ Thị Thanh An",          # [1]  full_name
             "Biệt danh: Alice, Ariel",          # [2]  nickname
-            "",          # [4]  things_we_love
+            "Điều chúng con thích về cô:Cô luôn cho chúng em những lời khuyên chân thành,những lỗi sai của chúng em dù khiến cô không vui cô vẫn rộng lòng tha thứ",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954329/cothanhan2_zcahg1.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772213432/Maroon_5-_Sugar_de74hs.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036649/cothanhan1_qohuyz.png",          # [7]  avatar_url
@@ -315,7 +315,7 @@ def init_db():
             "tranthihanh",                   # [0]  short_name
             "Trần Thị Hạnh",                 # [1]  full_name
             "Biệt danh: Mẹ Hạnh",         # [2]  nickname
-            "",                              # [4]  things_we_love
+            "Điều chúng con thích về mẹ:mẹ luôn tha thứ cho con dù con đã nhiều lần mắc phải những lỗi lầm quá đáng, luôn ân cần chỉ bảo cho con nên người",                              # [4]  things_we_love
             "",                              # [5]  layer_url
             "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/11_music.mp3",  # [6]  audio_url
             "",                              # [7]  avatar_url
@@ -334,8 +334,8 @@ def init_db():
             "dokhanhan",                     # [0]  short_name
             "Đỗ Khánh An",                   # [1]  full_name
             "Biệt danh: Bống",                              # [2]  nickname
-            "",                              # [4]  things_we_love
-            "",                              # [5]  layer_url
+            "Điều chúng anh thích về em:em luôn nghe theo những yêu cầu của anh dù nó có quá đáng và luôn vui vẻ dù cho anh có chọc em giận",                              # [4]  things_we_love
+            "Điều chúng tớ thích về cậu:sự điềm đạm trầm tính,vui vẻ thân thiện của cậu khi làm việc nhóm cùng cậu",                              # [5]  layer_url
             "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/12_music.mp3",  # [6]  audio_url
             "",                              # [7]  avatar_url
             "",                              # [8]  song
@@ -353,7 +353,7 @@ def init_db():
             "lieunhuhien",                   # [0]  short_name
             "Liêu Như Hiền",                 # [1]  full_name
             "Biệt danh: hi píc",                              # [2]  nickname
-            "",                              # [4]  things_we_love
+            "Điều chúng anh thích về em:sự điềm đạm trầm tính,vui vẻ thân thiện của cậu khi làm việc nhóm cùng cậu",                              # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772201008/nhuhien2_ue8uc0.png",  # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772211507/Low_G_In_Love_ft._JustaTee_L2K_The_Album_szcc8e.mp3",  # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772201013/nhuhien1_eyfkzu.png",  # [7]  avatar_url
@@ -372,7 +372,7 @@ def init_db():
             "tranyenphuong",          # [0]  short_name
             "Trần Yến Phương",          # [1]  full_name
             "Biệt danh: Ms Phương",          # [2]  nickname
-            "",          # [4]  things_we_love
+            "Điều chúng em thích về cô:Sự nhiệt tình, năng nổ và hòa đồng của cô giống như một người chị đối với chúng em,chúng em rất quý điều đó ạ",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772199597/coyenphuong2_tykgpk.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772213306/M%E1%BA%B7t_M%E1%BB%99c-VAnh_hqdv3t.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772199593/coyenphuong1_jkkpvx.png",          # [7]  avatar_url
