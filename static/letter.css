@@ -131,13 +131,13 @@
     }
   }
 
-  /* iOS 360-414px — xích lên */
+  /* iOS 360-414px — xích xuống */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-hopqua-layer {
       left: 0;
       width: 52vw;
       height: 65vh;
-      top: 41vh;          /* xích lên từ 45.5vh → 41vh */
+      top: 46vh;          /* xích xuống: 41vh → 46vh */
       bottom: auto;
       background-size: 185% auto;
       background-position: -38vw bottom;
@@ -264,7 +264,7 @@
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 127% auto;
-      background-position: 70% 96%;    /* xuống mạnh hơn từ 88% → 96% */
+      background-position: 70% 108%;    /* xích xuống mạnh hơn: 96% → 108% */
     }
   }
 
@@ -514,26 +514,26 @@
     .letter-info-card .letter-signature { font-size: 0.64rem; margin-top: 4px; text-align: right; padding-right: 6px; }
   }
 
-  /* iOS 360-414px */
+  /* iOS 360-414px — dùng top để nằm trong content-frame */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-info-card {
-      top: auto;
-      bottom: calc(13% + env(safe-area-inset-bottom, 0px));   /* tăng mạnh từ 7% → 13% */
+      top: 58%;           /* top thay vì bottom — căn từ trên xuống như Android */
+      bottom: auto;
       left: 3%;
       right: 3%;
       width: auto;
       max-width: none;
-      max-height: 52vh;
+      max-height: 38vh;
       overflow-y: auto;
       transform: none;
       text-align: center;
       align-items: center;
-      padding: 9px 12px;
-      gap: 4px;
+      padding: 8px 11px;
+      gap: 3px;
     }
-    .letter-info-card .letter-greeting  { font-size: 0.92rem; }
-    .letter-info-card .letter-body      { font-size: 0.76rem; line-height: 1.54; }
-    .letter-info-card .letter-signature { font-size: 0.70rem; margin-top: 5px; text-align: right; padding-right: 8px; }
+    .letter-info-card .letter-greeting  { font-size: 0.84rem; }
+    .letter-info-card .letter-body      { font-size: 0.64rem; line-height: 1.48; }
+    .letter-info-card .letter-signature { font-size: 0.60rem; margin-top: 4px; text-align: right; padding-right: 8px; }
   }
 
   /* iOS 415-576px */
@@ -553,9 +553,9 @@
       padding: 10px 12px;
       gap: 4px;
     }
-    .letter-info-card .letter-greeting  { font-size: 0.97rem; }
-    .letter-info-card .letter-body      { font-size: 0.80rem; line-height: 1.56; }
-    .letter-info-card .letter-signature { font-size: 0.74rem; margin-top: 6px; text-align: right; padding-right: 8px; }
+    .letter-info-card .letter-greeting  { font-size: 0.86rem; }
+    .letter-info-card .letter-body      { font-size: 0.68rem; line-height: 1.50; }
+    .letter-info-card .letter-signature { font-size: 0.63rem; margin-top: 5px; text-align: right; padding-right: 8px; }
   }
 
   /* iOS 577-795px */
