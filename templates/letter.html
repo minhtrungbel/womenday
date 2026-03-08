@@ -47,8 +47,8 @@
        data-password="{% if profile and profile.gift_password %}{{ profile.gift_password }}{% endif %}">
 
     <!-- Ruột hộp quà: dùng gift_image_url từ profile nếu có, fallback ảnh mặc định -->
-    {% if profile and profile.gift_image_url %}
-    <div class="letter-gift-inner" style="background-image: url('{{ profile.gift_image_url }}');"></div>
+    {% if profile and profile.gift_image %}
+    <div class="letter-gift-inner" style="background-image: url('{{ profile.gift_image }}');"></div>
     {% else %}
     <div class="letter-gift-inner"></div>
     {% endif %}
