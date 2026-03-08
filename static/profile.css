@@ -1423,7 +1423,7 @@
     @media (min-width: 415px) and (max-width: 576px) {
       .profile-info-card {
         top: unset !important;
-        bottom: calc(107px + 3vh + env(safe-area-inset-bottom, 0px));   /* giảm 35px: 142px → 107px = xích xuống */
+        bottom: calc(72px + 3vh + env(safe-area-inset-bottom, 0px));   /* giảm thêm 35px: 107px → 72px = xích xuống */
       }
     }
 
