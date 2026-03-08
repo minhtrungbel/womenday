@@ -1274,7 +1274,8 @@
     .profile-info-card .info-name     { font-size: 0.80rem; }
     .profile-info-card .info-nickname { font-size: 0.80rem; margin-top: 3px; margin-bottom: 4px; }
     .profile-info-card .info-value    { font-size: 0.59rem; line-height: 1.4; display: inline; }
-    .profile-info-card .info-label    { font-size: 0.59rem; margin-top: 6px; margin-bottom: 0; display: inline; }
+    .profile-info-card .info-label    { font-size: 0.59rem; margin-top: 2px; margin-bottom: 0; display: inline; }
+    .profile-info-card .info-label-row { margin-top: 2px; }
     .profile-info-card .info-divider  { margin: 4px 0; }
   }
 
@@ -1293,7 +1294,8 @@
     .profile-info-card .info-name     { font-size: 0.94rem; }
     .profile-info-card .info-nickname { font-size: 0.94rem; margin-top: 4px; margin-bottom: 6px; }
     .profile-info-card .info-value    { font-size: 0.71rem; line-height: 1.5; display: inline; }
-    .profile-info-card .info-label    { font-size: 0.71rem; margin-top: 8px; margin-bottom: 0; display: inline; }
+    .profile-info-card .info-label    { font-size: 0.71rem; margin-top: 2px; margin-bottom: 0; display: inline; }
+    .profile-info-card .info-label-row { margin-top: 2px; }
     .profile-info-card .info-divider  { margin: 5px 0; }
   }
 
@@ -1312,7 +1314,8 @@
     .profile-info-card .info-name     { font-size: 0.96rem; }
     .profile-info-card .info-nickname { font-size: 0.96rem; margin-top: 4px; margin-bottom: 7px; }
     .profile-info-card .info-value    { font-size: 0.68rem; line-height: 1.5; display: inline; }
-    .profile-info-card .info-label    { font-size: 0.68rem; margin-top: 8px; margin-bottom: 0; display: inline; }
+    .profile-info-card .info-label    { font-size: 0.68rem; margin-top: 2px; margin-bottom: 0; display: inline; }
+    .profile-info-card .info-label-row { margin-top: 2px; }
     .profile-info-card .info-divider  { margin: 6px 0; }
   }
 
@@ -1331,7 +1334,8 @@
     .profile-info-card .info-name     { font-size: 1.02rem; }
     .profile-info-card .info-nickname { font-size: 1.02rem; margin-top: 4px; margin-bottom: 7px; }
     .profile-info-card .info-value    { font-size: 0.72rem; line-height: 1.5; display: inline; }
-    .profile-info-card .info-label    { font-size: 0.72rem; margin-top: 8px; margin-bottom: 0; display: inline; }
+    .profile-info-card .info-label    { font-size: 0.72rem; margin-top: 2px; margin-bottom: 0; display: inline; }
+    .profile-info-card .info-label-row { margin-top: 2px; }
     .profile-info-card .info-divider  { margin: 6px 0; }
   }
 
@@ -1411,8 +1415,8 @@
 
     @media (min-width: 360px) and (max-width: 414px) {
       .profile-info-card {
-        top: unset !important;
-        bottom: calc(132px + 3vh + env(safe-area-inset-bottom, 0px));   /* 160px+5vh → 132px+3vh = xích xuống */
+        top: 64% !important;           /* dùng top thay bottom — xích xuống nằm trong content-frame */
+        bottom: unset !important;
       }
     }
 
