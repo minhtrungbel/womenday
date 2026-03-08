@@ -517,7 +517,7 @@
   /* iOS 360-414px — dùng top để nằm trong content-frame */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-info-card {
-      top: 58%;           /* top thay vì bottom — căn từ trên xuống như Android */
+      top: 61%;           /* xích xuống nhỏ: 58% → 61% */
       bottom: auto;
       left: 3%;
       right: 3%;
@@ -540,7 +540,7 @@
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-info-card {
       top: auto;
-      bottom: calc(14% + env(safe-area-inset-bottom, 0px));   /* tăng mạnh từ 8% → 14% */
+      bottom: calc(18% + env(safe-area-inset-bottom, 0px));   /* tăng từ 14% → 18% để xích lên */
       left: 3%;
       right: 3%;
       width: auto;
