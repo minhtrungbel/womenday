@@ -383,7 +383,7 @@ def init_db():
             "",          # [12] gif_down
             "",          # [13] gif_left
             "",          # [14] gif_right
-            "0308",          # [15] gift_password
+            "@2807missphuongmaidinhmaidnh8386@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
