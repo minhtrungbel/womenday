@@ -197,13 +197,11 @@
     {% endif %}
 
     {% if profile.things_we_love %}
-    <div class="info-label">Điều tụi mình thích về cậu</div>
-    <div class="info-value">{{ profile.things_we_love }}</div>
+    <div class="info-label-row"><span class="info-label">Điều tụi mình thích về cậu: </span><span class="info-value">{{ profile.things_we_love }}</span></div>
     {% endif %}
 
     {% if profile.favorite_song %}
-    <div class="info-label">Bài nhạc yêu thích</div>
-    <div class="info-value">{{ profile.favorite_song }}</div>
+    <div class="info-label-row"><span class="info-label">Bài nhạc yêu thích: </span><span class="info-value">{{ profile.favorite_song }}</span></div>
     {% endif %}
   </div>
 
