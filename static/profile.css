@@ -1220,25 +1220,36 @@
 
   .profile-info-card .info-label {
     font-family: "Samsung Sharp Bold", sans-serif;
-    font-size: 0.55rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    font-size: clamp(0.60rem, 1.1vw, 0.95rem);
+    font-weight: 900;
     color: #860033;
-    opacity: 0.5;
+    opacity: 1;
     margin-top: 14px;
-    margin-bottom: 3px;
+    margin-bottom: 0;
+    display: inline;
+    text-transform: none;
+    letter-spacing: normal;
   }
 
   .profile-info-card .info-value {
     font-family: "Samsung Sharp Bold", sans-serif;
-    font-size: clamp(0.60rem, 1.1vw, 0.95rem);   /* nhỏ hơn name, auto shrink nếu dài */
+    font-size: clamp(0.60rem, 1.1vw, 0.95rem);
     font-weight: 900;
     color: #860033;
     line-height: 1.35;
     overflow-wrap: break-word;
     word-break: break-word;
     max-width: 100%;
+    display: inline;
+  }
+
+  /* wrapper để label + value nằm cùng dòng, xuống dòng tự nhiên nếu dài */
+  .profile-info-card .info-label-row {
+    display: block;
+    margin-top: 14px;
+    line-height: 1.45;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .profile-info-card .info-divider {
@@ -1262,8 +1273,8 @@
     .profile-info-card .info-name-label,
     .profile-info-card .info-name     { font-size: 0.80rem; }
     .profile-info-card .info-nickname { font-size: 0.80rem; margin-top: 3px; margin-bottom: 4px; }
-    .profile-info-card .info-value    { font-size: 0.59rem; line-height: 1.4; }
-    .profile-info-card .info-label    { font-size: 0.45rem; margin-top: 6px; margin-bottom: 2px; }
+    .profile-info-card .info-value    { font-size: 0.59rem; line-height: 1.4; display: inline; }
+    .profile-info-card .info-label    { font-size: 0.59rem; margin-top: 6px; margin-bottom: 0; display: inline; }
     .profile-info-card .info-divider  { margin: 4px 0; }
   }
 
@@ -1281,8 +1292,8 @@
     .profile-info-card .info-name-label,
     .profile-info-card .info-name     { font-size: 0.94rem; }
     .profile-info-card .info-nickname { font-size: 0.94rem; margin-top: 4px; margin-bottom: 6px; }
-    .profile-info-card .info-value    { font-size: 0.71rem; line-height: 1.5; }
-    .profile-info-card .info-label    { font-size: 0.56rem; margin-top: 8px; margin-bottom: 2px; }
+    .profile-info-card .info-value    { font-size: 0.71rem; line-height: 1.5; display: inline; }
+    .profile-info-card .info-label    { font-size: 0.71rem; margin-top: 8px; margin-bottom: 0; display: inline; }
     .profile-info-card .info-divider  { margin: 5px 0; }
   }
 
@@ -1300,8 +1311,8 @@
     .profile-info-card .info-name-label,
     .profile-info-card .info-name     { font-size: 0.96rem; }
     .profile-info-card .info-nickname { font-size: 0.96rem; margin-top: 4px; margin-bottom: 7px; }
-    .profile-info-card .info-value    { font-size: 0.68rem; line-height: 1.5; }
-    .profile-info-card .info-label    { font-size: 0.52rem; margin-top: 8px; margin-bottom: 2px; }
+    .profile-info-card .info-value    { font-size: 0.68rem; line-height: 1.5; display: inline; }
+    .profile-info-card .info-label    { font-size: 0.68rem; margin-top: 8px; margin-bottom: 0; display: inline; }
     .profile-info-card .info-divider  { margin: 6px 0; }
   }
 
@@ -1319,8 +1330,8 @@
     .profile-info-card .info-name-label,
     .profile-info-card .info-name     { font-size: 1.02rem; }
     .profile-info-card .info-nickname { font-size: 1.02rem; margin-top: 4px; margin-bottom: 7px; }
-    .profile-info-card .info-value    { font-size: 0.72rem; line-height: 1.5; }
-    .profile-info-card .info-label    { font-size: 0.53rem; margin-top: 8px; margin-bottom: 2px; }
+    .profile-info-card .info-value    { font-size: 0.72rem; line-height: 1.5; display: inline; }
+    .profile-info-card .info-label    { font-size: 0.72rem; margin-top: 8px; margin-bottom: 0; display: inline; }
     .profile-info-card .info-divider  { margin: 6px 0; }
   }
 
@@ -1337,8 +1348,8 @@
     .profile-info-card .info-name-label,
     .profile-info-card .info-name     { font-size: clamp(0.75rem, 1.08vw, 1.02rem); white-space: nowrap; overflow: visible; }
     .profile-info-card .info-nickname { font-size: clamp(0.75rem, 1.08vw, 1.02rem); margin-top: 5px; margin-bottom: 16px; }
-    .profile-info-card .info-value    { font-size: clamp(0.58rem, 0.88vw, 0.82rem); }
-    .profile-info-card .info-label    { font-size: 0.49rem; margin-top: 10px; }
+    .profile-info-card .info-value    { font-size: clamp(0.58rem, 0.88vw, 0.82rem); display: inline; }
+    .profile-info-card .info-label    { font-size: clamp(0.58rem, 0.88vw, 0.82rem); margin-top: 10px; display: inline; }
   }
 
   /* 992–1199px */
@@ -1354,8 +1365,8 @@
     .profile-info-card .info-name-label,
     .profile-info-card .info-name     { font-size: clamp(0.82rem, 1.18vw, 1.14rem); white-space: nowrap; overflow: visible; }
     .profile-info-card .info-nickname { font-size: clamp(0.82rem, 1.18vw, 1.14rem); margin-top: 5px; margin-bottom: 18px; }
-    .profile-info-card .info-value    { font-size: clamp(0.60rem, 0.92vw, 0.86rem); }
-    .profile-info-card .info-label    { font-size: 0.52rem; }
+    .profile-info-card .info-value    { font-size: clamp(0.60rem, 0.92vw, 0.86rem); display: inline; }
+    .profile-info-card .info-label    { font-size: clamp(0.60rem, 0.92vw, 0.86rem); display: inline; }
   }
 
   /* 1200–1599px */
@@ -1386,8 +1397,8 @@
     .profile-info-card .info-name-label,
     .profile-info-card .info-name     { font-size: clamp(0.95rem, 1.45vw, 1.38rem); white-space: nowrap; overflow: visible; }
     .profile-info-card .info-nickname { font-size: clamp(0.95rem, 1.45vw, 1.38rem); margin-top: 6px; margin-bottom: 22px; }
-    .profile-info-card .info-value    { font-size: clamp(0.68rem, 1.0vw, 1.0rem); }
-    .profile-info-card .info-label    { font-size: 0.59rem; }
+    .profile-info-card .info-value    { font-size: clamp(0.68rem, 1.0vw, 1.0rem); display: inline; }
+    .profile-info-card .info-label    { font-size: clamp(0.68rem, 1.0vw, 1.0rem); display: inline; }
   }
   /*IOS Safari: profile info card safe-area*/
   @supports (-webkit-touch-callout: none) {
