@@ -1214,8 +1214,8 @@
     font-size: clamp(0.75rem, 1.45vw, 1.28rem);
     font-weight: 900;
     color: #860033;
-    margin-top: 4px;
-    margin-bottom: 12px;
+    margin-top: 6px;
+    margin-bottom: 18px;  /* tăng từ 12px → 18px để cách things we love xa hơn */
   }
 
   .profile-info-card .info-label {
@@ -1232,10 +1232,13 @@
 
   .profile-info-card .info-value {
     font-family: "Samsung Sharp Bold", sans-serif;
-    font-size: 0.78rem;
-    font-weight: 600;
+    font-size: clamp(0.60rem, 1.1vw, 0.95rem);   /* nhỏ hơn name, auto shrink nếu dài */
+    font-weight: 900;
     color: #860033;
-    line-height: 1.45;
+    line-height: 1.35;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
   }
 
   .profile-info-card .info-divider {
@@ -1248,7 +1251,7 @@
   /* ≤359px */
   @media (max-width: 359px) {
     .profile-info-card {
-      top: 60%;
+      top: 63%;           /* xích xuống từ 60% → 63% */
       left: 3%;
       right: 3%;
       width: auto;
@@ -1267,7 +1270,7 @@
   /* 360–414px */
   @media (min-width: 360px) and (max-width: 414px) {
     .profile-info-card {
-      top: 64%;
+      top: 67%;           /* xích xuống từ 64% → 67% */
       left: 5%;
       right: 3%;
       width: auto;
@@ -1286,7 +1289,7 @@
   /* 415–576px */
   @media (min-width: 415px) and (max-width: 576px) {
     .profile-info-card {
-      top: 65%;
+      top: 68%;           /* xích xuống từ 65% → 68% */
       left: 6%;
       right: 3%;
       width: auto;
@@ -1305,7 +1308,7 @@
   /* 577–795px */
   @media (min-width: 577px) and (max-width: 795px) {
     .profile-info-card {
-      top: 66%;
+      top: 69%;           /* xích xuống từ 66% → 69% */
       left: 7%;
       right: 4%;
       width: auto;
@@ -1330,11 +1333,11 @@
       max-width: 280px;
       padding: 12px 12px;
     }
-    .profile-info-card .info-name-row { gap: 5px; margin-bottom: 4px; }
+    .profile-info-card .info-name-row { gap: 5px; margin-bottom: 6px; }
     .profile-info-card .info-name-label,
     .profile-info-card .info-name     { font-size: clamp(0.75rem, 1.08vw, 1.02rem); white-space: nowrap; overflow: visible; }
-    .profile-info-card .info-nickname { font-size: clamp(0.75rem, 1.08vw, 1.02rem); margin-top: 4px; margin-bottom: 8px; }
-    .profile-info-card .info-value    { font-size: 0.66rem; }
+    .profile-info-card .info-nickname { font-size: clamp(0.75rem, 1.08vw, 1.02rem); margin-top: 5px; margin-bottom: 16px; }
+    .profile-info-card .info-value    { font-size: clamp(0.58rem, 0.88vw, 0.82rem); }
     .profile-info-card .info-label    { font-size: 0.49rem; margin-top: 10px; }
   }
 
@@ -1347,11 +1350,11 @@
       max-width: 300px;
       padding: 16px 14px;
     }
-    .profile-info-card .info-name-row { gap: 5px; margin-bottom: 5px; }
+    .profile-info-card .info-name-row { gap: 5px; margin-bottom: 6px; }
     .profile-info-card .info-name-label,
     .profile-info-card .info-name     { font-size: clamp(0.82rem, 1.18vw, 1.14rem); white-space: nowrap; overflow: visible; }
-    .profile-info-card .info-nickname { font-size: clamp(0.82rem, 1.18vw, 1.14rem); margin-top: 4px; margin-bottom: 10px; }
-    .profile-info-card .info-value    { font-size: 0.71rem; }
+    .profile-info-card .info-nickname { font-size: clamp(0.82rem, 1.18vw, 1.14rem); margin-top: 5px; margin-bottom: 18px; }
+    .profile-info-card .info-value    { font-size: clamp(0.60rem, 0.92vw, 0.86rem); }
     .profile-info-card .info-label    { font-size: 0.52rem; }
   }
 
@@ -1364,10 +1367,10 @@
       max-width: 330px;
       padding: 20px 16px;
     }
-    .profile-info-card .info-name-row { gap: 6px; margin-bottom: 6px; }
+    .profile-info-card .info-name-row { gap: 6px; margin-bottom: 8px; }
     .profile-info-card .info-name-label,
     .profile-info-card .info-name     { font-size: clamp(0.88rem, 1.35vw, 1.28rem); white-space: nowrap; overflow: visible; }
-    .profile-info-card .info-nickname { font-size: clamp(0.88rem, 1.35vw, 1.28rem); margin-top: 5px; margin-bottom: 12px; }
+    .profile-info-card .info-nickname { font-size: clamp(0.88rem, 1.35vw, 1.28rem); margin-top: 6px; margin-bottom: 20px; }
   }
 
   /* ≥1600px */
@@ -1379,11 +1382,11 @@
       max-width: 360px;
       padding: 24px 20px;
     }
-    .profile-info-card .info-name-row { gap: 7px; margin-bottom: 7px; }
+    .profile-info-card .info-name-row { gap: 7px; margin-bottom: 9px; }
     .profile-info-card .info-name-label,
     .profile-info-card .info-name     { font-size: clamp(0.95rem, 1.45vw, 1.38rem); white-space: nowrap; overflow: visible; }
-    .profile-info-card .info-nickname { font-size: clamp(0.95rem, 1.45vw, 1.38rem); margin-top: 5px; margin-bottom: 14px; }
-    .profile-info-card .info-value    { font-size: 0.87rem; }
+    .profile-info-card .info-nickname { font-size: clamp(0.95rem, 1.45vw, 1.38rem); margin-top: 6px; margin-bottom: 22px; }
+    .profile-info-card .info-value    { font-size: clamp(0.68rem, 1.0vw, 1.0rem); }
     .profile-info-card .info-label    { font-size: 0.59rem; }
   }
   /*IOS Safari: profile info card safe-area*/
@@ -1391,28 +1394,28 @@
     @media (max-width: 359px) {
       .profile-info-card {
         top: unset !important;
-        bottom: calc(145px + 5vh + env(safe-area-inset-bottom, 0px));   /* 7vh → 5vh */
+        bottom: calc(120px + 3vh + env(safe-area-inset-bottom, 0px));   /* 145px+5vh → 120px+3vh = xích xuống */
       }
     }
 
     @media (min-width: 360px) and (max-width: 414px) {
       .profile-info-card {
         top: unset !important;
-        bottom: calc(160px + 5vh + env(safe-area-inset-bottom, 0px));   /* 7vh → 5vh */
+        bottom: calc(132px + 3vh + env(safe-area-inset-bottom, 0px));   /* 160px+5vh → 132px+3vh = xích xuống */
       }
     }
 
     @media (min-width: 415px) and (max-width: 576px) {
       .profile-info-card {
         top: unset !important;
-        bottom: calc(172px + 5vh + env(safe-area-inset-bottom, 0px));   /* 7vh → 5vh */
+        bottom: calc(142px + 3vh + env(safe-area-inset-bottom, 0px));   /* 172px+5vh → 142px+3vh = xích xuống */
       }
     }
 
     @media (min-width: 577px) and (max-width: 795px) {
       .profile-info-card {
         top: unset !important;
-        bottom: calc(178px + 5vh + env(safe-area-inset-bottom, 0px));   /* 7vh → 5vh */
+        bottom: calc(148px + 3vh + env(safe-area-inset-bottom, 0px));   /* 178px+5vh → 148px+3vh = xích xuống */
       }
     }
 
