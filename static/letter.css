@@ -69,7 +69,7 @@
       left: 0;
       width: 58vw;
       height: 68vh;
-      bottom: -26vh;
+      bottom: -34vh;      /* xích xuống thêm ~4vh */
       top: auto;
       background-size: 195% auto;
       background-position: -40vw bottom;
@@ -81,20 +81,20 @@
       left: 0;
       width: 60vw;
       height: 72vh;
-      bottom: -28vh;
+      bottom: -36vh;      /* xích xuống thêm ~4vh */
       top: auto;
       background-size: 205% auto;
       background-position: -42vw bottom;
     }
   }
 
-  /* Android 415-576px — xích xuống tid */
+  /* Android 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-hopqua-layer {
       left: 0;
       width: 54vw;
       height: 64vh;
-      bottom: -36vh;
+      bottom: -44vh;      /* xích xuống thêm ~4vh */
       top: auto;
       background-size: 185% auto;
       background-position: -46vw bottom;
@@ -106,7 +106,7 @@
       left: 0;
       width: 68vw;
       height: 82vh;
-      bottom: -31vh;
+      bottom: -39vh;      /* xích xuống thêm ~4vh */
       top: auto;
       background-size: 225% auto;
       background-position: -50vw bottom;
@@ -124,33 +124,33 @@
       left: 0;
       width: 50vw;
       height: 62vh;
-      top: 48vh;
+      top: 44vh;          /* xích lên từ 48vh → 44vh */
       bottom: auto;
       background-size: 175% auto;
       background-position: -35vw bottom;
     }
   }
 
-  /* iOS 360-414px — xích lên 4px */
+  /* iOS 360-414px — xích lên */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-hopqua-layer {
       left: 0;
       width: 52vw;
       height: 65vh;
-      top: 45.5vh;
+      top: 41vh;          /* xích lên từ 45.5vh → 41vh */
       bottom: auto;
       background-size: 185% auto;
       background-position: -38vw bottom;
     }
   }
 
-  /* iOS 415-576px — xích lên 3px + xích qua phải xíu */
+  /* iOS 415-576px — xích lên */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-hopqua-layer {
       left: 2vw;
       width: 46vw;
       height: 58vh;
-      top: 49.6vh;
+      top: 45vh;          /* xích lên từ 49.6vh → 45vh */
       bottom: auto;
       background-size: 165% auto;
       background-position: -42vw bottom;
@@ -163,7 +163,7 @@
       left: 0;
       width: 60vw;
       height: 74vh;
-      top: 36vh;
+      top: 31vh;          /* xích lên từ 36vh → 31vh */
       bottom: auto;
       background-size: 205% auto;
       background-position: -46vw bottom;
@@ -222,29 +222,29 @@
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 135% auto;
-      background-position: 69% 93%;
+      background-position: 69% 97%;   /* xuống thêm ~4% */
     }
   }
 
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 128% auto;
-      background-position: 70% 90%;
+      background-position: 70% 94%;   /* xuống thêm ~4% */
     }
   }
 
-  /* Android 415-576px — xích xuống tid */
+  /* Android 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 120% auto;
-      background-position: 71% 98%;
+      background-position: 71% 100%;  /* xuống thêm */
     }
   }
 
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 110% auto;
-      background-position: 72% 92%;
+      background-position: 72% 96%;   /* xuống thêm ~4% */
     }
   }
 }
@@ -256,7 +256,7 @@
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 135% auto;
-      background-position: 69% 86%;
+      background-position: 69% 100%;   /* xuống mạnh hơn từ 90% → 100% */
     }
   }
 
@@ -264,22 +264,22 @@
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 127% auto;
-      background-position: 70% 84%;
+      background-position: 70% 96%;    /* xuống mạnh hơn từ 88% → 96% */
     }
   }
 
-  /* iOS 415-576px — to hơn + xích xuống */
+  /* iOS 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 121.5% auto;
-      background-position: 71% 91%;
+      background-position: 71% 103%;   /* xuống mạnh hơn từ 95% → 103% */
     }
   }
 
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-content-frame {
       background-size: 110% auto;
-      background-position: 72% 84%;
+      background-position: 72% 96%;    /* xuống mạnh hơn từ 88% → 96% */
     }
   }
 }
@@ -402,89 +402,89 @@
   /* Android <=359px */
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-info-card {
-      top: 52%;
+      top: 59%;                        /* xích xuống thêm ~4% */
       bottom: auto;
       left: 2%;
       right: 2%;
       width: auto;
       max-width: none;
-      max-height: 50vh;
+      max-height: 44vh;
       overflow-y: auto;
-      transform: translateY(-10%);   /* xuống hơn trước */
+      transform: translateY(-10%);
       text-align: center;
       align-items: center;
-      padding: 7px 9px;
-      gap: 3px;
+      padding: 6px 8px;
+      gap: 2px;
     }
-    .letter-info-card .letter-greeting  { font-size: 0.76rem; }
-    .letter-info-card .letter-body      { font-size: 0.62rem; line-height: 1.48; }
-    .letter-info-card .letter-signature { font-size: 0.58rem; margin-top: 4px; text-align: right; padding-right: 6px; }
+    .letter-info-card .letter-greeting  { font-size: 0.70rem; }    /* nhỏ hơn */
+    .letter-info-card .letter-body      { font-size: 0.51rem; line-height: 1.42; }  /* nhỏ hơn */
+    .letter-info-card .letter-signature { font-size: 0.49rem; margin-top: 3px; text-align: right; padding-right: 6px; }
   }
 
   /* Android 360-414px */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-info-card {
-      top: 53%;
+      top: 60%;                        /* xích xuống thêm ~4% */
       bottom: auto;
       left: 3%;
       right: 3%;
       width: auto;
       max-width: none;
-      max-height: 52vh;
+      max-height: 46vh;
       overflow-y: auto;
-      transform: translateY(-10%);   /* xuống hơn trước */
+      transform: translateY(-10%);
       text-align: center;
       align-items: center;
-      padding: 9px 12px;
-      gap: 4px;
+      padding: 7px 10px;
+      gap: 3px;
     }
-    .letter-info-card .letter-greeting  { font-size: 0.82rem; }   /* giảm từ 0.88 */
-    .letter-info-card .letter-body      { font-size: 0.67rem; line-height: 1.5; }
-    .letter-info-card .letter-signature { font-size: 0.63rem; margin-top: 5px; text-align: right; padding-right: 8px; }
+    .letter-info-card .letter-greeting  { font-size: 0.76rem; }    /* nhỏ hơn */
+    .letter-info-card .letter-body      { font-size: 0.55rem; line-height: 1.44; }  /* nhỏ hơn */
+    .letter-info-card .letter-signature { font-size: 0.53rem; margin-top: 4px; text-align: right; padding-right: 8px; }
   }
 
   /* Android 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-info-card {
-      top: 54%;
+      top: 61%;                        /* xích xuống thêm ~4% */
       bottom: auto;
       left: 3%;
       right: 3%;
       width: auto;
       max-width: none;
-      max-height: 50vh;
+      max-height: 44vh;
       overflow-y: auto;
-      transform: translateY(-10%);   /* xuống hơn trước */
+      transform: translateY(-10%);
       text-align: center;
       align-items: center;
-      padding: 10px 12px;
-      gap: 4px;
+      padding: 8px 10px;
+      gap: 3px;
     }
-    .letter-info-card .letter-greeting  { font-size: 0.88rem; }   /* giảm từ 0.95 */
-    .letter-info-card .letter-body      { font-size: 0.71rem; line-height: 1.52; }
-    .letter-info-card .letter-signature { font-size: 0.67rem; margin-top: 6px; text-align: right; padding-right: 8px; }
+    .letter-info-card .letter-greeting  { font-size: 0.82rem; }    /* nhỏ hơn */
+    .letter-info-card .letter-body      { font-size: 0.58rem; line-height: 1.46; }  /* nhỏ hơn */
+    .letter-info-card .letter-signature { font-size: 0.56rem; margin-top: 5px; text-align: right; padding-right: 8px; }
   }
 
   /* Android 577-795px */
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-info-card {
-      top: 52%;
+      top: 59%;                        /* xích xuống thêm ~4% */
       bottom: auto;
       left: 3%;
       right: 3%;
       width: auto;
       max-width: none;
-      max-height: 52vh;
+      max-height: 46vh;
       overflow-y: auto;
       transform: translateY(-12%);
       text-align: center;
       align-items: center;
-      padding: 11px 13px;
-      gap: 5px;
+      padding: 9px 11px;
+      gap: 4px;
     }
-    .letter-info-card .letter-greeting  { font-size: 0.95rem; }   /* giảm từ 1.02 */
-    .letter-info-card .letter-body      { font-size: 0.77rem; line-height: 1.58; }
-    .letter-info-card .letter-signature { font-size: 0.71rem; margin-top: 7px; text-align: right; padding-right: 10px; }
+    .letter-info-card .letter-greeting  { font-size: 0.88rem; }    /* nhỏ hơn */
+    .letter-info-card .letter-body      { font-size: 0.63rem; line-height: 1.52; }  /* nhỏ hơn */
+    .letter-info-card .letter-signature { font-size: 0.60rem; margin-top: 6px; text-align: right; padding-right: 10px; }
   }
 }
 
@@ -496,7 +496,7 @@
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-info-card {
       top: auto;
-      bottom: calc(7% + env(safe-area-inset-bottom, 0px));
+      bottom: calc(14% + env(safe-area-inset-bottom, 0px));   /* tăng mạnh từ 7% → 14% */
       left: 2%;
       right: 2%;
       width: auto;
@@ -509,16 +509,16 @@
       padding: 7px 9px;
       gap: 3px;
     }
-    .letter-info-card .letter-greeting  { font-size: 0.76rem; }
-    .letter-info-card .letter-body      { font-size: 0.62rem; line-height: 1.48; }
-    .letter-info-card .letter-signature { font-size: 0.58rem; margin-top: 4px; text-align: right; padding-right: 6px; }
+    .letter-info-card .letter-greeting  { font-size: 0.84rem; }
+    .letter-info-card .letter-body      { font-size: 0.70rem; line-height: 1.52; }
+    .letter-info-card .letter-signature { font-size: 0.64rem; margin-top: 4px; text-align: right; padding-right: 6px; }
   }
 
-  /* iOS 360-414px — xích lên + giảm font */
+  /* iOS 360-414px */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-info-card {
       top: auto;
-      bottom: calc(7% + env(safe-area-inset-bottom, 0px));   /* trước: 4% → 7%: xích lên */
+      bottom: calc(13% + env(safe-area-inset-bottom, 0px));   /* tăng mạnh từ 7% → 13% */
       left: 3%;
       right: 3%;
       width: auto;
@@ -531,16 +531,16 @@
       padding: 9px 12px;
       gap: 4px;
     }
-    .letter-info-card .letter-greeting  { font-size: 0.82rem; }   /* giảm từ 0.88 */
-    .letter-info-card .letter-body      { font-size: 0.67rem; line-height: 1.5; }
-    .letter-info-card .letter-signature { font-size: 0.63rem; margin-top: 5px; text-align: right; padding-right: 8px; }
+    .letter-info-card .letter-greeting  { font-size: 0.92rem; }
+    .letter-info-card .letter-body      { font-size: 0.76rem; line-height: 1.54; }
+    .letter-info-card .letter-signature { font-size: 0.70rem; margin-top: 5px; text-align: right; padding-right: 8px; }
   }
 
-  /* iOS 415-576px — xích lên + giảm font */
+  /* iOS 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-info-card {
       top: auto;
-      bottom: calc(8% + env(safe-area-inset-bottom, 0px));   /* trước: 5% → 8%: xích lên */
+      bottom: calc(14% + env(safe-area-inset-bottom, 0px));   /* tăng mạnh từ 8% → 14% */
       left: 3%;
       right: 3%;
       width: auto;
@@ -553,16 +553,16 @@
       padding: 10px 12px;
       gap: 4px;
     }
-    .letter-info-card .letter-greeting  { font-size: 0.88rem; }   /* giảm từ 0.95 */
-    .letter-info-card .letter-body      { font-size: 0.71rem; line-height: 1.52; }
-    .letter-info-card .letter-signature { font-size: 0.67rem; margin-top: 6px; text-align: right; padding-right: 8px; }
+    .letter-info-card .letter-greeting  { font-size: 0.97rem; }
+    .letter-info-card .letter-body      { font-size: 0.80rem; line-height: 1.56; }
+    .letter-info-card .letter-signature { font-size: 0.74rem; margin-top: 6px; text-align: right; padding-right: 8px; }
   }
 
   /* iOS 577-795px */
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-info-card {
       top: auto;
-      bottom: calc(11% + env(safe-area-inset-bottom, 0px));   /* trước: 8% → 11%: xích lên */
+      bottom: calc(17% + env(safe-area-inset-bottom, 0px));   /* tăng mạnh từ 11% → 17% */
       left: 3%;
       right: 3%;
       width: auto;
@@ -575,9 +575,9 @@
       padding: 11px 13px;
       gap: 5px;
     }
-    .letter-info-card .letter-greeting  { font-size: 0.95rem; }   /* giảm từ 1.02 */
-    .letter-info-card .letter-body      { font-size: 0.77rem; line-height: 1.58; }
-    .letter-info-card .letter-signature { font-size: 0.71rem; margin-top: 7px; text-align: right; padding-right: 10px; }
+    .letter-info-card .letter-greeting  { font-size: 1.05rem; }
+    .letter-info-card .letter-body      { font-size: 0.87rem; line-height: 1.62; }
+    .letter-info-card .letter-signature { font-size: 0.79rem; margin-top: 7px; text-align: right; padding-right: 10px; }
   }
 }
 
@@ -731,7 +731,7 @@
   /* iOS <=359px */
   @media (max-width: 359px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(49% + env(safe-area-inset-bottom, 0px));
+      top: auto; bottom: calc(52% + env(safe-area-inset-bottom, 0px));  /* tăng từ 49% → 52% */
       right: 50%; transform: translateX(50%);
       width: 80vw; max-width: 265px;
     }
@@ -741,10 +741,10 @@
     }
   }
 
-  /* iOS 360-414px — xích lên mạnh hơn */
+  /* iOS 360-414px */
   @media (max-width: 414px) and (min-width: 360px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(45% + env(safe-area-inset-bottom, 0px));   /* trước: 40.5% → 45% */
+      top: auto; bottom: calc(48% + env(safe-area-inset-bottom, 0px));  /* tăng từ 45% → 48% */
       right: 50%; transform: translateX(50%);
       width: 78vw; max-width: 295px;
     }
@@ -754,10 +754,10 @@
     }
   }
 
-  /* iOS 415-576px — xích lên mạnh hơn */
+  /* iOS 415-576px */
   @media (max-width: 576px) and (min-width: 415px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(48% + env(safe-area-inset-bottom, 0px));   /* trước: 44.4% → 48% */
+      top: auto; bottom: calc(51% + env(safe-area-inset-bottom, 0px));  /* tăng từ 48% → 51% */
       right: 50%; transform: translateX(50%);
       width: 76vw; max-width: 310px;
     }
@@ -770,7 +770,7 @@
   /* iOS 577-795px */
   @media (max-width: 795px) and (min-width: 577px) and (orientation: portrait) {
     .letter-gift-box {
-      top: auto; bottom: calc(45% + env(safe-area-inset-bottom, 0px));   /* trước: 42% → 45% */
+      top: auto; bottom: calc(48% + env(safe-area-inset-bottom, 0px));  /* tăng từ 45% → 48% */
       right: 50%; transform: translateX(50%);
       width: 72vw; max-width: 320px;
     }
