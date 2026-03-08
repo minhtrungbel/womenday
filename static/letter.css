@@ -366,8 +366,8 @@
 /* 1200–1599px: CHUẨN */
 @media (min-width: 1200px) and (max-width: 1599px) {
   .letter-info-card {
-    left: 17%;
-    top: 52%;
+    left: 20%;
+    top: 58%;
     transform: translateY(-50%);
     width: 33%;
     max-width: 430px;
