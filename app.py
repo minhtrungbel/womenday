@@ -378,12 +378,12 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772199593/coyenphuong1_jkkpvx.png",          # [7]  avatar_url
             "Mặt Mộc ∙ VAnh x Phạm Nguyên Ngọc",          # [8]  song
             "Tụi em xin cảm ơn cô vì đã luôn tận tâm giảng dạy, truyền đạt kiến thức và quan tâm đến học sinh, kiên nhẫn với lớp dù đôi lúc tụi em hơi… ồn ào có tổ chức. Chúc cô luôn giữ được sự nhiệt huyết với nghề và có thật nhiều niềm vui trong công việc cũng như trong cuộc sống.",# [9]  letter_content
-            "",          # [10] letter_image_url
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010265/ms.phuong_gugoug.png",          # [10] letter_image_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Up_lmg6qu.gif",          # [11] gif_up
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772989988/Xoa_Toc_-_Down_vsmfgx.gif",          # [12] gif_down
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
-            "@2807missphuongmaidinhmaidnh8386@",          # [15] gift_password
+            "@2807missphuongmaidinhmaidinh@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010265/ms.phuong_gugoug.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
