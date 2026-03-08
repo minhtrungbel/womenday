@@ -81,7 +81,7 @@
       left: 0;
       width: 60vw;
       height: 72vh;
-      bottom: -36vh;      /* xích xuống thêm ~4vh */
+      bottom: -31vh;      /* xích xuống thêm ~4vh */
       top: auto;
       background-size: 205% auto;
       background-position: -42vw bottom;
@@ -995,3 +995,4 @@
   .letter-pwd-submit svg { width: 22px; height: 22px; }
   .letter-pwd-row { padding: 4px 4px 4px 16px; gap: 7px; }
 }
+
