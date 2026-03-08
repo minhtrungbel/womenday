@@ -353,7 +353,7 @@ def init_db():
             "lieunhuhien",                   # [0]  short_name
             "Liêu Như Hiền",                 # [1]  full_name
             "Biệt danh: hi píc",                              # [2]  nickname
-            "Điều chúng anh thích về em:sự điềm đạm trầm tính,vui vẻ thân thiện của cậu khi làm việc nhóm cùng cậu",                              # [4]  things_we_love
+            "Điều chúng anh thích về em:dễ thương dễ thương và dthw",                              # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772201008/nhuhien2_ue8uc0.png",  # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772211507/Low_G_In_Love_ft._JustaTee_L2K_The_Album_szcc8e.mp3",  # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772201013/nhuhien1_eyfkzu.png",  # [7]  avatar_url
