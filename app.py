@@ -124,7 +124,7 @@ def init_db():
         (
             "vobaotran",          # [0]  short_name
             "Võ Bảo Trân",          # [1]  full_name
-            "",          # [2]  nickname
+            "Biệt danh: UwU",          # [2]  nickname
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771951780/votran2_rcmb4w.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772207141/VSTRA_-_Ai_Ngo%C3%A0i_Anh_Official_Audio_j8abwy.mp3",          # [6]  audio_url
@@ -136,185 +136,185 @@ def init_db():
             "",          # [12] gif_down
             "",          # [13] gif_left
             "",          # [14] gif_right
-            "0308",          # [15] gift_password
+            "@27112009uwu@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
             "lenguyenbaotran",          # [0]  short_name
             "Lê Nguyễn Bảo Trân",          # [1]  full_name
-            "",          # [2]  nickname
+            "Biệt danh: Mai Lê",          # [2]  nickname
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954229/letran2_epjgp6.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772206464/Ph%C3%A1o_Northside-M%E1%BB%99t_Ng%C3%A0y_Ch%E1%BA%B3ng_N%E1%BA%AFng_ft.thobaymauofficial_Official_MV_hwkpvk.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036653/letran1_xkztjc.png",          # [7]  avatar_url
             "Một Ngày Chẳng Nắng ∙ Pháo Northside",          # [8]  song
-            "",          # [9]  letter_content
+            "Tụi mình muốn gửi lời cảm ơn chân thành đến Lê trân  vì đã luôn là một người bạn dễ thương và chân thành trong lớp. Những khoảnh khắc học tập và sinh hoạt cùng nhau đều là những kỷ niệm rất đáng quý. Chúc Lê Trân luôn vui vẻ, tự tin với bản thân mình và đạt được thật nhiều thành công trong học tập cũng như trong những dự định sắp tới nhé!",          # [9]  letter_content
             "",          # [10] letter_image_url
             "",          # [11] gif_up
             "",          # [12] gif_down
             "",          # [13] gif_left
             "",          # [14] gif_right
-            "0308",          # [15] gift_password
+            "@29012009maile@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
             "buikieuanh",          # [0]  short_name
             "Bùi Kiều Anh",          # [1]  full_name
-            "",          # [2]  nickname
+            "Biệt danh: pie",          # [2]  nickname
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954223/kieuanh2_qlujkd.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772454983/Nghe_nh%C6%B0_t%C3%ACnh_y%C3%AAu_-_MCK_remixx_prod_mp3cut.net_wppsbw.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036650/kieuanh1_tcql5x.png",          # [7]  avatar_url
             "Nghe Như Tình Yêu ∙ MCK",          # [8]  song
-            "",          # [9]  letter_content
+            "Tụi mình muốn gửi lời cảm ơn chân thành đến Kiều Anh vì đã luôn là một người bạn dễ mến và hòa đồng trong lớp, lúc nào cũng cảm thấy không khí nhẹ nhàng và vui vẻ hơn hẳn. Chúc Kiều Anh luôn tự tin, học tập thật tốt và lúc nào cũng giữ được năng lượng tích cực của mình. Mong là trong những bài kiểm tra sắp tới, sẽ có thể “thu hoạch” thật nhiều điểm cao để còn khoe với cả lớp nữa nha!",          # [9]  letter_content
             "",          # [10] letter_image_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772294406/Buoc_Toc_-_Up_fekvlr.gif",          # [11] gif_up
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772294406/Buoc_Toc_-_Down_gpwews.gif",          # [12] gif_down
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
-            "0308",          # [15] gift_password
+            "@10052009pie@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
             "trinhngocgialinh",          # [0]  short_name
             "Trịnh Ngọc Gia Linh",          # [1]  full_name
-            "",          # [2]  nickname
+            "Biệt danh: chocosusu",          # [2]  nickname
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772113738/gialinh2_1_k4bes6.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772212283/GO-CORTIS_yfqtlh.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036650/gialinh1_nfsmt0.png",          # [7]  avatar_url
             "GO ∙ CORTIS",          # [8]  song
-            "",          # [9]  letter_content
+            "Tụi mình muốn gửi lời cảm ơn chân thành Linh vì sự thẳng thắn và luôn hết mình với bạn bè. Những lời góp ý hay sự cổ vũ của bà có ý nghĩa rất lớn . Chúc Gia Linh luôn thông minh, nhạy bén và ngày càng tỏa sáng với những thế mạnh riêng của bản thân nha!",          # [9]  letter_content
             "",          # [10] letter_image_url
             "",          # [11] gif_up
             "",          # [12] gif_down
             "",          # [13] gif_left
             "",          # [14] gif_right
-            "0308",          # [15] gift_password
+            "@13022009chocosusu@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
             "huynhnguyenkimngan",          # [0]  short_name
             "Huỳnh Nguyễn Kim Ngân",          # [1]  full_name
-            "",          # [2]  nickname
+            "Biệt danh: nolan, con bò đầu cọ",          # [2]  nickname
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954221/kimngan2_tsqlkc.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772210869/PUPPY_DANGRANGTO_-_WRONG_TIMES_Live_at_LAB_RADAR_ZLAB_fp0cc6.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036653/kimngan1_lbbfmu.png",          # [7]  avatar_url
             "Wrong Times ∙ Young Puppy x DANGRANGTO",          # [8]  song
-            "",          # [9]  letter_content
+            " Tụi mình muốn gửi lời cảm ơn chân thành đến Ngân vì đã luôn thân thiện và nhiệt tình với mọi người trong lớp. Bà không chỉ là thủ quỹ đầy cẩn thận của lớp mà còn là một kỹ sư vô cùng chăm chỉ. Chúc Kim Ngân luôn vui vẻ, học hành thuận lợi và ngày càng phát huy được những điểm mạnh của bản thân. Mong là sắp tới bà sẽ tiếp tục “tỏa sáng” trong lớp mình nha!",          # [9]  letter_content
             "",          # [10] letter_image_url
             "",          # [11] gif_up
             "",          # [12] gif_down
             "",          # [13] gif_left
             "",          # [14] gif_right
-            "10082009hnkn",          # [15] gift_password
+            "@10082009nolanchris@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
             "lengocnhaky",          # [0]  short_name
             "Lê Ngọc Nhã Kỳ",          # [1]  full_name
-            "",          # [2]  nickname
+            "Biệt danh: lowkỳ(lowkey)",          # [2]  nickname
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772003999/nhaky2_yubc2h.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772207799/D%C3%B9_Cho_Mai_V%E1%BB%81_Sau_Official_Music_Video_buitruonglinh_z2cxcm.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036596/nhaky1_ce1jio.png",          # [7]  avatar_url
             "Dù Cho Mai Về Sau ∙ Bùi Trường Linh",          # [8]  song
-            "",          # [9]  letter_content
+            "Tụi mình muốn gửi lời cảm ơn chân thành đến Kỳ vì đã luôn là một người bạn điềm đạm và đáng tin cậy. Không chỉ bà luôn là người giữ vững kết quả hoc tập tốt trong lớp mà còn là người rất thân thiện và hài hước. Chúc Nhã Kỳ luôn giữ được sự nhẹ nhàng, tự tin và gặt hái được thật nhiều điểm 10 trong các bài kiểm tra sắp tới.",          # [9]  letter_content
             "",          # [10] letter_image_url
             "",          # [11] gif_up
             "",          # [12] gif_down
             "",          # [13] gif_left
             "",          # [14] gif_right
-            "0308",          # [15] gift_password
+            "@20102009lnnk@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
             "trannguyenngocthienthanh",          # [0]  short_name
             "Trần Nguyễn Ngọc Thiên Thanh",          # [1]  full_name
-            "",          # [2]  nickname
+            "Biệt danh: Trần Meo",          # [2]  nickname
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954084/thienthanh2_rhec6l.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772210416/MASHUP_ROCK_THI%E1%BB%86P_H%E1%BB%92NG_T%C3%93C_TI%C3%8AN_MAIQUINN_MU%E1%BB%98II_YEOLAN_%C4%90%C3%80O_T%E1%BB%AC_A1J_x_DTAP_LSX_2025_ryzvda.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036596/thienthanh1_pizmpn.png",          # [7]  avatar_url
             "Mashup Rock Thiệp Hổng ∙ Tóc Tiên x MaiQuinn x Yeolan x Đào Tử A1J",          # [8]  song
-            "",          # [9]  letter_content
+            "Tụi mình muốn gửi lời cảm ơn chân thành đến Thanh vì nguồn năng lượng tích cực mà cậu mang lại cho cả nhóm. Bà là một mảnh ghép rất cá tính trong lớp và đó cũng là thứ giúp lớp chúng ta đoàn kết hơn . Mong Thiên Thanh lúc nào cũng giữ được tinh thần lạc quan và chinh phục được mọi mục tiêu mà cậu đang ấp ủ!",          # [9]  letter_content
             "",          # [10] letter_image_url
             "",          # [11] gif_up
             "",          # [12] gif_down
             "",          # [13] gif_left
             "",          # [14] gif_right
-            "0308",          # [15] gift_password
+            "@10052009tranmeo@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
             "lungocbich",          # [0]  short_name
             "Lữ Ngọc Bích",          # [1]  full_name
-            "",          # [2]  nickname
+            "Biệt danh: Su",          # [2]  nickname
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954086/ngocbich2_jyiiqf.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772209832/Simple_Love_-_Obito_x_Seachains_x_Davis_x_Lena_Official_MV_dkr0vw.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036596/ngocbich1_picblc.png",          # [7]  avatar_url
             "Simple Love ∙ Obito x Seachains",          # [8]  song
-            "",          # [9]  letter_content
+            "Tụi mình muốn gửi lời cảm ơn chân thành đến Bích vì sự giúp đỡ nhiệt tình trong suốt thời gian qua  bọn mình rất trân trọng những lúc báo bài rất đúng giờ, một người lớp phó học tập gương mẫu. Ngoài ra cũng là người chịu rất nhìu áp lực từ thầy cô.  Chúc Bích luôn rạng rỡ, học tốt và mọi dự định cá nhân đều thành công rực rỡ nha!",          # [9]  letter_content
             "",          # [10] letter_image_url
             "",          # [11] gif_up
             "",          # [12] gif_down
             "",          # [13] gif_left
             "",          # [14] gif_right
-            "0308",          # [15] gift_password
+            "@16102009su@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
             "tranhatuyetnhu",          # [0]  short_name
             "Trần Hà Tuyết Như",          # [1]  full_name
-            "",          # [2]  nickname
+            "Biệt danh: Bé Như",          # [2]  nickname
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954085/tuyetnhu2_ptkhyr.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772209373/RIO_-_v%E1%BA%A1n_v%E1%BA%ADt_nh%C6%B0_mu%E1%BB%91n_ta_b%C3%AAn_nhau_Official_MV_csfksl.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772030901/tuyetnhu1_dlwi9z.png",          # [7]  avatar_url
             "Vạn Vật Như Muốn Ta Bên Nhau ∙ RIO",          # [8]  song
-            "",          # [9]  letter_content
+            "Tụi mình muốn gửi lời cảm ơn chân thành đến Như vì đã luôn góp phần làm cho lớp mình trở nên vui vẻ và nhiều tiếng cười hơn. Khi có bà  lúc nào cũng cảm thấy có thêm động lực học tập (và đôi khi cũng có thêm động lực… nói chuyện một chút xíu). Chúc Tuyết Như luôn giữ được sự lạc quan, học thật tốt và đạt được nhiều thành tích đáng tự hào trong thời gian tới!",          # [9]  letter_content
             "",          # [10] letter_image_url
             "",          # [11] gif_up
             "",          # [12] gif_down
             "",          # [13] gif_left
             "",          # [14] gif_right
-            "0308",          # [15] gift_password
+            "@1102009benhu@",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
             "dothithanhan",          # [0]  short_name
             "Đỗ Thị Thanh An",          # [1]  full_name
-            "",          # [2]  nickname
+            "Biệt danh: Alice, Ariel",          # [2]  nickname
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1771954329/cothanhan2_zcahg1.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772213432/Maroon_5-_Sugar_de74hs.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772036649/cothanhan1_qohuyz.png",          # [7]  avatar_url
             "Sugar ∙ Maroon5",          # [8]  song
-            "",          # [9]  letter_content
+            "Nhân ngày Quốc tế Phụ nữ 8/3, em xin gửi đến cô Thanh An những lời chúc tốt đẹp và chân thành nhất. Chúc cô luôn mạnh khỏe, vui vẻ và hạnh phúc trong cuộc sống. Cảm ơn cô vì đã luôn tận tâm giảng dạy, truyền đạt kiến thức và quan tâm đến chúng em.Chúc cô luôn giữ được sự nhiệt huyết với nghề và có thật nhiều niềm vui trong công việc cũng như trong cuộc sống.",          # [9]  letter_content
             "",          # [10] letter_image_url
             "",          # [11] gif_up
             "",          # [12] gif_down
             "",          # [13] gif_left
             "",          # [14] gif_right
-            "0308",          # [15] gift_password
+            "5/4cothanhan18tuoialice",          # [15] gift_password
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772539394/qua1_ko17hc.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
             "tranthihanh",                   # [0]  short_name
             "Trần Thị Hạnh",                 # [1]  full_name
-            "",                              # [2]  nickname
+            "Biệt danh: Mẹ Hạnh",         # [2]  nickname
             "",                              # [4]  things_we_love
             "",                              # [5]  layer_url
             "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/11_music.mp3",  # [6]  audio_url
@@ -333,7 +333,7 @@ def init_db():
         (
             "dokhanhan",                     # [0]  short_name
             "Đỗ Khánh An",                   # [1]  full_name
-            "",                              # [2]  nickname
+            "Biệt danh: Bống",                              # [2]  nickname
             "",                              # [4]  things_we_love
             "",                              # [5]  layer_url
             "https://res.cloudinary.com/dxxx/video/upload/v123/womenday/audio/12_music.mp3",  # [6]  audio_url
@@ -352,7 +352,7 @@ def init_db():
         (
             "lieunhuhien",                   # [0]  short_name
             "Liêu Như Hiền",                 # [1]  full_name
-            "",                              # [2]  nickname
+            "Biệt danh: hi píc",                              # [2]  nickname
             "",                              # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772201008/nhuhien2_ue8uc0.png",  # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772211507/Low_G_In_Love_ft._JustaTee_L2K_The_Album_szcc8e.mp3",  # [6]  audio_url
@@ -371,13 +371,13 @@ def init_db():
         (
             "tranyenphuong",          # [0]  short_name
             "Trần Yến Phương",          # [1]  full_name
-            "",          # [2]  nickname
+            "Biệt danh: Ms Phương",          # [2]  nickname
             "",          # [4]  things_we_love
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772199597/coyenphuong2_tykgpk.png",          # [5]  layer_url
             "https://res.cloudinary.com/dogyjotxv/video/upload/v1772213306/M%E1%BA%B7t_M%E1%BB%99c-VAnh_hqdv3t.mp3",          # [6]  audio_url
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772199593/coyenphuong1_jkkpvx.png",          # [7]  avatar_url
             "Mặt Mộc ∙ VAnh x Phạm Nguyên Ngọc",          # [8]  song
-            "",          # [9]  letter_content
+            "Tụi em xin cảm ơn cô vì đã luôn tận tâm giảng dạy, truyền đạt kiến thức và quan tâm đến học sinh, kiên nhẫn với lớp dù đôi lúc tụi em hơi… ồn ào có tổ chức. Chúc cô luôn giữ được sự nhiệt huyết với nghề và có thật nhiều niềm vui trong công việc cũng như trong cuộc sống.",# [9]  letter_content
             "",          # [10] letter_image_url
             "",          # [11] gif_up
             "",          # [12] gif_down
