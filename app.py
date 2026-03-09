@@ -137,7 +137,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Left_1_mscldt.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772986489/Buoc_Toc_alt_-_Right_a3bc2i.gif",          # [14] gif_right
             "@27112009uwu@",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010262/vt_m0yvoo.png",          # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773032261/vt_1_tmimbu.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
@@ -175,7 +175,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Left_wezif7.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772725128/Xoa_Toc_-_Right_pljrjz.gif",          # [14] gif_right
             "@10052009pie@",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010262/ka_aib0bo.png",          # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773032482/ka_2_uu2blj.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
@@ -270,7 +270,7 @@ def init_db():
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Left_1_yifu8x.gif",          # [13] gif_left
             "https://res.cloudinary.com/dogyjotxv/image/upload/v1772987842/Buoc_Toc_-_Right_brceuy.gif",          # [14] gif_right
             "@16102009su@",          # [15] gift_password
-            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773010262/nb_nkbidm.png",          # [16] gift_image
+            "https://res.cloudinary.com/dogyjotxv/image/upload/v1773032261/nb_1_fwemk3.png",          # [16] gift_image
             "",          # [17] profile_password
         ),
         (
