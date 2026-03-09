@@ -258,7 +258,7 @@ h1 {
     .yt-wrapper {
       left: 50%;
       transform: translateX(-50%);
-      bottom: calc(42% + env(safe-area-inset-bottom, 0px));
+      bottom: calc(50% + env(safe-area-inset-bottom, 0px));
       top: auto;
       width: 88vw;
       max-width: none;
