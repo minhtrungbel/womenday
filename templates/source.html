@@ -4,56 +4,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Đảm bảo responsive trên mobile -->
     <title>Source - Women Day</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='source.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='fonts.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='layout.css') }}"
-    />
-    <link
-      rel="icon"
-      href="https://res.cloudinary.com/dogyjotxv/image/upload/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg"
-      type="image/png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="https://res.cloudinary.com/dogyjotxv/image/upload/w_32,h_32,c_fill/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="https://res.cloudinary.com/dogyjotxv/image/upload/w_16,h_16,c_fill/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://res.cloudinary.com/dogyjotxv/image/upload/w_180,h_180,c_fill,r_max/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="192x192"
-      href="https://res.cloudinary.com/dogyjotxv/image/upload/w_192,h_192,c_fill,r_max/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="512x512"
-      href="https://res.cloudinary.com/dogyjotxv/image/upload/w_512,h_512,c_fill,r_max/v1764431931/5de18feb-3e51-4282-ab0c-cb9f6513148a_e4w7je.jpg"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='source.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='fonts.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}" />
+    <link rel="icon" href="https://res.cloudinary.com/dogyjotxv/image/upload/v1771757135/logo_ioneoh.png" type="image/png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_32,h_32,c_fill/v1771757135/logo_ioneoh.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_16,h_16,c_fill/v1771757135/logo_ioneoh.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_180,h_180,c_fill,r_max/v1771757135/logo_ioneoh.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_192,h_192,c_fill,r_max/v1771757135/logo_ioneoh.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="https://res.cloudinary.com/dogyjotxv/image/upload/w_512,h_512,c_fill,r_max/v1771757135/logo_ioneoh.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="format-detection" content="telephone=no" />
@@ -66,7 +30,6 @@
           A13․2024-2027<br />
           <span>THPT TRẦN KHAI NGUYÊN</span>
         </div>
-        <!-- LOGO LÒI ĐUÔI -->
         <a class="navbar-brand logo-outer" href="{{ url_for('home') }}">
           <img
             src="https://res.cloudinary.com/dogyjotxv/image/upload/v1763570718/home_logo_nt0lkn.svg"
@@ -74,15 +37,10 @@
             class="logo-svg"
           />
         </a>
-
-        <!-- BỎ HOÀN TOÀN NÚT TOGGLER + HIỆN LUÔN MENU TRÊN MOBILE -->
         <div class="navbar-collapse collapse show" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <!-- ms-auto = đẩy sang phải -->
             <li class="nav-item">
-              <a class="nav-link active" href="{{ url_for('source') }}"
-                >SOURCE</a
-              >
+              <a class="nav-link active" href="{{ url_for('source') }}">SOURCE</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('link') }}">LINK</a>
@@ -91,6 +49,7 @@
         </div>
       </div>
     </nav>
+
     <div class="source-bg"></div>
 
     <img
@@ -102,6 +61,21 @@
       class="hoa-roi"
       src="https://res.cloudinary.com/dogyjotxv/image/upload/v1772352557/hoaroi-source_d1jlcv.png"
     />
+
+    <!-- YOUTUBE EMBED -->
+    <div class="yt-wrapper">
+      <div class="yt-frame-box">
+        <iframe
+          src="https://www.youtube.com/embed/_a52gZWhOQQ?si=GIBNVQBr6QQBMPS5"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
     <img class="effect-gif" src="https://iili.io/qIDyw6F.gif" alt="effect">
   </body>
 </html>
